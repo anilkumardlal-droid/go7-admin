@@ -536,13 +536,94 @@ img{max-width:100%}
   .table-wrap tbody td:nth-child(5) .status{font-size:10.5px!important;min-width:78px!important;justify-content:center!important}
 }
 </style>
+
+<style id="go7-final-logo-drawer-fix">
+.go7-logo-img{
+  display:block!important;
+  object-fit:contain!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+.sidebar .brand{gap:0!important}
+.sidebar .go7-logo-img{
+  width:42px!important;
+  height:42px!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.login-brand .go7-logo-img{
+  width:clamp(105px,12vw,145px)!important;
+  height:auto!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+.drawer{
+  background:#f7f8fb!important;
+  border-left:1px solid #dfe3ea!important;
+  box-shadow:-18px 0 45px rgba(15,23,42,.14)!important;
+}
+.drawer-body{
+  flex:1!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding:21px!important;
+  background:#f7f8fb!important;
+  border:0!important;
+  box-shadow:inset 0 1px 0 rgba(16,24,40,.02)!important;
+}
+.form-group{
+  margin-bottom:13px!important;
+  padding:15px!important;
+  border:1px solid #e1e5ec!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  box-shadow:0 1px 2px rgba(16,24,40,.03),0 5px 14px rgba(16,24,40,.035)!important;
+}
+.drawer-logo{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  margin:0 0 16px!important;
+  padding:10px 0!important;
+}
+.drawer-logo img{
+  display:block!important;
+  width:52px!important;
+  height:52px!important;
+  object-fit:contain!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+@media(max-width:800px){
+  .drawer-body{padding:15px!important}
+}
+@media(max-width:560px){
+  .drawer-body{padding:14px!important}
+  .sidebar .go7-logo-img{width:42px!important;height:42px!important}
+  .login-brand .go7-logo-img{width:92px!important}
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
   <div class="login-card">
     <div class="login-brand">
       <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="GO7.IN" loading="eager">
-      <div class="brand-name">GO7<span>.IN</span></div>
     </div>
     <h1>GO7 Admin Login</h1>
     <p>Sign in with your GO7.IN administrator username and password. Your password is sent only to the GO7 Admin API.</p>
@@ -574,8 +655,7 @@ img{max-width:100%}
 
 <aside class="sidebar" id="sidebar">
   <div class="brand">
-    <img class="go7-logo-img" src="https://www.go7.in/images/favicon.png" alt="GO7.IN" loading="eager">
-    <div class="brand-name">GO7<span>.IN</span></div>
+    <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="GO7.IN" loading="eager">
   </div>
 
   <div class="nav-title">Workspace</div>
