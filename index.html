@@ -537,7 +537,7 @@ img{max-width:100%}
 }
 </style>
 
-<style id="go7-final-logo-drawer-fix">
+<style id="go7-final-v4-drawer-logo">
 .go7-logo-img{
   display:block!important;
   object-fit:contain!important;
@@ -548,23 +548,14 @@ img{max-width:100%}
 }
 .sidebar .brand{gap:0!important}
 .sidebar .go7-logo-img{
-  width:42px!important;
-  height:42px!important;
-  padding:0!important;
-  background:transparent!important;
-  border:0!important;
-  border-radius:0!important;
+  width:42px!important;height:42px!important;padding:0!important;
+  background:transparent!important;border:0!important;border-radius:0!important;
   box-shadow:none!important;
 }
 .login-brand .go7-logo-img{
-  width:clamp(105px,12vw,145px)!important;
-  height:auto!important;
-  padding:0!important;
-  background:transparent!important;
-  border:0!important;
-  border-radius:0!important;
-  box-shadow:none!important;
-  filter:none!important;
+  width:clamp(105px,12vw,145px)!important;height:auto!important;
+  padding:0!important;background:transparent!important;border:0!important;
+  border-radius:0!important;box-shadow:none!important;filter:none!important;
 }
 .drawer{
   background:#f7f8fb!important;
@@ -572,49 +563,45 @@ img{max-width:100%}
   box-shadow:-18px 0 45px rgba(15,23,42,.14)!important;
 }
 .drawer-body{
-  flex:1!important;
-  min-height:0!important;
-  overflow-y:auto!important;
-  overflow-x:hidden!important;
-  padding:21px!important;
   background:#f7f8fb!important;
   border:0!important;
   box-shadow:inset 0 1px 0 rgba(16,24,40,.02)!important;
 }
 .form-group{
-  margin-bottom:13px!important;
-  padding:15px!important;
   border:1px solid #e1e5ec!important;
-  border-radius:12px!important;
   background:#fff!important;
+  border-radius:12px!important;
   box-shadow:0 1px 2px rgba(16,24,40,.03),0 5px 14px rgba(16,24,40,.035)!important;
 }
-.drawer-logo{
+.detail-row{
+  align-items:center!important;
+}
+.detail-label{
   display:flex!important;
   align-items:center!important;
-  justify-content:center!important;
-  width:100%!important;
-  margin:0 0 16px!important;
-  padding:10px 0!important;
+  gap:7px!important;
+  color:#667085!important;
+  font-size:10px!important;
+  font-weight:800!important;
+  text-transform:uppercase!important;
+  letter-spacing:.06em!important;
 }
-.drawer-logo img{
+.detail-label svg{
   display:block!important;
-  width:52px!important;
-  height:52px!important;
-  object-fit:contain!important;
-  padding:0!important;
-  background:transparent!important;
-  border:0!important;
-  border-radius:0!important;
-  box-shadow:none!important;
-}
-@media(max-width:800px){
-  .drawer-body{padding:15px!important}
+  width:14px!important;
+  height:14px!important;
+  min-width:14px!important;
+  flex:0 0 14px!important;
+  color:#3850d5!important;
+  stroke:currentColor!important;
+  fill:none!important;
+  stroke-width:1.8!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
 }
 @media(max-width:560px){
-  .drawer-body{padding:14px!important}
-  .sidebar .go7-logo-img{width:42px!important;height:42px!important}
-  .login-brand .go7-logo-img{width:92px!important}
+  .detail-label{gap:6px!important}
+  .detail-label svg{width:13px!important;height:13px!important;min-width:13px!important;flex-basis:13px!important}
 }
 </style>
 
@@ -789,9 +776,9 @@ img{max-width:100%}
         </div>
         <div class="card setting-card">
           <h3>System</h3><p>Current GO7 Admin API configuration.</p>
-          <div class="detail-row"><span class="detail-label">Environment</span><strong>Production</strong></div>
-          <div class="detail-row"><span class="detail-label">API</span><strong>Connected</strong></div>
-          <div class="detail-row"><span class="detail-label">Database</span><strong>Cloudflare D1</strong></div>
+          <div class="detail-row"><span class="detail-label">${detailIcon("Environment")}Environment</span><strong>Production</strong></div>
+          <div class="detail-row"><span class="detail-label">${detailIcon("API")}API</span><strong>Connected</strong></div>
+          <div class="detail-row"><span class="detail-label">${detailIcon("Database")}Database</span><strong>Cloudflare D1</strong></div>
         </div>
       </div>
     </section>
@@ -1139,23 +1126,31 @@ function openInquiry(id){
   if(!x)return;
   currentId=x.id;
   document.getElementById("drawerTitle").textContent=x.name||"Inquiry";
+
+function detailIcon(label){
+  const icons = {
+    "Name": `<path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/>`,\n    "Email": `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>`,\n    "Subject": `<path d="M4 5h16v12H7l-3 3V5Z"/><path d="M8 9h8M8 12h5"/>`,\n    "Inquiry ID": `<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/>`,\n    "Date & Time": `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`,\n    "IP Address": `<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>`,\n    "Country": `<path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>`,\n    "City": `<path d="M4 21V9l6-4v16M10 21h10V12l-10-3M7 12h1M7 16h1M13 15h1M17 15h1M13 18h1M17 18h1"/>`,\n    "Region": `<path d="M4 6h6l2 3h8v9H4z"/><path d="M4 6V4h6l2 3"/>`,\n    "Device": `<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M10 18h4"/>`,\n    "Browser": `<circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M12 3c2.2 2.5 3.2 5.5 3.2 9S14.2 18.5 12 21M3.5 15h17"/>`,\n    "Timezone": `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`,\n    "Environment": `<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/>`,\n    "API": `<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/><circle cx="12" cy="12" r="3"/>`,\n    "Database": `<ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3.1 3 7 3s7-1.3 7-3v-7"/>`,\n  };
+  const path = icons[label] || `<circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/>`;
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${path}</svg>`;
+}
+
   document.getElementById("drawerSubtitle").textContent=`Inquiry #${x.id} · ${x.date}`;
   document.getElementById("drawerBody").innerHTML=`
     <div class="form-group"><label>Status</label><select class="form-control" id="drawerStatus" data-id="${escapeAttr(x.id)}">
       <option ${x.status==="New"?"selected":""}>New</option><option value="In Progress" ${(x.status==="In Progress"||x.status==="Read")?"selected":""}>Read</option><option ${x.status==="Replied"?"selected":""}>Replied</option><option ${x.status==="Closed"?"selected":""}>Closed</option>
     </select></div>
-    <div class="detail-row"><span class="detail-label">Name</span><strong>${escapeHtml(x.name)}</strong></div>
-    <div class="detail-row"><span class="detail-label">Email</span><strong>${escapeHtml(x.email)}</strong></div>
-    <div class="detail-row"><span class="detail-label">Subject</span><strong>${escapeHtml(x.subject)}</strong></div>
-    <div class="detail-row"><span class="detail-label">Inquiry ID</span><strong>${escapeHtml(x.id)}</strong></div>
-    <div class="detail-row"><span class="detail-label">Date & Time</span><span>${escapeHtml(x.date)}</span></div>
-    <div class="detail-row"><span class="detail-label">IP Address</span><strong>${escapeHtml(x.ip)}</strong></div>
-    <div class="detail-row"><span class="detail-label">Country</span><span>${escapeHtml(x.country)}</span></div>
-    <div class="detail-row"><span class="detail-label">City</span><span>${escapeHtml(x.city)}</span></div>
-    <div class="detail-row"><span class="detail-label">Region</span><span>${escapeHtml(x.region)}</span></div>
-    <div class="detail-row"><span class="detail-label">Device</span><span>${escapeHtml(x.device)}</span></div>
-    <div class="detail-row"><span class="detail-label">Browser</span><span>${escapeHtml(x.browser)}</span></div>
-    <div class="detail-row"><span class="detail-label">Timezone</span><span>${escapeHtml(x.timezone)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Name")}Name</span><strong>${escapeHtml(x.name)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Email")}Email</span><strong>${escapeHtml(x.email)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Subject")}Subject</span><strong>${escapeHtml(x.subject)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Inquiry ID")}Inquiry ID</span><strong>${escapeHtml(x.id)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Date & Time")}Date & Time</span><span>${escapeHtml(x.date)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("IP Address")}IP Address</span><strong>${escapeHtml(x.ip)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Country")}Country</span><span>${escapeHtml(x.country)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("City")}City</span><span>${escapeHtml(x.city)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Region")}Region</span><span>${escapeHtml(x.region)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Device")}Device</span><span>${escapeHtml(x.device)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Browser")}Browser</span><span>${escapeHtml(x.browser)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Timezone")}Timezone</span><span>${escapeHtml(x.timezone)}</span></div>
     <div class="form-group" style="margin-top:20px"><label>Message</label><div class="message-box">${escapeHtml(x.message)}</div></div>
     <div class="form-group"><label>Internal note</label><textarea class="form-control" id="drawerNote" placeholder="Add a private note...">${escapeHtml(x.admin_note)}</textarea><div style="font-size:11px;color:#94a3b8;margin-top:6px">Private admin note. Stored securely in Cloudflare D1.</div></div>
     <div class="reply-box">
