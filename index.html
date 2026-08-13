@@ -629,7 +629,7 @@ button:active{transform:translateY(1px)}
   z-index:1;
   margin:8px 0 0;
   color:#737b8c;
-  font-size:12px;
+  font-size:14px;
 }
 
 .welcome #apiConnectionStatus{position:relative;z-index:1}
@@ -852,7 +852,7 @@ button:active{transform:translateY(1px)}
 
 .activity-row strong{color:#333949;font-size:12px;font-weight:700}
 .activity-row p{margin:3px 0 0;color:#9aa1af;font-size:10px}
-.activity-time{margin-left:auto;color:#9aa1af;font-size:10px;white-space:nowrap}
+.activity-time{margin-left:auto;color:#9aa1af;font-size:14px;white-space:nowrap}
 
 .quick{
   display:grid;
@@ -1310,7 +1310,7 @@ button:active{transform:translateY(1px)}
 }
 
 .go7-modal h3{margin:0;color:#202532;font-size:18px}
-.go7-modal p{margin:7px 0 18px;color:#737b8c;font-size:12px;line-height:1.65}
+.go7-modal p{margin:7px 0 18px;color:#737b8c;font-size:14px;line-height:1.65}
 .go7-modal-actions{display:flex;justify-content:flex-end;gap:8px}
 
 .toast{
@@ -1787,6 +1787,1270 @@ button,
   font-weight:700 !important;
 }
 
+/* ================================================================
+   LOGO — ORIGINAL LOGO ONLY
+   No extra box, border, background, filter, or text.
+   ================================================================ */
+
+.brand {
+  justify-content:flex-start;
+}
+
+.sidebar .go7-logo-img,
+.login-brand .go7-logo-img {
+  display:block;
+  width:auto;
+  height:38px;
+  max-width:140px;
+  object-fit:contain;
+  padding:0;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  filter:none;
+}
+
+.login-brand .go7-logo-img {
+  height:52px;
+  max-width:180px;
+}
+
+.brand .go7-logo-img {
+  height:38px;
+}
+
+@media(max-width:560px) {
+  .login-brand .go7-logo-img {
+    height:42px;
+    max-width:150px;
+  }
+
+  .brand .go7-logo-img {
+    height:34px;
+  }
+}
+
+/* ================================================================
+   FINAL UI BALANCE
+   Larger typography + differentiated card surfaces + clean borders
+   ================================================================ */
+
+body {
+  font-size:14px;
+  color:#252a36;
+}
+
+.page-title {
+  font-size:17px;
+  font-weight:700;
+}
+
+.nav button {
+  min-height:46px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.nav button svg {
+  width:19px;
+  height:19px;
+}
+
+.nav-title {
+  font-size:10px;
+  font-weight:700;
+}
+
+.brand {
+  min-height:62px;
+}
+
+.content {
+  padding-top:32px;
+}
+
+.welcome h1,
+#inquiries .welcome h1,
+#analytics .welcome h1,
+#settings .welcome h1 {
+  font-size:30px;
+  font-weight:700;
+}
+
+.welcome p {
+  font-size:13px;
+}
+
+.stats {
+  gap:16px;
+}
+
+.stat {
+  min-height:154px;
+  padding:22px;
+}
+
+.stat-label {
+  font-size:11px;
+  font-weight:700;
+}
+
+.stat-value {
+  font-size:34px;
+  font-weight:700;
+}
+
+.stat-note {
+  font-size:11px;
+}
+
+.section-head h2 {
+  font-size:15px;
+  font-weight:700;
+}
+
+.activity-row strong {
+  font-size:13px;
+  font-weight:700;
+}
+
+.activity-row p,
+.activity-time {
+  font-size:11px;
+}
+
+.quick button {
+  font-size:12px;
+  font-weight:700;
+}
+
+.quick small {
+  font-size:10px;
+}
+
+/* ------------------------------------------------
+   DIFFERENT CARD TYPES — not everything looks same
+   ------------------------------------------------ */
+
+.card {
+  border:1px solid #e5e7ed;
+  border-radius:16px;
+  background:#FCFCFC;
+  box-shadow:0 4px 18px rgba(24,29,45,.035);
+}
+
+/* KPI cards */
+.stat {
+  border-color:#e3e6ef;
+  background:#FCFCFC;
+  box-shadow:0 6px 20px rgba(24,29,45,.045);
+}
+
+.stat:nth-child(1) {
+  border-top:3px solid #3850d5;
+}
+
+.stat:nth-child(2) {
+  border-top:3px solid #6173e8;
+}
+
+.stat:nth-child(3) {
+  border-top:3px solid #16845b;
+}
+
+.stat:nth-child(4) {
+  border-top:3px solid #b96a13;
+}
+
+/* Main section cards */
+.section-card {
+  border-color:#e2e5eb;
+  border-radius:16px;
+  background:#FCFCFC;
+}
+
+.section-card .section-head {
+  min-height:64px;
+  padding:18px 21px;
+  background:#f8f9fb;
+  border-bottom:1px solid #e5e7ed;
+}
+
+.section-card .activity {
+  background:#FCFCFC;
+}
+
+/* Quick action buttons are intentionally different from cards */
+.quick button {
+  border:1px solid #e5e7ed;
+  border-radius:12px;
+  background:#f8f9fb;
+}
+
+.quick button:hover {
+  border-color:#cbd2ef;
+  background:#f3f5ff;
+}
+
+/* Inquiry table */
+.table-card {
+  border:1px solid #dfe2e8;
+  border-radius:16px;
+  background:#FCFCFC;
+  box-shadow:0 7px 24px rgba(24,29,45,.045);
+}
+
+.table-toolbar {
+  background:#f7f8fa;
+  border-bottom:1px solid #e1e4ea;
+}
+
+.table-wrap th {
+  background:#f2f4f7;
+  border-bottom:1px solid #dfe2e8;
+  font-size:10px;
+  font-weight:700;
+}
+
+.table-wrap td {
+  font-size:12px;
+  border-bottom:1px solid #eceef2;
+}
+
+.table-wrap td strong {
+  font-size:12px;
+  font-weight:700;
+}
+
+.table-wrap tbody tr:hover {
+  background:#f7f8fc;
+}
+
+/* Settings cards */
+.setting-card {
+  border:1px solid #e1e4ea;
+  border-radius:16px;
+  background:#FCFCFC;
+  box-shadow:0 5px 18px rgba(24,29,45,.035);
+}
+
+.setting-card h3 {
+  font-size:16px;
+  font-weight:700;
+}
+
+.setting-card > p {
+  font-size:14px;
+}
+
+/* Drawer: make outer structure distinct */
+.drawer {
+  background:#f3f5f8;
+}
+
+.drawer-head {
+  background:#FCFCFC;
+  border-bottom:1px solid #dfe2e8;
+}
+
+.drawer-head h2 {
+  font-size:20px;
+  font-weight:700;
+}
+
+.drawer-body {
+  padding:22px;
+  background:#f3f5f8;
+}
+
+/* Status selector gets its own card-like surface */
+.drawer-body > .form-group:first-child {
+  padding:16px;
+  margin-bottom:17px;
+  border:1px solid #dfe3ea;
+  border-radius:14px;
+  background:#FCFCFC;
+  box-shadow:0 4px 14px rgba(24,29,45,.04);
+}
+
+/* Detail rows are NOT cards: they form one clean information sheet */
+.detail-row {
+  min-height:50px;
+  margin:0;
+  padding:9px 13px;
+  border-bottom:1px solid #e4e7ec;
+  border-radius:0;
+  background:#FCFCFC;
+}
+
+.detail-row:first-of-type {
+  border-top:1px solid #e4e7ec;
+  border-radius:12px 12px 0 0;
+}
+
+.detail-row:last-of-type {
+  border-radius:0 0 12px 12px;
+}
+
+.detail-row:hover {
+  background:#f8f9fb;
+}
+
+.detail-row strong,
+.detail-row > span:not(.detail-label) {
+  font-size:13px;
+  font-weight:600;
+}
+
+.detail-label {
+  font-size:10px;
+  font-weight:700;
+}
+
+/* Message is a separate visual block */
+.drawer-body > .form-group[style*="margin-top:20px"] {
+  margin-top:20px !important;
+  padding:16px;
+  border:1px solid #e1e4ea;
+  border-radius:14px;
+  background:#FCFCFC;
+}
+
+.message-box {
+  background:#f5f6f8;
+  border-radius:10px;
+  box-shadow:none;
+  font-size:13px;
+}
+
+/* Internal note is another separate block */
+.drawer-body > .form-group:not(:first-child):has(#drawerNote) {
+  padding:16px;
+  border:1px solid #e1e4ea;
+  border-radius:14px;
+  background:#FCFCFC;
+}
+
+/* Reply gets its own clearly different treatment */
+.reply-box {
+  padding:18px;
+  border:1px solid #d9def8;
+  border-radius:15px;
+  background:#eef1ff;
+}
+
+.reply-box .form-control {
+  background:#FCFCFC;
+}
+
+.reply-box::before {
+  color:#5263c8;
+  font-size:9px;
+  font-weight:700;
+}
+
+/* Drawer footer */
+.drawer-foot {
+  min-height:74px;
+  padding:14px 21px;
+  background:#FCFCFC;
+  border-top:1px solid #dfe2e8;
+}
+
+/* Forms */
+.form-control {
+  height:46px;
+  font-size:13px;
+}
+
+.login-form-head h2 {
+  font-size:27px;
+  font-weight:700;
+}
+
+.login-form-head p {
+  font-size:12px;
+}
+
+.login-right label,
+.login-card label {
+  font-size:10px;
+  font-weight:700;
+}
+
+/* Modal */
+.go7-modal h3 {
+  font-size:19px;
+  font-weight:700;
+}
+
+.go7-modal p {
+  font-size:13px;
+}
+
+/* Mobile typography */
+@media(max-width:560px) {
+  body {
+    font-size:14px;
+  }
+
+  .content {
+    padding-top:20px;
+  }
+
+  .welcome h1,
+  #inquiries .welcome h1,
+  #analytics .welcome h1,
+  #settings .welcome h1 {
+    font-size:25px;
+  }
+
+  .stat-value {
+    font-size:29px;
+  }
+
+  .drawer-body {
+    padding:15px 12px;
+  }
+
+  .detail-row strong,
+  .detail-row > span:not(.detail-label) {
+    font-size:12px;
+  }
+}
+
+/* =================================================================
+   GO7 ADMIN — COMPLETE MODERN UI SYSTEM
+   14px body / Nunito / differentiated surfaces / refined borders
+   ================================================================= */
+
+:root {
+  --canvas:#f5f6f8;
+  --surface:#ffffff;
+  --surface-soft:#fafbfc;
+  --surface-muted:#f1f3f6;
+
+  --ink:#202532;
+  --ink-2:#343b4a;
+  --text:#626b7c;
+  --muted:#8e96a5;
+  --muted-2:#a7adba;
+
+  --line:#e1e4e9;
+  --line-soft:#eceef2;
+  --line-strong:#d5d9e1;
+
+  --brand:#3850d5;
+  --brand-hover:#2f46c4;
+  --brand-soft:#eef1ff;
+  --brand-line:#d8defb;
+
+  --green:#16845b;
+  --green-soft:#eaf7f1;
+  --amber:#b96a13;
+  --amber-soft:#fff4e5;
+  --red:#c83d4b;
+  --red-soft:#fff0f2;
+  --blue:#2f6fe4;
+  --blue-soft:#edf4ff;
+
+  --radius-sm:10px;
+  --radius-md:13px;
+  --radius-lg:17px;
+
+  --shadow-xs:0 1px 2px rgba(24,29,45,.04);
+  --shadow-sm:0 4px 14px rgba(24,29,45,.055);
+  --shadow-md:0 10px 28px rgba(24,29,45,.075);
+  --shadow-lg:0 20px 55px rgba(24,29,45,.13);
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family:"Nunito",sans-serif;
+}
+
+body {
+  min-height:100dvh;
+  background:var(--canvas);
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size:14px;
+}
+
+button {
+  font-weight:700;
+}
+
+.card {
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+}
+
+/* ---------------- Sidebar ---------------- */
+
+.sidebar {
+  background:var(--surface);
+  border-right:1px solid var(--line);
+  box-shadow:4px 0 20px rgba(24,29,45,.025);
+}
+
+.brand {
+  border-bottom:1px solid var(--line-soft);
+}
+
+.nav button {
+  min-height:45px;
+  border:1px solid transparent;
+  border-radius:11px;
+  color:#687184;
+  font-size:13px;
+  font-weight:700;
+}
+
+.nav button svg {
+  width:19px;
+  height:19px;
+  stroke-width:1.8;
+}
+
+.nav button:hover {
+  border-color:#e7e9ef;
+  background:#f8f9fb;
+  color:var(--ink-2);
+}
+
+.nav button.active {
+  border-color:var(--brand-line);
+  background:var(--brand-soft);
+  color:var(--brand);
+  box-shadow:none;
+}
+
+.nav button.active::before {
+  left:-4px;
+  width:3px;
+}
+
+.nav-title {
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+}
+
+.admin-mini {
+  border-color:var(--line);
+  background:var(--surface-soft);
+}
+
+/* ---------------- Topbar ---------------- */
+
+.topbar {
+  height:70px;
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 2px 12px rgba(24,29,45,.025);
+}
+
+.page-title {
+  font-size:17px;
+  font-weight:700;
+}
+
+.icon-btn,
+.mobile-menu,
+.overlay-close {
+  border:1px solid var(--line-strong);
+  background:var(--surface);
+  box-shadow:var(--shadow-xs);
+}
+
+.icon-btn:hover,
+.mobile-menu:hover,
+.overlay-close:hover {
+  border-color:#c9d0df;
+  background:#fafbff;
+  color:var(--brand);
+  box-shadow:var(--shadow-sm);
+}
+
+/* ---------------- Content / welcome ---------------- */
+
+.content {
+  max-width:1600px;
+  padding:30px 34px 60px;
+}
+
+.welcome {
+  min-height:154px;
+  padding:29px 31px;
+  border:1px solid #dce2f7;
+  border-radius:19px;
+  background:
+    linear-gradient(115deg,#ffffff 0%,#fafbff 55%,#f1f4ff 100%);
+  box-shadow:var(--shadow-md);
+}
+
+.welcome h1,
+#inquiries .welcome h1,
+#analytics .welcome h1,
+#settings .welcome h1 {
+  font-size:30px;
+  font-weight:700;
+  line-height:1.15;
+  letter-spacing:-.04em;
+}
+
+.welcome p {
+  margin-top:9px;
+  color:#737c8d;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* ---------------- Buttons ---------------- */
+
+.primary,
+.small-btn,
+.danger-btn {
+  min-height:42px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  transition:
+    transform .16s ease,
+    background .16s ease,
+    border-color .16s ease,
+    box-shadow .16s ease,
+    color .16s ease;
+}
+
+.primary {
+  padding:10px 16px;
+  border:1px solid var(--brand);
+  background:var(--brand);
+  color:#fff;
+  box-shadow:0 6px 16px rgba(56,80,213,.18);
+}
+
+.primary:hover {
+  background:var(--brand-hover);
+  border-color:var(--brand-hover);
+  box-shadow:0 9px 21px rgba(56,80,213,.22);
+  transform:translateY(-1px);
+}
+
+.small-btn {
+  padding:9px 13px;
+  border:1px solid var(--line-strong);
+  background:var(--surface);
+  color:#596274;
+  box-shadow:var(--shadow-xs);
+}
+
+.small-btn:hover {
+  border-color:#c7cee0;
+  background:#fafbff;
+  color:var(--brand);
+  box-shadow:var(--shadow-sm);
+}
+
+.danger-btn {
+  padding:9px 13px;
+  border:1px solid #e8c3c9;
+  background:var(--surface);
+  color:var(--red);
+  box-shadow:var(--shadow-xs);
+}
+
+.danger-btn:hover {
+  border-color:#dea5ae;
+  background:var(--red-soft);
+  box-shadow:0 5px 15px rgba(200,61,75,.08);
+}
+
+.primary:disabled,
+.small-btn:disabled,
+.danger-btn:disabled {
+  cursor:not-allowed;
+  opacity:.55;
+  transform:none;
+  box-shadow:none;
+}
+
+/* ---------------- KPI cards ---------------- */
+
+.stats {
+  gap:16px;
+  margin-bottom:22px;
+}
+
+.stat {
+  min-height:158px;
+  padding:21px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+
+.stat:hover {
+  border-color:#d4d9e4;
+  box-shadow:var(--shadow-md);
+  transform:translateY(-2px);
+}
+
+.stat:nth-child(1) { border-top:3px solid var(--brand); }
+.stat:nth-child(2) { border-top:3px solid #6173e8; }
+.stat:nth-child(3) { border-top:3px solid var(--green); }
+.stat:nth-child(4) { border-top:3px solid var(--amber); }
+
+.stat-label {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.07em;
+}
+
+.stat-value {
+  margin-top:14px;
+  font-size:34px;
+  font-weight:700;
+}
+
+.stat-note {
+  margin-top:9px;
+  font-size:11px;
+}
+
+/* ---------------- Dashboard sections ---------------- */
+
+.section-card {
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+}
+
+.section-head {
+  min-height:63px;
+  padding:17px 20px;
+  background:var(--surface-soft);
+  border-bottom:1px solid var(--line);
+}
+
+.section-head h2 {
+  font-size:15px;
+  font-weight:700;
+}
+
+.activity {
+  background:var(--surface);
+}
+
+.activity-row {
+  padding:15px 0;
+}
+
+.activity-row strong {
+  font-size:13px;
+  font-weight:700;
+}
+
+.activity-row p {
+  margin-top:3px;
+  color:#8a93a2;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.activity-time {
+  font-size:11px;
+}
+
+.quick {
+  padding:16px 20px 20px;
+  gap:11px;
+}
+
+.quick button {
+  min-height:90px;
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#f8f9fb;
+  color:#3e4655;
+  font-size:13px;
+  font-weight:700;
+  box-shadow:none;
+}
+
+.quick button:hover {
+  border-color:#cbd2eb;
+  background:#f3f5ff;
+  color:var(--brand);
+  box-shadow:var(--shadow-sm);
+}
+
+/* ---------------- Inquiry table ---------------- */
+
+.table-card {
+  overflow:hidden;
+  border:1px solid var(--line-strong);
+  border-radius:17px;
+  background:var(--surface);
+  box-shadow:var(--shadow-md);
+}
+
+.table-toolbar {
+  padding:15px 18px;
+  background:#f8f9fb;
+  border-bottom:1px solid var(--line);
+}
+
+.search input,
+.select {
+  height:42px;
+  border:1px solid var(--line-strong);
+  border-radius:10px;
+  background:var(--surface);
+  color:var(--ink-2);
+  font-size:13px;
+  box-shadow:var(--shadow-xs);
+}
+
+.search input:focus,
+.select:focus {
+  border-color:#9eaae9;
+  box-shadow:0 0 0 3px rgba(56,80,213,.08);
+}
+
+.table-wrap th {
+  height:44px;
+  padding:12px 17px;
+  background:#f1f3f6;
+  border-bottom:1px solid var(--line-strong);
+  color:#747d8e;
+  font-size:10px;
+  font-weight:700;
+}
+
+.table-wrap td {
+  padding:14px 17px;
+  border-bottom:1px solid var(--line-soft);
+  color:#60697a;
+  font-size:13px;
+}
+
+.table-wrap td strong {
+  color:#303746;
+  font-size:13px;
+  font-weight:700;
+}
+
+.table-wrap tbody tr:hover {
+  background:#f8f9fc;
+}
+
+.status {
+  padding:6px 10px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.pagination {
+  min-height:57px;
+  padding:13px 18px;
+  background:var(--surface-soft);
+  border-top:1px solid var(--line-soft);
+  font-size:11px;
+}
+
+.pager button {
+  border:1px solid var(--line-strong);
+  background:var(--surface);
+  box-shadow:var(--shadow-xs);
+}
+
+.pager button.active {
+  border-color:var(--brand);
+  background:var(--brand);
+}
+
+/* ---------------- Drawer ---------------- */
+
+.drawer {
+  width:min(700px,100vw);
+  background:#eef1f5;
+  border-left:1px solid #d9dde5;
+  box-shadow:-22px 0 60px rgba(18,22,34,.16);
+}
+
+.drawer-head {
+  min-height:80px;
+  padding:18px 23px;
+  background:var(--surface);
+  border-bottom:1px solid var(--line-strong);
+}
+
+.drawer-head h2 {
+  font-size:20px;
+  font-weight:700;
+}
+
+.drawer-body {
+  padding:22px;
+  background:#eef1f5;
+  scrollbar-width:thin;
+  scrollbar-color:#cdd2dc transparent;
+}
+
+.drawer-body::-webkit-scrollbar {
+  width:7px;
+}
+
+.drawer-body::-webkit-scrollbar-thumb {
+  border-radius:20px;
+  background:#cdd2dc;
+}
+
+.drawer-body::-webkit-scrollbar-track {
+  background:transparent;
+}
+
+/* Each drawer area gets its own visual identity */
+.drawer-body > .form-group:first-child {
+  margin-bottom:18px;
+  padding:16px;
+  border:1px solid #dce1e8;
+  border-radius:14px;
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+}
+
+.drawer-body > .form-group:first-child label {
+  margin-bottom:8px;
+}
+
+.drawer-body .form-control {
+  height:46px;
+  border:1px solid var(--line-strong);
+  border-radius:10px;
+  background:var(--surface);
+  color:var(--ink-2);
+  font-size:13px;
+  box-shadow:var(--shadow-xs);
+}
+
+.drawer-body .form-control:focus {
+  border-color:#9eaae9;
+  box-shadow:0 0 0 3px rgba(56,80,213,.08);
+}
+
+.detail-row {
+  display:grid;
+  grid-template-columns:145px minmax(0,1fr);
+  min-height:50px;
+  margin:0;
+  padding:9px 14px;
+  border:0;
+  border-bottom:1px solid #e5e8ed;
+  border-radius:0;
+  background:var(--surface);
+}
+
+.detail-row:first-of-type {
+  border-top:1px solid #e1e4e9;
+  border-radius:13px 13px 0 0;
+}
+
+.detail-row:last-of-type {
+  border-radius:0 0 13px 13px;
+  border-bottom:1px solid #e1e4e9;
+}
+
+.detail-row:hover {
+  background:#fafbfc;
+}
+
+.detail-label {
+  font-size:10px;
+  font-weight:700;
+  color:#7e8797;
+}
+
+.detail-row strong,
+.detail-row > span:not(.detail-label) {
+  color:#343b4a;
+  font-size:13px;
+  font-weight:600;
+  line-height:1.5;
+}
+
+/* Message */
+.drawer-body > .form-group[style*="margin-top:20px"] {
+  margin-top:20px !important;
+  margin-bottom:18px;
+  padding:16px;
+  border:1px solid #dce1e8;
+  border-radius:14px;
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+}
+
+.message-box {
+  padding:15px;
+  border:1px solid #e6e8ed;
+  border-radius:11px;
+  background:#f5f6f8;
+  color:#4f5868;
+  font-size:14px;
+  line-height:1.75;
+}
+
+/* Internal note */
+.drawer-body > .form-group:has(#drawerNote) {
+  margin-bottom:18px;
+  padding:16px;
+  border:1px solid #dce1e8;
+  border-radius:14px;
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+}
+
+.drawer-body > .form-group:has(#drawerNote) .reply-hint {
+  font-size:11px;
+}
+
+/* Reply */
+.reply-box {
+  margin-top:0;
+  padding:18px;
+  border:1px solid #d6dcf8;
+  border-radius:15px;
+  background:#edf1ff;
+  box-shadow:0 7px 20px rgba(56,80,213,.055);
+}
+
+.reply-box::before {
+  margin-bottom:15px;
+  color:#5264c8;
+  font-size:9px;
+  font-weight:700;
+}
+
+.reply-box .form-group {
+  margin-bottom:14px;
+}
+
+.reply-box .form-control {
+  background:var(--surface);
+}
+
+.reply-hint {
+  font-size:11px;
+  line-height:1.5;
+}
+
+.drawer-foot {
+  min-height:76px;
+  padding:14px 22px;
+  background:var(--surface);
+  border-top:1px solid var(--line-strong);
+}
+
+/* ---------------- Settings ---------------- */
+
+.settings-grid {
+  gap:17px;
+}
+
+.setting-card {
+  padding:21px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--surface);
+  box-shadow:var(--shadow-sm);
+}
+
+.setting-card h3 {
+  font-size:16px;
+  font-weight:700;
+}
+
+.setting-card > p {
+  color:#7c8595;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* ---------------- Login ---------------- */
+
+.login-card {
+  border:1px solid #dce1eb;
+  box-shadow:var(--shadow-lg);
+}
+
+.login-right {
+  background:var(--surface);
+}
+
+.login-form-head h2 {
+  font-size:27px;
+  font-weight:700;
+}
+
+.login-form-head p {
+  font-size:14px;
+}
+
+.login-right label,
+.login-card label {
+  font-size:10px;
+  font-weight:700;
+}
+
+.form-control {
+  height:47px;
+  font-size:14px;
+}
+
+/* ---------------- Modal / toast ---------------- */
+
+.go7-modal {
+  border:1px solid var(--line-strong);
+  box-shadow:var(--shadow-lg);
+}
+
+.go7-modal h3 {
+  font-size:19px;
+  font-weight:700;
+}
+
+.go7-modal p {
+  font-size:14px;
+  line-height:1.65;
+}
+
+.toast {
+  font-size:12px;
+  box-shadow:var(--shadow-lg);
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media(max-width:1180px) {
+  .content {
+    padding-left:24px;
+    padding-right:24px;
+  }
+}
+
+@media(max-width:900px) {
+  .content {
+    padding:23px 18px 45px;
+  }
+
+  .welcome {
+    padding:24px;
+  }
+}
+
+@media(max-width:560px) {
+  body {
+    font-size:14px;
+  }
+
+  .content {
+    padding:18px 12px 35px;
+  }
+
+  .welcome {
+    min-height:140px;
+    padding:19px;
+    border-radius:15px;
+  }
+
+  .welcome h1,
+  #inquiries .welcome h1,
+  #analytics .welcome h1,
+  #settings .welcome h1 {
+    font-size:25px;
+  }
+
+  .welcome p {
+    font-size:14px;
+  }
+
+  .stat {
+    min-height:126px;
+    padding:17px;
+  }
+
+  .stat-value {
+    font-size:29px;
+  }
+
+  .activity-row p,
+  .setting-card > p {
+    font-size:14px;
+  }
+
+  .drawer {
+    width:100vw;
+  }
+
+  .drawer-body {
+    padding:15px 12px;
+  }
+
+  .detail-row {
+    grid-template-columns:42px minmax(0,1fr);
+    min-height:52px;
+    padding:9px 11px;
+    gap:10px;
+  }
+
+  .detail-label {
+    font-size:0;
+  }
+
+  .detail-label svg {
+    width:18px;
+    height:18px;
+  }
+
+  .detail-row strong,
+  .detail-row > span:not(.detail-label) {
+    font-size:12px;
+  }
+
+  .drawer-foot {
+    padding:12px;
+  }
+}
+
 </style>
 </head>
 <body class="auth-loading">
@@ -1838,8 +3102,7 @@ button,
 
 <aside class="sidebar" id="sidebar">
   <div class="brand">
-    <img class="go7-logo-img" src="https://www.go7.in/images/favicon.png" alt="GO7.IN" loading="eager">
-    <div class="brand-name">GO7<span>.IN</span></div>
+    <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="GO7 logo" loading="eager">
   </div>
 
   <div class="nav-title">Workspace</div>
@@ -1905,7 +3168,7 @@ button,
         <div class="card stat"><div class="stat-top"><span class="stat-label">Replied</span><span class="stat-icon">✓</span></div><div class="stat-value" id="repliedStat">108</div><div class="stat-note">96% response rate</div></div>
       </div>
 
-      <div class="grid-2">
+      <div class="grid-2 dashboard-sections">
         <div class="card section-card">
           <div class="section-head"><h2>Recent inquiries</h2><button class="link-btn" onclick="showPage('inquiries')">View all</button></div>
           <div class="activity" id="recentList"></div>
