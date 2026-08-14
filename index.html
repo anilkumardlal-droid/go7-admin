@@ -605,6 +605,1236 @@ img{max-width:100%}
 }
 </style>
 
+
+<style id="go7-real-dashboard-v9">
+/* =========================================================
+   GO7 — REAL CONTROL CENTER
+   Full visual replacement layer. Existing JS/functionality
+   remains untouched.
+   ========================================================= */
+
+:root{
+  --go7-blue:#3850d5;
+  --go7-blue2:#6377ee;
+  --go7-navy:#0c1430;
+  --go7-ink:#121a2c;
+  --go7-muted:#7b8498;
+  --go7-bg:#f3f5fa;
+  --go7-line:#e7eaf1;
+  --go7-green:#16a36a;
+  --go7-orange:#ef9b36;
+  --go7-red:#e15b64;
+  --go7-cyan:#2e9fd0;
+  --go7-purple:#7a5ce0;
+}
+
+/* ---------- global polish ---------- */
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 78% -8%,rgba(56,80,213,.055),transparent 28%),
+    #f3f5fa!important;
+}
+.app{background:transparent!important}
+.main{background:transparent!important}
+button{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease,color .18s ease!important}
+
+/* ---------- premium sidebar ---------- */
+.sidebar{
+  width:250px!important;
+  background:
+    radial-gradient(circle at 110% 0%,rgba(96,117,255,.24),transparent 31%),
+    linear-gradient(180deg,#0b1230 0%,#101a3a 55%,#121e43 100%)!important;
+  box-shadow:18px 0 55px rgba(8,16,42,.12)!important;
+}
+.brand{
+  height:88px!important;
+  padding:0 24px!important;
+  border-bottom:1px solid rgba(255,255,255,.075)!important;
+}
+.sidebar .go7-logo-img{
+  width:45px!important;height:45px!important;
+  padding:0!important;background:transparent!important;
+  border:0!important;border-radius:0!important;box-shadow:none!important;
+}
+.brand:after{
+  content:"CONTROL CENTER";
+  margin-left:auto;
+  color:#7784aa;
+  font-size:8px;
+  font-weight:850;
+  letter-spacing:.13em;
+}
+.nav-title{padding:24px 20px 8px!important;color:#6f7ca1!important}
+.nav{padding:0 11px!important;gap:6px!important}
+.nav button{
+  position:relative!important;
+  min-height:48px!important;
+  padding:12px 14px!important;
+  border-radius:12px!important;
+  color:#9ea9c7!important;
+}
+.nav button:after{
+  content:"";
+  position:absolute;
+  left:14px;right:14px;bottom:4px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+  opacity:0;
+}
+.nav button:hover:after,.nav button.active:after{opacity:1}
+.nav button.active{
+  background:linear-gradient(105deg,rgba(72,95,219,.42),rgba(72,95,219,.10))!important;
+  box-shadow:inset 3px 0 #7184ff,0 10px 26px rgba(0,0,0,.12)!important;
+}
+.nav button svg{width:19px!important;height:19px!important}
+.sidebar-bottom{border-top:1px solid rgba(255,255,255,.07)!important}
+.admin-mini{
+  margin:12px!important;
+  padding:11px!important;
+  border-radius:13px!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.025))!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+}
+
+/* ---------- topbar ---------- */
+.main{margin-left:250px!important;width:calc(100% - 250px)!important}
+.topbar{
+  height:72px!important;
+  padding:0 30px!important;
+  background:rgba(255,255,255,.88)!important;
+  border-bottom:1px solid rgba(228,231,236,.82)!important;
+  box-shadow:0 6px 22px rgba(16,24,40,.025)!important;
+}
+.page-title{
+  font-size:18px!important;
+  font-weight:800!important;
+  color:#182033!important;
+}
+.page-title:after{
+  content:"";
+  display:block;
+  width:28px;height:2px;margin-top:5px;
+  border-radius:5px;
+  background:linear-gradient(90deg,var(--go7-blue),#9aa8ff);
+}
+.icon-btn{
+  width:42px!important;height:42px!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  border:1px solid #e5e8ef!important;
+}
+.icon-btn:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 10px 22px rgba(56,80,213,.10)!important;
+}
+
+/* ---------- content ---------- */
+.content{
+  max-width:1540px!important;
+  padding:28px 30px 55px!important;
+}
+
+/* ---------- dashboard hero ---------- */
+#dashboard .welcome{
+  min-height:182px!important;
+  margin-bottom:20px!important;
+  padding:31px 34px!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 84% 20%,rgba(117,140,255,.33),transparent 25%),
+    radial-gradient(circle at 100% 110%,rgba(52,88,214,.34),transparent 32%),
+    linear-gradient(135deg,#0c1430 0%,#14204a 52%,#263e91 100%)!important;
+  box-shadow:0 22px 50px rgba(16,27,66,.17)!important;
+}
+#dashboard .welcome:before{
+  content:"";
+  position:absolute;
+  width:330px;height:330px;
+  right:-65px;top:-110px;
+  border:1px solid rgba(255,255,255,.11);
+  border-radius:50%;
+  box-shadow:0 0 0 32px rgba(255,255,255,.025),0 0 0 65px rgba(255,255,255,.018);
+}
+#dashboard .welcome:after{
+  right:250px!important;
+  bottom:-130px!important;
+  width:240px!important;height:240px!important;
+}
+#dashboard .welcome h1{
+  font-size:30px!important;
+  letter-spacing:-.05em!important;
+}
+#dashboard .welcome p{
+  font-size:13px!important;
+  color:#b9c4e5!important;
+}
+#dashboard .welcome #apiConnectionStatus{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  padding:6px 9px!important;
+  margin-top:14px!important;
+  border:1px solid rgba(158,230,189,.16)!important;
+  border-radius:999px!important;
+  background:rgba(255,255,255,.055)!important;
+  color:#9ee6bd!important;
+}
+#dashboard .welcome #apiConnectionStatus:before{
+  content:"";
+  width:6px;height:6px;
+  border-radius:50%;
+  background:#36d399;
+  box-shadow:0 0 0 4px rgba(54,211,153,.10);
+}
+#dashboard .welcome>.primary{
+  min-width:145px!important;
+  min-height:45px!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  color:#3046c5!important;
+  font-weight:800!important;
+}
+
+/* ---------- stat cards: new box design ---------- */
+.stats{
+  gap:15px!important;
+  margin-bottom:20px!important;
+}
+.card.stat{
+  position:relative!important;
+  min-height:154px!important;
+  padding:21px!important;
+  overflow:hidden!important;
+  border:1px solid #e8ebf2!important;
+  border-radius:18px!important;
+  background:linear-gradient(180deg,#fff,#fcfdff)!important;
+  box-shadow:0 9px 28px rgba(16,24,40,.045)!important;
+}
+.card.stat:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;
+  width:100%;height:3px;
+  background:var(--stat-accent,#3850d5);
+}
+.card.stat:after{
+  content:"";
+  position:absolute;
+  width:90px;height:90px;
+  right:-35px;bottom:-45px;
+  border:1px solid color-mix(in srgb,var(--stat-accent,#3850d5) 18%,transparent);
+  border-radius:50%;
+  box-shadow:0 0 0 14px color-mix(in srgb,var(--stat-accent,#3850d5) 4%,transparent);
+  pointer-events:none;
+}
+.card.stat:nth-child(1){--stat-accent:#3850d5}
+.card.stat:nth-child(2){--stat-accent:#ef9b36}
+.card.stat:nth-child(3){--stat-accent:#2e9fd0}
+.card.stat:nth-child(4){--stat-accent:#16a36a}
+.card.stat:hover{
+  transform:translateY(-4px)!important;
+  border-color:#dce1ec!important;
+  box-shadow:0 18px 38px rgba(16,24,40,.085)!important;
+}
+.stat-top{position:relative;z-index:2}
+.stat-label{font-size:10px!important;color:#7b8498!important;letter-spacing:.09em!important}
+.stat-icon{
+  width:43px!important;height:43px!important;
+  border-radius:13px!important;
+  border:1px solid color-mix(in srgb,var(--stat-accent) 16%,#fff)!important;
+  background:color-mix(in srgb,var(--stat-accent) 8%,#fff)!important;
+  color:var(--stat-accent)!important;
+}
+.stat-icon svg{
+  width:20px!important;height:20px!important;
+  fill:none!important;stroke:currentColor!important;
+  stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important;
+}
+.stat-value{
+  position:relative;z-index:2;
+  margin-top:15px!important;
+  font-size:32px!important;
+  font-weight:820!important;
+  letter-spacing:-.055em!important;
+}
+.stat-note{
+  position:relative;z-index:2;
+  display:flex!important;
+  align-items:center!important;
+  gap:6px!important;
+  margin-top:5px!important;
+  font-size:11px!important;
+}
+.stat-note strong{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:3px!important;
+  padding:3px 6px!important;
+  border-radius:6px!important;
+  font-size:10px!important;
+}
+.trend-up strong{color:#087f4f!important;background:#eafaf2!important}
+.trend-down strong{color:#c2414a!important;background:#fff0f1!important}
+.trend-up strong:before{content:"↑";font-size:12px;font-weight:900}
+.trend-down strong:before{content:"↓";font-size:12px;font-weight:900}
+.stat-note span{color:#9aa2b1!important}
+
+/* ---------- section boxes ---------- */
+.grid-2{gap:15px!important}
+.section-card{
+  border:1px solid #e8ebf2!important;
+  border-radius:18px!important;
+  background:#fff!important;
+  box-shadow:0 9px 28px rgba(16,24,40,.04)!important;
+}
+.section-head{
+  min-height:64px!important;
+  padding:18px 21px!important;
+  border-bottom:1px solid #edf0f4!important;
+}
+.section-head h2{
+  font-size:14px!important;
+  font-weight:800!important;
+  letter-spacing:-.01em!important;
+}
+.section-head h2:after{
+  content:"";
+  display:block;
+  width:22px;height:2px;
+  margin-top:5px;
+  border-radius:2px;
+  background:var(--go7-blue);
+}
+.link-btn{
+  padding:8px 10px!important;
+  border-radius:8px!important;
+  background:#f2f4ff!important;
+  color:#3850d5!important;
+}
+.link-btn:hover{text-decoration:none!important;transform:translateY(-1px)!important}
+
+/* Activity: real dashboard timeline */
+.activity-row{
+  position:relative!important;
+  padding:16px 0!important;
+}
+.activity-dot{
+  width:9px!important;height:9px!important;
+  background:#3850d5!important;
+  box-shadow:0 0 0 5px #eef1ff!important;
+}
+.activity-row strong{font-size:12.5px!important}
+.activity-row p{font-size:10.5px!important}
+.activity-time{font-size:10px!important}
+
+/* Quick actions each gets its own color */
+.quick{
+  gap:10px!important;
+  padding:16px 20px 20px!important;
+}
+.quick button{
+  position:relative!important;
+  min-height:84px!important;
+  border-radius:13px!important;
+  overflow:hidden!important;
+  border:1px solid #e8ebf2!important;
+  background:#fff!important;
+}
+.quick button:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;width:4px;
+  background:var(--quick-color,#3850d5);
+}
+.quick button:nth-child(1){--quick-color:#3850d5}
+.quick button:nth-child(2){--quick-color:#7a5ce0}
+.quick button:nth-child(3){--quick-color:#ef9b36}
+.quick button:nth-child(4){--quick-color:#16a36a}
+.quick button:hover{
+  transform:translateY(-3px)!important;
+  border-color:color-mix(in srgb,var(--quick-color) 28%,#e8ebf2)!important;
+  box-shadow:0 12px 25px rgba(16,24,40,.07)!important;
+  color:var(--quick-color)!important;
+}
+.quick button:after{
+  content:"→";
+  position:absolute;
+  right:14px;top:17px;
+  color:var(--quick-color);
+  font-size:17px;font-weight:800;
+}
+.quick small{max-width:82%;font-size:10px!important}
+
+/* ---------- Inquiries page ---------- */
+#inquiries .welcome{
+  display:flex!important;
+  align-items:flex-end!important;
+  min-height:90px!important;
+  padding-bottom:18px!important;
+}
+#inquiries .welcome h1,#analytics .welcome h1,#settings .welcome h1{
+  font-size:28px!important;
+  font-weight:820!important;
+}
+#inquiries .table-card{
+  border:1px solid #e6e9f0!important;
+  border-radius:18px!important;
+  background:#fff!important;
+  box-shadow:0 10px 30px rgba(16,24,40,.045)!important;
+}
+.table-toolbar{
+  min-height:74px!important;
+  padding:16px 18px!important;
+  background:#fff!important;
+}
+.search input,.select{
+  height:43px!important;
+  border-radius:10px!important;
+  background:#f9fafc!important;
+}
+.search input:focus,.select:focus{
+  background:#fff!important;
+}
+.table-wrap th{
+  background:#f8f9fc!important;
+  height:45px!important;
+}
+.table-wrap tbody tr{
+  transition:background .16s ease,transform .16s ease!important;
+}
+.table-wrap tbody tr:hover{
+  background:#fafbff!important;
+}
+.status{
+  border-radius:8px!important;
+  padding:6px 10px!important;
+}
+.actions .small-btn{
+  border-radius:8px!important;
+  background:#f8f9fc!important;
+}
+.actions .small-btn:first-child{
+  color:#3850d5!important;
+  border-color:#dce1ff!important;
+  background:#f1f3ff!important;
+}
+.actions .small-btn:last-child{
+  color:#7a5ce0!important;
+  border-color:#e5dcff!important;
+  background:#f7f3ff!important;
+}
+
+/* Different colors for primary actions */
+#inquiries .welcome>.primary{background:linear-gradient(135deg,#16a36a,#28b879)!important}
+#settings .welcome>.primary{background:linear-gradient(135deg,#7a5ce0,#987be8)!important}
+#analytics .welcome>.primary{background:linear-gradient(135deg,#2e9fd0,#46b4df)!important}
+
+/* ---------- Analytics real visual ---------- */
+#analytics .section-card{
+  overflow:hidden!important;
+}
+#analytics .bar{
+  background:linear-gradient(180deg,#3850d5,#8998f1)!important;
+  box-shadow:0 7px 18px rgba(56,80,213,.15)!important;
+}
+#analytics .bar:nth-child(2){background:linear-gradient(180deg,#7a5ce0,#a994ef)!important}
+#analytics .bar:nth-child(3){background:linear-gradient(180deg,#2e9fd0,#73c5e5)!important}
+#analytics .bar:nth-child(4){background:linear-gradient(180deg,#ef9b36,#f4bc70)!important}
+#analytics .bar:nth-child(5){background:linear-gradient(180deg,#16a36a,#58c596)!important}
+#analytics .bar:nth-child(6){background:linear-gradient(180deg,#e15b64,#ed9299)!important}
+#analytics .bar:nth-child(7){background:linear-gradient(180deg,#3850d5,#8c9af2)!important}
+
+/* ---------- settings ---------- */
+.settings-grid{gap:15px!important}
+.setting-card{
+  border:1px solid #e7eaf0!important;
+  border-radius:18px!important;
+  box-shadow:0 9px 28px rgba(16,24,40,.04)!important;
+}
+.setting-card h3{
+  font-size:15px!important;
+  font-weight:800!important;
+}
+.toggle.on{background:#3850d5!important}
+.toggle-row{padding:15px 0!important}
+
+/* ---------- inquiry view: drawer, NEVER sidebar navigation ---------- */
+.drawer{
+  width:min(680px,100vw)!important;
+  border-left:1px solid #e2e6ee!important;
+  background:#f5f7fb!important;
+  box-shadow:-28px 0 75px rgba(9,18,45,.20)!important;
+}
+.drawer-head{
+  min-height:84px!important;
+  padding:18px 23px!important;
+  background:#fff!important;
+}
+.drawer-head h2{font-size:19px!important}
+.drawer-body{padding:20px!important}
+.form-group{
+  border:1px solid #e4e8ef!important;
+  border-radius:14px!important;
+  box-shadow:0 5px 16px rgba(16,24,40,.035)!important;
+}
+.detail-row{
+  padding:12px 0!important;
+}
+.detail-label{
+  color:#727c91!important;
+}
+.detail-label svg{
+  color:#3850d5!important;
+}
+.message-box{
+  border-radius:13px!important;
+  background:#f8faff!important;
+  border-color:#e0e5f3!important;
+}
+.reply-box{
+  border-radius:14px!important;
+  background:linear-gradient(135deg,#f1f4ff,#f8f9ff)!important;
+}
+.drawer-foot{
+  min-height:76px!important;
+  padding:14px 20px!important;
+}
+.drawer-foot .danger-btn{
+  background:#fff1f1!important;
+  border-color:#ffd1d1!important;
+  color:#c62828!important;
+}
+.drawer-foot .primary{
+  background:linear-gradient(135deg,#16a36a,#25b879)!important;
+}
+.drawer-foot .small-btn{
+  background:#eef1ff!important;
+  color:#3850d5!important;
+  border-color:#d8defd!important;
+}
+
+/* ---------- line / text effects ---------- */
+.welcome h1,.section-head h2,#inquiries .welcome h1,#analytics .welcome h1,#settings .welcome h1{
+  position:relative;
+}
+.welcome h1:after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-9px;
+  width:44px;height:2px;
+  border-radius:5px;
+  background:linear-gradient(90deg,currentColor,transparent);
+  opacity:.55;
+}
+#dashboard .welcome h1:after{display:none}
+
+/* ---------- mobile ---------- */
+@media(max-width:1050px){
+  .sidebar{width:230px!important}
+  .main{margin-left:230px!important;width:calc(100% - 230px)!important}
+  .content{padding:24px 20px 45px!important}
+}
+@media(max-width:800px){
+  .sidebar{
+    width:min(292px,86vw)!important;
+  }
+  .main{margin-left:0!important;width:100%!important}
+  .topbar{height:64px!important}
+  #dashboard .welcome{
+    min-height:180px!important;
+    padding:24px!important;
+  }
+  #dashboard .welcome>.primary{display:inline-flex!important}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:560px){
+  .content{padding:14px 10px 30px!important}
+  #dashboard .welcome{
+    min-height:195px!important;
+    padding:20px!important;
+    border-radius:17px!important;
+  }
+  #dashboard .welcome h1{font-size:23px!important}
+  #dashboard .welcome>.primary{
+    width:100%!important;
+    justify-content:center!important;
+  }
+  .stats{grid-template-columns:1fr!important}
+  .card.stat{min-height:132px!important}
+  .grid-2{grid-template-columns:1fr!important}
+  .quick{grid-template-columns:1fr!important}
+  #inquiries .welcome,#analytics .welcome,#settings .welcome{
+    align-items:stretch!important;
+  }
+  #inquiries .welcome>.primary,#analytics .welcome>.primary,#settings .welcome>.primary{
+    width:100%!important;
+    justify-content:center!important;
+    margin-top:8px!important;
+  }
+  .drawer{width:100vw!important}
+}
+</style>
+
+
+<style id="go7-login-complete-replace-v10">
+/* =========================================================
+   GO7 LOGIN — COMPLETE VISUAL REPLACEMENT
+   Deliberately different from the previous split-card login.
+   ========================================================= */
+
+#loginScreen{
+  background:
+    radial-gradient(circle at 15% 18%,rgba(77,101,236,.20),transparent 24%),
+    radial-gradient(circle at 86% 82%,rgba(39,111,210,.16),transparent 28%),
+    linear-gradient(145deg,#070b18 0%,#0c1330 48%,#111d45 100%)!important;
+  padding:24px!important;
+}
+
+/* ambient grid */
+#loginScreen:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.42;
+  background:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom,black,transparent 88%);
+}
+
+/* new centered card */
+#loginScreen .login-card{
+  position:relative!important;
+  width:min(470px,100%)!important;
+  min-height:0!important;
+  max-height:none!important;
+  display:block!important;
+  overflow:visible!important;
+  padding:0!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  border-radius:26px!important;
+  background:rgba(255,255,255,.97)!important;
+  box-shadow:
+    0 45px 100px rgba(0,0,0,.42),
+    0 0 0 1px rgba(255,255,255,.035),
+    0 0 80px rgba(56,80,213,.10)!important;
+}
+
+/* remove old split-panel decorations */
+#loginScreen .login-card:before,
+#loginScreen .login-card:after{
+  display:none!important;
+}
+
+/* top brand zone */
+#loginScreen .login-brand{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  height:142px!important;
+  margin:0!important;
+  padding:0!important;
+  border-radius:26px 26px 0 0!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(circle at 50% 10%,rgba(111,133,255,.35),transparent 38%),
+    linear-gradient(135deg,#0b1431,#17255a 58%,#2d48a0)!important;
+}
+
+#loginScreen .login-brand:before{
+  content:"";
+  position:absolute;
+  width:210px;height:210px;
+  top:-115px;right:-55px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 24px rgba(255,255,255,.025),
+    0 0 0 48px rgba(255,255,255,.018);
+}
+
+#loginScreen .login-brand:after{
+  content:"GO7 ADMIN • SECURE ACCESS";
+  position:absolute;
+  left:50%;
+  bottom:15px;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  color:rgba(255,255,255,.53);
+  font-size:8px;
+  font-weight:850;
+  letter-spacing:.16em;
+}
+
+#loginScreen .login-brand .go7-logo-img{
+  position:relative!important;
+  z-index:2!important;
+  width:122px!important;
+  height:auto!important;
+  max-height:70px!important;
+  object-fit:contain!important;
+  filter:none!important;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+/* title area */
+#loginScreen .login-card h1{
+  position:relative!important;
+  display:block!important;
+  margin:0!important;
+  padding:28px 34px 0!important;
+  color:#111827!important;
+  font-size:25px!important;
+  line-height:1.15!important;
+  font-weight:820!important;
+  letter-spacing:-.045em!important;
+}
+
+#loginScreen .login-card h1:before{
+  content:"ADMINISTRATOR LOGIN";
+  display:block;
+  margin-bottom:8px;
+  color:#3850d5;
+  font-size:9px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.13em;
+}
+
+#loginScreen .login-card h1:after{
+  content:"Secure access to your GO7.IN control center";
+  display:block!important;
+  margin-top:9px!important;
+  color:#8a93a5!important;
+  font-size:12px!important;
+  line-height:1.5!important;
+  font-weight:450!important;
+  letter-spacing:0!important;
+}
+
+/* remove old explanatory paragraph */
+#loginScreen .login-card>p{
+  display:block!important;
+  margin:14px 34px 0!important;
+  padding:10px 12px!important;
+  border-left:3px solid #3850d5!important;
+  border-radius:0 8px 8px 0!important;
+  background:#f5f7ff!important;
+  color:#667085!important;
+  font-size:10.5px!important;
+  line-height:1.55!important;
+}
+
+/* form */
+#loginScreen .login-card form{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  padding:23px 34px 12px!important;
+  margin:0!important;
+}
+
+#loginScreen .login-card form:before,
+#loginScreen .login-card form:after{
+  display:none!important;
+}
+
+#loginScreen .login-card label{
+  margin:0 0 7px!important;
+  color:#344054!important;
+  font-size:10px!important;
+  font-weight:850!important;
+  letter-spacing:.075em!important;
+}
+
+#loginScreen .login-card .form-control{
+  height:51px!important;
+  margin:0 0 17px!important;
+  padding:0 14px!important;
+  border:1px solid #dfe4ed!important;
+  border-radius:12px!important;
+  background:#f8f9fc!important;
+  color:#101828!important;
+  font-size:14px!important;
+  box-shadow:none!important;
+}
+
+#loginScreen .login-card .form-control:hover{
+  border-color:#c8cfdf!important;
+  background:#fff!important;
+}
+
+#loginScreen .login-card .form-control:focus{
+  border-color:#6275e6!important;
+  background:#fff!important;
+  box-shadow:0 0 0 4px rgba(56,80,213,.09),0 7px 18px rgba(56,80,213,.05)!important;
+}
+
+/* add field visual rails without changing HTML */
+#loginScreen #loginUsername,
+#loginScreen #loginPassword{
+  padding-left:45px!important;
+}
+
+#loginScreen #loginUsername{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%237b8498' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 20c1.5-4 4-6 8-6s6.5 2 8 6'/%3E%3C/svg%3E")
+    15px center/18px 18px no-repeat,
+    #f8f9fc!important;
+}
+
+#loginScreen #loginPassword{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%237b8498' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='10' width='16' height='10' rx='2'/%3E%3Cpath d='M8 10V7a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E")
+    15px center/18px 18px no-repeat,
+    #f8f9fc!important;
+}
+
+#loginScreen #loginUsername:focus{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%233850d5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 20c1.5-4 4-6 8-6s6.5 2 8 6'/%3E%3C/svg%3E")
+    15px center/18px 18px no-repeat,
+    #fff!important;
+}
+
+#loginScreen #loginPassword:focus{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%233850d5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='10' width='16' height='10' rx='2'/%3E%3Cpath d='M8 10V7a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E")
+    15px center/18px 18px no-repeat,
+    #fff!important;
+}
+
+/* OTP */
+#loginScreen #otpWrap{
+  margin:0 0 15px!important;
+  padding:13px!important;
+  border:1px solid #dce2fb!important;
+  border-radius:13px!important;
+  background:#f4f6ff!important;
+}
+#loginScreen #otpWrap .form-control{
+  margin:7px 0 0!important;
+  background:#fff!important;
+}
+
+/* completely new login button */
+#loginScreen .login-submit{
+  position:relative!important;
+  width:100%!important;
+  height:53px!important;
+  margin:4px 0 0!important;
+  overflow:hidden!important;
+  border:0!important;
+  border-radius:13px!important;
+  background:linear-gradient(105deg,#3048c8,#5369e8 52%,#3850d5)!important;
+  color:#fff!important;
+  font-size:14px!important;
+  font-weight:850!important;
+  letter-spacing:.01em!important;
+  box-shadow:0 12px 25px rgba(56,80,213,.24)!important;
+}
+
+#loginScreen .login-submit:before{
+  content:"";
+  position:absolute;
+  top:0;bottom:0;
+  left:-45%;
+  width:35%;
+  transform:skewX(-22deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+  transition:left .65s ease;
+}
+#loginScreen .login-submit:hover:before{left:125%}
+#loginScreen .login-submit:hover{
+  transform:translateY(-2px)!important;
+  box-shadow:0 16px 30px rgba(56,80,213,.30)!important;
+}
+#loginScreen .login-submit:after{
+  content:"  →";
+  margin-left:7px;
+  font-size:17px;
+  vertical-align:-1px;
+}
+
+/* error */
+#loginScreen .login-error{
+  position:relative!important;
+  width:auto!important;
+  margin:0 34px 10px!important;
+  padding:10px 12px!important;
+  border-radius:10px!important;
+}
+
+/* footer */
+#loginScreen .login-help{
+  position:relative!important;
+  display:block!important;
+  width:auto!important;
+  margin:0!important;
+  padding:13px 34px 24px!important;
+  border-top:1px solid #eef0f4!important;
+  color:#98a2b3!important;
+  text-align:center!important;
+  font-size:9.5px!important;
+}
+#loginScreen .login-help:before{
+  content:"●";
+  color:#22a66f;
+  font-size:8px;
+  margin-right:6px;
+}
+
+/* responsive — preserve the new design, do NOT restore old mobile login */
+@media(max-width:560px){
+  #loginScreen{
+    padding:12px!important;
+    align-items:center!important;
+  }
+  #loginScreen .login-card{
+    width:min(430px,100%)!important;
+    border-radius:22px!important;
+  }
+  #loginScreen .login-brand{
+    height:128px!important;
+    border-radius:22px 22px 0 0!important;
+  }
+  #loginScreen .login-brand .go7-logo-img{
+    width:108px!important;
+  }
+  #loginScreen .login-card h1{
+    padding:24px 22px 0!important;
+    font-size:22px!important;
+  }
+  #loginScreen .login-card>p{
+    margin:12px 22px 0!important;
+    font-size:10px!important;
+  }
+  #loginScreen .login-card form{
+    padding:20px 22px 10px!important;
+  }
+  #loginScreen .login-card .form-control{
+    height:49px!important;
+  }
+  #loginScreen .login-error{
+    margin-left:22px!important;
+    margin-right:22px!important;
+  }
+  #loginScreen .login-help{
+    padding-left:22px!important;
+    padding-right:22px!important;
+    padding-bottom:19px!important;
+  }
+}
+
+@media(max-height:700px) and (min-width:561px){
+  #loginScreen .login-brand{height:118px!important}
+  #loginScreen .login-card h1{padding-top:20px!important}
+  #loginScreen .login-card>p{margin-top:8px!important}
+  #loginScreen .login-card form{padding-top:16px!important}
+}
+</style>
+
+
+<style id="go7-chatgpt-typography-v11">
+/* =========================================================
+   GO7 — ChatGPT-inspired typography
+   Clean, compact, highly readable UI type scale
+   ========================================================= */
+
+:root{
+  --font-ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --text-primary:#171717;
+  --text-secondary:#5f6368;
+  --text-muted:#8a8f98;
+}
+
+html,body,
+button,input,select,textarea{
+  font-family:var(--font-ui)!important;
+  -webkit-font-smoothing:antialiased!important;
+  -moz-osx-font-smoothing:grayscale!important;
+  text-rendering:optimizeLegibility!important;
+}
+
+/* Base body — ChatGPT-like compact reading size */
+body{
+  font-size:14px!important;
+  line-height:1.55!important;
+  color:var(--text-primary)!important;
+}
+
+/* Navigation */
+.sidebar .nav button{
+  font-size:13px!important;
+  font-weight:500!important;
+  line-height:1.35!important;
+}
+.nav-title{
+  font-size:10px!important;
+  font-weight:600!important;
+  letter-spacing:.055em!important;
+}
+
+/* Top bar */
+.page-title{
+  font-size:16px!important;
+  font-weight:600!important;
+  line-height:1.3!important;
+  letter-spacing:-.01em!important;
+}
+.top-actions .icon-btn{
+  font-size:14px!important;
+}
+
+/* Dashboard headings */
+.welcome h1{
+  font-size:25px!important;
+  line-height:1.22!important;
+  font-weight:650!important;
+  letter-spacing:-.025em!important;
+}
+.welcome p{
+  font-size:14px!important;
+  line-height:1.55!important;
+  font-weight:400!important;
+}
+
+#inquiries .welcome h1,
+#analytics .welcome h1,
+#settings .welcome h1{
+  font-size:25px!important;
+  line-height:1.22!important;
+  font-weight:650!important;
+  letter-spacing:-.025em!important;
+}
+
+/* Status/API text */
+#apiConnectionStatus{
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+
+/* Statistics */
+.stat-label{
+  font-size:11px!important;
+  line-height:1.35!important;
+  font-weight:600!important;
+  letter-spacing:.045em!important;
+}
+.stat-value{
+  font-size:28px!important;
+  line-height:1.15!important;
+  font-weight:650!important;
+  letter-spacing:-.035em!important;
+}
+.stat-note{
+  font-size:12px!important;
+  line-height:1.4!important;
+  font-weight:400!important;
+}
+.stat-note strong{
+  font-size:11px!important;
+  font-weight:600!important;
+}
+
+/* Cards */
+.section-head h2{
+  font-size:15px!important;
+  line-height:1.35!important;
+  font-weight:600!important;
+  letter-spacing:-.01em!important;
+}
+.section-head{
+  font-size:13px!important;
+}
+.link-btn{
+  font-size:12px!important;
+  font-weight:500!important;
+}
+.quick button{
+  font-size:13px!important;
+  font-weight:550!important;
+  line-height:1.35!important;
+}
+.quick small{
+  font-size:11px!important;
+  line-height:1.45!important;
+  font-weight:400!important;
+}
+
+/* Inquiries table */
+.table-toolbar{
+  font-size:13px!important;
+}
+.search input,
+.select{
+  font-family:var(--font-ui)!important;
+  font-size:13px!important;
+  line-height:1.4!important;
+}
+.table-wrap th{
+  font-size:11px!important;
+  line-height:1.3!important;
+  font-weight:600!important;
+  letter-spacing:.035em!important;
+}
+.table-wrap td{
+  font-size:13px!important;
+  line-height:1.45!important;
+}
+.status{
+  font-size:11px!important;
+  line-height:1.3!important;
+  font-weight:600!important;
+}
+.actions .small-btn{
+  font-size:12px!important;
+  font-weight:500!important;
+}
+
+/* Analytics */
+#analytics .bar span{
+  font-size:11px!important;
+  font-weight:500!important;
+}
+#analytics .stat-note{
+  font-size:12px!important;
+}
+
+/* Settings */
+.setting-card h3{
+  font-size:15px!important;
+  line-height:1.35!important;
+  font-weight:600!important;
+}
+.setting-card p{
+  font-size:13px!important;
+  line-height:1.55!important;
+  color:var(--text-secondary)!important;
+}
+.toggle-row strong{
+  font-size:13px!important;
+  line-height:1.4!important;
+  font-weight:550!important;
+}
+.toggle-row div div{
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+
+/* Inquiry detail drawer */
+.drawer-head h2{
+  font-size:17px!important;
+  line-height:1.3!important;
+  font-weight:600!important;
+  letter-spacing:-.015em!important;
+}
+#drawerSubtitle{
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+.detail-label{
+  font-size:11px!important;
+  line-height:1.35!important;
+  font-weight:600!important;
+  letter-spacing:.035em!important;
+}
+.detail-value,
+.detail-row strong{
+  font-size:13px!important;
+  line-height:1.5!important;
+  font-weight:500!important;
+}
+.message-box,
+.reply-box{
+  font-size:13px!important;
+  line-height:1.65!important;
+}
+.drawer-foot button{
+  font-size:12px!important;
+  font-weight:550!important;
+}
+
+/* Buttons — readable, not oversized */
+.primary,
+.small-btn,
+.danger-btn{
+  font-family:var(--font-ui)!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+  font-weight:550!important;
+}
+
+/* Login typography */
+#loginScreen{
+  font-family:var(--font-ui)!important;
+}
+#loginScreen .login-card h1{
+  font-size:24px!important;
+  line-height:1.2!important;
+  font-weight:650!important;
+  letter-spacing:-.03em!important;
+}
+#loginScreen .login-card h1:before{
+  font-size:9px!important;
+  font-weight:650!important;
+  letter-spacing:.10em!important;
+}
+#loginScreen .login-card h1:after{
+  font-size:13px!important;
+  line-height:1.5!important;
+  font-weight:400!important;
+}
+#loginScreen .login-card>p{
+  font-size:12px!important;
+  line-height:1.55!important;
+}
+#loginScreen .login-card label{
+  font-size:11px!important;
+  line-height:1.35!important;
+  font-weight:600!important;
+  letter-spacing:.04em!important;
+}
+#loginScreen .login-card .form-control{
+  font-size:14px!important;
+  line-height:1.4!important;
+}
+#loginScreen .login-submit{
+  font-size:14px!important;
+  font-weight:600!important;
+}
+#loginScreen .login-help{
+  font-size:11px!important;
+  line-height:1.45!important;
+}
+
+/* Mobile — keep the same scale, only slightly compact */
+@media(max-width:560px){
+  body{font-size:14px!important}
+  .page-title{font-size:15px!important}
+  .welcome h1,
+  #inquiries .welcome h1,
+  #analytics .welcome h1,
+  #settings .welcome h1{
+    font-size:22px!important;
+  }
+  .welcome p{font-size:13px!important}
+  .stat-value{font-size:26px!important}
+  .section-head h2{font-size:14px!important}
+  .quick button{font-size:13px!important}
+  .quick small{font-size:11px!important}
+  .table-wrap td{font-size:12px!important}
+  #loginScreen .login-card h1{font-size:22px!important}
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
@@ -702,10 +1932,10 @@ img{max-width:100%}
       </div>
 
       <div class="stats">
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Total Inquiries</span><span class="stat-icon">✉</span></div><div class="stat-value" id="totalStat">128</div><div class="stat-note"><strong>+12%</strong> vs last month</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">New</span><span class="stat-icon">●</span></div><div class="stat-value" id="newStat">12</div><div class="stat-note">Need your attention</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">In Progress</span><span class="stat-icon">◷</span></div><div class="stat-value" id="progressStat">8</div><div class="stat-note">Currently being handled</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Replied</span><span class="stat-icon">✓</span></div><div class="stat-value" id="repliedStat">108</div><div class="stat-note">96% response rate</div></div>
+        <div class="card stat"><div class="stat-top"><span class="stat-label">Total Inquiries</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span></div><div class="stat-value" id="totalStat">128</div><div class="stat-note trend-up"><strong>+12%</strong> <span>vs last month</span></div></div>
+        <div class="card stat"><div class="stat-top"><span class="stat-label">New</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/></svg></span></div><div class="stat-value" id="newStat">12</div><div class="stat-note trend-up"><strong>+4%</strong> <span>need attention</span></div></div>
+        <div class="card stat"><div class="stat-top"><span class="stat-label">In Progress</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span></div><div class="stat-value" id="progressStat">8</div><div class="stat-note trend-down"><strong>-8%</strong> <span>from last week</span></div></div>
+        <div class="card stat"><div class="stat-top"><span class="stat-label">Replied</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12 4 4 8-9"/></svg></span></div><div class="stat-value" id="repliedStat">108</div><div class="stat-note trend-up"><strong>+6%</strong> <span>response rate</span></div></div>
       </div>
 
       <div class="grid-2">
@@ -748,10 +1978,10 @@ img{max-width:100%}
     <section class="page" id="analytics">
       <div class="welcome"><div><h1>Analytics</h1><p>Frontend preview of your inquiry performance.</p></div></div>
       <div class="stats">
-        <div class="card stat"><div class="stat-top"><span class="stat-label">This month</span><span class="stat-icon">↗</span></div><div class="stat-value" id="analyticsNew">0</div><div class="stat-note">New inquiries</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Response rate</span><span class="stat-icon">%</span></div><div class="stat-value" id="analyticsResponse">—</div><div class="stat-note">Replied / total</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Avg. response</span><span class="stat-icon">◷</span></div><div class="stat-value">4.2h</div><div class="stat-note">Frontend sample</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Conversion</span><span class="stat-icon">✓</span></div><div class="stat-value">18%</div><div class="stat-note">Inquiry to deal</div></div>
+        <div class="card stat"><div class="stat-top"><span class="stat-label">This month</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17 17 6M9 6h8v8"/></svg></span></div><div class="stat-value" id="analyticsNew">0</div><div class="stat-note">New inquiries</div></div>
+        <div class="card stat"><div class="stat-top"><span class="stat-label">Response rate</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg></span></div><div class="stat-value" id="analyticsResponse">—</div><div class="stat-note">Replied / total</div></div>
+        <div class="card stat"><div class="stat-top"><span class="stat-label">Avg. response</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span></div><div class="stat-value">4.2h</div><div class="stat-note">Frontend sample</div></div>
+        <div class="card stat"><div class="stat-top"><span class="stat-label">Conversion</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12 4 4 8-9"/></svg></span></div><div class="stat-value">18%</div><div class="stat-note">Inquiry to deal</div></div>
       </div>
       <div class="card section-card">
         <div class="section-head"><h2>Inquiry trend</h2><span style="font-size:12px;color:#94a3b8">Last 7 days</span></div>
