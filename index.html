@@ -2920,6 +2920,253 @@ body{
 }
 </style>
 
+
+<style id="go7-light-dark-theme">
+/* =========================================================
+   GO7 — CLEAN LIGHT / DARK THEME
+   No box-shadow. Same layout, spacing and typography.
+   ========================================================= */
+
+/* Theme tokens */
+:root{
+  --theme-bg:#f5f6f8;
+  --theme-surface:#ffffff;
+  --theme-surface-2:#fafbfc;
+  --theme-border:#e5e7eb;
+  --theme-border-strong:#d7dbe3;
+  --theme-text:#171717;
+  --theme-muted:#697386;
+  --theme-sidebar:#0c1430;
+  --theme-sidebar-2:#111a38;
+}
+
+/* Toggle */
+.theme-toggle{
+  width:42px!important;
+  height:42px!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:0!important;
+  border:1px solid var(--theme-border)!important;
+  border-radius:11px!important;
+  background:var(--theme-surface)!important;
+  color:var(--theme-text)!important;
+  cursor:pointer!important;
+  box-shadow:none!important;
+}
+.theme-toggle:hover{
+  border-color:var(--theme-border-strong)!important;
+  background:var(--theme-surface-2)!important;
+  transform:translateY(-1px)!important;
+}
+.theme-toggle svg{width:18px!important;height:18px!important}
+
+/* ---------- DARK ---------- */
+html[data-theme="dark"]{
+  --theme-bg:#0f1117;
+  --theme-surface:#171a21;
+  --theme-surface-2:#1c2029;
+  --theme-border:#292e38;
+  --theme-border-strong:#383f4c;
+  --theme-text:#f2f4f7;
+  --theme-muted:#9aa3b2;
+  --theme-sidebar:#0b0e15;
+  --theme-sidebar-2:#11151e;
+}
+
+html[data-theme="dark"] body{
+  background:var(--theme-bg)!important;
+  color:var(--theme-text)!important;
+}
+
+html[data-theme="dark"] .main{
+  background:var(--theme-bg)!important;
+}
+
+html[data-theme="dark"] .topbar{
+  background:#14171e!important;
+  border-bottom-color:var(--theme-border)!important;
+}
+
+html[data-theme="dark"] .page-title{
+  color:#f2f4f7!important;
+}
+html[data-theme="dark"] .page-title:after{
+  background:#7385ef!important;
+}
+
+html[data-theme="dark"] .icon-btn,
+html[data-theme="dark"] .theme-toggle{
+  background:var(--theme-surface)!important;
+  border-color:var(--theme-border)!important;
+  color:#e6e9ef!important;
+}
+
+html[data-theme="dark"] .card.stat,
+html[data-theme="dark"] .section-card,
+html[data-theme="dark"] .table-card,
+html[data-theme="dark"] .quick-card,
+html[data-theme="dark"] .analytics-card,
+html[data-theme="dark"] .settings-card,
+html[data-theme="dark"] .setting-card{
+  background:var(--theme-surface)!important;
+  border-color:var(--theme-border)!important;
+  color:var(--theme-text)!important;
+}
+
+html[data-theme="dark"] .section-head{
+  background:var(--theme-surface)!important;
+  border-bottom-color:var(--theme-border)!important;
+}
+html[data-theme="dark"] .section-head h2,
+html[data-theme="dark"] .setting-card h3{
+  color:#f2f4f7!important;
+}
+
+html[data-theme="dark"] .stat-label,
+html[data-theme="dark"] .stat-note span,
+html[data-theme="dark"] .setting-card p{
+  color:var(--theme-muted)!important;
+}
+html[data-theme="dark"] .stat-value{
+  color:#f4f6f8!important;
+}
+
+html[data-theme="dark"] .quick button{
+  background:var(--theme-surface)!important;
+  border-color:var(--theme-border)!important;
+  color:#e9ecf1!important;
+}
+html[data-theme="dark"] .quick button:hover{
+  background:var(--theme-surface-2)!important;
+  border-color:var(--theme-border-strong)!important;
+}
+
+html[data-theme="dark"] .table-toolbar{
+  background:var(--theme-surface)!important;
+  border-bottom-color:var(--theme-border)!important;
+}
+html[data-theme="dark"] .search input,
+html[data-theme="dark"] .select{
+  background:var(--theme-surface-2)!important;
+  color:#f2f4f7!important;
+  border-color:var(--theme-border)!important;
+}
+html[data-theme="dark"] .search input::placeholder{
+  color:#77808f!important;
+}
+html[data-theme="dark"] .table-wrap th{
+  background:#1b1f27!important;
+  color:#9da6b5!important;
+  border-bottom-color:var(--theme-border)!important;
+}
+html[data-theme="dark"] .table-wrap td{
+  color:#e4e7ec!important;
+  border-bottom-color:#242932!important;
+}
+html[data-theme="dark"] .table-wrap tbody tr:hover{
+  background:#1b1f27!important;
+}
+
+html[data-theme="dark"] .link-btn{
+  background:#202747!important;
+  color:#9eafff!important;
+}
+
+html[data-theme="dark"] .welcome h1,
+html[data-theme="dark"] #inquiries .welcome h1,
+html[data-theme="dark"] #analytics .welcome h1,
+html[data-theme="dark"] #settings .welcome h1{
+  color:#f4f6f8!important;
+}
+html[data-theme="dark"] .welcome p{
+  color:#9ca6b7!important;
+}
+
+/* Full inquiry page */
+html[data-theme="dark"] body.inquiry-page-open .content{
+  background:#0f1117!important;
+}
+html[data-theme="dark"] .inquiry-page-heading h1{
+  color:#f3f5f8!important;
+}
+html[data-theme="dark"] .inquiry-page-heading #drawerSubtitle{
+  color:#8e98a8!important;
+}
+html[data-theme="dark"] .back-inquiries-btn{
+  background:var(--theme-surface)!important;
+  border-color:var(--theme-border)!important;
+  color:#cbd1da!important;
+}
+html[data-theme="dark"] .inquiry-view-body > .detail-row,
+html[data-theme="dark"] .inquiry-view-body > .form-group:first-child,
+html[data-theme="dark"] .inquiry-view-body > .form-group:not(:first-child),
+html[data-theme="dark"] .inquiry-view-body > .reply-box{
+  background:var(--theme-surface)!important;
+  border-color:var(--theme-border)!important;
+}
+html[data-theme="dark"] .inquiry-view-body > .detail-row .detail-label{
+  color:#8993a4!important;
+}
+html[data-theme="dark"] .inquiry-view-body > .detail-row > strong,
+html[data-theme="dark"] .inquiry-view-body > .detail-row > span:last-child{
+  color:#e7eaf0!important;
+}
+html[data-theme="dark"] .inquiry-view-body .message-box,
+html[data-theme="dark"] .inquiry-view-body > .form-group:has(#drawerNote) #drawerNote{
+  background:#12151c!important;
+  border-color:var(--theme-border)!important;
+  color:#dfe3e9!important;
+}
+html[data-theme="dark"] .inquiry-view-body .reply-box{
+  background:#171c31!important;
+  border-color:#303959!important;
+}
+html[data-theme="dark"] .inquiry-view-body .reply-box .form-control{
+  background:#12151c!important;
+  border-color:var(--theme-border)!important;
+  color:#eef1f5!important;
+}
+html[data-theme="dark"] .inquiry-view-footer{
+  border-top-color:var(--theme-border)!important;
+}
+html[data-theme="dark"] .inquiry-view-footer .small-btn{
+  background:var(--theme-surface)!important;
+  color:#d8dde6!important;
+  border-color:var(--theme-border)!important;
+}
+html[data-theme="dark"] .inquiry-view-footer .danger-btn{
+  background:#24171a!important;
+  border-color:#4a292e!important;
+  color:#ff9ca3!important;
+}
+
+/* Login stays intentionally light for now */
+html[data-theme="dark"] #loginScreen{
+  background:#FCFCFC!important;
+}
+html[data-theme="dark"] #loginScreen .login-card{
+  background:#fff!important;
+  border-color:#e5e7eb!important;
+}
+html[data-theme="dark"] #loginScreen .login-card h1{
+  color:#171717!important;
+}
+html[data-theme="dark"] #loginScreen .login-card>p,
+html[data-theme="dark"] #loginScreen .login-card label{
+  color:#344054!important;
+}
+html[data-theme="dark"] #loginScreen .login-card .form-control{
+  background:#FCFCFC!important;
+  color:#101828!important;
+}
+
+/* Sidebar remains dark in both modes — consistent admin navigation */
+html[data-theme="dark"] .sidebar{
+  background:linear-gradient(180deg,#090c13 0%,#10141c 100%)!important;
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
@@ -2999,6 +3246,12 @@ body{
       <div class="page-title" id="pageTitle">Dashboard</div>
     </div>
     <div class="top-actions">
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme" title="Switch theme">
+  <svg id="themeToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+  </svg>
+</button>
       <button class="icon-btn" id="refreshBtn" title="Refresh">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2M20 19v-4h-4"/></svg>
       </button>
@@ -3817,5 +4070,39 @@ renderRecent();
 updateStats();
 checkSession();
 </script>
+
+<script id="go7-theme-controller">
+(function(){
+  const root=document.documentElement;
+  const key="go7-admin-theme";
+  const toggle=document.getElementById("themeToggle");
+  const icon=document.getElementById("themeToggleIcon");
+
+  function setTheme(theme){
+    const dark=theme==="dark";
+    root.setAttribute("data-theme", dark ? "dark" : "light");
+    localStorage.setItem(key, theme);
+    if(toggle){
+      toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      toggle.setAttribute("title", dark ? "Light mode" : "Dark mode");
+    }
+    if(icon){
+      icon.innerHTML=dark
+        ? '<path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.7 6.7 0 0 0 21 12.8Z"></path>'
+        : '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>';
+    }
+  }
+
+  const saved=localStorage.getItem(key);
+  setTheme(saved==="dark" ? "dark" : "light");
+
+  if(toggle){
+    toggle.addEventListener("click",function(){
+      setTheme(root.getAttribute("data-theme")==="dark" ? "light" : "dark");
+    });
+  }
+})();
+</script>
+
 </body>
 </html>
