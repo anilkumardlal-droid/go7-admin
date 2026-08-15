@@ -2585,6 +2585,341 @@ body.inquiry-page-open .content{
 }
 </style>
 
+
+<style id="go7-login-final-fcfcfc-no-shadow">
+/* FINAL LOGIN OVERRIDE */
+#loginScreen{
+  background:#FCFCFC!important;
+}
+
+#loginScreen .login-card,
+#loginScreen .login-card:hover{
+  background:#FFFFFF!important;
+  border:1px solid #E7E7EA!important;
+  box-shadow:none!important;
+}
+
+#loginScreen .login-card .form-control{
+  background:#FCFCFC!important;
+  border:1px solid #E2E3E7!important;
+  box-shadow:none;
+}
+
+#loginScreen .login-card .form-control:focus{
+  background:#FFFFFF!important;
+  border-color:#3850D5!important;
+  box-shadow:0 0 0 3px rgba(56,80,213,.08)!important;
+}
+
+@media(max-width:560px){
+  #loginScreen{
+    padding:24px!important;
+  }
+}
+</style>
+
+
+<style id="go7-no-box-shadow-final">
+/* =========================================================
+   GO7 FINAL — NO BOX SHADOW ANYWHERE
+   Borders/backgrounds remain; only box-shadow is removed.
+   ========================================================= */
+*,
+*::before,
+*::after{
+  box-shadow:none!important;
+}
+</style>
+
+
+<style id="go7-premium-flat-ui">
+/* =========================================================
+   GO7 — PREMIUM FLAT UI
+   No box-shadow. Visual depth comes from borders, spacing,
+   surfaces, gradients and typography.
+   ========================================================= */
+
+:root{
+  --ui-bg:#f5f6f8;
+  --ui-surface:#ffffff;
+  --ui-surface-2:#fafbfc;
+  --ui-border:#e5e7eb;
+  --ui-border-strong:#d9dde5;
+  --ui-text:#171717;
+  --ui-muted:#697386;
+  --ui-blue:#3850d5;
+  --ui-blue-soft:#eef1ff;
+  --ui-green:#16a36a;
+  --ui-green-soft:#eaf8f1;
+  --ui-orange:#e69a32;
+  --ui-orange-soft:#fff5e6;
+  --ui-red:#d95761;
+  --ui-red-soft:#fff0f1;
+}
+
+/* Page canvas */
+body{
+  background:var(--ui-bg)!important;
+  color:var(--ui-text)!important;
+}
+
+/* Sidebar: crisp flat surface */
+.sidebar{
+  background:linear-gradient(180deg,#0c1430 0%,#111a38 100%)!important;
+  border-right:1px solid rgba(255,255,255,.07)!important;
+  box-shadow:none!important;
+}
+.brand{
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+.nav button{
+  border:1px solid transparent!important;
+  transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease!important;
+}
+.nav button:hover{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(255,255,255,.07)!important;
+}
+.nav button.active{
+  background:linear-gradient(90deg,rgba(71,91,205,.34),rgba(71,91,205,.12))!important;
+  border-color:rgba(132,148,255,.16)!important;
+  box-shadow:none!important;
+}
+
+/* Topbar */
+.topbar{
+  background:rgba(255,255,255,.96)!important;
+  border-bottom:1px solid var(--ui-border)!important;
+  box-shadow:none!important;
+}
+.icon-btn{
+  background:#fff!important;
+  border:1px solid var(--ui-border)!important;
+  box-shadow:none!important;
+}
+.icon-btn:hover{
+  background:#f8f9fb!important;
+  border-color:#cfd5df!important;
+  box-shadow:none!important;
+}
+
+/* Dashboard welcome: strong UI panel without shadow */
+#dashboard .welcome{
+  border:1px solid rgba(123,143,220,.22)!important;
+  background:
+    radial-gradient(circle at 84% 18%,rgba(121,143,255,.28),transparent 25%),
+    radial-gradient(circle at 100% 110%,rgba(53,83,207,.28),transparent 32%),
+    linear-gradient(135deg,#0c1430 0%,#14204a 54%,#263e91 100%)!important;
+  box-shadow:none!important;
+}
+#dashboard .welcome:before{
+  border-color:rgba(255,255,255,.10)!important;
+  box-shadow:none!important;
+}
+#dashboard .welcome:after{
+  opacity:.55!important;
+}
+
+/* Stats */
+.card.stat{
+  border:1px solid var(--ui-border)!important;
+  background:var(--ui-surface)!important;
+  box-shadow:none!important;
+}
+.card.stat:hover{
+  transform:translateY(-2px)!important;
+  border-color:#cfd5df!important;
+  box-shadow:none!important;
+}
+.stat-icon{
+  border:1px solid color-mix(in srgb,var(--stat-accent) 18%,#fff)!important;
+  box-shadow:none!important;
+}
+
+/* Common content cards */
+.section-card,
+.table-card,
+.quick-card,
+.analytics-card,
+.settings-card,
+.setting-card{
+  border:1px solid var(--ui-border)!important;
+  background:var(--ui-surface)!important;
+  box-shadow:none!important;
+}
+.section-head{
+  background:#fff!important;
+  border-bottom:1px solid var(--ui-border)!important;
+}
+.section-head h2{
+  color:#20242c!important;
+}
+
+/* Quick actions — flat colored accents */
+.quick button{
+  border:1px solid var(--ui-border)!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+.quick button:hover{
+  transform:translateY(-2px)!important;
+  border-color:#cfd5df!important;
+  box-shadow:none!important;
+}
+.quick button:before{
+  width:3px!important;
+}
+.quick button:after{
+  font-size:15px!important;
+}
+
+/* Tables */
+#inquiries .table-card{
+  border:1px solid var(--ui-border)!important;
+  box-shadow:none!important;
+}
+.table-toolbar{
+  border-bottom:1px solid var(--ui-border)!important;
+}
+.search input,
+.select{
+  border:1px solid var(--ui-border)!important;
+  background:#fafbfc!important;
+  box-shadow:none!important;
+}
+.search input:focus,
+.select:focus{
+  border-color:#8c9ae8!important;
+  background:#fff!important;
+  box-shadow:0 0 0 3px rgba(56,80,213,.07)!important;
+}
+.table-wrap{
+  border-top:0!important;
+}
+.table-wrap th{
+  background:#f8f9fb!important;
+  color:#70798a!important;
+  border-bottom:1px solid var(--ui-border)!important;
+}
+.table-wrap td{
+  border-bottom:1px solid #eef0f3!important;
+}
+.table-wrap tbody tr:hover{
+  background:#fafbff!important;
+}
+
+/* Buttons */
+.primary,
+.small-btn,
+.danger-btn{
+  box-shadow:none!important;
+}
+.primary:hover,
+.small-btn:hover,
+.danger-btn:hover{
+  box-shadow:none!important;
+  transform:translateY(-1px)!important;
+}
+#dashboard .welcome>.primary{
+  background:#fff!important;
+  color:#3046c5!important;
+  border:1px solid rgba(255,255,255,.65)!important;
+}
+
+/* Page headings */
+.welcome h1,
+#inquiries .welcome h1,
+#analytics .welcome h1,
+#settings .welcome h1{
+  letter-spacing:-.028em!important;
+}
+.welcome p{
+  color:#697386!important;
+}
+
+/* Inquiry full-page */
+.inquiry-view-body > .detail-row{
+  border:1px solid var(--ui-border)!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+.inquiry-view-body > .detail-row:hover{
+  border-color:#cfd5df!important;
+  box-shadow:none!important;
+}
+.inquiry-view-body > .form-group:first-child,
+.inquiry-view-body > .form-group:not(:first-child),
+.inquiry-view-body > .reply-box{
+  border:1px solid var(--ui-border)!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+.inquiry-view-body .message-box,
+.inquiry-view-body > .form-group:has(#drawerNote) #drawerNote{
+  border:1px solid var(--ui-border)!important;
+  background:#fafbfc!important;
+  box-shadow:none!important;
+}
+.inquiry-view-body .reply-box{
+  background:#f6f8ff!important;
+  border-color:#dce2f7!important;
+}
+.inquiry-view-body .reply-box .form-control{
+  border-color:#dfe3ea!important;
+  box-shadow:none!important;
+}
+.inquiry-view-body #sendReplyBtn{
+  box-shadow:none!important;
+}
+.inquiry-view-footer{
+  border-top:1px solid var(--ui-border)!important;
+}
+
+/* Settings */
+.setting-card:hover{
+  border-color:#cfd5df!important;
+}
+
+/* Login: flat white card on #FCFCFC */
+#loginScreen{
+  background:#FCFCFC!important;
+}
+#loginScreen .login-card{
+  background:#fff!important;
+  border:1px solid #e5e7eb!important;
+  box-shadow:none!important;
+}
+#loginScreen .login-brand{
+  background:
+    radial-gradient(circle at 50% 10%,rgba(92,108,180,.28),transparent 40%),
+    linear-gradient(135deg,#111827 0%,#18233a 58%,#202d49 100%)!important;
+  border-bottom:1px solid #303b54!important;
+}
+#loginScreen .login-card .form-control{
+  border:1px solid #e1e4e9!important;
+  background:#fcfcfc!important;
+  box-shadow:none!important;
+}
+#loginScreen .login-card .form-control:focus{
+  border-color:#3850d5!important;
+  background:#fff!important;
+  box-shadow:0 0 0 3px rgba(56,80,213,.08)!important;
+}
+
+/* Responsive polish */
+@media(max-width:800px){
+  .content{padding:22px 18px 42px!important}
+}
+@media(max-width:560px){
+  .content{padding:16px 12px 30px!important}
+  #loginScreen{padding:24px!important}
+  .section-card,.table-card,.quick-card,.analytics-card,.settings-card{
+    border-radius:14px!important;
+  }
+  .card.stat{border-radius:15px!important}
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
