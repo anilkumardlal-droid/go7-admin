@@ -3284,6 +3284,37 @@ html[data-theme="light"] #dashboard .welcome:after{
 }
 </style>
 
+
+<style id="go7-light-admin-profile-final">
+/* LIGHT MODE — requested text colors */
+html[data-theme="light"] .nav-title{
+  color:#596579 !important;
+}
+
+html[data-theme="light"] .sidebar-bottom #logoutBtn>span{
+  color:#596579 !important;
+}
+
+/* Admin profile image */
+.admin-mini .admin-profile-img{
+  width:36px !important;
+  height:36px !important;
+  min-width:36px !important;
+  flex:0 0 36px !important;
+  display:block !important;
+  padding:0 !important;
+  border:1px solid rgba(56,80,213,.14) !important;
+  border-radius:50% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  background:#fff !important;
+  box-shadow:none !important;
+}
+html[data-theme="light"] .admin-mini .admin-profile-img{
+  border-color:#D9DFF0 !important;
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
@@ -3348,7 +3379,7 @@ html[data-theme="light"] #dashboard .welcome:after{
       </span>
     </button>
     <div class="admin-mini">
-      <div class="avatar">AS</div>
+      <img class="avatar admin-profile-img" src="https://www.go7.in/images/info-anilsri.png" alt="Anil Srivastav" loading="lazy">
       <div><strong>Administrator</strong><small>GO7.IN Admin</small></div>
     </div>
   </div>
