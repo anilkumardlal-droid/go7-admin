@@ -3339,6 +3339,53 @@ html[data-theme="light"] .admin-mini .admin-profile-img{
 }
 </style>
 
+
+<style id="go7-final-login-mobile-fix">
+/* LOGIN ERROR */
+#loginScreen .login-error{
+  margin:10px 34px 10px!important;
+}
+
+/* DARK THEME — requested dashboard welcome treatment */
+html[data-theme="dark"] #dashboard .welcome{
+  background:
+    radial-gradient(circle at 50% 10%, rgba(92,108,180,.28), transparent 40%),
+    linear-gradient(135deg,#111827 0%,#18233a 58%,#202d49 100%) !important;
+  border-bottom:1px solid #303b54 !important;
+  box-shadow:none!important;
+}
+
+/* MOBILE — after login, start the dashboard at the top.
+   Prevent the app from inheriting the login screen's centered layout. */
+@media(max-width:560px){
+  html,body{
+    min-height:100%;
+    height:auto!important;
+  }
+
+  #app{
+    min-height:100vh!important;
+    height:auto!important;
+    align-items:stretch!important;
+    justify-content:flex-start!important;
+  }
+
+  .app{
+    min-height:100vh!important;
+    height:auto!important;
+  }
+
+  .main{
+    min-height:100vh!important;
+    height:auto!important;
+  }
+
+  .content{
+    min-height:calc(100vh - 64px)!important;
+  }
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
@@ -3348,7 +3395,7 @@ html[data-theme="light"] .admin-mini .admin-profile-img{
     </div>
     <h1>GO7 Admin Login</h1>
     <p>Sign in with your GO7.IN administrator username and password. Your password is sent only to the GO7 Admin API.</p>
-    <div class="login-error" id="loginError"></div>
+    <div class="login-error" id="loginError">You have been logged out.</div>
     <form id="loginForm" autocomplete="on">
       <label for="loginUsername">Username</label>
       <input class="form-control" id="loginUsername" name="username" type="text" autocomplete="username" placeholder="Admin username" required>
@@ -3673,7 +3720,7 @@ async function login(username,password){
       otpInput.required = true;
       submit.textContent = "Verify & Sign in";
       otpInput.focus();
-      errorBox.textContent = "Password verified. Enter your 6-digit authenticator code.";
+      errorBox.textContent = "Enter your 6-digit authenticator code.";
       errorBox.classList.add("show");
       return;
     }
@@ -3728,7 +3775,7 @@ async function logout(){
   renderTable();
   renderRecent();
   updateStats();
-  showLogin("You have been logged out.");
+  showLogin("");
   toast("Logged out");
 }
 
@@ -4272,6 +4319,36 @@ checkSession();
     toggle.addEventListener("click",function(){
       setTheme(root.getAttribute("data-theme")==="dark" ? "light" : "dark");
     });
+  }
+})();
+</script>
+
+
+<style id="go7-logout-auto-hide">
+#loginScreen .login-error{
+  transition:opacity .25s ease,visibility .25s ease;
+}
+#loginScreen .login-error.go7-hidden{
+  opacity:0!important;
+  visibility:hidden!important;
+}
+</style>
+<script id="go7-logout-auto-hide-js">
+(function(){
+  function hideLogoutMessage(){
+    var els=document.querySelectorAll('#loginScreen .login-error');
+    els.forEach(function(el){
+      if((el.textContent||'').trim()==='You have been logged out.'){
+        setTimeout(function(){
+          el.classList.add('go7-hidden');
+        },4500);
+      }
+    });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',hideLogoutMessage);
+  }else{
+    hideLogoutMessage();
   }
 })();
 </script>
