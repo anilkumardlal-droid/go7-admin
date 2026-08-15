@@ -3167,6 +3167,98 @@ html[data-theme="dark"] .sidebar{
 }
 </style>
 
+
+<style id="go7-light-polish">
+/* LIGHT MODE — restore the stronger original GO7 dashboard hierarchy */
+html[data-theme="light"] body{
+  background:#f5f6fa!important;
+}
+
+/* Sidebar */
+html[data-theme="light"] .sidebar{
+  background:
+    radial-gradient(circle at 105% 0%,rgba(91,112,230,.18),transparent 28%),
+    linear-gradient(180deg,#0d1530 0%,#111b3d 55%,#162451 100%)!important;
+  border-right:1px solid rgba(255,255,255,.07)!important;
+}
+html[data-theme="light"] .brand{
+  border-bottom:1px solid rgba(255,255,255,.09)!important;
+}
+html[data-theme="light"] .nav button{
+  color:#b7c0d9!important;
+}
+html[data-theme="light"] .nav button:hover{
+  color:#fff!important;
+  background:rgba(255,255,255,.065)!important;
+  border-color:rgba(255,255,255,.07)!important;
+}
+html[data-theme="light"] .nav button.active{
+  color:#fff!important;
+  background:linear-gradient(90deg,rgba(71,91,205,.38),rgba(71,91,205,.12))!important;
+  border-color:rgba(132,148,255,.16)!important;
+}
+html[data-theme="light"] .nav-title{
+  color:#7f8caf!important;
+}
+
+/* Dashboard welcome — original dark premium hero */
+html[data-theme="light"] #dashboard .welcome{
+  min-height:182px!important;
+  padding:31px 34px!important;
+  border:1px solid rgba(123,143,220,.22)!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 84% 20%,rgba(117,140,255,.33),transparent 25%),
+    radial-gradient(circle at 100% 110%,rgba(52,88,214,.34),transparent 32%),
+    linear-gradient(135deg,#0c1430 0%,#14204a 52%,#263e91 100%)!important;
+  box-shadow:none!important;
+}
+html[data-theme="light"] #dashboard .welcome:before{
+  border-color:rgba(255,255,255,.11)!important;
+  box-shadow:none!important;
+}
+html[data-theme="light"] #dashboard .welcome h1{
+  color:#fff!important;
+  font-size:30px!important;
+  font-weight:650!important;
+  letter-spacing:-.05em!important;
+}
+html[data-theme="light"] #dashboard .welcome p{
+  color:#b9c4e5!important;
+  font-size:13px!important;
+}
+html[data-theme="light"] #dashboard .welcome #apiConnectionStatus{
+  color:#9ee6bd!important;
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(158,230,189,.16)!important;
+}
+html[data-theme="light"] #dashboard .welcome>.primary{
+  background:#fff!important;
+  color:#3046c5!important;
+  border:1px solid rgba(255,255,255,.65)!important;
+  box-shadow:none!important;
+}
+
+/* Keep light-mode content cards clean and flat */
+html[data-theme="light"] .card.stat,
+html[data-theme="light"] .section-card,
+html[data-theme="light"] .table-card,
+html[data-theme="light"] .quick-card,
+html[data-theme="light"] .analytics-card,
+html[data-theme="light"] .settings-card{
+  background:#fff!important;
+  border-color:#e5e7eb!important;
+  box-shadow:none!important;
+}
+
+@media(max-width:800px){
+  html[data-theme="light"] #dashboard .welcome{
+    min-height:180px!important;
+    padding:24px!important;
+  }
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
