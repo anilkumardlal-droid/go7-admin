@@ -3386,16 +3386,25 @@ html[data-theme="dark"] #dashboard .welcome{
 }
 </style>
 
+
+<style id="go7-logout-correct-final">
+#loginScreen .login-error{
+  margin:10px 34px 10px!important;
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
+
+
   <div class="login-card">
     <div class="login-brand">
       <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="GO7.IN" loading="eager">
     </div>
     <h1>GO7 Admin Login</h1>
     <p>Sign in with your GO7.IN administrator username and password. Your password is sent only to the GO7 Admin API.</p>
-    <div class="login-error" id="loginError">You have been logged out.</div>
+    <div class="login-error" id="loginError"></div>
     <form id="loginForm" autocomplete="on">
       <label for="loginUsername">Username</label>
       <input class="form-control" id="loginUsername" name="username" type="text" autocomplete="username" placeholder="Admin username" required>
@@ -3775,7 +3784,10 @@ async function logout(){
   renderTable();
   renderRecent();
   updateStats();
-  showLogin("");
+  showLogin("You have been logged out.");
+  window.setTimeout(function(){
+    showLogin("");
+  }, 4500);
   toast("Logged out");
 }
 
@@ -4322,36 +4334,5 @@ checkSession();
   }
 })();
 </script>
-
-
-<style id="go7-logout-auto-hide">
-#loginScreen .login-error{
-  transition:opacity .25s ease,visibility .25s ease;
-}
-#loginScreen .login-error.go7-hidden{
-  opacity:0!important;
-  visibility:hidden!important;
-}
-</style>
-<script id="go7-logout-auto-hide-js">
-(function(){
-  function hideLogoutMessage(){
-    var els=document.querySelectorAll('#loginScreen .login-error');
-    els.forEach(function(el){
-      if((el.textContent||'').trim()==='You have been logged out.'){
-        setTimeout(function(){
-          el.classList.add('go7-hidden');
-        },4500);
-      }
-    });
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',hideLogoutMessage);
-  }else{
-    hideLogoutMessage();
-  }
-})();
-</script>
-
 </body>
 </html>
