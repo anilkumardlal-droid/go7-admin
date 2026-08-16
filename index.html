@@ -3393,43 +3393,830 @@ html[data-theme="dark"] #dashboard .welcome{
 }
 </style>
 
+
+<style id="go7-complete-new-look-v1">
+:root{--go7-accent:#3850d5;--go7-ink:#182033;--go7-muted:#69758a;--go7-bg:#f6f7fa;--go7-surface:#fff;--go7-line:#e5e8ef;--go7-line2:#edf0f5;--go7-success:#159a67;--go7-warning:#d88916;--go7-danger:#d64550}
+html,body,.app,.main{background:var(--go7-bg)!important;color:var(--go7-ink)!important}
+body{font-size:14px!important;line-height:1.55!important}
+.content{max-width:1640px!important;padding:28px clamp(18px,2.5vw,42px) 46px!important}
+.sidebar{width:264px!important;background:rgba(255,255,255,.94)!important;border-right:1px solid var(--go7-line)!important;box-shadow:none!important;backdrop-filter:blur(18px)!important}
+.brand{height:76px!important;padding:0 22px!important;border-bottom:1px solid var(--go7-line)!important}
+.nav{padding:18px 12px!important}.nav-title{margin:16px 10px 8px!important;color:#98a2b3!important;font-size:10px!important;font-weight:700!important;letter-spacing:.09em!important}
+.sidebar .nav button{min-height:44px!important;margin:3px 0!important;padding:0 13px!important;border:1px solid transparent!important;border-radius:10px!important;color:#667085!important;font-size:14px!important;font-weight:550!important;gap:11px!important}
+.sidebar .nav button svg{width:20px!important;height:20px!important;flex:none!important}
+.sidebar .nav button:hover{color:#263247!important;background:#f5f7fb!important;border-color:#edf0f5!important;transform:translateX(2px)}
+.sidebar .nav button.active{color:#3046c8!important;background:#eef2ff!important;border-color:#dce3ff!important;box-shadow:none!important}
+.sidebar-bottom{padding:13px!important;border-top:1px solid var(--go7-line)!important}
+.topbar{height:70px!important;min-height:70px!important;padding:0 clamp(18px,2.5vw,42px)!important;background:rgba(246,247,250,.9)!important;border-bottom:1px solid var(--go7-line)!important;box-shadow:none!important;backdrop-filter:blur(18px)!important}
+.page-title{color:#182033!important;font-size:16px!important;font-weight:650!important}
+.top-actions{gap:7px!important}.top-actions .icon-btn,.mobile-menu{width:38px!important;height:38px!important;border:1px solid var(--go7-line)!important;border-radius:10px!important;background:#fff!important;color:#667085!important;box-shadow:none!important}
+.welcome{position:relative!important;min-height:184px!important;padding:30px 32px!important;overflow:hidden!important;border:1px solid #dfe4f0!important;border-radius:18px!important;background:radial-gradient(circle at 90% 15%,rgba(99,117,238,.18),transparent 28%),radial-gradient(circle at 75% 100%,rgba(56,80,213,.1),transparent 34%),linear-gradient(135deg,#fff 0%,#f5f7ff 56%,#edf1ff 100%)!important;box-shadow:none!important}
+.welcome h1{position:relative;z-index:1;margin:0!important;color:#172033!important;font-size:26px!important;font-weight:650!important;letter-spacing:-.035em!important}
+.welcome p{position:relative;z-index:1;max-width:680px!important;margin:8px 0 0!important;color:#6d778b!important;font-size:13px!important;line-height:1.65!important}
+.welcome .primary,.primary{border:1px solid var(--go7-accent)!important;border-radius:9px!important;background:var(--go7-accent)!important;color:#fff!important;box-shadow:none!important;font-weight:650!important}
+.stats{gap:14px!important;margin:18px 0!important}
+.card.stat{position:relative!important;min-height:145px!important;padding:21px!important;overflow:hidden!important;border:1px solid var(--go7-line)!important;border-radius:15px!important;background:#fff!important;box-shadow:none!important}
+.card.stat:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#3850d5}
+.card.stat:nth-child(2):before{background:#d88916}.card.stat:nth-child(3):before{background:#7357d9}.card.stat:nth-child(4):before{background:#159a67}
+.stat-label{color:#8a93a3!important;font-size:10px!important;font-weight:750!important;letter-spacing:.08em!important;text-transform:uppercase!important}
+.stat-value{margin-top:10px!important;color:#172033!important;font-size:30px!important;font-weight:650!important;letter-spacing:-.04em!important}
+.stat-note{margin-top:8px!important;color:#8a93a3!important;font-size:11px!important}
+.card,.table-card,.quick-card,.analytics-card,.settings-card,.setting-card{border:1px solid var(--go7-line)!important;border-radius:15px!important;background:#fff!important;box-shadow:none!important}
+.section-head{min-height:58px!important;padding:17px 19px!important;border-bottom:1px solid var(--go7-line2)!important}
+.section-head h2{color:#253047!important;font-size:14px!important;font-weight:650!important}
+.quick{gap:9px!important;padding:14px!important}.quick button{min-height:62px!important;padding:12px 13px!important;border:1px solid var(--go7-line)!important;border-radius:11px!important;background:#fbfcfe!important;color:#344054!important;box-shadow:none!important}
+.quick button:hover{border-color:#cfd7f3!important;background:#f6f8ff!important}
+.activity-row{min-height:68px!important;padding:13px 19px!important;border-bottom:1px solid var(--go7-line2)!important}.activity-row:last-child{border-bottom:0!important}
+.activity-row strong{color:#344054!important;font-size:12px!important}.activity-row p{margin-top:3px!important;color:#8a93a3!important;font-size:11px!important}
+.table-card{overflow:hidden!important}.table-toolbar{padding:15px 17px!important;border-bottom:1px solid var(--go7-line)!important;background:#fff!important}
+.search,.select{border:1px solid var(--go7-line)!important;border-radius:10px!important;background:#fbfcfe!important;box-shadow:none!important}.search input{height:39px!important;font-size:12px!important}
+.table-wrap th{padding:12px 15px!important;border-bottom:1px solid var(--go7-line)!important;background:#fafbfc!important;color:#8a93a3!important;font-size:10px!important;font-weight:750!important;letter-spacing:.07em!important;text-transform:uppercase!important}
+.table-wrap td{padding:14px 15px!important;border-bottom:1px solid var(--go7-line2)!important;color:#475467!important;font-size:12.5px!important}.table-wrap tbody tr:hover td{background:#fafbff!important}
+.table-wrap td strong{color:#263247!important}.status{min-height:28px!important;padding:5px 9px!important;border-radius:8px!important;font-size:10px!important;font-weight:750!important}
+.status.new{color:#2852c7!important;background:#eef4ff!important;border-color:#d4e1ff!important}.status.read{color:#9a650d!important;background:#fff8e8!important;border-color:#f4dfaa!important}.status.replied{color:#147a52!important;background:#ecfbf4!important;border-color:#c7ebd9!important}.status.closed{color:#667085!important;background:#f2f4f7!important;border-color:#e4e7ec!important}
+.small-btn{min-height:34px!important;padding:0 10px!important;border-radius:8px!important;border:1px solid #dfe4ec!important;background:#fff!important;color:#526075!important;box-shadow:none!important;font-size:11px!important;font-weight:650!important}
+.drawer{border-left:1px solid var(--go7-line)!important;background:#fff!important;box-shadow:-20px 0 60px rgba(15,23,42,.08)!important}.drawer-head{padding:18px 20px!important;border-bottom:1px solid var(--go7-line)!important}.drawer-body{padding:18px 20px!important}
+.detail-row,.message-box,.reply-box{border:1px solid var(--go7-line2)!important;border-radius:10px!important;background:#fbfcfe!important}
+.detail-label{color:#8a93a3!important;font-size:10px!important;font-weight:750!important;letter-spacing:.06em!important}.detail-row strong,.detail-value{color:#344054!important;font-size:12px!important}
+.danger-btn{border-color:#d64550!important;background:#d64550!important;color:#fff!important;box-shadow:none!important}
+
+/* Dark */
+html[data-theme="dark"] body,html[data-theme="dark"] .app,html[data-theme="dark"] .main{background:#0f141d!important;color:#e7eaf0!important}
+html[data-theme="dark"] .sidebar{background:#121923!important;border-color:#252d3a!important}
+html[data-theme="dark"] .brand,html[data-theme="dark"] .sidebar-bottom{border-color:#252d3a!important}
+html[data-theme="dark"] .sidebar .nav button{color:#9aa5b6!important}.sidebar .nav button.active{color:#aebaff!important}
+html[data-theme="dark"] .sidebar .nav button:hover{color:#e8ebf2!important;background:#1a2230!important;border-color:#273143!important}
+html[data-theme="dark"] .topbar{background:rgba(15,20,29,.9)!important;border-color:#252d3a!important}
+html[data-theme="dark"] .page-title{color:#edf0f5!important}
+html[data-theme="dark"] .top-actions .icon-btn,html[data-theme="dark"] .mobile-menu{background:#151c27!important;border-color:#2a3341!important;color:#aeb7c6!important}
+html[data-theme="dark"] .welcome{border-color:#303a4c!important;background:radial-gradient(circle at 88% 15%,rgba(92,108,180,.22),transparent 29%),linear-gradient(135deg,#151d2a 0%,#19243a 58%,#202e4a 100%)!important}
+html[data-theme="dark"] .welcome h1{color:#f0f2f6!important}.welcome p{color:#a6afbe!important}
+html[data-theme="dark"] .card.stat,html[data-theme="dark"] .card,html[data-theme="dark"] .table-card,html[data-theme="dark"] .quick-card,html[data-theme="dark"] .analytics-card,html[data-theme="dark"] .settings-card,html[data-theme="dark"] .setting-card{background:#151c27!important;border-color:#293342!important}
+html[data-theme="dark"] .stat-value,html[data-theme="dark"] .section-head h2,html[data-theme="dark"] .setting-card h3,html[data-theme="dark"] .table-wrap td strong{color:#edf0f5!important}
+html[data-theme="dark"] .stat-label,html[data-theme="dark"] .stat-note,html[data-theme="dark"] .activity-row p,html[data-theme="dark"] .activity-time{color:#8995a7!important}
+html[data-theme="dark"] .section-head,html[data-theme="dark"] .table-toolbar,html[data-theme="dark"] .table-wrap th{border-color:#293342!important;background:#131a24!important}
+html[data-theme="dark"] .quick button,html[data-theme="dark"] .search,html[data-theme="dark"] .select{background:#111822!important;border-color:#2a3341!important;color:#c2c9d5!important}
+html[data-theme="dark"] .table-wrap td{border-color:#252e3c!important;color:#b8c0cd!important}.table-wrap tbody tr:hover td{background:#18212e!important}
+html[data-theme="dark"] .small-btn{background:#151c27!important;border-color:#303a49!important;color:#b2bbc8!important}
+html[data-theme="dark"] .drawer{background:#121923!important;border-color:#293342!important}.drawer-head{border-color:#293342!important}
+html[data-theme="dark"] .detail-row,html[data-theme="dark"] .message-box,html[data-theme="dark"] .reply-box{background:#151d28!important;border-color:#2a3442!important}
+html[data-theme="dark"] .detail-row strong,html[data-theme="dark"] .detail-value{color:#c5ccd7!important}
+
+/* Data skeleton: only while API data is actually loading */
+.go7-data-skeleton{position:absolute;inset:0;z-index:30;display:none;padding:0;background:var(--go7-bg)}
+.go7-data-skeleton.show{display:block}.go7-sk{border-radius:10px;background:linear-gradient(100deg,#e7eaf0 18%,#f8f9fb 35%,#fff 50%,#f8f9fb 65%,#e7eaf0 82%);background-size:220% 100%;animation:go7Sk 1.35s linear infinite}
+@keyframes go7Sk{from{background-position:-220% 0}to{background-position:220% 0}}
+.go7-sk.hero{height:150px;margin-bottom:18px;border-radius:17px}.go7-sk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.go7-sk.stat{height:132px}.go7-sk-bottom{display:grid;grid-template-columns:1.35fr 1fr;gap:16px}.go7-sk.card{height:280px}
+html[data-theme="dark"] .go7-data-skeleton{background:#0f141d}html[data-theme="dark"] .go7-sk{background:linear-gradient(100deg,#202936 18%,#2c3747 35%,#3a4657 50%,#2c3747 65%,#202936 82%);background-size:220% 100%}
+@media(prefers-reduced-motion:reduce){.go7-sk{animation:none!important}}
+@media(max-width:900px){.sidebar{width:min(292px,86vw)!important}.main{width:100%!important;margin-left:0!important}.content{padding:20px 16px 34px!important}.stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}.grid-2{grid-template-columns:1fr!important}.go7-sk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.go7-sk-bottom{grid-template-columns:1fr}}
+@media(max-width:560px){.content{padding:14px 10px 28px!important}.welcome{min-height:185px!important;padding:20px!important;border-radius:15px!important}.welcome h1{font-size:22px!important}.stats{grid-template-columns:1fr!important}.go7-sk.hero{height:145px}.go7-sk-grid{grid-template-columns:1fr;gap:10px}.go7-sk.stat{height:112px}.go7-sk.card{height:260px}}
+</style>
+
+
+<style id="go7-login-complete-replacement-v2">
+/* =========================================================
+   GO7 LOGIN — COMPLETE NEW VISUAL SYSTEM
+   Existing authentication markup/IDs preserved.
+   ========================================================= */
+
+#loginScreen{
+  position:fixed!important;
+  inset:0!important;
+  z-index:9999!important;
+  width:100vw!important;
+  height:100dvh!important;
+  min-height:100dvh!important;
+  display:none!important;
+  place-items:center!important;
+  padding:26px!important;
+  box-sizing:border-box!important;
+  overflow:auto!important;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(56,80,213,.10),transparent 28%),
+    radial-gradient(circle at 92% 90%,rgba(99,117,238,.08),transparent 30%),
+    #f5f6f9!important;
+}
+
+#loginScreen[style*="display: grid"]{display:grid!important}
+
+#loginScreen .go7-login-shell{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:minmax(320px,.82fr) minmax(390px,1.18fr)!important;
+  width:min(940px,100%)!important;
+  min-height:590px!important;
+  overflow:hidden!important;
+  border:1px solid #dfe3eb!important;
+  border-radius:24px!important;
+  background:#fff!important;
+  box-shadow:0 24px 70px rgba(15,23,42,.10)!important;
+}
+
+#loginScreen .go7-login-visual{
+  position:relative!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:space-between!important;
+  min-width:0!important;
+  padding:38px!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(circle at 82% 12%,rgba(102,123,255,.28),transparent 27%),
+    radial-gradient(circle at 10% 92%,rgba(56,80,213,.20),transparent 32%),
+    linear-gradient(145deg,#0b1228 0%,#121d3b 55%,#20377e 100%)!important;
+}
+
+#loginScreen .go7-login-grid{
+  position:absolute;
+  inset:0;
+  opacity:.16;
+  background-image:
+    linear-gradient(rgba(255,255,255,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.10) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:linear-gradient(to bottom,black,transparent 78%);
+  pointer-events:none;
+}
+
+#loginScreen .go7-login-orbit{
+  position:absolute;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;
+  pointer-events:none;
+}
+#loginScreen .orbit-one{width:390px;height:390px;right:-210px;top:-160px}
+#loginScreen .orbit-two{width:270px;height:270px;right:-120px;top:-90px;border-color:rgba(116,138,255,.18)}
+
+#loginScreen .go7-login-brandmark{
+  position:relative;
+  z-index:2;
+}
+#loginScreen .go7-login-brandmark img{
+  display:block!important;
+  width:126px!important;
+  height:auto!important;
+  max-width:100%!important;
+  object-fit:contain!important;
+}
+
+#loginScreen .go7-login-visual-copy{
+  position:relative;
+  z-index:2;
+  max-width:320px;
+}
+#loginScreen .go7-login-visual-copy span{
+  display:block;
+  margin-bottom:12px;
+  color:#8fa2ff;
+  font-size:10px;
+  font-weight:750;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+#loginScreen .go7-login-visual-copy strong{
+  display:block;
+  color:#f6f8ff;
+  font-size:28px;
+  line-height:1.18;
+  font-weight:650;
+  letter-spacing:-.035em;
+}
+#loginScreen .go7-login-visual-copy p{
+  margin:14px 0 0!important;
+  color:rgba(224,230,249,.64)!important;
+  font-size:12px!important;
+  line-height:1.6!important;
+}
+
+#loginScreen .go7-login-secure{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:rgba(226,232,247,.58);
+  font-size:10px;
+}
+#loginScreen .go7-secure-dot{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:#53d39a;
+  box-shadow:0 0 0 4px rgba(83,211,154,.10);
+}
+
+#loginScreen .go7-login-form-panel{
+  position:relative!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  min-width:0!important;
+  padding:48px 58px 34px!important;
+  background:#fff!important;
+}
+
+#loginScreen .go7-login-mobile-brand{display:none!important}
+
+#loginScreen .go7-login-heading{
+  margin-bottom:30px!important;
+}
+#loginScreen .go7-login-eyebrow{
+  display:block;
+  margin-bottom:10px;
+  color:#3850d5;
+  font-size:10px;
+  font-weight:750;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+#loginScreen .go7-login-heading h1{
+  margin:0!important;
+  padding:0!important;
+  color:#151c2c!important;
+  font-size:30px!important;
+  line-height:1.15!important;
+  font-weight:650!important;
+  letter-spacing:-.04em!important;
+}
+#loginScreen .go7-login-heading h1:after{display:none!important}
+#loginScreen .go7-login-heading p{
+  margin:9px 0 0!important;
+  color:#7b8494!important;
+  font-size:13px!important;
+  line-height:1.55!important;
+}
+
+#loginScreen .login-error{
+  display:none!important;
+  margin:0 0 17px!important;
+  padding:11px 13px!important;
+  border:1px solid #efc6ca!important;
+  border-radius:10px!important;
+  background:#fff7f7!important;
+  color:#b42318!important;
+  font-size:12px!important;
+  line-height:1.45!important;
+}
+#loginScreen .login-error.show{display:block!important}
+
+#loginScreen #loginForm{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  padding:0!important;
+  margin:0!important;
+  transform:none!important;
+}
+#loginScreen .go7-field{
+  margin:0 0 18px!important;
+}
+#loginScreen .go7-field label{
+  display:block!important;
+  margin:0 0 7px!important;
+  color:#344054!important;
+  font-size:11px!important;
+  font-weight:700!important;
+  letter-spacing:.01em!important;
+}
+#loginScreen .go7-label-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+#loginScreen .go7-label-row span{
+  color:#a0a8b5;
+  font-size:10px;
+  font-weight:500;
+}
+
+#loginScreen .go7-input-wrap{
+  position:relative;
+}
+#loginScreen .go7-input-wrap>svg{
+  position:absolute;
+  left:14px;
+  top:50%;
+  z-index:2;
+  width:19px;
+  height:19px;
+  transform:translateY(-50%);
+  color:#8792a4;
+  pointer-events:none;
+}
+#loginScreen .go7-input-wrap .form-control{
+  width:100%!important;
+  height:52px!important;
+  box-sizing:border-box!important;
+  margin:0!important;
+  padding:0 14px 0 45px!important;
+  border:1px solid #dfe3eb!important;
+  border-radius:11px!important;
+  outline:none!important;
+  background:#fafbfc!important;
+  color:#1d2637!important;
+  font-size:13px!important;
+  box-shadow:none!important;
+  transition:border-color .18s ease,background .18s ease,box-shadow .18s ease!important;
+}
+#loginScreen .go7-input-wrap .form-control::placeholder{color:#a0a8b5!important}
+#loginScreen .go7-input-wrap .form-control:focus{
+  border-color:#6477df!important;
+  background:#fff!important;
+  box-shadow:0 0 0 3px rgba(56,80,213,.09)!important;
+}
+#loginScreen .go7-input-wrap:focus-within>svg{color:#3850d5!important}
+
+#loginScreen .login-submit{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  width:100%!important;
+  height:52px!important;
+  margin:7px 0 0!important;
+  padding:0 18px!important;
+  border:1px solid #3850d5!important;
+  border-radius:11px!important;
+  background:linear-gradient(135deg,#3850d5,#5369e8)!important;
+  color:#fff!important;
+  font-size:13px!important;
+  font-weight:650!important;
+  box-shadow:none!important;
+  transition:transform .18s ease,filter .18s ease!important;
+}
+#loginScreen .login-submit svg{width:17px!important;height:17px!important}
+#loginScreen .login-submit:hover{filter:brightness(.97);transform:translateY(-1px)}
+#loginScreen .login-submit:active{transform:translateY(0)}
+
+#loginScreen .go7-login-footer{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-wrap:wrap!important;
+  gap:7px!important;
+  margin-top:25px!important;
+  padding-top:19px!important;
+  border-top:1px solid #eef0f4!important;
+  color:#98a2b3!important;
+  font-size:10px!important;
+}
+#loginScreen .go7-footer-check{color:#18a66b;font-size:12px}
+#loginScreen .go7-login-footer i{
+  width:3px;height:3px;border-radius:50%;background:#c8cdd6;
+}
+
+html[data-theme="dark"] #loginScreen{
+  background:
+    radial-gradient(circle at 12% 8%,rgba(56,80,213,.13),transparent 28%),
+    radial-gradient(circle at 92% 90%,rgba(99,117,238,.08),transparent 30%),
+    #0b0f16!important;
+}
+html[data-theme="dark"] #loginScreen .go7-login-shell{
+  border-color:#28313e!important;
+  background:#151b24!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.30)!important;
+}
+html[data-theme="dark"] #loginScreen .go7-login-form-panel{background:#151b24!important}
+html[data-theme="dark"] #loginScreen .go7-login-heading h1{color:#f0f2f6!important}
+html[data-theme="dark"] #loginScreen .go7-login-heading p{color:#9ba5b4!important}
+html[data-theme="dark"] #loginScreen .go7-login-heading .go7-login-eyebrow{color:#91a0ff!important}
+html[data-theme="dark"] #loginScreen .go7-field label{color:#c7ced9!important}
+html[data-theme="dark"] #loginScreen .go7-label-row span{color:#7f8999!important}
+html[data-theme="dark"] #loginScreen .go7-input-wrap .form-control{
+  border-color:#303a49!important;
+  background:#101720!important;
+  color:#f0f2f6!important;
+}
+html[data-theme="dark"] #loginScreen .go7-input-wrap .form-control:focus{
+  border-color:#7183eb!important;
+  background:#151d28!important;
+  box-shadow:0 0 0 3px rgba(113,131,235,.12)!important;
+}
+html[data-theme="dark"] #loginScreen .go7-input-wrap>svg{color:#7f8b9e!important}
+html[data-theme="dark"] #loginScreen .go7-login-footer{border-color:#29323f!important;color:#7f8999!important}
+html[data-theme="dark"] #loginScreen .login-error{
+  border-color:#5a3035!important;
+  background:#24171a!important;
+  color:#ffb4ab!important;
+}
+
+/* Responsive */
+@media(max-width:820px){
+  #loginScreen{padding:18px!important}
+  #loginScreen .go7-login-shell{
+    grid-template-columns:1fr!important;
+    width:min(500px,100%)!important;
+    min-height:0!important;
+    border-radius:20px!important;
+  }
+  #loginScreen .go7-login-visual{
+    min-height:190px!important;
+    padding:27px 28px!important;
+  }
+  #loginScreen .go7-login-brandmark img{width:108px!important}
+  #loginScreen .go7-login-visual-copy strong{font-size:22px!important}
+  #loginScreen .go7-login-visual-copy p{display:none!important}
+  #loginScreen .go7-login-secure{font-size:9px!important}
+  #loginScreen .go7-login-form-panel{
+    padding:30px 28px 24px!important;
+  }
+}
+@media(max-width:560px){
+  #loginScreen{padding:10px!important}
+  #loginScreen .go7-login-shell{width:100%!important;border-radius:17px!important}
+  #loginScreen .go7-login-visual{
+    min-height:145px!important;
+    padding:22px!important;
+  }
+  #loginScreen .go7-login-brandmark img{width:91px!important}
+  #loginScreen .go7-login-visual-copy span{margin-bottom:7px;font-size:8px}
+  #loginScreen .go7-login-visual-copy strong{font-size:18px!important;line-height:1.2!important}
+  #loginScreen .go7-login-secure{font-size:8px!important}
+  #loginScreen .go7-login-form-panel{padding:25px 20px 20px!important}
+  #loginScreen .go7-login-heading{margin-bottom:22px!important}
+  #loginScreen .go7-login-heading h1{font-size:25px!important}
+  #loginScreen .go7-login-heading p{font-size:12px!important}
+  #loginScreen .go7-field{margin-bottom:15px!important}
+  #loginScreen .go7-input-wrap .form-control{height:50px!important}
+  #loginScreen .login-submit{height:50px!important}
+  #loginScreen .go7-login-footer{margin-top:20px!important;padding-top:16px!important;font-size:9px!important}
+}
+</style>
+
+
+<style id="go7-premium-rebuild-v4">
+/* =============================================================
+   GO7 ADMIN — GENUINELY NEW PREMIUM UI
+   Direction: calm SaaS / editorial admin / data-first.
+   No heavy shadows. Existing HTML, API and JS preserved.
+   ============================================================= */
+:root{
+ --p-blue:#3850d5;--p-blue2:#6378ef;--p-ink:#172033;--p-text:#465268;
+ --p-muted:#7c8799;--p-faint:#a0a9b8;--p-bg:#f7f8fb;--p-card:#fff;
+ --p-line:#e4e8ef;--p-line2:#edf0f4;--p-green:#149768;--p-amber:#c98219;
+ --p-red:#d54b55;--p-purple:#7358d8;
+}
+html,body{background:var(--p-bg)!important;color:var(--p-ink)!important}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif!important;font-size:14px!important;line-height:1.5!important}
+button,input,select,textarea{font-family:inherit!important}
+/* ---------- no heavy effects ---------- */
+.sidebar,.topbar,.card,.table-card,.section-card,.setting-card,.welcome,.icon-btn,.small-btn,.quick button,.form-group,.drawer,.inquiry-view-shell{box-shadow:none!important}
+/* ---------- SIDEBAR ---------- */
+.sidebar{
+ width:236px!important;background:#10182d!important;border-right:1px solid #202a43!important;
+}
+.brand{height:78px!important;padding:0 20px!important;border-bottom:1px solid #202a43!important}
+.sidebar .go7-logo-img{width:34px!important;height:34px!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.brand:after{content:"GO7 ADMIN";margin-left:10px;color:#8d99b7;font-size:9px;font-weight:750;letter-spacing:.13em}
+.nav-title{padding:22px 18px 8px!important;color:#697593!important;font-size:9px!important;letter-spacing:.13em!important}
+.nav{padding:0 10px!important;gap:3px!important}
+.nav button{min-height:43px!important;padding:10px 12px!important;border:1px solid transparent!important;border-radius:9px!important;color:#9ca8c1!important;font-size:13px!important;font-weight:560!important}
+.nav button svg{width:18px!important;height:18px!important;opacity:.82}
+.nav button:hover{background:#17223b!important;color:#e8ecf5!important}
+.nav button.active{background:#1a2750!important;border-color:#29396a!important;color:#fff!important;box-shadow:none!important}
+.nav button.active svg{color:#8fa2ff!important}
+.sidebar-bottom{border-top:1px solid #202a43!important;padding-bottom:12px!important}
+.admin-mini{margin:10px!important;padding:10px!important;border:1px solid #26324b!important;border-radius:10px!important;background:#151f36!important}
+.admin-mini strong{font-size:12px!important}.admin-mini small{font-size:10px!important}
+/* ---------- MAIN ---------- */
+.main{margin-left:236px!important;width:calc(100% - 236px)!important;background:var(--p-bg)!important}
+.topbar{height:68px!important;padding:0 28px!important;background:rgba(247,248,251,.94)!important;border-bottom:1px solid var(--p-line)!important}
+.page-title{font-size:15px!important;font-weight:650!important;color:#263147!important}
+.page-title:after{display:none!important}
+.top-actions{gap:6px!important}.top-actions .icon-btn,.theme-toggle,.mobile-menu{width:36px!important;height:36px!important;border:1px solid var(--p-line)!important;border-radius:9px!important;background:#fff!important;color:#667085!important;box-shadow:none!important}
+.top-actions .icon-btn:hover,.theme-toggle:hover{border-color:#cbd3e5!important;background:#f7f8ff!important;color:var(--p-blue)!important}
+/* ---------- CONTENT / HERO ---------- */
+.content{max-width:1560px!important;padding:27px 28px 48px!important}
+#dashboard .welcome{
+ min-height:164px!important;margin-bottom:18px!important;padding:28px 30px!important;border:1px solid #dfe4f0!important;border-radius:16px!important;
+ background:radial-gradient(circle at 90% 10%,rgba(104,123,242,.20),transparent 28%),linear-gradient(135deg,#10182f 0%,#172344 60%,#243d91 100%)!important;box-shadow:none!important
+}
+#dashboard .welcome h1{font-size:27px!important;font-weight:650!important;letter-spacing:-.04em!important}
+#dashboard .welcome p{font-size:12px!important;color:#b7c2dc!important}
+#dashboard .welcome #apiConnectionStatus{display:inline-flex!important;align-items:center;gap:6px;margin-top:13px!important;padding:5px 8px!important;border:1px solid rgba(158,230,189,.15)!important;border-radius:7px!important;background:rgba(255,255,255,.045)!important;font-size:10px!important}
+#dashboard .welcome #apiConnectionStatus:before{content:"";width:5px;height:5px;border-radius:50%;background:#36c98a}
+#dashboard .welcome>.primary{min-height:40px!important;padding:0 15px!important;border:1px solid rgba(255,255,255,.25)!important;border-radius:8px!important;background:#fff!important;color:#2f46c3!important;box-shadow:none!important;font-size:11px!important;font-weight:700!important}
+/* other page headers become editorial, not giant cards */
+#inquiries .welcome,#analytics .welcome,#settings .welcome{min-height:0!important;padding:3px 0 18px!important;margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+#inquiries .welcome h1,#analytics .welcome h1,#settings .welcome h1{font-size:25px!important;font-weight:650!important;letter-spacing:-.035em!important;color:#172033!important}
+#inquiries .welcome p,#analytics .welcome p,#settings .welcome p{font-size:12px!important;color:#7b8496!important}
+#inquiries .welcome>.primary,#analytics .welcome>.primary,#settings .welcome>.primary{border-radius:8px!important;box-shadow:none!important}
+/* ---------- STATS ---------- */
+.stats{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px!important;margin-bottom:18px!important}
+.card.stat{min-height:139px!important;padding:18px!important;border:1px solid var(--p-line)!important;border-radius:12px!important;background:#fff!important;box-shadow:none!important}
+.card.stat:before{height:2px!important;background:var(--stat,#3850d5)!important}
+.card.stat:nth-child(2){--stat:#d28a22}.card.stat:nth-child(3){--stat:#7659d9}.card.stat:nth-child(4){--stat:#159a68}
+.stat-top{min-height:28px!important}.stat-label{font-size:9px!important;letter-spacing:.09em!important;color:#8a94a5!important;font-weight:750!important}.stat-icon{width:32px!important;height:32px!important;border:1px solid #e6e9ef!important;border-radius:8px!important;background:#f8f9fb!important;color:#68758b!important}.stat-value{margin-top:12px!important;font-size:28px!important;font-weight:650!important;color:#182033!important;letter-spacing:-.045em!important}.stat-note{margin-top:5px!important;font-size:10px!important;color:#98a2b3!important}.stat-note strong{font-weight:700!important}
+.trend-up strong{color:#159a68!important}.trend-down strong{color:#d54b55!important}
+/* ---------- SECTION CARDS ---------- */
+.grid-2{grid-template-columns:minmax(0,1.55fr) minmax(300px,.9fr)!important;gap:12px!important}
+.section-card{border:1px solid var(--p-line)!important;border-radius:12px!important;background:#fff!important}
+.section-head{min-height:54px!important;padding:15px 17px!important;border-bottom:1px solid var(--p-line2)!important}.section-head h2{font-size:13px!important;font-weight:650!important;color:#2a354a!important}.link-btn{font-size:11px!important;color:var(--p-blue)!important}
+.activity{padding:0 17px 3px!important}.activity-row{padding:13px 0!important;border-bottom:1px solid var(--p-line2)!important}.activity-row strong{font-size:12px!important}.activity-row p{font-size:10px!important}.activity-time{font-size:10px!important}
+.activity-dot{width:6px!important;height:6px!important;box-shadow:none!important;margin-top:6px!important}
+.quick{grid-template-columns:1fr 1fr!important;gap:8px!important;padding:12px!important}.quick button{min-height:72px!important;border:1px solid var(--p-line)!important;border-radius:9px!important;background:#fbfcfe!important;color:#344054!important;box-shadow:none!important;font-size:11px!important}.quick button:hover{background:#f8f9ff!important;border-color:#cbd3ed!important;transform:none!important}.quick button:nth-child(1){border-left:3px solid #3850d5!important}.quick button:nth-child(2){border-left:3px solid #7358d8!important}.quick button:nth-child(3){border-left:3px solid #159a68!important}.quick button:nth-child(4){border-left:3px solid #d28a22!important}.quick small{font-size:9px!important}
+/* ---------- INQUIRIES ---------- */
+.table-card{border:1px solid var(--p-line)!important;border-radius:12px!important;background:#fff!important}
+.table-toolbar{padding:12px 14px!important;background:#fff!important;border-bottom:1px solid var(--p-line)!important}.search input,.select{height:38px!important;border:1px solid #dfe4eb!important;border-radius:8px!important;background:#fbfcfe!important;font-size:11px!important;box-shadow:none!important}.search input{width:290px!important}.search:focus-within input{border-color:#b9c4ec!important;box-shadow:0 0 0 2px rgba(56,80,213,.06)!important}
+.table-wrap th{padding:11px 13px!important;background:#fafbfc!important;border-bottom:1px solid var(--p-line)!important;color:#8b95a6!important;font-size:9px!important;letter-spacing:.08em!important}.table-wrap td{padding:13px!important;border-bottom:1px solid var(--p-line2)!important;color:#526075!important;font-size:11.5px!important}.table-wrap td strong{color:#2d374b!important}.table-wrap tbody tr:hover td{background:#fbfcff!important}
+.status{border-radius:7px!important;padding:4px 8px!important;font-size:9px!important;font-weight:700!important}.small-btn{min-height:32px!important;border-radius:8px!important;background:#fff!important;border:1px solid #dfe4eb!important;box-shadow:none!important;font-size:10px!important}
+/* ---------- INQUIRY VIEW: full page, calm editorial ---------- */
+#inquiryView .inquiry-page-top{padding:3px 0 18px!important}.inquiry-page-heading h1{font-size:24px!important;font-weight:650!important;letter-spacing:-.035em!important}.inquiry-page-heading .eyebrow{font-size:9px!important;letter-spacing:.1em!important;color:#3850d5!important}.inquiry-page-heading #drawerSubtitle{font-size:10px!important;color:#8b95a6!important}.back-inquiries-btn{width:36px!important;height:36px!important;border:1px solid var(--p-line)!important;border-radius:9px!important;background:#fff!important;box-shadow:none!important}.inquiry-view-shell{border:1px solid var(--p-line)!important;border-radius:12px!important;background:#fff!important;overflow:hidden!important}.inquiry-view-body{background:#fff!important}.inquiry-view-footer{padding:12px 15px!important;border-top:1px solid var(--p-line)!important;background:#fbfcfe!important}.inquiry-action-back{border-radius:8px!important}
+/* ---------- ANALYTICS / SETTINGS ---------- */
+.analytics-card,.settings-card,.setting-card{border:1px solid var(--p-line)!important;border-radius:12px!important;box-shadow:none!important}.setting-card{padding:18px!important}.setting-card h3{font-size:13px!important;color:#2a354a!important}.setting-card p{font-size:11px!important;color:#8b95a6!important}.toggle-row{padding:12px 0!important;border-bottom:1px solid var(--p-line2)!important}
+/* ---------- BUTTONS: intentionally different semantic colors ---------- */
+#inquiries .welcome>.primary{background:#3850d5!important;border-color:#3850d5!important}
+#analytics .welcome>.primary{background:#7358d8!important;border-color:#7358d8!important}
+#settings .welcome>.primary{background:#159a68!important;border-color:#159a68!important}
+.danger-btn{background:#d54b55!important;border-color:#d54b55!important;box-shadow:none!important}
+/* ---------- LOGIN: new, restrained, not the old card ---------- */
+#loginScreen{background:#f4f6f9!important;padding:24px!important}
+#loginScreen .go7-login-shell{width:min(860px,100%)!important;min-height:520px!important;grid-template-columns:1.05fr .95fr!important;border:1px solid #dfe3e9!important;border-radius:18px!important;background:#fff!important;box-shadow:none!important;overflow:hidden!important}
+#loginScreen .go7-login-visual{padding:34px!important;background:linear-gradient(155deg,#10182d 0%,#172344 64%,#243b85 100%)!important}
+#loginScreen .go7-login-grid{opacity:.08!important;background-size:38px 38px!important}
+#loginScreen .go7-login-orbit{opacity:.45!important}
+#loginScreen .go7-login-brandmark img{width:106px!important}
+#loginScreen .go7-login-visual-copy{max-width:280px!important}.go7-login-visual-copy span{font-size:9px!important}.go7-login-visual-copy strong{font-size:25px!important;font-weight:620!important}.go7-login-visual-copy p{font-size:11px!important}
+#loginScreen .go7-login-secure{font-size:9px!important}
+#loginScreen .go7-login-form-panel{padding:44px 48px 28px!important;background:#fff!important}
+#loginScreen .go7-login-heading{margin-bottom:25px!important}.go7-login-eyebrow{font-size:9px!important;letter-spacing:.11em!important}.go7-login-heading h1{font-size:28px!important;font-weight:650!important}.go7-login-heading p{font-size:12px!important}
+#loginScreen .go7-field{margin-bottom:15px!important}.go7-field label{font-size:10px!important}.go7-input-wrap .form-control{height:48px!important;border-radius:9px!important;background:#fbfcfd!important;font-size:12px!important}.go7-input-wrap>svg{width:17px!important;height:17px!important}
+#loginScreen .login-submit{height:48px!important;margin-top:5px!important;border-radius:9px!important;background:#3850d5!important;box-shadow:none!important;font-size:12px!important}
+#loginScreen .go7-login-footer{margin-top:21px!important;padding-top:15px!important;font-size:9px!important}
+/* ---------- DARK ---------- */
+html[data-theme="dark"] body,html[data-theme="dark"] .main{background:#0e131c!important;color:#e8ebf1!important}
+html[data-theme="dark"] .topbar{background:rgba(14,19,28,.94)!important;border-color:#252e3b!important}.top-actions .icon-btn,html[data-theme="dark"] .theme-toggle{background:#141b26!important;border-color:#2b3544!important;color:#aab4c5!important}
+html[data-theme="dark"] .content{background:#0e131c!important}
+html[data-theme="dark"] #dashboard .welcome{background:radial-gradient(circle at 88% 10%,rgba(91,108,181,.23),transparent 29%),linear-gradient(135deg,#111827,#18243a 58%,#202d49)!important;border-color:#303b54!important}
+html[data-theme="dark"] .card.stat,html[data-theme="dark"] .section-card,html[data-theme="dark"] .table-card,html[data-theme="dark"] .inquiry-view-shell,html[data-theme="dark"] .setting-card{background:#141b25!important;border-color:#293341!important}
+html[data-theme="dark"] .stat-value,html[data-theme="dark"] .section-head h2,html[data-theme="dark"] .table-wrap td strong,html[data-theme="dark"] #inquiries .welcome h1,html[data-theme="dark"] #analytics .welcome h1,html[data-theme="dark"] #settings .welcome h1{color:#edf0f5!important}
+html[data-theme="dark"] .section-head,html[data-theme="dark"] .table-toolbar,html[data-theme="dark"] .table-wrap th,html[data-theme="dark"] .inquiry-view-footer{background:#111822!important;border-color:#293341!important}
+html[data-theme="dark"] .table-wrap td{border-color:#252e3b!important;color:#b6c0cf!important}.table-wrap tbody tr:hover td{background:#18212d!important}
+html[data-theme="dark"] .search input,html[data-theme="dark"] .select,html[data-theme="dark"] .quick button,html[data-theme="dark"] .small-btn{background:#111822!important;border-color:#2c3645!important;color:#c1c9d5!important}
+html[data-theme="dark"] .quick button:hover{background:#182130!important;border-color:#3b4967!important}
+html[data-theme="dark"] #inquiries .welcome p,html[data-theme="dark"] #analytics .welcome p,html[data-theme="dark"] #settings .welcome p,html[data-theme="dark"] .stat-note,html[data-theme="dark"] .activity-row p{color:#8f9aac!important}
+html[data-theme="dark"] #loginScreen{background:#0b1018!important}.go7-login-shell{background:#141b25!important;border-color:#293341!important}.go7-login-form-panel{background:#141b25!important}.go7-login-heading h1{color:#edf0f5!important}.go7-login-heading p{color:#96a1b2!important}.go7-input-wrap .form-control{background:#101720!important;border-color:#303b4a!important;color:#eef1f5!important}
+/* ---------- MOBILE ---------- */
+@media(max-width:900px){.sidebar{width:min(280px,86vw)!important}.main{margin-left:0!important;width:100%!important}.content{padding:20px 16px 36px!important}.stats{grid-template-columns:repeat(2,minmax(0,1fr))!important}.grid-2{grid-template-columns:1fr!important}.mobile-menu{display:grid!important}}
+@media(max-width:600px){.content{padding:14px 10px 30px!important}.topbar{height:62px!important;padding:0 12px!important}.page-title{font-size:14px!important}.top-actions .icon-btn,.theme-toggle{width:34px!important;height:34px!important}.stats{grid-template-columns:1fr 1fr!important;gap:8px!important}.card.stat{min-height:126px!important;padding:14px!important}.stat-value{font-size:24px!important}.stat-icon{width:29px!important;height:29px!important}.stat-label{font-size:8px!important}.grid-2{gap:9px!important}.quick{grid-template-columns:1fr 1fr!important;padding:9px!important}.quick button{min-height:66px!important}.search input{width:min(100%,240px)!important}.table-toolbar{align-items:stretch!important}.toolbar-left{width:100%!important}.search{flex:1!important}.select{width:100%!important}.table-wrap{overflow-x:auto!important}.table-wrap table{min-width:720px!important}
+#loginScreen{padding:10px!important}.go7-login-shell{grid-template-columns:1fr!important;width:100%!important;min-height:0!important;border-radius:15px!important}.go7-login-visual{min-height:145px!important;padding:21px!important}.go7-login-brandmark img{width:88px!important}.go7-login-visual-copy strong{font-size:18px!important}.go7-login-visual-copy p{display:none!important}.go7-login-form-panel{padding:24px 20px 20px!important}.go7-login-heading h1{font-size:25px!important}.go7-login-heading p{font-size:11px!important}.go7-login-footer{font-size:8px!important}
+}
+@media(max-width:380px){.stats{grid-template-columns:1fr!important}.go7-login-form-panel{padding-left:17px!important;padding-right:17px!important}.go7-login-visual{min-height:132px!important}}
+</style>
+
+
+<style id="go7-login-mobile-final-fix">
+/* FINAL MOBILE LOGIN FIX — single column, full-width form */
+@media screen and (max-width:900px){
+  #loginScreen{
+    padding:12px!important;
+    align-items:center!important;
+    justify-items:center!important;
+  }
+
+  #loginScreen .go7-login-shell{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto auto!important;
+    width:min(520px,100%)!important;
+    min-width:0!important;
+    min-height:0!important;
+    height:auto!important;
+    border-radius:18px!important;
+  }
+
+  #loginScreen .go7-login-visual{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:154px!important;
+    height:154px!important;
+    box-sizing:border-box!important;
+    padding:22px 24px!important;
+  }
+
+  #loginScreen .go7-login-brandmark img{
+    width:94px!important;
+    max-width:94px!important;
+  }
+
+  #loginScreen .go7-login-visual-copy{
+    max-width:300px!important;
+  }
+
+  #loginScreen .go7-login-visual-copy strong{
+    font-size:19px!important;
+    line-height:1.2!important;
+  }
+
+  #loginScreen .go7-login-visual-copy p{
+    display:none!important;
+  }
+
+  #loginScreen .go7-login-secure{
+    font-size:9px!important;
+  }
+
+  #loginScreen .go7-login-form-panel{
+    grid-column:1!important;
+    grid-row:2!important;
+    width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box!important;
+    padding:28px 24px 22px!important;
+  }
+
+  #loginScreen .go7-login-heading{
+    margin-bottom:22px!important;
+  }
+
+  #loginScreen .go7-login-heading h1{
+    font-size:25px!important;
+    line-height:1.15!important;
+  }
+
+  #loginScreen .go7-login-heading p{
+    font-size:12px!important;
+  }
+
+  #loginScreen .go7-field{
+    width:100%!important;
+  }
+
+  #loginScreen .go7-input-wrap,
+  #loginScreen .go7-input-wrap .form-control{
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  #loginScreen .login-submit{
+    width:100%!important;
+  }
+
+  #loginScreen .go7-login-footer{
+    width:100%!important;
+    box-sizing:border-box!important;
+    font-size:9px!important;
+  }
+}
+
+@media screen and (max-width:560px){
+  #loginScreen{
+    padding:8px!important;
+  }
+
+  #loginScreen .go7-login-shell{
+    width:100%!important;
+    border-radius:16px!important;
+  }
+
+  #loginScreen .go7-login-visual{
+    min-height:136px!important;
+    height:136px!important;
+    padding:19px 20px!important;
+  }
+
+  #loginScreen .go7-login-brandmark img{
+    width:84px!important;
+    max-width:84px!important;
+  }
+
+  #loginScreen .go7-login-visual-copy span{
+    font-size:8px!important;
+    margin-bottom:5px!important;
+  }
+
+  #loginScreen .go7-login-visual-copy strong{
+    font-size:17px!important;
+  }
+
+  #loginScreen .go7-login-secure{
+    font-size:8px!important;
+  }
+
+  #loginScreen .go7-login-form-panel{
+    padding:24px 19px 19px!important;
+  }
+
+  #loginScreen .go7-login-heading h1{
+    font-size:24px!important;
+  }
+
+  #loginScreen .go7-login-heading p{
+    font-size:11px!important;
+  }
+
+  #loginScreen .go7-input-wrap .form-control{
+    height:50px!important;
+  }
+
+  #loginScreen .login-submit{
+    height:50px!important;
+  }
+}
+</style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
+  <div class="go7-login-shell">
+    <section class="go7-login-visual" aria-hidden="true">
+      <div class="go7-login-orbit orbit-one"></div>
+      <div class="go7-login-orbit orbit-two"></div>
+      <div class="go7-login-grid"></div>
+      <div class="go7-login-brandmark">
+        <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="">
+      </div>
+      <div class="go7-login-visual-copy">
+        <span>GO7 ADMIN</span>
+        <strong>Control center for your<br>domain operations.</strong>
+        <p>Secure. Focused. Built for fast decisions.</p>
+      </div>
+      <div class="go7-login-secure">
+        <span class="go7-secure-dot"></span>
+        Secure administrator session
+      </div>
+    </section>
 
-
-  <div class="login-card">
-    <div class="login-brand">
-      <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="GO7.IN" loading="eager">
-    </div>
-    <h1>GO7 Admin Login</h1>
-    <p>Sign in with your GO7.IN administrator username and password. Your password is sent only to the GO7 Admin API.</p>
-    <div class="login-error" id="loginError"></div>
-    <form id="loginForm" autocomplete="on">
-      <label for="loginUsername">Username</label>
-      <input class="form-control" id="loginUsername" name="username" type="text" autocomplete="username" placeholder="Admin username" required>
-      <label for="loginPassword">Password</label>
-      <input class="form-control" id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Admin password" required>
-
-      <div id="otpWrap" style="display:none">
-        <label for="loginOtp">Authenticator code</label>
-        <input class="form-control" id="loginOtp" name="otp" type="text"
-               inputmode="numeric" autocomplete="one-time-code"
-               maxlength="6" pattern="[0-9]{6}"
-               placeholder="6-digit code">
-        <div style="font-size:12px;color:#64748b;margin-top:6px">
-          Enter the 6-digit code from your authenticator app.
-        </div>
+    <section class="go7-login-form-panel">
+      <div class="go7-login-mobile-brand">
+        <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="GO7.IN">
       </div>
 
-      <button class="primary login-submit" id="loginSubmit" type="submit">Sign in</button>
-    </form>
-    <div class="login-help">Protected by GO7 Admin API • Secure session</div>
+      <div class="go7-login-heading">
+        <span class="go7-login-eyebrow">Administrator access</span>
+        <h1>Welcome back.</h1>
+        <p>Sign in to continue to your GO7.IN control center.</p>
+      </div>
+
+      <div class="login-error" id="loginError"></div>
+
+      <form id="loginForm" autocomplete="on">
+        <div class="go7-field">
+          <label for="loginUsername">Username</label>
+          <div class="go7-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="8" r="3.5"></circle>
+              <path d="M5 20c.8-3.3 3.2-5 7-5s6.2 1.7 7 5"></path>
+            </svg>
+            <input class="form-control" id="loginUsername" name="username" type="text" autocomplete="username" placeholder="Enter your username" required>
+          </div>
+        </div>
+
+        <div class="go7-field">
+          <div class="go7-label-row">
+            <label for="loginPassword">Password</label>
+            <span>Administrator only</span>
+          </div>
+          <div class="go7-input-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+              <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+            </svg>
+            <input class="form-control" id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+          </div>
+        </div>
+
+        <div id="otpWrap" style="display:none">
+          <div class="go7-field">
+            <div class="go7-label-row">
+              <label for="loginOtp">Authenticator code</label>
+              <span>6 digits</span>
+            </div>
+            <div class="go7-input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+                <path d="M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01M8 16h8"></path>
+              </svg>
+              <input class="form-control" id="loginOtp" name="otp" type="text"
+                     inputmode="numeric" autocomplete="one-time-code"
+                     maxlength="6" pattern="[0-9]{6}"
+                     placeholder="Enter 6-digit code">
+            </div>
+          </div>
+        </div>
+
+        <button class="primary login-submit" id="loginSubmit" type="submit">
+          <span class="go7-submit-label">Sign in</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path>
+          </svg>
+        </button>
+      </form>
+
+      <div class="go7-login-footer">
+        <span class="go7-footer-check">✓</span>
+        <span>Protected by GO7 Admin API</span>
+        <i></i>
+        <span>Secure session</span>
+      </div>
+    </section>
   </div>
 </div>
 
 <div class="app">
-
 <aside class="sidebar" id="sidebar">
   <div class="brand">
     <img class="go7-logo-img" src="https://www.go7.in/images/favicon.png" alt="GO7.IN" loading="eager">
@@ -3490,6 +4277,10 @@ html[data-theme="dark"] #dashboard .welcome{
   </header>
 
   <div class="content">
+<div class="go7-data-skeleton" id="go7DataSkeleton" aria-hidden="true">
+<div class="go7-sk hero"></div><div class="go7-sk-grid"><div class="go7-sk stat"></div><div class="go7-sk stat"></div><div class="go7-sk stat"></div><div class="go7-sk stat"></div></div>
+<div class="go7-sk-bottom"><div class="go7-sk card"></div><div class="go7-sk card"></div></div>
+</div>
 
     <section class="page active" id="dashboard">
       <div class="welcome">
@@ -3793,6 +4584,7 @@ async function logout(){
 
 async function loadInquiries(){
   if(!authenticated) return;
+  if(window.go7SetDataLoading) window.go7SetDataLoading(true);
   try{
     const data = await apiFetch(`/api/inquiries?page=${apiPage}&limit=${apiLimit}`, {method:"GET"});
     inquiries = (data.inquiries || []).map(normalizeInquiry);
@@ -3807,6 +4599,8 @@ async function loadInquiries(){
       console.error("GO7 Admin API error:", error);
       toast(error.message || "Unable to load inquiries");
     }
+  }finally{
+    if(window.go7SetDataLoading) window.go7SetDataLoading(false);
   }
 }
 
@@ -4332,6 +5126,12 @@ checkSession();
       setTheme(root.getAttribute("data-theme")==="dark" ? "light" : "dark");
     });
   }
+})();
+</script>
+<script id="go7-data-loading-controller">
+(function(){
+ const el=document.getElementById("go7DataSkeleton");
+ window.go7SetDataLoading=function(show){if(el)el.classList.toggle("show",!!show);};
 })();
 </script>
 </body>
