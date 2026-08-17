@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>GO7 Admin Dashboard</title>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler.min.css">
 
 <style id="go7-tabler-final">
@@ -239,7 +239,6 @@ html[data-theme="dark"] .login-card>p,html[data-theme="dark"] .login-help{color:
  .login-card h1{font-size:20px;padding:20px 20px 0}.login-card>p{margin:6px 20px 17px}.login-card form{padding:0 20px 14px}.login-error{margin-left:20px;margin-right:20px}
 }
 </style>
-
 
 <style id="go7-login-final-fix-v2">
 /* GO7 LOGIN FINAL — real .go7-login-* markup */
@@ -529,7 +528,6 @@ html[data-theme="dark"] .login-error{background:#2b1719!important;border-color:#
 html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
 </style>
 
-
 <style id="go7-live-visual-v1">
 .go7-login-visual{
   position:relative!important;
@@ -666,10 +664,8 @@ html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
   }
 }
 </style>
-
 </head>
 <body class="auth-loading">
-
 <div class="login-screen" id="loginScreen">
   <div class="go7-login-shell">
     <section class="go7-login-visual" aria-hidden="true">
@@ -783,9 +779,7 @@ html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
                 <rect x="4" y="4" width="16" height="16" rx="3"></rect>
                 <path d="M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01M8 16h8"></path>
               </svg>
-              <input class="form-control" id="loginOtp" name="otp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}"
-                     inputmode="numeric" autocomplete="one-time-code"
-                     maxlength="6" pattern="[0-9]{6}"
+              <input class="form-control" id="loginOtp" name="otp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="one-time-code"
                      placeholder="Enter 6-digit code">
             </div>
           </div>
@@ -800,7 +794,7 @@ html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
       </form>
 
       <div class="go7-login-footer">
-        
+
         <span class="go7-footer-item">
       <svg class="go7-footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
         <path d="M12 3 19 6v5c0 4.4-2.7 8.1-7 10-4.3-1.9-7-5.6-7-10V6l7-3Z"></path>
@@ -1035,12 +1029,15 @@ function showLogin(message=""){
   const otpWrap = document.getElementById("otpWrap");
   const otpInput = document.getElementById("loginOtp");
 
-  box.textContent = message;
-  box.classList.toggle("show", !!message);
+  if(box){
+    box.textContent = message;
+    box.classList.toggle("show", !!message);
+  }
 
   if(otpWrap){
     otpWrap.style.display = "none";
   }
+
   if(otpInput){
     otpInput.value = "";
     otpInput.required = false;
@@ -1059,25 +1056,34 @@ function hideLogin(){
 async function apiFetch(path, options={}){
   const opts = {...options, credentials:"include", cache:"no-store"};
   opts.headers = {"Accept":"application/json", ...(options.headers || {})};
+
   const res = await fetch(`${API_BASE}${path}`, opts);
   let data = {};
   try { data = await res.json(); } catch(e) {}
+
   if(res.status === 401){
-    authenticated = false;
-    showLogin("Your admin session has expired or is not available. Please sign in again.");
-    throw new Error("Unauthorized");
+    const error = new Error(data.error || "Unauthorized");
+    error.status = 401;
+    error.data = data;
+    throw error;
   }
+
   if(!res.ok || data.success === false){
-    throw new Error(data.error || `Request failed (${res.status})`);
+    const error = new Error(data.error || `Request failed (${res.status})`);
+    error.status = res.status;
+    error.data = data;
+    throw error;
   }
+
   return data;
 }
 
 async function checkSession(){
-  // Keep the dashboard hidden until the existing session is checked.
   document.body.classList.add("auth-loading");
+
   try{
     const data = await apiFetch("/api/session", {method:"GET"});
+
     if(data.authenticated){
       authenticated = true;
       hideLogin();
@@ -1085,41 +1091,82 @@ async function checkSession(){
       return true;
     }
   }catch(error){
-    if(error.message !== "Unauthorized") console.error("Session check:",error);
+    if(error.status !== 401) console.error("Session check:", error);
   }
+
   showLogin("");
   return false;
 }
 
 async function login(username,password){
   const submit = document.getElementById("loginSubmit");
+  const label = submit?.querySelector(".go7-submit-label");
   const errorBox = document.getElementById("loginError");
   const otpWrap = document.getElementById("otpWrap");
   const otpInput = document.getElementById("loginOtp");
 
+  if(!submit || !errorBox || !otpWrap || !otpInput) return;
+
+  const otpVisible = otpWrap.style.display !== "none";
+  const otp = otpVisible
+    ? String(otpInput.value || "").replace(/\D/g,"").slice(0,6)
+    : "";
+
+  if(otpVisible && otp.length !== 6){
+    errorBox.textContent = "Enter your 6-digit authenticator code.";
+    errorBox.classList.add("show");
+    otpInput.focus();
+    return;
+  }
+
   submit.disabled = true;
-  submit.textContent = "Signing in…";
+  if(label) label.textContent = otpVisible ? "Verifying…" : "Signing in…";
   errorBox.classList.remove("show");
 
   try{
-    const otp = otpWrap && otpWrap.style.display !== "none"
-      ? String(otpInput.value || "").replace(/\D/g,"").slice(0,6)
-      : "";
-
-    const data = await apiFetch("/api/login", {
+    /*
+      Login is handled directly instead of through apiFetch().
+      A 401 from /api/login is an authentication result, not a
+      session-expired event. This keeps the OTP step available.
+    */
+    const res = await fetch(`${API_BASE}/api/login`, {
       method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({username,password,otp})
+      credentials:"include",
+      cache:"no-store",
+      headers:{
+        "Accept":"application/json",
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({
+        username,
+        password,
+        ...(otpVisible ? {otp} : {})
+      })
     });
 
-    // First step: password accepted, OTP required.
+    let data = {};
+    try { data = await res.json(); } catch(e) {}
+
+    if(!res.ok){
+      throw new Error(
+        data.error ||
+        (res.status === 401
+          ? "Invalid username, password, or 2FA code."
+          : `Login failed (${res.status})`)
+      );
+    }
+
     if(data.two_factor_required){
       otpWrap.style.display = "block";
       otpInput.required = true;
-      submit.textContent = "Verify & Sign in";
-      otpInput.focus();
+      otpInput.value = "";
+
+      if(label) label.textContent = "Verify & Sign in";
+
       errorBox.textContent = "Enter your 6-digit authenticator code.";
       errorBox.classList.add("show");
+
+      requestAnimationFrame(()=>otpInput.focus());
       return;
     }
 
@@ -1130,35 +1177,34 @@ async function login(username,password){
     authenticated = true;
     hideLogin();
     apiPage = 1;
+
     await loadInquiries();
     toast("Login successful");
 
   }catch(error){
-    console.error("Login:",error);
-    errorBox.textContent =
-      error.message === "Unauthorized"
-        ? "Invalid username, password, or 2FA code."
-        : (error.message || "Unable to login");
+    console.error("Login:", error);
+
+    errorBox.textContent = error.message || "Unable to login";
     errorBox.classList.add("show");
 
-    // Keep OTP visible after a failed OTP attempt.
-    if(otpWrap && otpWrap.style.display !== "none"){
-      otpInput.focus();
-      otpInput.select();
+    // Keep the OTP step visible after an incorrect/failed OTP.
+    if(otpVisible){
+      otpWrap.style.display = "block";
+      otpInput.required = true;
+      requestAnimationFrame(()=>{
+        otpInput.focus();
+        otpInput.select();
+      });
     }
 
   }finally{
     submit.disabled = false;
 
-    const otpVisible =
-      otpWrap && otpWrap.style.display !== "none";
-
-    submit.textContent =
-      otpVisible
-        ? "Verify & Sign in"
-        : "Sign in";
+    const stillOtpVisible = otpWrap.style.display !== "none";
+    if(label) label.textContent = stillOtpVisible ? "Verify & Sign in" : "Sign in";
   }
 }
+
 async function logout(){
   const confirmed = await showConfirm("Log out?", "Your secure admin session will be ended.", "Log out", "logout");
   if(!confirmed) return;
@@ -1721,6 +1767,5 @@ checkSession();
   }
 })();
 </script>
-
 </body>
 </html>
