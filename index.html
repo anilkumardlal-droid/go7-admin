@@ -783,7 +783,7 @@ html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
                 <rect x="4" y="4" width="16" height="16" rx="3"></rect>
                 <path d="M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01M8 16h8"></path>
               </svg>
-              <input class="form-control" id="loginOtp" name="otp" type="text"
+              <input class="form-control" id="loginOtp" name="otp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}"
                      inputmode="numeric" autocomplete="one-time-code"
                      maxlength="6" pattern="[0-9]{6}"
                      placeholder="Enter 6-digit code">
