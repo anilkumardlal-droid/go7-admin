@@ -1,486 +1,381 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow, noarchive">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="noindex, nofollow, noarchive" name="robots"/>
 <title>GO7 Admin Dashboard</title>
 
-<style id="go7-fresh-ui">
+<style id="go7-admin-ui">
 :root{
   --brand:#3850d5;
-  --brand-2:#566ce1;
-  --navy:#111936;
-  --bg:#f5f7fb;
-  --card:#fff;
-  --ink:#172033;
-  --text:#344054;
-  --muted:#7b8798;
-  --line:#e5e9f0;
-  --soft:#f8faff;
+  --brand-hover:#2f46c7;
+  --navy:#101936;
+  --navy-2:#1b2e69;
+  --page:#f5f7fb;
+  --surface:#ffffff;
+  --surface-2:#fafbfc;
+  --surface-3:#f4f6fa;
+  --text:#182033;
+  --text-2:#344054;
+  --muted:#7c8798;
+  --muted-2:#98a2b3;
+  --line:#e4e8ef;
   --success:#159957;
-  --warning:#c97713;
   --danger:#c83b45;
-  --shadow:0 8px 30px rgba(20,31,55,.045);
+  --warning:#b7791f;
+  --shadow:0 12px 35px rgba(16,24,40,.06);
 }
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45;overflow-x:hidden}
+html,body{margin:0;width:100%;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--page);color:var(--text);font-size:14px;line-height:1.45;overflow-x:hidden}
 body{min-height:100vh}
 button,input,select,textarea{font:inherit;max-width:100%}
 button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.65}
 a{text-decoration:none;color:inherit}
-img,svg,canvas{max-width:100%}
-.app{min-height:100vh}
+svg{display:block}
 
-/* LOGIN */
-.login-screen{position:fixed;inset:0;z-index:1000;display:none;place-items:center;padding:24px;background:#f5f7fb;overflow:auto}
-.go7-login-shell{width:min(980px,100%);min-height:570px;display:grid;grid-template-columns:43% 57%;overflow:hidden;border:1px solid #dfe4ec;border-radius:18px;background:#fff;box-shadow:0 24px 70px rgba(15,23,42,.12)}
-.go7-login-visual{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-width:0;overflow:hidden;padding:34px;background:radial-gradient(circle at 85% 12%,rgba(111,132,255,.30),transparent 32%),radial-gradient(circle at 20% 90%,rgba(51,207,255,.13),transparent 34%),linear-gradient(145deg,#0a1024,#172750 52%,#3149bd)}
-.go7-login-grid{position:absolute;inset:0;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom right,#000,transparent 75%)}
-.go7-login-orbit{position:absolute;border:1px solid rgba(255,255,255,.08);border-radius:50%}
-.orbit-one{width:390px;height:390px;right:-220px;top:-175px}.orbit-two{width:290px;height:290px;right:-165px;top:-120px}
-.go7-login-brandmark{position:relative;z-index:2}.go7-login-brandmark .go7-logo-img{width:78px;height:78px;object-fit:contain;padding:0;border:0;background:transparent}
-.go7-login-visual-copy{position:relative;z-index:2;max-width:310px;margin-top:auto}.go7-login-visual-copy span{display:block;margin-bottom:11px;color:#aebaff;font-size:10px;font-weight:700;letter-spacing:.12em}.go7-login-visual-copy strong{display:block;color:#fff;font-size:31px;line-height:1.12;letter-spacing:-.035em}.go7-login-visual-copy p{margin:13px 0 0;color:rgba(255,255,255,.65);font-size:12px}
-.go7-login-secure{position:relative;z-index:2;display:flex;align-items:center;gap:8px;margin-top:30px;color:rgba(255,255,255,.62);font-size:10px}.go7-secure-dot{width:7px;height:7px;border-radius:50%;background:#38e69a;box-shadow:0 0 0 4px rgba(56,230,154,.10)}
-.go7-login-form-panel{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:56px 70px;background:#fff}
-.go7-login-mobile-brand{display:none}
-.go7-login-heading,.go7-login-form-panel #loginForm,.login-error,.go7-login-footer{width:100%;max-width:460px;margin-left:auto;margin-right:auto}
-.go7-login-heading{margin-bottom:26px}.go7-login-eyebrow{display:block;margin-bottom:9px;color:var(--brand);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}.go7-login-heading h1{margin:0;font-size:31px;line-height:1.08;letter-spacing:-.035em;font-weight:650}.go7-login-heading p{margin:9px 0 0;color:#8b95a5;font-size:12px}
-.go7-field{margin-bottom:17px}.go7-field label{display:block;margin-bottom:6px;color:#344054;font-size:11px;font-weight:600}.go7-label-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.go7-label-row span{color:#98a2b3;font-size:10px}
-.go7-input-wrap{position:relative}.go7-input-wrap>svg{position:absolute;left:12px;top:50%;z-index:2;width:17px;height:17px;transform:translateY(-50%);color:#98a2b3;pointer-events:none}.go7-input-wrap .form-control{display:block;width:100%;height:45px;padding:0 12px 0 40px;border:1px solid #d9dee7;border-radius:7px;background:#fff;color:#344054;outline:0;font-size:12px}.go7-input-wrap .form-control:focus{border-color:#91a0e9;box-shadow:0 0 0 3px rgba(56,80,213,.08)}
-#loginSubmit{width:100%;height:45px;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:3px;border:1px solid var(--brand);border-radius:7px;background:var(--brand);color:#fff;font-size:12px;font-weight:600}.login-submit svg{width:16px;height:16px}
-.login-error{display:none;margin-bottom:14px;padding:9px 11px;border:1px solid #efb8bd;border-radius:7px;background:#fff7f7;color:#b42318;font-size:10px}.login-error.show{display:block}
-.go7-login-footer{display:flex;align-items:center;justify-content:center;gap:11px;margin-top:24px;padding-top:16px;border-top:1px solid #eef0f3;color:#98a2b3;font-size:9px}.go7-footer-item{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.go7-footer-icon{width:13px;height:13px}.go7-login-footer i{width:1px;height:12px;background:#e4e7ec}
+/* AUTH */
+.login-screen{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:28px;background:#f5f7fb;overflow:auto}
+.go7-login-shell{width:min(930px,100%);min-height:560px;display:grid;grid-template-columns:38% 62%;overflow:hidden;border:1px solid #dfe4ec;border-radius:16px;background:#fff;box-shadow:0 24px 70px rgba(16,24,40,.13)}
+.go7-login-visual{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-width:0;overflow:hidden;padding:34px 32px;background:radial-gradient(circle at 82% 14%,rgba(102,123,255,.28),transparent 31%),radial-gradient(circle at 12% 94%,rgba(57,191,255,.13),transparent 33%),linear-gradient(150deg,#0c1530 0%,#172958 54%,#3049bd 100%)}
+.go7-login-visual:after{content:"";position:absolute;right:-150px;bottom:-190px;width:440px;height:440px;border:1px solid rgba(255,255,255,.08);border-radius:50%;box-shadow:0 0 0 48px rgba(255,255,255,.025),0 0 0 96px rgba(255,255,255,.02)}
+.go7-login-grid{position:absolute;inset:0;opacity:.17;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(135deg,#000,transparent 82%)}
+.go7-login-orbit{position:absolute;border:1px solid rgba(255,255,255,.075);border-radius:50%}.orbit-one{width:360px;height:360px;right:-205px;top:-180px}.orbit-two{width:270px;height:270px;right:-160px;top:-135px}
+.go7-login-brandmark,.go7-login-visual-copy,.go7-login-secure{position:relative;z-index:2}
+.go7-login-brandmark .go7-logo-img{width:66px;height:66px;object-fit:contain}
+.go7-login-visual-copy{max-width:290px;margin-top:auto;padding-top:45px}.go7-login-visual-copy span{display:block;margin-bottom:10px;color:#aebaff;font-size:10px;font-weight:800;letter-spacing:.12em}.go7-login-visual-copy strong{display:block;color:#fff;font-size:29px;line-height:1.13;letter-spacing:-.035em}.go7-login-visual-copy p{margin:12px 0 0;color:rgba(255,255,255,.62);font-size:11px}
+.go7-login-secure{display:flex;align-items:center;gap:8px;margin-top:34px;color:rgba(255,255,255,.62);font-size:9px}.go7-secure-dot{width:7px;height:7px;border-radius:50%;background:#39e69b;box-shadow:0 0 0 4px rgba(57,230,155,.10)}
+.go7-login-form-panel{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:48px 58px;background:#fcfcfc}
+.go7-login-heading,.go7-login-form-panel #loginForm,.login-error,.go7-login-footer{width:100%;max-width:420px;margin-left:auto;margin-right:auto}
+.go7-login-heading{margin-bottom:24px}.go7-login-eyebrow{display:block;margin-bottom:8px;color:var(--brand);font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.go7-login-heading h1{margin:0;color:#182033;font-size:32px;line-height:1.05;letter-spacing:-.04em;font-weight:700}.go7-login-heading p{margin:10px 0 0;color:#8a95a5;font-size:12px}
+.go7-field{margin-bottom:16px}.go7-field label{display:block;margin-bottom:6px;color:#344054;font-size:11px;font-weight:650}.go7-label-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.go7-label-row span{color:#98a2b3;font-size:9px}
+.go7-input-wrap{position:relative}.go7-input-wrap>svg{position:absolute;left:13px;top:50%;z-index:2;width:17px;height:17px;transform:translateY(-50%);color:#98a2b3;pointer-events:none}.go7-input-wrap .form-control{display:block;width:100%;height:46px;padding:0 13px 0 41px;border:1px solid #d9dee7;border-radius:8px;background:#fff;color:#344054;outline:0;font-size:12px;transition:border-color .15s,box-shadow .15s,background .15s}.go7-input-wrap .form-control::placeholder{color:#a0a9b7}.go7-input-wrap .form-control:focus{border-color:#8b99e8;box-shadow:0 0 0 3px rgba(56,80,213,.09);background:#fff}
+#otpWrap{margin-top:0}
+.login-error{display:none;margin-bottom:13px;padding:9px 11px;border:1px solid #efc0c4;border-radius:7px;background:#fff7f7;color:#b42318;font-size:10px}.login-error.show{display:block}
+.login-submit{width:100%;height:46px;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:2px;border:1px solid var(--brand);border-radius:8px;background:var(--brand);color:#fff;font-size:12px;font-weight:700;box-shadow:0 7px 18px rgba(56,80,213,.16);transition:background .15s,transform .15s,box-shadow .15s}.login-submit:hover{background:var(--brand-hover);box-shadow:0 9px 22px rgba(56,80,213,.20)}.login-submit:active{transform:translateY(1px)}.login-submit svg{width:16px;height:16px}
+.go7-login-footer{display:flex;align-items:center;justify-content:center;gap:11px;margin-top:22px;padding-top:15px;border-top:1px solid #e9ecf1;color:#9aa4b2;font-size:9px}.go7-footer-item{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.go7-footer-icon{width:13px;height:13px}.go7-login-footer i{width:1px;height:11px;background:#e4e7ec}.go7-login-mobile-brand{display:none}
 
-/* APP SHELL */
-.sidebar{position:fixed;inset:0 auto 0 0;z-index:100;width:252px;height:100dvh;display:flex;flex-direction:column;overflow:auto;background:#fff;border-right:1px solid var(--line)}
-.brand{height:68px;display:flex;align-items:center;padding:0 20px;border-bottom:1px solid var(--line)}
-.brand .go7-logo-img{width:38px;height:38px;object-fit:contain}
-.nav-title{padding:20px 17px 8px;color:#98a2b3;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-.nav{display:flex;flex-direction:column;gap:3px;padding:0 10px}
-.nav button{width:100%;min-height:41px;display:flex;align-items:center;gap:11px;border:0;border-radius:7px;padding:9px 11px;background:transparent;color:#667085;font-size:12px;font-weight:600;text-align:left}
-.nav button svg{width:17px;height:17px;flex:none;color:#98a2b3}.nav button:hover{background:#f7f8fb;color:#344054}.nav button.active{background:#eef1ff;color:var(--brand)}.nav button.active svg{color:var(--brand)}
-.sidebar-bottom{margin-top:auto;padding:10px 0 15px;border-top:1px solid var(--line)}
-.sidebar-bottom>.nav{padding:0 10px}.sidebar-bottom>.nav #logoutBtn{padding:0}
-.admin-mini{display:flex;align-items:center;gap:10px;margin:10px 12px 0;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fafbfc}.admin-mini .avatar{width:32px;height:32px;border-radius:50%;object-fit:cover}.admin-mini strong{display:block;color:#344054;font-size:11px}.admin-mini small{display:block;margin-top:2px;color:#98a2b3;font-size:9px}
+/* APP */
+.sidebar{position:fixed;inset:0 auto 0 0;z-index:900;width:236px;height:100dvh;display:flex;flex-direction:column;overflow:auto;background:#fff;border-right:1px solid var(--line)}
+.brand{height:64px;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--line)}.brand .go7-logo-img{width:39px;height:39px;object-fit:contain}
+.nav-title{padding:18px 16px 7px;color:#98a2b3;font-size:8px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.nav{display:flex;flex-direction:column;gap:2px;padding:0 9px}.nav button{width:100%;min-height:39px;display:flex;align-items:center;gap:10px;border:0;border-radius:7px;padding:8px 10px;background:transparent;color:#667085;font-size:11px;font-weight:600;text-align:left}.nav button svg{width:16px;height:16px;flex:none;color:#98a2b3}.nav button:hover{background:#f7f8fb;color:#344054}.nav button.active{background:#eef1ff;color:var(--brand)}.nav button.active svg{color:var(--brand)}
+.sidebar-bottom{margin-top:auto;padding:9px 0 14px;border-top:1px solid var(--line)}.admin-mini{display:flex;align-items:center;gap:9px;margin:9px 11px 0;padding:9px;border:1px solid var(--line);border-radius:8px;background:#fafbfc}.admin-mini .avatar{width:30px;height:30px;border-radius:50%;object-fit:cover}.admin-mini strong{display:block;color:#344054;font-size:10px}.admin-mini small{display:block;margin-top:2px;color:#98a2b3;font-size:8px}
+.main{min-height:100vh;margin-left:236px}.topbar{position:sticky;top:0;z-index:800;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.top-left,.top-actions{display:flex;align-items:center;gap:7px}.page-title{font-size:12px;font-weight:650;color:#344054}.mobile-menu{display:none;width:34px;height:34px;place-items:center;border:1px solid var(--line);border-radius:7px;background:#fff;color:#667085}.icon-btn,.theme-toggle{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:7px;background:#fff;color:#667085}.icon-btn svg,.theme-toggle svg{width:16px;height:16px}.icon-btn:hover,.theme-toggle:hover{color:var(--brand);background:#fafbff}
+.content{width:100%;max-width:1480px;margin:0 auto;padding:22px 24px 40px}.page{display:none}.page.active{display:block}.welcome{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;padding:17px 18px;border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:var(--shadow)}.welcome h1{margin:0;color:var(--text);font-size:19px;font-weight:700;letter-spacing:-.025em}.welcome p{margin:4px 0 0;color:#8b95a5;font-size:10px}.primary{min-height:35px;display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border:1px solid var(--brand);border-radius:7px;background:var(--brand);color:#fff;font-size:10px;font-weight:700}.primary:hover{background:var(--brand-hover)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px}.card{border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:var(--shadow)}.stat{position:relative;min-height:118px;padding:14px;overflow:hidden}.stat:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,var(--brand),#7c8cf0)}.stat-top{display:flex;align-items:center;justify-content:space-between}.stat-label{color:#8993a3;font-size:8px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.stat-icon{width:32px;height:32px;display:grid;place-items:center;border:1px solid #e0e5ff;border-radius:7px;background:#f2f4ff;color:var(--brand)}.stat-icon svg{width:16px;height:16px}.stat-value{margin-top:12px;color:#172033;font-size:26px;line-height:1;font-weight:700;letter-spacing:-.04em}.stat-note{margin-top:6px;color:#98a2b3;font-size:8px}.trend-up strong{color:var(--success)}.trend-down strong{color:var(--warning)}
+.grid-2,.analytics-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,1fr);gap:11px}.section-card{overflow:hidden}.section-head{min-height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;border-bottom:1px solid #eef0f3}.section-head h2{margin:0;color:#344054;font-size:11px;font-weight:700}.link-btn{border:0;background:transparent;color:var(--brand);font-size:9px;font-weight:700}.activity{padding:0 15px}.activity-row{display:flex;align-items:flex-start;gap:9px;padding:11px 0;border-bottom:1px solid #f0f2f5}.activity-row:last-child{border-bottom:0}.activity-dot{width:7px;height:7px;flex:none;margin-top:5px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 3px #eef1ff}.activity-row strong{color:#344054;font-size:10px}.activity-row p{margin:2px 0 0;color:#98a2b3;font-size:8px}.activity-time{margin-left:auto;color:#98a2b3;font-size:8px}.quick{display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:12px 15px 15px}.quick button{min-height:60px;padding:9px;text-align:left;border:1px solid var(--line);border-radius:7px;background:#fff;color:#344054;font-size:9px;font-weight:700}.quick button:hover{border-color:#cbd2eb;background:#fafbff;color:var(--brand)}.quick small{display:block;margin-top:3px;color:#98a2b3;font-size:8px;font-weight:400}
 
-.main{min-height:100vh;margin-left:252px}.topbar{position:sticky;top:0;z-index:80;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.top-left,.top-actions{display:flex;align-items:center;gap:8px}.page-title{font-size:13px;font-weight:650;color:#344054}.mobile-menu{display:none;width:36px;height:36px;place-items:center;border:1px solid var(--line);border-radius:7px;background:#fff;color:#667085}.icon-btn,.theme-toggle{width:35px;height:35px;display:grid;place-items:center;border:1px solid var(--line);border-radius:7px;background:#fff;color:#667085}.icon-btn:hover,.theme-toggle:hover{color:var(--brand);background:#fafbff}
-.content{width:100%;max-width:1500px;margin:0 auto;padding:24px 26px 42px}.page{display:none}.page.active{display:block}
-.welcome{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:17px;padding:18px 20px;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:var(--shadow)}.welcome h1{margin:0;color:#172033;font-size:20px;font-weight:650;letter-spacing:-.025em}.welcome p{margin:5px 0 0;color:#8993a3;font-size:11px}
-.primary{min-height:36px;display:inline-flex;align-items:center;justify-content:center;padding:8px 13px;border:1px solid var(--brand);border-radius:7px;background:var(--brand);color:#fff;font-size:11px;font-weight:650}.primary:hover{background:#3046c5}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}.card{border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:var(--shadow)}
-.stat{position:relative;min-height:128px;padding:16px;overflow:hidden}.stat:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,var(--brand),#8290ef)}.stat-top{display:flex;align-items:center;justify-content:space-between}.stat-label{color:#8993a3;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.stat-icon{width:34px;height:34px;display:grid;place-items:center;border:1px solid #e0e5ff;border-radius:7px;background:#f1f3ff;color:var(--brand)}.stat-icon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8}.stat-value{margin-top:13px;color:#172033;font-size:28px;line-height:1;font-weight:650;letter-spacing:-.04em}.stat-note{margin-top:6px;color:#98a2b3;font-size:9px}.trend-up strong{color:#159957}.trend-down strong{color:#c97713}
-.grid-2{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr);gap:12px}.section-card{overflow:hidden}.section-head{min-height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #eef0f3}.section-head h2{margin:0;color:#344054;font-size:12px;font-weight:650}.link-btn{border:0;background:transparent;color:var(--brand);font-size:10px;font-weight:650}.activity{padding:2px 16px}.activity-row{display:flex;align-items:flex-start;gap:9px;padding:12px 0;border-bottom:1px solid #f0f2f5}.activity-row:last-child{border-bottom:0}.activity-dot{width:7px;height:7px;flex:none;margin-top:5px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 3px #eef1ff}.activity-row strong{color:#344054;font-size:11px}.activity-row p{margin:2px 0 0;color:#98a2b3;font-size:9px}.activity-time{margin-left:auto;color:#98a2b3;font-size:9px}.quick{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:13px 16px 16px}.quick button{min-height:65px;padding:10px;text-align:left;border:1px solid var(--line);border-radius:7px;background:#fff;color:#344054;font-size:10px;font-weight:650}.quick button:hover{border-color:#cbd2eb;background:#fafbff;color:var(--brand)}.quick small{display:block;margin-top:3px;color:#98a2b3;font-size:8px;font-weight:400}
+/* TABLES */
+.table-card{overflow:hidden}.table-toolbar{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;padding:11px 13px;border-bottom:1px solid var(--line);background:#fbfcfe}.toolbar-left{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.search{position:relative}.search input{width:285px;height:35px;padding:0 10px 0 33px;border:1px solid #dfe3ea;border-radius:7px;background:#fff;outline:0;color:#344054;font-size:9px}.search svg{position:absolute;left:9px;top:10px;width:14px;height:14px;color:#98a2b3}.select{height:35px;padding:0 9px;border:1px solid #dfe3ea;border-radius:7px;background:#fff;color:#475467;font-size:9px}.table-wrap{width:100%;overflow:auto}.table-wrap table{width:100%;min-width:760px;border-collapse:collapse}.table-wrap th,.table-wrap td{padding:9px 11px;border-bottom:1px solid #eef0f3;text-align:left;vertical-align:middle}.table-wrap th{height:36px;background:#f8fafc;color:#7b8794;font-size:7px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.table-wrap td{color:#667085;font-size:9px}.table-wrap td strong{color:#344054;font-weight:650}.table-wrap tbody tr:hover{background:#fafbff}.status{display:inline-flex;align-items:center;gap:5px;padding:4px 7px;border-radius:999px;font-size:7px;font-weight:750}.status:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}.status.new{color:#2563eb;background:#eff6ff}.status.progress{color:#b7791f;background:#fff8e7}.status.replied{color:#159957;background:#effbf4}.status.closed{color:#64748b;background:#f1f5f9}.actions{display:flex;justify-content:flex-end;gap:4px}.small-btn{min-height:29px;padding:6px 8px;border:1px solid #dfe3ea;border-radius:6px;background:#fff;color:#475467;font-size:8px;font-weight:650}.small-btn:hover{color:var(--brand);border-color:#c8d0ea}.danger-btn{min-height:31px;padding:6px 9px;border:1px solid #efc6ca;border-radius:6px;background:#fff8f8;color:var(--danger);font-size:8px;font-weight:700}.pagination{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 13px;color:#98a2b3;font-size:8px}.pager{display:flex;gap:4px}.pager button{width:27px;height:27px;border:1px solid #dfe3ea;border-radius:6px;background:#fff;color:#667085}.pager button.active{background:#eef1ff;color:var(--brand);border-color:#ccd3f5}
 
-.table-card{overflow:hidden}.table-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--line);background:#fbfcfe}.toolbar-left{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.search{position:relative}.search input{width:290px;height:36px;padding:0 11px 0 34px;border:1px solid #dfe3ea;border-radius:7px;background:#fff;outline:0;color:#344054;font-size:10px}.search svg{position:absolute;left:10px;top:10px;width:15px;height:15px;color:#98a2b3}.select{height:36px;padding:0 10px;border:1px solid #dfe3ea;border-radius:7px;background:#fff;color:#475467;font-size:10px}
-.table-wrap{width:100%;overflow:auto}.table-wrap table{width:100%;min-width:780px;border-collapse:collapse}.table-wrap th,.table-wrap td{padding:10px 12px;border-bottom:1px solid #eef0f3;text-align:left;vertical-align:middle}.table-wrap th{height:38px;background:#f8fafc;color:#7b8794;font-size:8px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.table-wrap td{color:#667085;font-size:10px}.table-wrap td strong{color:#344054;font-weight:650}.table-wrap tbody tr:hover{background:#fafbff}
-.status{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;font-size:8px;font-weight:750}.status:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}.status.new{color:#2563eb;background:#eff6ff}.status.progress{color:#c97713;background:#fff7ed}.status.replied{color:#159957;background:#effbf4}.status.closed{color:#64748b;background:#f1f5f9}.actions{display:flex;justify-content:flex-end;gap:5px}.small-btn{min-height:30px;padding:6px 9px;border:1px solid #dfe3ea;border-radius:6px;background:#fff;color:#475467;font-size:9px;font-weight:650}.small-btn:hover{color:var(--brand);border-color:#c8d0ea}.danger-btn{min-height:32px;padding:7px 10px;border:1px solid #f0c7cb;border-radius:6px;background:#fff7f7;color:#c83b45;font-size:10px;font-weight:650}.pagination{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;color:#98a2b3;font-size:9px}.pager{display:flex;gap:4px}.pager button{width:28px;height:28px;border:1px solid #dfe3ea;border-radius:6px;background:#fff;color:#667085}.pager button.active{background:#eef1ff;color:var(--brand);border-color:#ccd3f5}
+/* SETTINGS / ANALYTICS */
+.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.setting-card{padding:15px}.setting-card h3{margin:0;color:#344054;font-size:11px;font-weight:700}.setting-card>p{margin:4px 0 10px;color:#98a2b3;font-size:8px}.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid #eef0f3}.toggle{width:34px;height:20px;padding:0;border:0;border-radius:999px;background:#d7dde6;position:relative}.toggle:after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:.15s}.toggle.on{background:var(--brand)}.toggle.on:after{left:17px}.detail-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid #eef0f3;color:#667085;font-size:9px}.detail-row strong{color:#344054}.chart-card{padding:15px}.chart{height:230px;display:flex;align-items:flex-end;gap:11px;padding:18px 10px 27px;border-bottom:1px solid #edf0f3}.bar{position:relative;flex:1;max-width:58px;min-height:8px;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#566ce1,#9ba7ed)}.bar span{position:absolute;left:50%;bottom:-19px;transform:translateX(-50%);font-size:8px;color:#98a2b3}.chart-legend{margin-top:10px;color:#98a2b3;font-size:8px}
 
-.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.setting-card{padding:17px}.setting-card h3{margin:0;color:#344054;font-size:12px;font-weight:650}.setting-card>p{margin:4px 0 12px;color:#98a2b3;font-size:9px}.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid #eef0f3}.toggle{width:34px;height:20px;padding:0;border:0;border-radius:999px;background:#d7dde6;position:relative}.toggle:after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:.15s}.toggle.on{background:var(--brand)}.toggle.on:after{left:17px}.detail-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #eef0f3;color:#667085;font-size:10px}.detail-row strong{color:#344054}
+/* CUSTOMER INQUIRY */
+.inquiry-page-open .content{padding-top:18px}.inquiry-page-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px;padding:0 0 13px;border-bottom:1px solid var(--line)}.inquiry-page-heading{display:flex;align-items:flex-start;gap:10px;min-width:0}.inquiry-page-heading>div:last-child{min-width:0}.inquiry-page-heading .eyebrow{margin:2px 0 5px;color:var(--brand);font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.inquiry-page-heading h1{margin:0;color:var(--text);font-size:23px;line-height:1.1;font-weight:700;letter-spacing:-.035em;overflow-wrap:anywhere}.inquiry-page-heading #drawerSubtitle{margin-top:5px;color:#8b95a5;font-size:9px}.back-inquiries-btn{width:29px;height:29px;display:grid;place-items:center;margin-top:1px;border:1px solid var(--line);border-radius:6px;background:#fff;color:#667085}.back-inquiries-btn svg{width:15px;height:15px}.inquiry-page-actions{display:flex;align-items:center;gap:6px}.inquiry-action-back{white-space:nowrap}
+.inquiry-view-shell{overflow:hidden;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:var(--shadow)}.inquiry-view-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;background:#fff}.inquiry-view-body>.form-group{grid-column:1/-1;margin:0;padding:13px 15px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:#fff}.inquiry-view-body>.form-group label,.inquiry-view-body>.reply-box label{display:block;margin:0 0 6px;color:#8792a3;font-size:7px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}.inquiry-view-body>.form-group .form-control,.inquiry-view-body>.reply-box .form-control{width:100%;border:1px solid #dfe4ec;border-radius:7px;background:#fff;color:#344054;outline:0;padding:9px 10px;font-size:10px;transition:border-color .15s,box-shadow .15s}.inquiry-view-body>.form-group .form-control:focus,.inquiry-view-body>.reply-box .form-control:focus{border-color:#8997e7;box-shadow:0 0 0 3px rgba(56,80,213,.08)}.inquiry-view-body>.form-group select.form-control{height:40px;padding:0 10px}.inquiry-view-body>.form-group textarea.form-control{min-height:120px;resize:vertical}
+.inquiry-view-body>.detail-row{min-width:0;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:13px;padding:13px 15px;border:0;border-bottom:1px solid var(--line);background:#fff}.inquiry-view-body>.detail-row:nth-of-type(even){border-left:1px solid var(--line)}.detail-label{display:flex;align-items:center;gap:8px;min-width:0;color:#8792a3;font-size:7px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.detail-label svg{width:15px;height:15px;flex:none;fill:none;stroke:#9aa6b7;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.inquiry-view-body>.detail-row>strong,.inquiry-view-body>.detail-row>span:last-child:not(.detail-label){max-width:66%;color:#344054;font-size:9px;font-weight:650;text-align:right;overflow-wrap:anywhere}
+.message-group{background:#fff!important}.message-box{min-height:70px;padding:11px;border:1px solid #e0e5ed;border-radius:7px;background:#fafbfc;color:#475467;font-size:9px;line-height:1.55;overflow-wrap:anywhere}.field-hint{margin-top:6px;color:#98a2b3;font-size:8px;line-height:1.4}
+.reply-box{grid-column:1/-1;margin:0;padding:14px 15px 15px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:#f3f5ff}.reply-box .form-group{margin:0 0 10px;padding:0;border:0;background:transparent}.reply-box .form-group:last-of-type{margin-bottom:0}.reply-box input.form-control{height:40px}.reply-box textarea.form-control{min-height:105px;resize:vertical}.reply-hint{margin-top:6px;color:#8b98aa;font-size:8px;line-height:1.45}.reply-actions{display:flex;justify-content:flex-end;margin-top:9px}.reply-actions .primary{min-width:100px}
+.inquiry-view-footer{display:flex;align-items:center;justify-content:flex-end;gap:6px;flex-wrap:wrap;padding:11px 14px;background:#fff}.inquiry-view-footer .primary,.inquiry-view-footer .small-btn,.inquiry-view-footer .danger-btn{min-height:32px}
 
-.drawer{position:fixed;right:0;top:0;bottom:0;z-index:300;width:min(680px,100vw);display:flex;flex-direction:column;background:#fff;border-left:1px solid var(--line);box-shadow:-24px 0 60px rgba(9,18,45,.16);transform:translateX(100%);transition:transform .22s ease}.drawer.open{transform:translateX(0)}.drawer-head{min-height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--line)}.drawer-head h2{margin:0;font-size:16px;color:#344054}.overlay{position:fixed;inset:0;z-index:250;display:none;background:rgba(15,23,42,.35);backdrop-filter:blur(2px)}.overlay.show{display:block}.drawer-body{flex:1;overflow:auto;padding:18px;background:#f6f8fb}.drawer-foot{display:flex;justify-content:flex-end;gap:7px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--line);background:#fff}.inquiry-view-body{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-group{padding:12px;border:1px solid var(--line);border-radius:9px;background:#fff}.form-group.full{grid-column:1/-1}.form-group label{display:block;margin-bottom:4px;color:#98a2b3;font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.message-box,.reply-box{padding:11px;border:1px solid #e1e6ef;border-radius:8px;background:#f9fbff;color:#475467;font-size:10px;line-height:1.55}.reply-box{background:#f1f4ff}
-
-.toast{position:fixed;right:18px;bottom:18px;z-index:500;display:none;max-width:320px;padding:10px 13px;border:1px solid var(--line);border-radius:7px;background:#fff;color:#344054;box-shadow:0 12px 30px rgba(16,24,40,.15);font-size:10px}.toast.show{display:block}
-.go7-modal-backdrop{position:fixed;inset:0;z-index:400;display:none;place-items:center;padding:16px;background:rgba(15,23,42,.36)}.go7-modal-backdrop.show{display:grid}.go7-modal{width:min(390px,100%);padding:20px;border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:0 18px 50px rgba(16,24,40,.18)}.go7-modal h3{margin:0;font-size:14px}.go7-modal p{margin:7px 0 15px;color:#667085;font-size:10px}.go7-modal-actions{display:flex;justify-content:flex-end;gap:7px}
-
-/* ANALYTICS */
-.analytics-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:12px}.chart-card{padding:16px}.chart{height:240px;display:flex;align-items:flex-end;gap:12px;padding:20px 10px 28px;border-bottom:1px solid #edf0f3}.bar{position:relative;flex:1;max-width:60px;min-height:8px;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#566ce1,#9ba7ed)}.bar span{position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);font-size:8px;color:#98a2b3}.chart-legend{margin-top:12px;color:#98a2b3;font-size:9px}
+/* COMMON OVERLAYS */
+.toast{position:fixed;right:16px;bottom:16px;z-index:1800;display:none;max-width:320px;padding:9px 12px;border:1px solid var(--line);border-radius:7px;background:#fff;color:#344054;box-shadow:0 12px 30px rgba(16,24,40,.15);font-size:9px}.toast.show{display:block}.go7-modal-backdrop{position:fixed;inset:0;z-index:1700;display:none;place-items:center;padding:15px;background:rgba(15,23,42,.38)}.go7-modal-backdrop.show{display:grid}.go7-modal{width:min(390px,100%);padding:19px;border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:0 18px 50px rgba(16,24,40,.18)}.go7-modal h3{margin:0;font-size:13px}.go7-modal p{margin:7px 0 14px;color:#667085;font-size:9px}.go7-modal-actions{display:flex;justify-content:flex-end;gap:6px}
 
 /* DARK */
-html[data-theme="dark"]{--bg:#101722;--card:#18212d;--ink:#edf2f7;--text:#d7dee8;--muted:#8f9baa;--line:#2a3543;--soft:#202a36}
-html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
-html[data-theme="dark"] .sidebar,html[data-theme="dark"] .topbar,html[data-theme="dark"] .card,html[data-theme="dark"] .welcome,html[data-theme="dark"] .table-toolbar,html[data-theme="dark"] .drawer,html[data-theme="dark"] .drawer-head,html[data-theme="dark"] .drawer-foot,html[data-theme="dark"] .form-group,html[data-theme="dark"] .setting-card,html[data-theme="dark"] .go7-modal{background:#18212d;border-color:#2a3543}
-html[data-theme="dark"] .brand,html[data-theme="dark"] .section-head{border-color:#2a3543}
-html[data-theme="dark"] .brand,html[data-theme="dark"] .page-title,html[data-theme="dark"] .welcome h1,html[data-theme="dark"] .section-head h2,html[data-theme="dark"] .stat-value,html[data-theme="dark"] .setting-card h3,html[data-theme="dark"] .detail-row strong{color:#edf2f7}
-html[data-theme="dark"] .welcome p,html[data-theme="dark"] .stat-label,html[data-theme="dark"] .stat-note,html[data-theme="dark"] .setting-card>p,html[data-theme="dark"] .activity-row p,html[data-theme="dark"] .activity-time{color:#8f9baa}
-html[data-theme="dark"] .nav button:hover,html[data-theme="dark"] .quick button:hover{background:#202b38;color:#edf2f7}
-html[data-theme="dark"] .nav button.active{background:#232e48}
-html[data-theme="dark"] .search input,html[data-theme="dark"] .select,html[data-theme="dark"] .form-control,html[data-theme="dark"] .small-btn,html[data-theme="dark"] .icon-btn,html[data-theme="dark"] .theme-toggle{background:#18212d;border-color:#334151;color:#edf2f7}
-html[data-theme="dark"] .table-wrap th{background:#202a36;color:#8f9baa}
-html[data-theme="dark"] .table-wrap td{border-color:#26313e;color:#b8c3cf}
-html[data-theme="dark"] .table-wrap tbody tr:hover{background:#202b38}
-html[data-theme="dark"] .drawer-body{background:#101722}.login-screen{background:#101722}
-html[data-theme="dark"] .go7-login-shell{border-color:#2a3543;background:#18212d}.go7-login-form-panel{background:#18212d}.go7-login-heading h1,html[data-theme="dark"] .go7-field label{color:#edf2f7}.go7-input-wrap .form-control{background:#18212d;border-color:#334151;color:#edf2f7}.go7-login-footer{border-color:#2a3543}
+html[data-theme="dark"]{--page:#0f151f;--surface:#18212d;--surface-2:#1d2733;--surface-3:#202a36;--text:#edf2f7;--text-2:#d7dee8;--muted:#8f9baa;--muted-2:#9aa5b4;--line:#2a3543;--shadow:0 12px 35px rgba(0,0,0,.16)}
+html[data-theme="dark"] body{background:var(--page);color:var(--text)}html[data-theme="dark"] .sidebar,html[data-theme="dark"] .topbar,html[data-theme="dark"] .welcome,html[data-theme="dark"] .card,html[data-theme="dark"] .table-toolbar,html[data-theme="dark"] .setting-card,html[data-theme="dark"] .inquiry-view-shell,html[data-theme="dark"] .inquiry-view-body>.detail-row,html[data-theme="dark"] .inquiry-view-body>.form-group,html[data-theme="dark"] .inquiry-view-footer,html[data-theme="dark"] .go7-modal{background:#18212d;border-color:#2a3543}html[data-theme="dark"] .brand{border-color:#2a3543}html[data-theme="dark"] .page-title,html[data-theme="dark"] .welcome h1,html[data-theme="dark"] .section-head h2,html[data-theme="dark"] .stat-value,html[data-theme="dark"] .setting-card h3,html[data-theme="dark"] .detail-row strong,html[data-theme="dark"] .inquiry-page-heading h1,html[data-theme="dark"] .inquiry-view-body>.detail-row>strong,html[data-theme="dark"] .inquiry-view-body>.detail-row>span:last-child:not(.detail-label){color:#edf2f7}html[data-theme="dark"] .welcome p,html[data-theme="dark"] .stat-label,html[data-theme="dark"] .stat-note,html[data-theme="dark"] .setting-card>p,html[data-theme="dark"] .activity-row p,html[data-theme="dark"] .activity-time,html[data-theme="dark"] .inquiry-page-heading #drawerSubtitle,html[data-theme="dark"] .field-hint{color:#8f9baa}html[data-theme="dark"] .nav button:hover,html[data-theme="dark"] .quick button:hover{background:#202b38;color:#edf2f7}html[data-theme="dark"] .nav button.active{background:#232e48}html[data-theme="dark"] .admin-mini{background:#1d2733;border-color:#2a3543}html[data-theme="dark"] .admin-mini strong{color:#edf2f7}html[data-theme="dark"] .search input,html[data-theme="dark"] .select,html[data-theme="dark"] .icon-btn,html[data-theme="dark"] .theme-toggle,html[data-theme="dark"] .small-btn,html[data-theme="dark"] .back-inquiries-btn,html[data-theme="dark"] .go7-input-wrap .form-control,html[data-theme="dark"] .inquiry-view-body>.form-group .form-control,html[data-theme="dark"] .inquiry-view-body>.reply-box .form-control{background:#18212d;border-color:#334151;color:#edf2f7}html[data-theme="dark"] .table-wrap th{background:#202a36;color:#8f9baa}html[data-theme="dark"] .table-wrap td{border-color:#26313e;color:#b8c3cf}html[data-theme="dark"] .table-wrap tbody tr:hover{background:#202b38}html[data-theme="dark"] .inquiry-view-body>.message-group{background:#18212d!important}html[data-theme="dark"] .message-box{background:#202a36;border-color:#334151;color:#d7dee8}html[data-theme="dark"] .reply-box{background:#202a48}html[data-theme="dark"] .go7-login-shell{border-color:#2a3543}html[data-theme="dark"] .go7-login-form-panel{background:#fcfcfc}html[data-theme="dark"] .go7-login-heading h1,html[data-theme="dark"] .go7-field label{color:#182033}
+
+/* AUTH GATE */
+body.auth-loading{overflow:hidden}body.auth-loading .sidebar,body.auth-loading .main,body.auth-loading .toast,body.auth-loading .go7-modal-backdrop{visibility:hidden!important;pointer-events:none!important}body.auth-loading .login-screen{visibility:visible!important;pointer-events:auto!important}
 
 /* RESPONSIVE */
-@media(max-width:1180px){
-  .sidebar{width:232px}.main{margin-left:232px}.content{padding:22px 20px 38px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.analytics-grid{grid-template-columns:1fr}
-}
-@media(max-width:900px){
-  .sidebar{width:278px;transform:translateX(-105%);transition:transform .22s ease;box-shadow:18px 0 50px rgba(15,23,42,.22)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.mobile-menu{display:grid}.topbar{height:62px;padding:0 15px}.content{padding:18px 15px 34px}.welcome{padding:17px}.welcome h1{font-size:19px}
-  .table-toolbar{align-items:stretch}.toolbar-left{width:100%}.search,.search input,.select{width:100%}.table-wrap table{min-width:760px}.drawer{width:min(620px,100vw)}
-}
-@media(max-width:680px){
-  .stats{grid-template-columns:1fr 1fr}.welcome{align-items:flex-start;flex-direction:column}.welcome>.primary{width:100%}.settings-grid{grid-template-columns:1fr}.inquiry-view-body{grid-template-columns:1fr}.form-group.full{grid-column:auto}
-  .table-wrap{overflow:visible}.table-wrap table{min-width:0;display:block}.table-wrap thead{display:none}.table-wrap tbody,.table-wrap tbody tr{display:block;width:100%}.table-wrap tbody tr{padding:13px;border-bottom:1px solid #eef0f3}.table-wrap tbody td{display:block;padding:3px 0;border:0}.table-wrap tbody td:nth-child(1){font-weight:650}.table-wrap tbody td:nth-child(5){margin-top:5px}.actions{justify-content:flex-start;margin-top:5px}.pagination{gap:8px}
-  .login-screen{padding:0;place-items:stretch}.go7-login-shell{width:100%;min-height:100dvh;height:auto;display:block;border:0;border-radius:0;box-shadow:none}.go7-login-visual{display:none}.go7-login-form-panel{min-height:100dvh;padding:34px 20px 24px;justify-content:flex-start}.go7-login-mobile-brand{display:grid;place-items:center;margin:0 auto 28px}.go7-login-mobile-brand .go7-logo-img{width:68px;height:68px;padding:8px;border:1px solid #e1e5eb;border-radius:50%;background:#fff}.go7-login-heading h1{font-size:27px}
-}
-@media(max-width:430px){
-  .stats{grid-template-columns:1fr}.content{padding:15px 12px 28px}.welcome{border-radius:9px}.quick{grid-template-columns:1fr}.go7-login-form-panel{padding:26px 16px 20px}.go7-login-footer{flex-wrap:wrap;gap:7px}.go7-login-footer i{display:none}
-}
+@media(max-width:1180px){.sidebar{width:220px}.main{margin-left:220px}.content{padding:20px 18px 36px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.analytics-grid{grid-template-columns:1fr}.go7-login-shell{width:min(880px,100%)}.go7-login-form-panel{padding-left:46px;padding-right:46px}}
+@media(max-width:900px){.sidebar{width:270px;transform:translateX(-105%);transition:transform .22s ease;box-shadow:18px 0 50px rgba(15,23,42,.22)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.mobile-menu{display:grid}.topbar{height:60px;padding:0 14px}.content{padding:17px 14px 32px}.search,.search input,.select{width:100%}.toolbar-left{width:100%}.table-toolbar{align-items:stretch}.table-wrap table{min-width:740px}.go7-login-shell{grid-template-columns:40% 60%;min-height:540px}.go7-login-visual{padding:30px 27px}.go7-login-visual-copy strong{font-size:26px}.go7-login-form-panel{padding:42px 38px}}
+@media(max-width:680px){.stats{grid-template-columns:1fr 1fr}.welcome{align-items:flex-start;flex-direction:column}.welcome>.primary{width:100%}.settings-grid{grid-template-columns:1fr}.inquiry-page-top{align-items:flex-start}.inquiry-page-actions{display:none}.inquiry-page-heading h1{font-size:21px}.inquiry-view-body{grid-template-columns:1fr}.inquiry-view-body>.detail-row{min-height:67px;border-left:0!important}.inquiry-view-body>.detail-row>strong,.inquiry-view-body>.detail-row>span:last-child:not(.detail-label){max-width:58%;font-size:9px}.inquiry-view-footer{justify-content:stretch}.inquiry-view-footer>*{flex:1 1 30%;min-width:0}.login-screen{padding:0;place-items:stretch}.go7-login-shell{width:100%;min-height:100dvh;display:block;border:0;border-radius:0;box-shadow:none}.go7-login-visual{display:none}.go7-login-form-panel{min-height:100dvh;padding:32px 20px 24px;justify-content:flex-start;background:#fcfcfc}.go7-login-mobile-brand{display:grid;place-items:center;margin:0 auto 27px}.go7-login-mobile-brand .go7-logo-img{width:62px;height:62px}.go7-login-heading h1{font-size:28px}.go7-login-footer{flex-wrap:wrap;gap:7px}.go7-login-footer i{display:none}}
+@media(max-width:430px){.stats{grid-template-columns:1fr}.content{padding:14px 11px 27px}.quick{grid-template-columns:1fr}.go7-login-form-panel{padding:26px 16px 20px}.go7-login-heading{margin-bottom:22px}.go7-login-heading h1{font-size:27px}.go7-login-footer{font-size:8px}.inquiry-view-body>.detail-row{padding:12px}.inquiry-view-body>.form-group,.reply-box{padding-left:12px;padding-right:12px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-
-/* AUTH GATE + CUSTOMER INQUIRY FIXES */
-body.auth-loading{overflow:hidden}
-body.auth-loading .sidebar,
-body.auth-loading .main,
-body.auth-loading .overlay,
-body.auth-loading .drawer,
-body.auth-loading .toast,
-body.auth-loading .go7-modal-backdrop{visibility:hidden!important;pointer-events:none!important}
-body.auth-loading .login-screen{visibility:visible!important;pointer-events:auto!important}
-.go7-login-form-panel{background:#fcfcfc}
-
-.inquiry-page-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:16px;padding:2px 0 14px;border-bottom:1px solid var(--line)}
-.inquiry-page-heading{display:flex;align-items:flex-start;gap:11px;min-width:0}
-.inquiry-page-heading>div:last-child{min-width:0}
-.inquiry-page-heading .eyebrow{margin:2px 0 6px;color:var(--brand);font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
-.inquiry-page-heading h1{margin:0;color:var(--ink);font-size:25px;line-height:1.12;font-weight:650;letter-spacing:-.03em;overflow-wrap:anywhere}
-#drawerSubtitle{margin-top:6px;color:#98a2b3;font-size:10px}
-.back-inquiries-btn{width:34px;height:34px;display:grid;place-items:center;flex:none;margin-top:1px;border:1px solid var(--line);border-radius:7px;background:#fff;color:#667085}
-.back-inquiries-btn:hover{color:var(--brand);border-color:#cbd3ee;background:#fafbff}
-.back-inquiries-btn svg{width:16px;height:16px}
-.inquiry-view-shell{overflow:hidden;border:1px solid var(--line);border-radius:10px;background:#f6f8fb}
-.inquiry-view-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;background:#f6f8fb}
-.inquiry-view-body>.form-group{grid-column:1/-1;margin:0;border:0;border-radius:0;border-bottom:1px solid var(--line);box-shadow:none}
-.inquiry-view-body>.detail-row{min-width:0;min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 17px;border:0;border-bottom:1px solid var(--line);background:#fff}
-.inquiry-view-body>.detail-row:nth-of-type(even){border-left:1px solid var(--line)}
-.detail-label{display:flex;align-items:center;gap:8px;min-width:0;color:#98a2b3;font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
-.detail-label svg{width:17px!important;height:17px!important;min-width:17px;max-width:17px!important;display:block;color:#8b98aa;fill:none!important;stroke:currentColor!important;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.inquiry-view-body>.detail-row>strong,.inquiry-view-body>.detail-row>span:last-child:not(.detail-label){max-width:68%;color:#344054;font-size:10px;font-weight:600;text-align:right;overflow-wrap:anywhere}
-.inquiry-view-body>.form-group label{margin-bottom:7px}
-.inquiry-view-body>.form-group .form-control{width:100%;min-height:42px;border:1px solid #dfe4ec;border-radius:7px;background:#fff;color:#344054;outline:0;padding:9px 11px;font-size:10px}
-.inquiry-view-body>.form-group select.form-control{height:42px;padding:0 10px}
-.inquiry-view-body>.form-group textarea.form-control{min-height:125px;resize:vertical}
-.message-box{min-height:70px}
-.inquiry-view-body>.reply-box{grid-column:1/-1;margin:0;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:14px 17px;background:#f1f4ff}
-.inquiry-view-body>.reply-box .form-group{margin:0 0 9px;padding:0;border:0;background:transparent}
-.inquiry-view-body>.reply-box .form-group:last-of-type{margin-bottom:0}
-.reply-hint{margin-top:5px;color:#8b98aa;font-size:9px;line-height:1.45}
-.reply-actions{display:flex;justify-content:flex-end;margin-top:9px}
-.inquiry-view-footer{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap;padding:12px 15px;background:#fff}
-.inquiry-page-actions{display:flex;align-items:center;gap:7px}
-html[data-theme="dark"] .back-inquiries-btn,
-html[data-theme="dark"] .inquiry-view-body>.detail-row,
-html[data-theme="dark"] .inquiry-view-footer{background:#18212d;border-color:#2a3543}
-html[data-theme="dark"] .inquiry-view-body,
-html[data-theme="dark"] .inquiry-view-shell{background:#101722;border-color:#2a3543}
-html[data-theme="dark"] .inquiry-view-body>.reply-box{background:#202a48;border-color:#2a3543}
-html[data-theme="dark"] .inquiry-view-body>.form-group .form-control{background:#18212d;border-color:#334151;color:#edf2f7}
-html[data-theme="dark"] .inquiry-view-body>.detail-row>strong,html[data-theme="dark"] .inquiry-view-body>.detail-row>span:last-child:not(.detail-label){color:#edf2f7}
-
-@media(max-width:680px){
-  .inquiry-page-top{align-items:flex-start}.inquiry-page-actions{display:none}.inquiry-page-heading h1{font-size:21px}
-  .inquiry-view-body{grid-template-columns:1fr}.inquiry-view-body>.detail-row{min-height:68px;border-left:0!important}.inquiry-view-body>.detail-row>strong,.inquiry-view-body>.detail-row>span:last-child:not(.detail-label){max-width:58%}
-  .inquiry-view-footer{justify-content:stretch}.inquiry-view-footer>*{flex:1 1 30%;min-width:0}
-}
-
 </style>
-
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
-  <div class="go7-login-shell">
-    <section class="go7-login-visual" aria-hidden="true">
-      <div class="go7-login-orbit orbit-one"></div>
-      <div class="go7-login-orbit orbit-two"></div>
-      <div class="go7-login-grid"></div>
-      <div class="go7-login-brandmark">
-        <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="">
-      </div>
-      <div class="go7-login-visual-copy">
-        <span>GO7 ADMIN</span>
-        <strong>Control center for your<br>domain operations.</strong>
-        <p>Secure. Focused. Built for fast decisions.</p>
-      </div>
-      <div class="go7-login-secure">
-        <span class="go7-secure-dot"></span>
+<div class="go7-login-shell">
+<section aria-hidden="true" class="go7-login-visual">
+<div class="go7-login-orbit orbit-one"></div>
+<div class="go7-login-orbit orbit-two"></div>
+<div class="go7-login-grid"></div>
+<div class="go7-login-brandmark">
+<img alt="" class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png"/>
+</div>
+<div class="go7-login-visual-copy">
+<span>GO7 ADMIN</span>
+<strong>Control center for your<br/>domain operations.</strong>
+<p>Secure. Focused. Built for fast decisions.</p>
+</div>
+<div class="go7-login-secure">
+<span class="go7-secure-dot"></span>
         Secure administrator session
       </div>
-    </section>
-
-    <section class="go7-login-form-panel">
-      <div class="go7-login-mobile-brand">
-        <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="GO7.IN">
-      </div>
-
-      <div class="go7-login-heading">
-        <span class="go7-login-eyebrow">Administrator access</span>
-        <h1>Welcome back.</h1>
-        <p>Sign in to continue to your GO7.IN control center.</p>
-      </div>
-
-      <div class="login-error" id="loginError"></div>
-
-      <form id="loginForm" autocomplete="on">
-        <div class="go7-field">
-          <label for="loginUsername">Username</label>
-          <div class="go7-input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <circle cx="12" cy="8" r="3.5"></circle>
-              <path d="M5 20c.8-3.3 3.2-5 7-5s6.2 1.7 7 5"></path>
-            </svg>
-            <input class="form-control" id="loginUsername" name="username" type="text" autocomplete="username" placeholder="Enter your username" required>
-          </div>
-        </div>
-
-        <div class="go7-field">
-          <div class="go7-label-row">
-            <label for="loginPassword">Password</label>
-            <span>Administrator only</span>
-          </div>
-          <div class="go7-input-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <rect x="5" y="10" width="14" height="10" rx="2"></rect>
-              <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
-            </svg>
-            <input class="form-control" id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
-          </div>
-        </div>
-
-        <div id="otpWrap" style="display:none">
-          <div class="go7-field">
-            <div class="go7-label-row">
-              <label for="loginOtp">Authenticator code</label>
-              <span>6 digits</span>
-            </div>
-            <div class="go7-input-wrap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <rect x="4" y="4" width="16" height="16" rx="3"></rect>
-                <path d="M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01M8 16h8"></path>
-              </svg>
-              <input class="form-control" id="loginOtp" name="otp" type="text"
-                     inputmode="numeric" autocomplete="one-time-code"
-                     maxlength="6" pattern="[0-9]{6}"
-                     placeholder="Enter 6-digit code">
-            </div>
-          </div>
-        </div>
-
-        <button class="primary login-submit" id="loginSubmit" type="submit">
-          <span class="go7-submit-label">Sign in</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path>
-          </svg>
-        </button>
-      </form>
-
-      <div class="go7-login-footer">
-
-        <span class="go7-footer-item">
-      <svg class="go7-footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <path d="M12 3 19 6v5c0 4.4-2.7 8.1-7 10-4.3-1.9-7-5.6-7-10V6l7-3Z"></path>
-        <path d="m9 12 2 2 4-4"></path>
-      </svg>
-      <span>Protected by GO7 Admin API</span>
-    </span>
-        <i></i>
-        <span class="go7-footer-item">
-      <svg class="go7-footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-        <rect x="5" y="10" width="14" height="10" rx="2"></rect>
-        <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
-      </svg>
-      <span>Secure session</span>
-    </span>
-      </div>
-    </section>
-  </div>
+</section>
+<section class="go7-login-form-panel">
+<div class="go7-login-mobile-brand">
+<img alt="GO7.IN" class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png"/>
 </div>
-
+<div class="go7-login-heading">
+<span class="go7-login-eyebrow">Administrator access</span>
+<h1>Welcome back.</h1>
+<p>Sign in to continue to your GO7.IN control center.</p>
+</div>
+<div class="login-error" id="loginError"></div>
+<form autocomplete="on" id="loginForm">
+<div class="go7-field">
+<label for="loginUsername">Username</label>
+<div class="go7-input-wrap">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<circle cx="12" cy="8" r="3.5"></circle>
+<path d="M5 20c.8-3.3 3.2-5 7-5s6.2 1.7 7 5"></path>
+</svg>
+<input autocomplete="username" class="form-control" id="loginUsername" name="username" placeholder="Enter your username" required="" type="text"/>
+</div>
+</div>
+<div class="go7-field">
+<div class="go7-label-row">
+<label for="loginPassword">Password</label>
+<span>Administrator only</span>
+</div>
+<div class="go7-input-wrap">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="10" rx="2" width="14" x="5" y="10"></rect>
+<path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+</svg>
+<input autocomplete="current-password" class="form-control" id="loginPassword" name="password" placeholder="Enter your password" required="" type="password"/>
+</div>
+</div>
+<div id="otpWrap" style="display:none">
+<div class="go7-field">
+<div class="go7-label-row">
+<label for="loginOtp">Authenticator code</label>
+<span>6 digits</span>
+</div>
+<div class="go7-input-wrap">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="16" rx="3" width="16" x="4" y="4"></rect>
+<path d="M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01M8 16h8"></path>
+</svg>
+<input autocomplete="one-time-code" class="form-control" id="loginOtp" inputmode="numeric" maxlength="6" name="otp" pattern="[0-9]{6}" placeholder="Enter 6-digit code" type="text"/>
+</div>
+</div>
+</div>
+<button class="primary login-submit" id="loginSubmit" type="submit">
+<span class="go7-submit-label">Sign in</span>
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M5 12h13"></path><path d="m13 6 6 6-6 6"></path>
+</svg>
+</button>
+</form>
+<div class="go7-login-footer">
+<span class="go7-footer-item">
+<svg aria-hidden="true" class="go7-footer-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M12 3 19 6v5c0 4.4-2.7 8.1-7 10-4.3-1.9-7-5.6-7-10V6l7-3Z"></path>
+<path d="m9 12 2 2 4-4"></path>
+</svg>
+<span>Protected by GO7 Admin API</span>
+</span>
+<i></i>
+<span class="go7-footer-item">
+<svg aria-hidden="true" class="go7-footer-icon" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<rect height="10" rx="2" width="14" x="5" y="10"></rect>
+<path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+</svg>
+<span>Secure session</span>
+</span>
+</div>
+</section>
+</div>
+</div>
 <div class="app">
 <aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <img class="go7-logo-img" src="https://www.go7.in/images/favicon.png" alt="GO7.IN" loading="eager">
-  </div>
-
-  <div class="nav-title">Workspace</div>
-  <nav class="nav">
-    <button class="active" data-page="dashboard">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>Dashboard
+<div class="brand">
+<img alt="GO7.IN" class="go7-logo-img" loading="eager" src="https://www.go7.in/images/favicon.png"/>
+</div>
+<div class="nav-title">Workspace</div>
+<nav class="nav">
+<button class="active" data-page="dashboard">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="7" rx="1" width="7" x="3" y="3"></rect><rect height="7" rx="1" width="7" x="14" y="3"></rect><rect height="7" rx="1" width="7" x="3" y="14"></rect><rect height="7" rx="1" width="7" x="14" y="14"></rect></svg>Dashboard
     </button>
-    <button data-page="inquiries">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v13H7l-3 3V4Z"/><path d="M8 8h8M8 12h5"/></svg>Inquiries
+<button data-page="inquiries">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M4 4h16v13H7l-3 3V4Z"></path><path d="M8 8h8M8 12h5"></path></svg>Inquiries
     </button>
-    <button data-page="analytics">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="m7 15 4-5 3 3 5-7"/></svg>Analytics
+<button data-page="analytics">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M4 19V5M4 19h16"></path><path d="m7 15 4-5 3 3 5-7"></path></svg>Analytics
     </button>
-    <button data-page="settings">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V20h-2.4v-.2a1.7 1.7 0 0 0-1.03-1.56 1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.46 15a1.7 1.7 0 0 0-1.56-1.03H6v-2.4h.9A1.7 1.7 0 0 0 8.46 10a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.7-1.7.06.06A1.7 1.7 0 0 0 11.7 6.1 1.7 1.7 0 0 0 12.73 4.5V4h2.4v.5a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.56 1.03h.54v2.4h-.54A1.7 1.7 0 0 0 19.4 15Z"/></svg>Settings
+<button data-page="settings">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5Z"></path><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V20h-2.4v-.2a1.7 1.7 0 0 0-1.03-1.56 1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.46 15a1.7 1.7 0 0 0-1.56-1.03H6v-2.4h.9A1.7 1.7 0 0 0 8.46 10a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.7-1.7.06.06A1.7 1.7 0 0 0 11.7 6.1 1.7 1.7 0 0 0 12.73 4.5V4h2.4v.5a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.56 1.03h.54v2.4h-.54A1.7 1.7 0 0 0 19.4 15Z"></path></svg>Settings
     </button>
-  </nav>
-
-  <div class="sidebar-bottom">
-    <div class="nav-title">Account</div>
-    <button class="nav" style="border:0;background:transparent;padding:0" id="logoutBtn">
-      <span style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border-radius:9px;color:#64748b;font-weight:600">
-        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 17l5-5-5-5M15 12H3"/><path d="M21 3v18"/></svg>Logout
+</nav>
+<div class="sidebar-bottom">
+<div class="nav-title">Account</div>
+<button class="nav" id="logoutBtn" style="border:0;background:transparent;padding:0">
+<span style="display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border-radius:9px;color:#64748b;font-weight:600">
+<svg fill="none" height="19" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="19"><path d="M10 17l5-5-5-5M15 12H3"></path><path d="M21 3v18"></path></svg>Logout
       </span>
-    </button>
-    <div class="admin-mini">
-      <img class="avatar admin-profile-img" src="https://www.go7.in/images/info-anilsri.png" alt="Anil Srivastav" loading="lazy">
-      <div><strong>Administrator</strong><small>GO7.IN Admin</small></div>
-    </div>
-  </div>
-</aside>
-
-<main class="main">
-  <header class="topbar">
-    <div class="top-left">
-      <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-      <div class="page-title" id="pageTitle">Dashboard</div>
-    </div>
-    <div class="top-actions">
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme" title="Switch theme">
-  <svg id="themeToggleIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <circle cx="12" cy="12" r="4"></circle>
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-  </svg>
 </button>
-      <button class="icon-btn" id="refreshBtn" title="Refresh">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2M20 19v-4h-4"/></svg>
-      </button>
-      <button class="icon-btn" id="notificationBtn" title="Notifications">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
-      </button>
-    </div>
-  </header>
-
-  <div class="content">
+<div class="admin-mini">
+<img alt="Anil Srivastav" class="avatar admin-profile-img" loading="lazy" src="https://www.go7.in/images/info-anilsri.png"/>
+<div><strong>Administrator</strong><small>GO7.IN Admin</small></div>
+</div>
+</div>
+</aside>
+<main class="main">
+<header class="topbar">
+<div class="top-left">
+<button aria-label="Open menu" class="mobile-menu" id="mobileMenu">
+<svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+</button>
+<div class="page-title" id="pageTitle">Dashboard</div>
+</div>
+<div class="top-actions">
+<button aria-label="Switch theme" class="theme-toggle" id="themeToggle" title="Switch theme" type="button">
+<svg aria-hidden="true" fill="none" id="themeToggleIcon" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="4"></circle>
+<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+</svg>
+</button>
+<button class="icon-btn" id="refreshBtn" title="Refresh">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 5v4h4M4 13a8.1 8.1 0 0 0 15.5 2M20 19v-4h-4"></path></svg>
+</button>
+<button class="icon-btn" id="notificationBtn" title="Notifications">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path></svg>
+</button>
+</div>
+</header>
+<div class="content">
 <section class="page active" id="dashboard">
-      <div class="welcome">
-        <div><h1>Good evening, Anil</h1><p>Here’s what’s happening with your GO7.IN inquiries.</p><div id="apiConnectionStatus" style="font-size:11px;color:#16a34a;margin-top:7px">Connecting to GO7 Admin API…</div></div>
-        <button class="primary" onclick="showPage('inquiries')">View inquiries</button>
-      </div>
-
-      <div class="stats">
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Total Inquiries</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg></span></div><div class="stat-value" id="totalStat">128</div><div class="stat-note trend-up"><strong>+12%</strong> <span>vs last month</span></div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">New</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/></svg></span></div><div class="stat-value" id="newStat">12</div><div class="stat-note trend-up"><strong>+4%</strong> <span>need attention</span></div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">In Progress</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span></div><div class="stat-value" id="progressStat">8</div><div class="stat-note trend-down"><strong>-8%</strong> <span>from last week</span></div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Replied</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12 4 4 8-9"/></svg></span></div><div class="stat-value" id="repliedStat">108</div><div class="stat-note trend-up"><strong>+6%</strong> <span>response rate</span></div></div>
-      </div>
-
-      <div class="grid-2">
-        <div class="card section-card">
-          <div class="section-head"><h2>Recent inquiries</h2><button class="link-btn" onclick="showPage('inquiries')">View all</button></div>
-          <div class="activity" id="recentList"></div>
-        </div>
-        <div class="card section-card">
-          <div class="section-head"><h2>Quick actions</h2></div>
-          <div class="quick">
-            <button onclick="showPage('inquiries')">View inquiries<small>Review incoming messages</small></button>
-            <button onclick="showPage('analytics')">View analytics<small>See inquiry trends</small></button>
-            <button onclick="showPage('settings')">Admin settings<small>Manage preferences</small></button>
-            <button onclick="exportCSV()">Export CSV<small>Download inquiry data</small></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="page" id="inquiries">
-      <div class="welcome"><div><h1>Inquiries</h1><p>Manage customer inquiries and view complete submission details.</p></div><button class="primary" onclick="exportCSV()">Export CSV</button></div>
-      <div class="card table-card">
-        <div class="table-toolbar">
-          <div class="toolbar-left">
-            <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="searchInput" placeholder="Search name, email or message..."></div>
-            <select class="select" id="statusFilter"><option value="all">All statuses</option><option value="New">New</option><option value="Read">Read</option><option value="Replied">Replied</option><option value="Closed">Closed</option></select>
-          </div>
-          <span style="font-size:12px;color:#94a3b8" id="resultCount">0 inquiries</span>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Customer</th><th>Subject</th><th>Inquiry ID</th><th>Date & Time</th><th>Status</th><th>Action</th></tr></thead>
-            <tbody id="inquiryTable"></tbody>
-          </table>
-        </div>
-        <div class="pagination"><span id="apiConnectionStatusSecondary">Connecting to API…</span><div class="pager"><button onclick="prevPage()">‹</button><button class="active" id="pageNumber">1</button><button onclick="nextPage()">›</button></div></div>
-      </div>
-    </section>
-
-    <section class="page" id="inquiryView">
-      <div class="inquiry-page-top">
-        <div class="inquiry-page-heading">
-          <button class="back-inquiries-btn" onclick="closeDrawer()" aria-label="Back to inquiries">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m15 18-6-6 6-6"/>
-            </svg>
-          </button>
-          <div>
-            <div class="eyebrow">CUSTOMER INQUIRY</div>
-            <h1 id="drawerTitle">Inquiry</h1>
-            <div id="drawerSubtitle">Inquiry details</div>
-          </div>
-        </div>
-        <div class="inquiry-page-actions">
-          <button class="small-btn inquiry-action-back" onclick="closeDrawer()">Back to Inquiries</button>
-        </div>
-      </div>
-
-      <div class="inquiry-view-shell">
-        <div class="inquiry-view-body" id="drawerBody"></div>
-        <div class="inquiry-view-footer">
-          <button class="danger-btn" id="deleteInquiryBtn" onclick="deleteCurrentInquiry()">Delete permanently</button>
-          <button class="small-btn" onclick="closeDrawer()">Cancel</button>
-          <button class="primary" id="saveInquiryBtn" onclick="saveInquiryChanges()">Save changes</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="page" id="analytics">
-      <div class="welcome"><div><h1>Analytics</h1><p>Frontend preview of your inquiry performance.</p></div></div>
-      <div class="stats">
-        <div class="card stat"><div class="stat-top"><span class="stat-label">This month</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17 17 6M9 6h8v8"/></svg></span></div><div class="stat-value" id="analyticsNew">0</div><div class="stat-note">New inquiries</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Response rate</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg></span></div><div class="stat-value" id="analyticsResponse">—</div><div class="stat-note">Replied / total</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Avg. response</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span></div><div class="stat-value">4.2h</div><div class="stat-note">Frontend sample</div></div>
-        <div class="card stat"><div class="stat-top"><span class="stat-label">Conversion</span><span class="stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12 4 4 8-9"/></svg></span></div><div class="stat-value">18%</div><div class="stat-note">Inquiry to deal</div></div>
-      </div>
-      <div class="card section-card">
-        <div class="section-head"><h2>Inquiry trend</h2><span style="font-size:12px;color:#94a3b8">Last 7 days</span></div>
-        <div style="height:260px;display:flex;align-items:flex-end;gap:18px;padding:15px 10px 5px;border-top:1px solid #f1f2f5">
-          <div class="bar" style="height:38%"><span>Mon</span></div><div class="bar" style="height:58%"><span>Tue</span></div><div class="bar" style="height:45%"><span>Wed</span></div><div class="bar" style="height:78%"><span>Thu</span></div><div class="bar" style="height:66%"><span>Fri</span></div><div class="bar" style="height:92%"><span>Sat</span></div><div class="bar" style="height:70%"><span>Sun</span></div>
-        </div>
-      </div>
-      </section>
-
-    <section class="page" id="settings">
-      <div class="welcome"><div><h1>Settings</h1><p>Manage your GO7 admin preferences.</p></div><button class="primary" onclick="toast('Settings saved')">Save changes</button></div>
-      <div class="settings-grid">
-        <div class="card setting-card">
-          <h3>Notifications</h3><p>Control how the admin dashboard handles new inquiry alerts.</p>
-          <div class="toggle-row"><div><strong style="font-size:13px">New inquiry alerts</strong><div style="font-size:11px;color:#94a3b8;margin-top:3px">Show alerts for new submissions</div></div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
-          <div class="toggle-row"><div><strong style="font-size:13px">Email notifications</strong><div style="font-size:11px;color:#94a3b8;margin-top:3px">Send admin notification emails</div></div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
-        </div>
-        <div class="card setting-card">
-          <h3>Security</h3><p>Security controls for the GO7 Admin backend.</p>
-          <div class="toggle-row"><div><strong style="font-size:13px">Two-factor authentication</strong><div style="font-size:11px;color:#94a3b8;margin-top:3px">Authenticator app protection</div></div><button class="toggle on" onclick="toast('2FA is enabled on the GO7 Admin API')"></button></div>
-          <div class="toggle-row"><div><strong style="font-size:13px">Secure session</strong><div style="font-size:11px;color:#94a3b8;margin-top:3px">Protected admin sessions</div></div><button class="toggle on" onclick="toast('Secure 8-hour admin sessions are active')"></button></div>
-        </div>
-        <div class="card setting-card">
-          <h3>System</h3><p>Current GO7 Admin API configuration.</p>
-          <div class="detail-row"><span class="detail-label">${detailIcon("Environment")}Environment</span><strong>Production</strong></div>
-          <div class="detail-row"><span class="detail-label">${detailIcon("API")}API</span><strong>Connected</strong></div>
-          <div class="detail-row"><span class="detail-label">${detailIcon("Database")}Database</span><strong>Cloudflare D1</strong></div>
-        </div>
-      </div>
-    </section>
-  </div>
+<div class="welcome">
+<div><h1>Good evening, Anil</h1><p>Here’s what’s happening with your GO7.IN inquiries.</p><div id="apiConnectionStatus" style="font-size:11px;color:#16a34a;margin-top:7px">Connecting to GO7 Admin API…</div></div>
+<button class="primary" onclick="showPage('inquiries')">View inquiries</button>
+</div>
+<div class="stats">
+<div class="card stat"><div class="stat-top"><span class="stat-label">Total Inquiries</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="m4 7 8 6 8-6"></path></svg></span></div><div class="stat-value" id="totalStat">128</div><div class="stat-note trend-up"><strong>+12%</strong> <span>vs last month</span></div></div>
+<div class="card stat"><div class="stat-top"><span class="stat-label">New</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="7"></circle><circle cx="12" cy="12" fill="currentColor" r="2.5" stroke="none"></circle></svg></span></div><div class="stat-value" id="newStat">12</div><div class="stat-note trend-up"><strong>+4%</strong> <span>need attention</span></div></div>
+<div class="card stat"><div class="stat-top"><span class="stat-label">In Progress</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3 2"></path></svg></span></div><div class="stat-value" id="progressStat">8</div><div class="stat-note trend-down"><strong>-8%</strong> <span>from last week</span></div></div>
+<div class="card stat"><div class="stat-top"><span class="stat-label">Replied</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m6 12 4 4 8-9"></path></svg></span></div><div class="stat-value" id="repliedStat">108</div><div class="stat-note trend-up"><strong>+6%</strong> <span>response rate</span></div></div>
+</div>
+<div class="grid-2">
+<div class="card section-card">
+<div class="section-head"><h2>Recent inquiries</h2><button class="link-btn" onclick="showPage('inquiries')">View all</button></div>
+<div class="activity" id="recentList"></div>
+</div>
+<div class="card section-card">
+<div class="section-head"><h2>Quick actions</h2></div>
+<div class="quick">
+<button onclick="showPage('inquiries')">View inquiries<small>Review incoming messages</small></button>
+<button onclick="showPage('analytics')">View analytics<small>See inquiry trends</small></button>
+<button onclick="showPage('settings')">Admin settings<small>Manage preferences</small></button>
+<button onclick="exportCSV()">Export CSV<small>Download inquiry data</small></button>
+</div>
+</div>
+</div>
+</section>
+<section class="page" id="inquiries">
+<div class="welcome"><div><h1>Inquiries</h1><p>Manage customer inquiries and view complete submission details.</p></div><button class="primary" onclick="exportCSV()">Export CSV</button></div>
+<div class="card table-card">
+<div class="table-toolbar">
+<div class="toolbar-left">
+<div class="search"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><input id="searchInput" placeholder="Search name, email or message..."/></div>
+<select class="select" id="statusFilter"><option value="all">All statuses</option><option value="New">New</option><option value="Read">Read</option><option value="Replied">Replied</option><option value="Closed">Closed</option></select>
+</div>
+<span id="resultCount" style="font-size:12px;color:#94a3b8">0 inquiries</span>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Customer</th><th>Subject</th><th>Inquiry ID</th><th>Date &amp; Time</th><th>Status</th><th>Action</th></tr></thead>
+<tbody id="inquiryTable"></tbody>
+</table>
+</div>
+<div class="pagination"><span id="apiConnectionStatusSecondary">Connecting to API…</span><div class="pager"><button onclick="prevPage()">‹</button><button class="active" id="pageNumber">1</button><button onclick="nextPage()">›</button></div></div>
+</div>
+</section>
+<section class="page" id="inquiryView">
+<div class="inquiry-page-top">
+<div class="inquiry-page-heading">
+<button aria-label="Back to inquiries" class="back-inquiries-btn" onclick="closeDrawer()">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" viewbox="0 0 24 24">
+<path d="m15 18-6-6 6-6"></path>
+</svg>
+</button>
+<div>
+<div class="eyebrow">CUSTOMER INQUIRY</div>
+<h1 id="drawerTitle">Inquiry</h1>
+<div id="drawerSubtitle">Inquiry details</div>
+</div>
+</div>
+<div class="inquiry-page-actions">
+<button class="small-btn inquiry-action-back" onclick="closeDrawer()">Back to Inquiries</button>
+</div>
+</div>
+<div class="inquiry-view-shell">
+<div class="inquiry-view-body" id="drawerBody"></div>
+<div class="inquiry-view-footer">
+<button class="danger-btn" id="deleteInquiryBtn" onclick="deleteCurrentInquiry()">Delete permanently</button>
+<button class="small-btn" onclick="closeDrawer()">Cancel</button>
+<button class="primary" id="saveInquiryBtn" onclick="saveInquiryChanges()">Save changes</button>
+</div>
+</div>
+</section>
+<section class="page" id="analytics">
+<div class="welcome"><div><h1>Analytics</h1><p>Frontend preview of your inquiry performance.</p></div></div>
+<div class="stats">
+<div class="card stat"><div class="stat-top"><span class="stat-label">This month</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 17 17 6M9 6h8v8"></path></svg></span></div><div class="stat-value" id="analyticsNew">0</div><div class="stat-note">New inquiries</div></div>
+<div class="card stat"><div class="stat-top"><span class="stat-label">Response rate</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 17 17 7"></path><circle cx="7" cy="7" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg></span></div><div class="stat-value" id="analyticsResponse">—</div><div class="stat-note">Replied / total</div></div>
+<div class="card stat"><div class="stat-top"><span class="stat-label">Avg. response</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3 2"></path></svg></span></div><div class="stat-value">4.2h</div><div class="stat-note">Frontend sample</div></div>
+<div class="card stat"><div class="stat-top"><span class="stat-label">Conversion</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m6 12 4 4 8-9"></path></svg></span></div><div class="stat-value">18%</div><div class="stat-note">Inquiry to deal</div></div>
+</div>
+<div class="card section-card">
+<div class="section-head"><h2>Inquiry trend</h2><span style="font-size:12px;color:#94a3b8">Last 7 days</span></div>
+<div style="height:260px;display:flex;align-items:flex-end;gap:18px;padding:15px 10px 5px;border-top:1px solid #f1f2f5">
+<div class="bar" style="height:38%"><span>Mon</span></div><div class="bar" style="height:58%"><span>Tue</span></div><div class="bar" style="height:45%"><span>Wed</span></div><div class="bar" style="height:78%"><span>Thu</span></div><div class="bar" style="height:66%"><span>Fri</span></div><div class="bar" style="height:92%"><span>Sat</span></div><div class="bar" style="height:70%"><span>Sun</span></div>
+</div>
+</div>
+</section>
+<section class="page" id="settings">
+<div class="welcome"><div><h1>Settings</h1><p>Manage your GO7 admin preferences.</p></div><button class="primary" onclick="toast('Settings saved')">Save changes</button></div>
+<div class="settings-grid">
+<div class="card setting-card">
+<h3>Notifications</h3><p>Control how the admin dashboard handles new inquiry alerts.</p>
+<div class="toggle-row"><div><strong style="font-size:13px">New inquiry alerts</strong><div style="font-size:11px;color:#94a3b8;margin-top:3px">Show alerts for new submissions</div></div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
+<div class="toggle-row"><div><strong style="font-size:13px">Email notifications</strong><div style="font-size:11px;color:#94a3b8;margin-top:3px">Send admin notification emails</div></div><button class="toggle on" onclick="this.classList.toggle('on')"></button></div>
+</div>
+<div class="card setting-card">
+<h3>Security</h3><p>Security controls for the GO7 Admin backend.</p>
+<div class="toggle-row"><div><strong style="font-size:13px">Two-factor authentication</strong><div style="font-size:11px;color:#94a3b8;margin-top:3px">Authenticator app protection</div></div><button class="toggle on" onclick="toast('2FA is enabled on the GO7 Admin API')"></button></div>
+<div class="toggle-row"><div><strong style="font-size:13px">Secure session</strong><div style="font-size:11px;color:#94a3b8;margin-top:3px">Protected admin sessions</div></div><button class="toggle on" onclick="toast('Secure 8-hour admin sessions are active')"></button></div>
+</div>
+<div class="card setting-card">
+<h3>System</h3><p>Current GO7 Admin API configuration.</p>
+<div class="detail-row"><span class="detail-label">${detailIcon("Environment")}Environment</span><strong>Production</strong></div>
+<div class="detail-row"><span class="detail-label">${detailIcon("API")}API</span><strong>Connected</strong></div>
+<div class="detail-row"><span class="detail-label">${detailIcon("Database")}Database</span><strong>Cloudflare D1</strong></div>
+</div>
+</div>
+</section>
+</div>
 </main>
 </div>
-
-<div class="go7-modal-backdrop" id="go7ModalBackdrop" aria-hidden="true">
-  <div class="go7-modal" role="dialog" aria-modal="true" aria-labelledby="go7ModalTitle">
-    <div class="go7-modal-icon">!</div>
-    <h3 id="go7ModalTitle">Confirm action</h3>
-    <p id="go7ModalMessage"></p>
-    <div class="go7-modal-actions">
-      <button class="small-btn" id="go7ModalCancel">Cancel</button>
-      <button class="danger-btn" id="go7ModalConfirm">Confirm</button>
-    </div>
-  </div>
+<div aria-hidden="true" class="go7-modal-backdrop" id="go7ModalBackdrop">
+<div aria-labelledby="go7ModalTitle" aria-modal="true" class="go7-modal" role="dialog">
+<div class="go7-modal-icon">!</div>
+<h3 id="go7ModalTitle">Confirm action</h3>
+<p id="go7ModalMessage"></p>
+<div class="go7-modal-actions">
+<button class="small-btn" id="go7ModalCancel">Cancel</button>
+<button class="danger-btn" id="go7ModalConfirm">Confirm</button>
+</div>
+</div>
 </div>
 <div class="toast" id="toast"></div>
-
 <script>
 const API_BASE = "https://admin-api.go7.in";
 let inquiries = [];
@@ -845,8 +740,8 @@ function detailIcon(label){
     <div class="detail-row"><span class="detail-label">${detailIcon("Device")}Device</span><span>${escapeHtml(x.device)}</span></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Browser")}Browser</span><span>${escapeHtml(x.browser)}</span></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Timezone")}Timezone</span><span>${escapeHtml(x.timezone)}</span></div>
-    <div class="form-group" style="margin-top:20px"><label>Message</label><div class="message-box">${escapeHtml(x.message)}</div></div>
-    <div class="form-group"><label>Internal note</label><textarea class="form-control" id="drawerNote" placeholder="Add a private note...">${escapeHtml(x.admin_note)}</textarea><div style="font-size:11px;color:#94a3b8;margin-top:6px">Private admin note. Stored securely in Cloudflare D1.</div></div>
+    <div class="form-group message-group"><label>Message</label><div class="message-box">${escapeHtml(x.message)}</div></div>
+    <div class="form-group"><label>Internal note</label><textarea class="form-control" id="drawerNote" placeholder="Add a private note...">${escapeHtml(x.admin_note)}</textarea><div class="field-hint">Private admin note. Stored securely in Cloudflare D1.</div></div>
     <div class="reply-box">
       <div class="form-group">
         <label>Reply to customer</label>
@@ -1153,9 +1048,7 @@ renderTable();
 renderRecent();
 updateStats();
 checkSession();
-</script>
 
-<script id="go7-theme-controller">
 (function(){
   const root=document.documentElement;
   const key="go7-admin-theme";
@@ -1186,679 +1079,6 @@ checkSession();
     });
   }
 })();
-</script>
-<script>
-const API_BASE = "https://admin-api.go7.in";
-let inquiries = [];
-let currentId = null;
-let apiPage = 1;
-let apiTotal = 0;
-const apiLimit = 50;
-let authenticated = false;
-
-function setAuthState(isAuthenticated){
-  authenticated = isAuthenticated;
-  document.body.classList.toggle("auth-loading", !isAuthenticated);
-  document.getElementById("loginScreen").style.display = isAuthenticated ? "none" : "grid";
-}
-
-function showLogin(message=""){
-  const box = document.getElementById("loginError");
-  const otpWrap = document.getElementById("otpWrap");
-  const otpInput = document.getElementById("loginOtp");
-
-  box.textContent = message;
-  box.classList.toggle("show", !!message);
-
-  if(otpWrap){
-    otpWrap.style.display = "none";
-  }
-  if(otpInput){
-    otpInput.value = "";
-    otpInput.required = false;
-  }
-
-  document.getElementById("loginScreen").style.display = "grid";
-  document.body.classList.remove("auth-loading");
-  setTimeout(()=>document.getElementById("loginUsername")?.focus(),50);
-}
-
-function hideLogin(){
-  document.getElementById("loginScreen").style.display = "none";
-  document.body.classList.remove("auth-loading");
-}
-
-async function apiFetch(path, options={}){
-  const opts = {...options, credentials:"include", cache:"no-store"};
-  opts.headers = {"Accept":"application/json", ...(options.headers || {})};
-  const res = await fetch(`${API_BASE}${path}`, opts);
-  let data = {};
-  try { data = await res.json(); } catch(e) {}
-  if(res.status === 401){
-    authenticated = false;
-    showLogin("Your admin session has expired or is not available. Please sign in again.");
-    throw new Error("Unauthorized");
-  }
-  if(!res.ok || data.success === false){
-    throw new Error(data.error || `Request failed (${res.status})`);
-  }
-  return data;
-}
-
-async function checkSession(){
-  // Keep the dashboard hidden until the existing session is checked.
-  document.body.classList.add("auth-loading");
-  try{
-    const data = await apiFetch("/api/session", {method:"GET"});
-    if(data.authenticated){
-      authenticated = true;
-      hideLogin();
-      await loadInquiries();
-      return true;
-    }
-  }catch(error){
-    if(error.message !== "Unauthorized") console.error("Session check:",error);
-  }
-  showLogin("");
-  return false;
-}
-
-async function login(username,password){
-  const submit = document.getElementById("loginSubmit");
-  const errorBox = document.getElementById("loginError");
-  const otpWrap = document.getElementById("otpWrap");
-  const otpInput = document.getElementById("loginOtp");
-
-  submit.disabled = true;
-  submit.textContent = "Signing in…";
-  errorBox.classList.remove("show");
-
-  try{
-    const otp = otpWrap && otpWrap.style.display !== "none"
-      ? String(otpInput.value || "").replace(/\D/g,"").slice(0,6)
-      : "";
-
-    const data = await apiFetch("/api/login", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({username,password,otp})
-    });
-
-    // First step: password accepted, OTP required.
-    if(data.two_factor_required){
-      otpWrap.style.display = "block";
-      otpInput.required = true;
-      submit.textContent = "Verify & Sign in";
-      otpInput.focus();
-      errorBox.textContent = "Enter your 6-digit authenticator code.";
-      errorBox.classList.add("show");
-      return;
-    }
-
-    if(!data.success){
-      throw new Error(data.error || "Unable to login");
-    }
-
-    authenticated = true;
-    hideLogin();
-    apiPage = 1;
-    await loadInquiries();
-    toast("Login successful");
-
-  }catch(error){
-    console.error("Login:",error);
-    errorBox.textContent =
-      error.message === "Unauthorized"
-        ? "Invalid username, password, or 2FA code."
-        : (error.message || "Unable to login");
-    errorBox.classList.add("show");
-
-    // Keep OTP visible after a failed OTP attempt.
-    if(otpWrap && otpWrap.style.display !== "none"){
-      otpInput.focus();
-      otpInput.select();
-    }
-
-  }finally{
-    submit.disabled = false;
-
-    const otpVisible =
-      otpWrap && otpWrap.style.display !== "none";
-
-    submit.textContent =
-      otpVisible
-        ? "Verify & Sign in"
-        : "Sign in";
-  }
-}
-async function logout(){
-  const confirmed = await showConfirm("Log out?", "Your secure admin session will be ended.", "Log out", "logout");
-  if(!confirmed) return;
-  try{
-    await apiFetch("/api/logout", {method:"POST"});
-  }catch(error){
-    console.warn("Logout:",error);
-  }
-  authenticated = false;
-  inquiries = [];
-  apiTotal = 0;
-  renderTable();
-  renderRecent();
-  updateStats();
-  showLogin("You have been logged out.");
-  window.setTimeout(function(){
-    showLogin("");
-  }, 4500);
-  toast("Logged out");
-}
-
-async function loadInquiries(){
-  if(!authenticated) return;
-  try{
-    const data = await apiFetch(`/api/inquiries?page=${apiPage}&limit=${apiLimit}`, {method:"GET"});
-    inquiries = (data.inquiries || []).map(normalizeInquiry);
-    apiTotal = Number(data.total || 0);
-    renderTable();
-    renderRecent();
-    updateStats();
-    updateApiInfo();
-    updatePageNumber();
-  }catch(error){
-    if(error.message !== "Unauthorized"){
-      console.error("GO7 Admin API error:", error);
-      toast(error.message || "Unable to load inquiries");
-    }
-  }finally{
-  }
-}
-
-async function refreshDashboard(){
-  if(!authenticated){
-    await checkSession();
-    return;
-  }
-
-  const btn = document.getElementById("refreshBtn");
-  if(btn.dataset.refreshing === "1") return;
-
-  btn.dataset.refreshing = "1";
-  btn.disabled = true;
-  btn.classList.add("refreshing");
-
-  try{
-    await loadInquiries();
-    btn.classList.remove("is-error");
-    btn.classList.add("is-success");
-    toast("Dashboard refreshed successfully");
-    setTimeout(()=>btn.classList.remove("is-success"),1200);
-  }catch(error){
-    btn.classList.remove("is-success");
-    btn.classList.add("is-error");
-    setTimeout(()=>btn.classList.remove("is-error"),1400);
-    throw error;
-  }finally{
-    btn.classList.remove("refreshing");
-    btn.disabled = false;
-    btn.dataset.refreshing = "0";
-  }
-}
-
-function normalizeInquiry(x){
-  return {
-    id:x.inquiry_id || x.id || "",
-    name:x.name || "",
-    email:x.email || "",
-    subject:x.subject || "",
-    message:x.message || "",
-    date:formatDate(x.created_at),
-    ip:x.ip || "",
-    country:x.country || "",
-    city:x.city || "",
-    region:x.region || "",
-    device:x.device || "",
-    browser:x.browser || "",
-    timezone:x.timezone || "",
-    status:x.status || "New",
-    admin_note:x.admin_note || ""
-  };
-}
-
-function formatDate(value){
-  if(!value) return "—";
-  const d = new Date(value);
-  if(Number.isNaN(d.getTime())) return String(value);
-  return d.toLocaleString("en-IN", {day:"2-digit",month:"short",year:"numeric",hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Asia/Kolkata"});
-}
-
-function updateApiInfo(){
-  document.querySelectorAll("#apiConnectionStatus").forEach(el=>{
-    el.textContent = `API connected • ${apiTotal} total inquiries`;
-    el.style.color = "#16a34a";
-  });
-}
-
-function escapeHtml(value){
-  return String(value ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
-}
-function escapeAttr(value){ return escapeHtml(value); }
-function statusClass(s){
-  return s==="New" ? "new" : (s==="In Progress" || s==="Read") ? "read" : s==="Replied" ? "replied" : "closed";
-}
-function statusLabel(s){
-  return (s==="In Progress" || s==="Read") ? "Read" : s;
-}
-function statusMatches(actual, filter){
-  if(filter==="all") return true;
-  if(filter==="Read") return actual==="Read" || actual==="In Progress";
-  return actual===filter;
-}
-
-function renderTable(){
-  const search=document.getElementById("searchInput");
-  const status=document.getElementById("statusFilter");
-  const q=(search?.value || "").toLowerCase();
-  const filter=status?.value || "all";
-  const rows=inquiries.filter(x=>(statusMatches(x.status,filter))&&(`${x.name} ${x.email} ${x.subject} ${x.message} ${x.id}`.toLowerCase().includes(q)));
-  document.getElementById("resultCount").textContent=`${rows.length} shown • ${apiTotal} total`;
-  document.getElementById("inquiryTable").innerHTML=rows.map(x=>`
-  <tr>
-    <td><strong>${escapeHtml(x.name)}</strong><br><span style="font-size:11px;color:#94a3b8">${escapeHtml(x.email)}</span></td>
-    <td style="max-width:220px"><strong>${escapeHtml(x.subject)}</strong></td>
-    <td><strong>${escapeHtml(x.id)}</strong></td>
-    <td style="white-space:nowrap">${escapeHtml(x.date)}</td>
-    <td><span class="status ${statusClass(x.status)}">${escapeHtml(statusLabel(x.status))}</span></td>
-    <td><div class="actions"><button class="small-btn view-inquiry" data-inquiry-id="${escapeAttr(x.id)}">View</button><button class="small-btn delete-inquiry" data-inquiry-id="${escapeAttr(x.id)}">Delete</button></div></td>
-  </tr>`).join("") || `<tr><td colspan="6"><div class="empty">No inquiries found.</div></td></tr>`;
-}
-
-function renderRecent(){
-  const list=document.getElementById("recentList");
-  if(!inquiries.length){list.innerHTML='<div class="empty" style="padding:35px 10px">No inquiries found.</div>';return;}
-  list.innerHTML=inquiries.slice(0,5).map(x=>`<div class="activity-row"><span class="activity-dot"></span><div><strong>${escapeHtml(x.name)} · ${escapeHtml(x.subject)}</strong><p>${escapeHtml(x.message.slice(0,72))}${x.message.length>72?'…':''}</p></div><span class="activity-time">${escapeHtml(x.date.split(",")[0])}</span></div>`).join("");
-}
-
-function updateStats(){
-  const total=apiTotal;
-  const n=inquiries.filter(x=>x.status==="New").length;
-  const p=inquiries.filter(x=>x.status==="In Progress").length;
-  const r=inquiries.filter(x=>x.status==="Replied").length;
-  document.getElementById("totalStat").textContent=total;
-  document.getElementById("newStat").textContent=n;
-  document.getElementById("progressStat").textContent=p;
-  document.getElementById("repliedStat").textContent=r;
-  const aNew=document.getElementById("analyticsNew");
-  const aResp=document.getElementById("analyticsResponse");
-  if(aNew)aNew.textContent=n;
-  if(aResp)aResp.textContent=total?Math.round(r/Math.max(inquiries.length,1)*100)+"%*":"—";
-}
-function updatePageNumber(){const el=document.getElementById("pageNumber");if(el)el.textContent=apiPage;}
-async function prevPage(){if(apiPage<=1)return;apiPage--;await loadInquiries();}
-async function nextPage(){if(apiPage*apiLimit>=apiTotal)return;apiPage++;await loadInquiries();}
-
-function showPage(page){
-  document.body.classList.remove("inquiry-page-open");
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(page).classList.add("active");
-  document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
-  const names={dashboard:"Dashboard",inquiries:"Inquiries",analytics:"Analytics",settings:"Settings"};
-  document.getElementById("pageTitle").textContent=names[page];
-  document.getElementById("sidebar").classList.remove("open");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function openInquiry(id){
-  const x=inquiries.find(i=>String(i.id)===String(id));
-  if(!x)return;
-  currentId=x.id;
-  document.getElementById("drawerTitle").textContent=x.name||"Inquiry";
-
-function detailIcon(label){
-  const icons = {
-    "Name": `<path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/>`,
-    "Email": `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>`,
-    "Subject": `<path d="M4 5h16v12H7l-3 3V5Z"/><path d="M8 9h8M8 12h5"/>`,
-    "Inquiry ID": `<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/>`,
-    "Date & Time": `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`,
-    "IP Address": `<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>`,
-    "Country": `<path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>`,
-    "City": `<path d="M4 21V9l6-4v16M10 21h10V12l-10-3M7 12h1M7 16h1M13 15h1M17 15h1M13 18h1M17 18h1"/>`,
-    "Region": `<path d="M4 6h6l2 3h8v9H4z"/><path d="M4 6V4h6l2 3"/>`,
-    "Device": `<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M10 18h4"/>`,
-    "Browser": `<circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M12 3c2.2 2.5 3.2 5.5 3.2 9S14.2 18.5 12 21M3.5 15h17"/>`,
-    "Timezone": `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`,
-    "Environment": `<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/>`,
-    "API": `<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/><circle cx="12" cy="12" r="3"/>`,
-    "Database": `<ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3.1 3 7 3s7-1.3 7-3v-7"/>`,
-  };
-  const path = icons[label] || `<circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/>`;
-  return `<svg viewBox="0 0 24 24" aria-hidden="true">${path}</svg>`;
-}
-
-  document.getElementById("drawerSubtitle").textContent=`Inquiry #${x.id} · ${x.date}`;
-  document.getElementById("drawerBody").innerHTML=`
-    <div class="form-group"><label>Status</label><select class="form-control" id="drawerStatus" data-id="${escapeAttr(x.id)}">
-      <option ${x.status==="New"?"selected":""}>New</option><option value="In Progress" ${(x.status==="In Progress"||x.status==="Read")?"selected":""}>Read</option><option ${x.status==="Replied"?"selected":""}>Replied</option><option ${x.status==="Closed"?"selected":""}>Closed</option>
-    </select></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Name")}Name</span><strong>${escapeHtml(x.name)}</strong></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Email")}Email</span><strong>${escapeHtml(x.email)}</strong></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Subject")}Subject</span><strong>${escapeHtml(x.subject)}</strong></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Inquiry ID")}Inquiry ID</span><strong>${escapeHtml(x.id)}</strong></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Date & Time")}Date & Time</span><span>${escapeHtml(x.date)}</span></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("IP Address")}IP Address</span><strong>${escapeHtml(x.ip)}</strong></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Country")}Country</span><span>${escapeHtml(x.country)}</span></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("City")}City</span><span>${escapeHtml(x.city)}</span></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Region")}Region</span><span>${escapeHtml(x.region)}</span></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Device")}Device</span><span>${escapeHtml(x.device)}</span></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Browser")}Browser</span><span>${escapeHtml(x.browser)}</span></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("Timezone")}Timezone</span><span>${escapeHtml(x.timezone)}</span></div>
-    <div class="form-group" style="margin-top:20px"><label>Message</label><div class="message-box">${escapeHtml(x.message)}</div></div>
-    <div class="form-group"><label>Internal note</label><textarea class="form-control" id="drawerNote" placeholder="Add a private note...">${escapeHtml(x.admin_note)}</textarea><div style="font-size:11px;color:#94a3b8;margin-top:6px">Private admin note. Stored securely in Cloudflare D1.</div></div>
-    <div class="reply-box">
-      <div class="form-group">
-        <label>Reply to customer</label>
-        <input class="form-control" id="replySubject" type="text" value="${escapeAttr(x.subject ? `Re: ${x.subject}` : "Regarding your GO7.IN inquiry")}" placeholder="Email subject">
-      </div>
-      <div class="form-group">
-        <textarea class="form-control" id="replyMessage" placeholder="Write your reply to the customer..."></textarea>
-        <div class="reply-hint">Reply will be sent from info@go7.in. After a successful send, status becomes Replied.</div>
-      </div>
-      <div class="reply-actions">
-        <button class="primary" id="sendReplyBtn" onclick="sendCustomerReply()">Send reply</button>
-      </div>
-    </div>`;
-  document.body.classList.add("inquiry-page-open");
-  document.getElementById("pageTitle").textContent = "Customer Inquiry";
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById("inquiryView").classList.add("active");
-  document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.remove("active"));
-  document.getElementById("sidebar").classList.remove("open");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-async function saveInquiryChanges(){
-  if(!authenticated || !currentId){
-    showLogin();
-    return;
-  }
-
-  const x = inquiries.find(i => String(i.id) === String(currentId));
-  if(!x) return;
-
-  const statusEl = document.getElementById("drawerStatus");
-  const noteEl = document.getElementById("drawerNote");
-  const saveBtn = document.getElementById("saveInquiryBtn");
-
-  const status = statusEl ? statusEl.value : x.status;
-  const admin_note = noteEl ? noteEl.value : (x.admin_note || "");
-
-  if(saveBtn){
-    saveBtn.disabled = true;
-    saveBtn.textContent = "Saving…";
-  }
-
-  try{
-    const data = await apiFetch(
-      `/api/inquiries/${encodeURIComponent(String(currentId))}`,
-      {
-        method:"PATCH",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({status,admin_note})
-      }
-    );
-
-    x.status = data.inquiry?.status ?? status;
-    x.admin_note = data.inquiry?.admin_note ?? admin_note;
-
-    renderTable();
-    renderRecent();
-    updateStats();
-    closeDrawer();
-    toast("Inquiry updated successfully");
-  }catch(error){
-    if(error.message !== "Unauthorized"){
-      console.error("Save inquiry:",error);
-      toast(error.message || "Unable to save inquiry");
-    }
-  }finally{
-    if(saveBtn){
-      saveBtn.disabled = false;
-      saveBtn.textContent = "Save changes";
-    }
-  }
-}
-
-async function changeStatus(){
-  await saveInquiryChanges();
-}
-
-async function markCurrentReplied(){
-  const statusEl = document.getElementById("drawerStatus");
-  if(statusEl) statusEl.value = "Replied";
-  await saveInquiryChanges();
-}
-
-async function sendCustomerReply(){
-  if(!authenticated || !currentId){
-    showLogin();
-    return;
-  }
-
-  const subjectEl = document.getElementById("replySubject");
-  const messageEl = document.getElementById("replyMessage");
-  const sendBtn = document.getElementById("sendReplyBtn");
-
-  const subject = subjectEl ? subjectEl.value.trim() : "";
-  const message = messageEl ? messageEl.value.trim() : "";
-
-  if(!message){
-    toast("Write a reply first");
-    messageEl?.focus();
-    return;
-  }
-
-  if(sendBtn){
-    sendBtn.disabled = true;
-    sendBtn.textContent = "Sending…";
-  }
-
-  try{
-    const data = await apiFetch(
-      `/api/inquiries/${encodeURIComponent(String(currentId))}/reply`,
-      {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({subject, message})
-      }
-    );
-
-    const x = inquiries.find(i => String(i.id) === String(currentId));
-    if(x) x.status = data.inquiry?.status || "Replied";
-
-    renderTable();
-    renderRecent();
-    updateStats();
-
-    if(messageEl) messageEl.value = "";
-
-    toast("Reply sent successfully");
-  }catch(error){
-    if(error.message !== "Unauthorized"){
-      console.error("Send reply:", error);
-      toast(error.message || "Unable to send reply");
-    }
-  }finally{
-    if(sendBtn){
-      sendBtn.disabled = false;
-      sendBtn.textContent = "Send reply";
-    }
-  }
-}
-
-async function deleteCurrentInquiry(){
-  if(!authenticated || !currentId){
-    showLogin();
-    return;
-  }
-
-  const x = inquiries.find(i => String(i.id) === String(currentId));
-  const customer = x?.name ? ` for ${x.name}` : "";
-
-  const confirmed = await showConfirm(
-    "Delete inquiry?",
-    `Delete this inquiry${customer} permanently? This action cannot be undone.`,
-    "Delete permanently",
-    "danger"
-  );
-  if(!confirmed) return;
-
-  const deleteBtn = document.getElementById("deleteInquiryBtn");
-
-  if(deleteBtn){
-    deleteBtn.disabled = true;
-    deleteBtn.textContent = "Deleting…";
-  }
-
-  try{
-    await apiFetch(
-      `/api/inquiries/${encodeURIComponent(String(currentId))}`,
-      {method:"DELETE"}
-    );
-
-    inquiries = inquiries.filter(
-      i => String(i.id) !== String(currentId)
-    );
-
-    apiTotal = Math.max(0, apiTotal - 1);
-
-    currentId = null;
-    renderTable();
-    renderRecent();
-    updateStats();
-    closeDrawer();
-
-    toast("Inquiry deleted permanently");
-  }catch(error){
-    if(error.message !== "Unauthorized"){
-      console.error("Delete inquiry:", error);
-      toast(error.message || "Unable to delete inquiry");
-    }
-  }finally{
-    if(deleteBtn){
-      deleteBtn.disabled = false;
-      deleteBtn.textContent = "Delete permanently";
-    }
-  }
-}
-
-function closeDrawer(){
-  document.body.classList.remove("inquiry-page-open");
-  document.getElementById("overlay")?.classList.remove("show");
-  document.getElementById("drawer")?.classList.remove("show");
-  if(document.getElementById("inquiries")){
-    showPage("inquiries");
-  }
-}
-function toast(msg){
-  const t=document.getElementById("toast");
-  if(!t) return;
-  t.textContent=msg;
-  t.classList.remove("show");
-  void t.offsetWidth;
-  t.classList.add("show");
-  clearTimeout(window._toast);
-  window._toast=setTimeout(()=>{
-    t.classList.remove("show");
-  },2400);
-}
-
-function exportCSV(){
-  if(!authenticated){showLogin();return;}
-  const header=["Inquiry ID","Name","Email","Subject","Date & Time","IP Address","Country","City","Region","Device","Browser","Timezone","Message","Status","Admin Note"];
-  const lines=[header,...inquiries.map(x=>[x.id,x.name,x.email,x.subject,x.date,x.ip,x.country,x.city,x.region,x.device,x.browser,x.timezone,x.message,x.status,x.admin_note])].map(r=>r.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");
-  const blob=new Blob([lines],{type:"text/csv;charset=utf-8;"});
-  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="go7-inquiries.csv";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("CSV exported");
-}
-
-document.getElementById("loginForm").addEventListener("submit", e => {
-  e.preventDefault();
-  login(
-    document.getElementById("loginUsername").value.trim(),
-    document.getElementById("loginPassword").value
-  );
-});
-document.querySelectorAll(".nav button[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
-document.getElementById("inquiryTable").addEventListener("click",event=>{
-  const viewBtn = event.target.closest(".view-inquiry");
-  if(viewBtn){
-    openInquiry(viewBtn.dataset.inquiryId);
-    return;
-  }
-
-  const deleteBtn = event.target.closest(".delete-inquiry");
-  if(deleteBtn){
-    const id = deleteBtn.dataset.inquiryId;
-    currentId = id;
-    deleteCurrentInquiry();
-  }
-});
-document.getElementById("drawerBody").addEventListener("change",event=>{ /* changes are saved with Save changes */ });
-document.getElementById("searchInput").addEventListener("input",renderTable);
-document.getElementById("statusFilter").addEventListener("change",renderTable);
-
-document.getElementById("mobileMenu").addEventListener("click",()=>document.getElementById("sidebar").classList.toggle("open"));
-document.getElementById("refreshBtn").addEventListener("click",refreshDashboard);
-
-function showConfirm(title,message,confirmText="Confirm",variant="info"){
-  return new Promise(resolve=>{
-    const back=document.getElementById("go7ModalBackdrop");
-    const titleEl=document.getElementById("go7ModalTitle");
-    const msgEl=document.getElementById("go7ModalMessage");
-    const yes=document.getElementById("go7ModalConfirm");
-    const no=document.getElementById("go7ModalCancel");
-    back.dataset.variant = variant;
-    titleEl.textContent=title;
-    msgEl.textContent=message;
-    yes.textContent=confirmText;
-    yes.className = variant==="danger" ? "danger-btn" : "primary";
-    back.classList.add("show");
-    back.setAttribute("aria-hidden","false");
-    const finish=v=>{
-      back.classList.remove("show");
-      back.setAttribute("aria-hidden","true");
-      back.removeAttribute("data-variant");
-      yes.onclick=no.onclick=null;
-      resolve(v);
-    };
-    yes.onclick=()=>finish(true);
-    no.onclick=()=>finish(false);
-  });
-}
-function showNotifications(){
-  const btn=document.getElementById("notificationBtn");
-  const count=inquiries.filter(x=>x.status==="New").length;
-  if(btn){
-    btn.classList.toggle("has-new",count>0);
-    btn.classList.add("is-read");
-    setTimeout(()=>btn.classList.remove("is-read"),900);
-  }
-  toast(count ? `${count} new ${count===1?"inquiry":"inquiries"} need your attention` : "No new notifications");
-}
-document.getElementById("notificationBtn").addEventListener("click",showNotifications);
-
-document.getElementById("logoutBtn").addEventListener("click",logout);
-document.getElementById("go7ModalBackdrop")?.addEventListener("click",e=>{
-  if(e.target.id==="go7ModalBackdrop") document.getElementById("go7ModalCancel")?.click();
-});
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
-    if(document.getElementById("go7ModalBackdrop")?.classList.contains("show")) document.getElementById("go7ModalCancel")?.click();
-    else closeDrawer();
-  }
-});
-
-renderTable();
-renderRecent();
-updateStats();
-checkSession();
 </script>
 
 </body>
