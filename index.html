@@ -6,664 +6,121 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <title>GO7 Admin Dashboard</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler.min.css">
-
-<style id="go7-tabler-final">
+<style id="go7-fresh-ui">
 :root{
- --tblr-primary:#3850d5;--tblr-primary-rgb:56,80,213;
- --go7-bg:#f5f7fb;--go7-card:#fff;--go7-text:#182230;--go7-muted:#667085;
- --go7-line:#e6e9ef;--go7-sidebar:#fff;--go7-sidebar-text:#475467;
- --go7-hover:#f4f6ff;--go7-shadow:0 1px 2px rgba(16,24,40,.035),0 6px 18px rgba(16,24,40,.035);
+  --brand:#3850d5;
+  --brand-2:#566ce1;
+  --navy:#111936;
+  --bg:#f5f7fb;
+  --card:#fff;
+  --ink:#172033;
+  --text:#344054;
+  --muted:#7b8798;
+  --line:#e5e9f0;
+  --soft:#f8faff;
+  --success:#159957;
+  --warning:#c97713;
+  --danger:#c83b45;
+  --shadow:0 8px 30px rgba(20,31,55,.045);
 }
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;min-height:100%;background:var(--go7-bg);color:var(--go7-text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:14px;line-height:1.45;overflow-x:hidden}
-body{background:var(--go7-bg)}
-button,input,select,textarea{font:inherit}
+html,body{margin:0;width:100%;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.45;overflow-x:hidden}
+body{min-height:100vh}
+button,input,select,textarea{font:inherit;max-width:100%}
 button{cursor:pointer}
 a{text-decoration:none;color:inherit}
-svg{max-width:100%}
+img,svg,canvas{max-width:100%}
 .app{min-height:100vh}
 
-/* Sidebar — Tabler vertical layout */
-.sidebar{
- position:fixed;inset:0 auto 0 0;width:250px;height:100dvh;z-index:100;
- display:flex;flex-direction:column;overflow:auto;background:var(--go7-sidebar);
- border-right:1px solid var(--go7-line);box-shadow:2px 0 8px rgba(16,24,40,.025)
-}
-.brand{height:64px;min-height:64px;display:flex;align-items:center;gap:10px;padding:0 18px;border-bottom:1px solid var(--go7-line)}
-.sidebar .go7-logo-img{width:34px;height:34px;object-fit:contain;padding:4px;border:1px solid var(--go7-line);border-radius:7px;background:#fff}
-.brand-name{font-size:16px;font-weight:700;color:#1f2937;letter-spacing:-.02em}
-.brand-name span{color:var(--tblr-primary)}
-.nav-title{padding:19px 17px 7px;color:#98a2b3;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
-.nav{display:flex;flex-direction:column;gap:2px;padding:0 9px}
-.nav button{width:100%;min-height:40px;display:flex;align-items:center;gap:10px;border:0;border-radius:5px;padding:9px 10px;background:transparent;color:var(--go7-sidebar-text);font-size:13px;font-weight:500;text-align:left}
-.nav button svg{width:17px;height:17px;flex:none;color:#7b8794}
-.nav button:hover{background:#f3f5f8;color:#1f2937}
-.nav button.active{background:#eef1ff;color:var(--tblr-primary);font-weight:600}
-.nav button.active svg{color:var(--tblr-primary)}
-.sidebar-bottom{margin-top:auto;padding:10px 0 12px;border-top:1px solid var(--go7-line)}
-.sidebar-bottom #logoutBtn>span{color:#667085!important}
-.sidebar-bottom #logoutBtn:hover>span{background:#f7f8fa!important;color:#1f2937!important}
-.admin-mini{display:flex;align-items:center;gap:9px;margin:10px 11px 0;padding:9px;border:1px solid var(--go7-line);border-radius:6px;background:#fafbfc}
-.admin-mini strong{display:block;color:#344054;font-size:12px;font-weight:600}
-.admin-mini small{display:block;margin-top:2px;color:#98a2b3;font-size:10px}
-.avatar{width:32px;height:32px;display:grid;place-items:center;flex:none;border-radius:50%;background:#e9edff;color:var(--tblr-primary);font-size:11px;font-weight:700}
+/* LOGIN */
+.login-screen{position:fixed;inset:0;z-index:1000;display:none;place-items:center;padding:24px;background:#f5f7fb;overflow:auto}
+.go7-login-shell{width:min(980px,100%);min-height:570px;display:grid;grid-template-columns:43% 57%;overflow:hidden;border:1px solid #dfe4ec;border-radius:18px;background:#fff;box-shadow:0 24px 70px rgba(15,23,42,.12)}
+.go7-login-visual{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-width:0;overflow:hidden;padding:34px;background:radial-gradient(circle at 85% 12%,rgba(111,132,255,.30),transparent 32%),radial-gradient(circle at 20% 90%,rgba(51,207,255,.13),transparent 34%),linear-gradient(145deg,#0a1024,#172750 52%,#3149bd)}
+.go7-login-grid{position:absolute;inset:0;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom right,#000,transparent 75%)}
+.go7-login-orbit{position:absolute;border:1px solid rgba(255,255,255,.08);border-radius:50%}
+.orbit-one{width:390px;height:390px;right:-220px;top:-175px}.orbit-two{width:290px;height:290px;right:-165px;top:-120px}
+.go7-login-brandmark{position:relative;z-index:2}.go7-login-brandmark .go7-logo-img{width:78px;height:78px;object-fit:contain;padding:0;border:0;background:transparent}
+.go7-login-visual-copy{position:relative;z-index:2;max-width:310px;margin-top:auto}.go7-login-visual-copy span{display:block;margin-bottom:11px;color:#aebaff;font-size:10px;font-weight:700;letter-spacing:.12em}.go7-login-visual-copy strong{display:block;color:#fff;font-size:31px;line-height:1.12;letter-spacing:-.035em}.go7-login-visual-copy p{margin:13px 0 0;color:rgba(255,255,255,.65);font-size:12px}
+.go7-login-secure{position:relative;z-index:2;display:flex;align-items:center;gap:8px;margin-top:30px;color:rgba(255,255,255,.62);font-size:10px}.go7-secure-dot{width:7px;height:7px;border-radius:50%;background:#38e69a;box-shadow:0 0 0 4px rgba(56,230,154,.10)}
+.go7-login-form-panel{min-width:0;display:flex;flex-direction:column;justify-content:center;padding:56px 70px;background:#fff}
+.go7-login-mobile-brand{display:none}
+.go7-login-heading,.go7-login-form-panel #loginForm,.login-error,.go7-login-footer{width:100%;max-width:460px;margin-left:auto;margin-right:auto}
+.go7-login-heading{margin-bottom:26px}.go7-login-eyebrow{display:block;margin-bottom:9px;color:var(--brand);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase}.go7-login-heading h1{margin:0;font-size:31px;line-height:1.08;letter-spacing:-.035em;font-weight:650}.go7-login-heading p{margin:9px 0 0;color:#8b95a5;font-size:12px}
+.go7-field{margin-bottom:17px}.go7-field label{display:block;margin-bottom:6px;color:#344054;font-size:11px;font-weight:600}.go7-label-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.go7-label-row span{color:#98a2b3;font-size:10px}
+.go7-input-wrap{position:relative}.go7-input-wrap>svg{position:absolute;left:12px;top:50%;z-index:2;width:17px;height:17px;transform:translateY(-50%);color:#98a2b3;pointer-events:none}.go7-input-wrap .form-control{display:block;width:100%;height:45px;padding:0 12px 0 40px;border:1px solid #d9dee7;border-radius:7px;background:#fff;color:#344054;outline:0;font-size:12px}.go7-input-wrap .form-control:focus{border-color:#91a0e9;box-shadow:0 0 0 3px rgba(56,80,213,.08)}
+#loginSubmit{width:100%;height:45px;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:3px;border:1px solid var(--brand);border-radius:7px;background:var(--brand);color:#fff;font-size:12px;font-weight:600}.login-submit svg{width:16px;height:16px}
+.login-error{display:none;margin-bottom:14px;padding:9px 11px;border:1px solid #efb8bd;border-radius:7px;background:#fff7f7;color:#b42318;font-size:10px}.login-error.show{display:block}
+.go7-login-footer{display:flex;align-items:center;justify-content:center;gap:11px;margin-top:24px;padding-top:16px;border-top:1px solid #eef0f3;color:#98a2b3;font-size:9px}.go7-footer-item{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.go7-footer-icon{width:13px;height:13px}.go7-login-footer i{width:1px;height:12px;background:#e4e7ec}
 
-/* Header */
-.main{margin-left:250px;width:calc(100% - 250px);min-height:100vh}
-.topbar{
- position:sticky;top:0;z-index:50;height:60px;display:flex;align-items:center;justify-content:space-between;
- padding:0 20px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--go7-line);backdrop-filter:blur(10px)
-}
-.top-left{display:flex;align-items:center;gap:10px;min-width:0}
-.page-title{font-size:14px;font-weight:600;color:#344054;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mobile-menu{display:none;width:36px;height:36px;place-items:center;border:1px solid var(--go7-line);border-radius:5px;background:#fff;color:#475467}
-.top-actions{display:flex;gap:6px}
-.icon-btn,.theme-toggle{
- width:36px;height:36px;display:grid;place-items:center;border:1px solid var(--go7-line);border-radius:5px;background:#fff;color:#667085
-}
-.icon-btn:hover,.theme-toggle:hover{background:#f8f9fb;color:var(--tblr-primary);border-color:#ccd3ef}
-.icon-btn.refreshing svg{animation:go7spin .7s linear infinite}
-@keyframes go7spin{to{transform:rotate(360deg)}}
+/* APP SHELL */
+.sidebar{position:fixed;inset:0 auto 0 0;z-index:100;width:252px;height:100dvh;display:flex;flex-direction:column;overflow:auto;background:#fff;border-right:1px solid var(--line)}
+.brand{height:68px;display:flex;align-items:center;padding:0 20px;border-bottom:1px solid var(--line)}
+.brand .go7-logo-img{width:38px;height:38px;object-fit:contain}
+.nav-title{padding:20px 17px 8px;color:#98a2b3;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.nav{display:flex;flex-direction:column;gap:3px;padding:0 10px}
+.nav button{width:100%;min-height:41px;display:flex;align-items:center;gap:11px;border:0;border-radius:7px;padding:9px 11px;background:transparent;color:#667085;font-size:12px;font-weight:600;text-align:left}
+.nav button svg{width:17px;height:17px;flex:none;color:#98a2b3}.nav button:hover{background:#f7f8fb;color:#344054}.nav button.active{background:#eef1ff;color:var(--brand)}.nav button.active svg{color:var(--brand)}
+.sidebar-bottom{margin-top:auto;padding:10px 0 15px;border-top:1px solid var(--line)}
+.sidebar-bottom>.nav{padding:0 10px}.sidebar-bottom>.nav #logoutBtn{padding:0}
+.admin-mini{display:flex;align-items:center;gap:10px;margin:10px 12px 0;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fafbfc}.admin-mini .avatar{width:32px;height:32px;border-radius:50%;object-fit:cover}.admin-mini strong{display:block;color:#344054;font-size:11px}.admin-mini small{display:block;margin-top:2px;color:#98a2b3;font-size:9px}
 
-/* Content */
-.content{width:100%;max-width:1500px;margin:0 auto;padding:22px 24px 40px}
-.page{display:none;width:100%}.page.active{display:block}
-.welcome{
- min-height:0;display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 18px;padding:0 0 15px;
- border-bottom:1px solid var(--go7-line);background:transparent
-}
-.welcome h1{margin:0;color:#182230;font-size:21px;line-height:1.25;font-weight:600;letter-spacing:-.025em}
-.welcome p{margin:5px 0 0;color:#7b8794;font-size:12px}
-#dashboard .welcome{padding:18px 20px;margin-bottom:18px;background:#fff;border:1px solid var(--go7-line);border-radius:6px;box-shadow:var(--go7-shadow)}
-#dashboard .welcome h1{font-size:19px}
-#dashboard .welcome:after{display:none}
-#inquiries .welcome,#analytics .welcome,#settings .welcome{background:transparent;box-shadow:none;border:0;border-bottom:1px solid var(--go7-line);border-radius:0}
+.main{min-height:100vh;margin-left:252px}.topbar{position:sticky;top:0;z-index:80;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.top-left,.top-actions{display:flex;align-items:center;gap:8px}.page-title{font-size:13px;font-weight:650;color:#344054}.mobile-menu{display:none;width:36px;height:36px;place-items:center;border:1px solid var(--line);border-radius:7px;background:#fff;color:#667085}.icon-btn,.theme-toggle{width:35px;height:35px;display:grid;place-items:center;border:1px solid var(--line);border-radius:7px;background:#fff;color:#667085}.icon-btn:hover,.theme-toggle:hover{color:var(--brand);background:#fafbff}
+.content{width:100%;max-width:1500px;margin:0 auto;padding:24px 26px 42px}.page{display:none}.page.active{display:block}
+.welcome{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:17px;padding:18px 20px;border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:var(--shadow)}.welcome h1{margin:0;color:#172033;font-size:20px;font-weight:650;letter-spacing:-.025em}.welcome p{margin:5px 0 0;color:#8993a3;font-size:11px}
+.primary{min-height:36px;display:inline-flex;align-items:center;justify-content:center;padding:8px 13px;border:1px solid var(--brand);border-radius:7px;background:var(--brand);color:#fff;font-size:11px;font-weight:650}.primary:hover{background:#3046c5}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}.card{border:1px solid var(--line);border-radius:10px;background:#fff;box-shadow:var(--shadow)}
+.stat{position:relative;min-height:128px;padding:16px;overflow:hidden}.stat:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:linear-gradient(90deg,var(--brand),#8290ef)}.stat-top{display:flex;align-items:center;justify-content:space-between}.stat-label{color:#8993a3;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.stat-icon{width:34px;height:34px;display:grid;place-items:center;border:1px solid #e0e5ff;border-radius:7px;background:#f1f3ff;color:var(--brand)}.stat-icon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8}.stat-value{margin-top:13px;color:#172033;font-size:28px;line-height:1;font-weight:650;letter-spacing:-.04em}.stat-note{margin-top:6px;color:#98a2b3;font-size:9px}.trend-up strong{color:#159957}.trend-down strong{color:#c97713}
+.grid-2{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr);gap:12px}.section-card{overflow:hidden}.section-head{min-height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #eef0f3}.section-head h2{margin:0;color:#344054;font-size:12px;font-weight:650}.link-btn{border:0;background:transparent;color:var(--brand);font-size:10px;font-weight:650}.activity{padding:2px 16px}.activity-row{display:flex;align-items:flex-start;gap:9px;padding:12px 0;border-bottom:1px solid #f0f2f5}.activity-row:last-child{border-bottom:0}.activity-dot{width:7px;height:7px;flex:none;margin-top:5px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 3px #eef1ff}.activity-row strong{color:#344054;font-size:11px}.activity-row p{margin:2px 0 0;color:#98a2b3;font-size:9px}.activity-time{margin-left:auto;color:#98a2b3;font-size:9px}.quick{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:13px 16px 16px}.quick button{min-height:65px;padding:10px;text-align:left;border:1px solid var(--line);border-radius:7px;background:#fff;color:#344054;font-size:10px;font-weight:650}.quick button:hover{border-color:#cbd2eb;background:#fafbff;color:var(--brand)}.quick small{display:block;margin-top:3px;color:#98a2b3;font-size:8px;font-weight:400}
 
-/* Buttons */
-.primary{min-height:36px;padding:8px 13px;border:1px solid var(--tblr-primary);border-radius:5px;background:var(--tblr-primary);color:#fff;font-size:12px;font-weight:600;box-shadow:none}
-.primary:hover{background:#3046c5;border-color:#3046c5;transform:none}
-.small-btn{min-height:32px;padding:6px 10px;border:1px solid #d9dee7;border-radius:5px;background:#fff;color:#475467;font-size:11px;font-weight:600}
-.small-btn:hover{border-color:#bcc5d4;background:#f8f9fb;color:var(--tblr-primary)}
-.danger-btn{min-height:34px;padding:7px 11px;border:1px solid #efc8c8;border-radius:5px;background:#fff;color:#c62828;font-size:11px;font-weight:600}
-.danger-btn:hover{background:#fff7f7}
+.table-card{overflow:hidden}.table-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--line);background:#fbfcfe}.toolbar-left{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.search{position:relative}.search input{width:290px;height:36px;padding:0 11px 0 34px;border:1px solid #dfe3ea;border-radius:7px;background:#fff;outline:0;color:#344054;font-size:10px}.search svg{position:absolute;left:10px;top:10px;width:15px;height:15px;color:#98a2b3}.select{height:36px;padding:0 10px;border:1px solid #dfe3ea;border-radius:7px;background:#fff;color:#475467;font-size:10px}
+.table-wrap{width:100%;overflow:auto}.table-wrap table{width:100%;min-width:780px;border-collapse:collapse}.table-wrap th,.table-wrap td{padding:10px 12px;border-bottom:1px solid #eef0f3;text-align:left;vertical-align:middle}.table-wrap th{height:38px;background:#f8fafc;color:#7b8794;font-size:8px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.table-wrap td{color:#667085;font-size:10px}.table-wrap td strong{color:#344054;font-weight:650}.table-wrap tbody tr:hover{background:#fafbff}
+.status{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;font-size:8px;font-weight:750}.status:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}.status.new{color:#2563eb;background:#eff6ff}.status.progress{color:#c97713;background:#fff7ed}.status.replied{color:#159957;background:#effbf4}.status.closed{color:#64748b;background:#f1f5f9}.actions{display:flex;justify-content:flex-end;gap:5px}.small-btn{min-height:30px;padding:6px 9px;border:1px solid #dfe3ea;border-radius:6px;background:#fff;color:#475467;font-size:9px;font-weight:650}.small-btn:hover{color:var(--brand);border-color:#c8d0ea}.danger-btn{min-height:32px;padding:7px 10px;border:1px solid #f0c7cb;border-radius:6px;background:#fff7f7;color:#c83b45;font-size:10px;font-weight:650}.pagination{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;color:#98a2b3;font-size:9px}.pager{display:flex;gap:4px}.pager button{width:28px;height:28px;border:1px solid #dfe3ea;border-radius:6px;background:#fff;color:#667085}.pager button.active{background:#eef1ff;color:var(--brand);border-color:#ccd3f5}
 
-/* KPI */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
-.card{background:var(--go7-card);border:1px solid var(--go7-line);border-radius:6px;box-shadow:var(--go7-shadow)}
-.stat{position:relative;min-height:126px;padding:16px;overflow:hidden}
-.stat:before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:var(--tblr-primary)}
-.stat-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.stat-label{color:#7b8794;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.stat-icon{width:34px;height:34px;display:grid;place-items:center;border:1px solid #e0e5ff;border-radius:5px;background:#f1f3ff;color:var(--tblr-primary)}
-.stat-icon svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
-.stat-value{margin-top:12px;color:#182230;font-size:27px;line-height:1;font-weight:650;letter-spacing:-.035em}
-.stat-note{margin-top:6px;color:#98a2b3;font-size:10px}
-.trend-up strong{color:#15803d}.trend-down strong{color:#c62828}
+.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.setting-card{padding:17px}.setting-card h3{margin:0;color:#344054;font-size:12px;font-weight:650}.setting-card>p{margin:4px 0 12px;color:#98a2b3;font-size:9px}.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid #eef0f3}.toggle{width:34px;height:20px;padding:0;border:0;border-radius:999px;background:#d7dde6;position:relative}.toggle:after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:.15s}.toggle.on{background:var(--brand)}.toggle.on:after{left:17px}.detail-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid #eef0f3;color:#667085;font-size:10px}.detail-row strong{color:#344054}
 
-/* Cards / dashboard */
-.grid-2{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,1fr);gap:12px}
-.section-card{padding:0;overflow:hidden}
-.section-head{min-height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid #edf0f3}
-.section-head h2{margin:0;color:#344054;font-size:13px;font-weight:600}
-.link-btn{border:0;background:transparent;color:var(--tblr-primary);font-size:11px;font-weight:600}
-.link-btn:hover{text-decoration:underline}
-.activity{padding:2px 16px 5px}
-.activity-row{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid #f0f2f5}
-.activity-row:last-child{border-bottom:0}
-.activity-dot{width:7px;height:7px;flex:none;margin-top:5px;border-radius:50%;background:var(--tblr-primary);box-shadow:0 0 0 3px #eef1ff}
-.activity-row strong{color:#344054;font-size:12px;font-weight:600}.activity-row p{margin:2px 0 0;color:#98a2b3;font-size:10px}.activity-time{margin-left:auto;color:#98a2b3;font-size:10px}
-.quick{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:13px 16px 16px}
-.quick button{min-height:68px;padding:11px;text-align:left;border:1px solid var(--go7-line);border-radius:5px;background:#fff;color:#344054;font-size:11px;font-weight:600}
-.quick button:hover{border-color:#cbd2eb;background:#fafbff;color:var(--tblr-primary);transform:none;box-shadow:none}
-.quick small{display:block;margin-top:3px;color:#98a2b3;font-size:9px;font-weight:400}
+.drawer{position:fixed;right:0;top:0;bottom:0;z-index:300;width:min(680px,100vw);display:flex;flex-direction:column;background:#fff;border-left:1px solid var(--line);box-shadow:-24px 0 60px rgba(9,18,45,.16);transform:translateX(100%);transition:transform .22s ease}.drawer.open{transform:translateX(0)}.drawer-head{min-height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--line)}.drawer-head h2{margin:0;font-size:16px;color:#344054}.overlay{position:fixed;inset:0;z-index:250;display:none;background:rgba(15,23,42,.35);backdrop-filter:blur(2px)}.overlay.show{display:block}.drawer-body{flex:1;overflow:auto;padding:18px;background:#f6f8fb}.drawer-foot{display:flex;justify-content:flex-end;gap:7px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--line);background:#fff}.inquiry-view-body{display:grid;grid-template-columns:1fr 1fr;gap:10px}.form-group{padding:12px;border:1px solid var(--line);border-radius:9px;background:#fff}.form-group.full{grid-column:1/-1}.form-group label{display:block;margin-bottom:4px;color:#98a2b3;font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.message-box,.reply-box{padding:11px;border:1px solid #e1e6ef;border-radius:8px;background:#f9fbff;color:#475467;font-size:10px;line-height:1.55}.reply-box{background:#f1f4ff}
 
-/* Table */
-.table-card{overflow:hidden}
-.table-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 14px;border-bottom:1px solid var(--go7-line);background:#fbfcfe}
-.toolbar-left{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.search{position:relative}
-.search input{width:280px;height:36px;padding:0 11px 0 34px;border:1px solid #dfe3ea;border-radius:5px;background:#fff;outline:0;color:#344054;font-size:11px}
-.search svg{position:absolute;left:10px;top:10px;width:15px;height:15px;color:#98a2b3}
-.search:focus-within input{border-color:#aab5ed;box-shadow:0 0 0 2px rgba(56,80,213,.08)}
-.select{height:36px;padding:0 10px;border:1px solid #dfe3ea;border-radius:5px;background:#fff;color:#475467;font-size:11px;outline:0}
-.table-wrap{width:100%;overflow:auto}
-.table-wrap table{width:100%;min-width:800px;border-collapse:collapse}
-.table-wrap th,.table-wrap td{padding:11px 13px;border-bottom:1px solid #eef0f3;text-align:left;vertical-align:middle}
-.table-wrap th{height:38px;background:#f8fafc;color:#7b8794;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.table-wrap td{color:#667085;font-size:11px}
-.table-wrap td strong{color:#344054;font-weight:600}
-.table-wrap tbody tr:hover{background:#fafbff}
-.status{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border:1px solid transparent;border-radius:999px;font-size:9px;font-weight:700}
-.status:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
-.status.new{color:#2563eb;background:#eff6ff}.status.progress{color:#c56a08;background:#fff7ed}.status.replied{color:#15803d;background:#f0fdf4}.status.closed{color:#64748b;background:#f1f5f9}
-.actions{display:flex;align-items:center;justify-content:flex-end;gap:5px}
-.pagination{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;color:#98a2b3;font-size:10px}
-.pager{display:flex;gap:4px}.pager button{width:28px;height:28px;border:1px solid #dfe3ea;border-radius:5px;background:#fff;color:#667085}.pager button.active{background:#eef1ff;border-color:#ccd3f5;color:var(--tblr-primary);font-weight:700}
+.toast{position:fixed;right:18px;bottom:18px;z-index:500;display:none;max-width:320px;padding:10px 13px;border:1px solid var(--line);border-radius:7px;background:#fff;color:#344054;box-shadow:0 12px 30px rgba(16,24,40,.15);font-size:10px}.toast.show{display:block}
+.go7-modal-backdrop{position:fixed;inset:0;z-index:400;display:none;place-items:center;padding:16px;background:rgba(15,23,42,.36)}.go7-modal-backdrop.show{display:grid}.go7-modal{width:min(390px,100%);padding:20px;border:1px solid var(--line);border-radius:9px;background:#fff;box-shadow:0 18px 50px rgba(16,24,40,.18)}.go7-modal h3{margin:0;font-size:14px}.go7-modal p{margin:7px 0 15px;color:#667085;font-size:10px}.go7-modal-actions{display:flex;justify-content:flex-end;gap:7px}
 
-/* Analytics */
-.bar{position:relative;flex:1;max-width:60px;border-radius:3px 3px 0 0;background:linear-gradient(180deg,#5267df,#8b98e9)}
-.bar span{position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);color:#98a2b3;font-size:9px}
+/* ANALYTICS */
+.analytics-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:12px}.chart-card{padding:16px}.chart{height:240px;display:flex;align-items:flex-end;gap:12px;padding:20px 10px 28px;border-bottom:1px solid #edf0f3}.bar{position:relative;flex:1;max-width:60px;min-height:8px;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#566ce1,#9ba7ed)}.bar span{position:absolute;left:50%;bottom:-20px;transform:translateX(-50%);font-size:8px;color:#98a2b3}.chart-legend{margin-top:12px;color:#98a2b3;font-size:9px}
 
-/* Settings */
-.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.setting-card{padding:17px}.setting-card h3{margin:0;color:#344054;font-size:13px;font-weight:600}.setting-card>p{margin:4px 0 12px;color:#98a2b3;font-size:10px}
-.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid #eef0f3}
-.toggle{width:34px;height:20px;padding:0;border:0;border-radius:999px;background:#d7dde6;position:relative}
-.toggle:after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.12);transition:.16s}
-.toggle.on{background:var(--tblr-primary)}.toggle.on:after{left:17px}
-.detail-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid #eef0f3;color:#667085;font-size:11px}.detail-row strong{color:#344054}
-
-/* Inquiry drawer / modal */
-.overlay{position:fixed;inset:0;z-index:199;display:none;background:rgba(15,23,42,.36);backdrop-filter:blur(2px)}
-.overlay.show{display:block}
-.drawer{position:fixed;right:0;top:0;bottom:0;z-index:200;width:min(680px,100vw);display:flex;flex-direction:column;background:#fff;border-left:1px solid var(--go7-line);box-shadow:-12px 0 35px rgba(16,24,40,.10);transform:translateX(100%);transition:transform .22s ease}
-.drawer.open{transform:translateX(0)}
-.drawer-head{min-height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--go7-line)}
-.drawer-head h2{margin:0;color:#344054;font-size:15px;font-weight:600}
-.overlay-close{width:32px;height:32px;border:1px solid var(--go7-line);border-radius:5px;background:#fff;color:#667085}
-.drawer-body{flex:1;overflow:auto;padding:18px;background:#f8fafc}
-.drawer-foot{display:flex;justify-content:flex-end;gap:7px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--go7-line);background:#fff}
-.inquiry-view-body{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.form-group{padding:12px;border:1px solid var(--go7-line);border-radius:5px;background:#fff}
-.form-group.full{grid-column:1/-1}
-.form-group label{display:block;margin-bottom:4px;color:#98a2b3;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
-.form-control{width:100%;min-height:38px;padding:8px 10px;border:1px solid #dfe3ea;border-radius:5px;background:#fff;color:#344054;outline:0;font-size:11px}
-textarea.form-control{min-height:90px;resize:vertical}
-.form-control:focus{border-color:#aab5ed;box-shadow:0 0 0 2px rgba(56,80,213,.08)}
-.message-box,.reply-box{padding:11px;border:1px solid var(--go7-line);border-radius:5px;background:#fbfcfe;color:#475467;font-size:11px;line-height:1.55}
-
-/* Login */
-.login-screen{position:fixed;inset:0;z-index:999;display:none;place-items:center;padding:18px;background:#f5f7fb}
-.login-screen[style*="display: grid"]{display:grid!important}
-.login-card{width:min(420px,100%);overflow:hidden;border:1px solid var(--go7-line);border-radius:6px;background:#fff;box-shadow:0 10px 28px rgba(16,24,40,.08)}
-.login-brand{height:110px;display:grid;place-items:center;background:#f8f9fb;border-bottom:1px solid var(--go7-line)}
-.login-brand .go7-logo-img{width:82px;height:82px;object-fit:contain;padding:12px;border:1px solid var(--go7-line);border-radius:50%;background:#fff}
-.login-card h1{margin:0;padding:24px 28px 0;color:#182230;font-size:21px;font-weight:600;text-align:center}
-.login-card>p{margin:7px 28px 20px;color:#98a2b3;font-size:10px;text-align:center}
-.login-card form{padding:0 28px 16px}
-.login-card label{display:block;margin:0 0 5px;color:#475467;font-size:10px;font-weight:600}
-.login-card .form-control{height:40px;margin-bottom:14px}
-.login-submit{width:100%;height:40px;margin-top:2px}
-.login-submit:after{content:none!important}
-.login-error{min-height:0;margin:0 28px 10px;padding:0;color:#c62828;font-size:10px}
-.login-help{padding:11px 20px;border-top:1px solid #eef0f3;color:#98a2b3;text-align:center;font-size:9px}
-.login-help:before{content:"";display:inline-block;width:6px;height:6px;margin-right:5px;border-radius:50%;background:#16a34a}
-.go7-modal-backdrop{position:fixed;inset:0;z-index:300;display:none;place-items:center;padding:16px;background:rgba(15,23,42,.35);backdrop-filter:blur(2px)}
-.go7-modal-backdrop.show{display:grid}
-.go7-modal{width:min(390px,100%);padding:20px;border:1px solid var(--go7-line);border-radius:7px;background:#fff;box-shadow:0 18px 45px rgba(16,24,40,.18)}
-.go7-modal-icon{width:34px;height:34px;display:grid;place-items:center;margin-bottom:10px;border-radius:50%;background:#fff7ed;color:#c56a08;font-weight:700}
-.go7-modal h3{margin:0;color:#344054;font-size:14px}.go7-modal p{margin:7px 0 15px;color:#667085;font-size:11px}.go7-modal-actions{display:flex;justify-content:flex-end;gap:7px}
-.toast{position:fixed;right:18px;bottom:18px;z-index:500;display:none;max-width:330px;padding:10px 13px;border:1px solid #dce2ea;border-radius:5px;background:#fff;color:#344054;box-shadow:0 10px 30px rgba(16,24,40,.14);font-size:11px}.toast.show{display:block}
-
-/* Dark mode */
-html[data-theme="dark"]{
- --go7-bg:#101722;--go7-card:#18212d;--go7-text:#edf2f7;--go7-muted:#9aa7b5;--go7-sidebar:#151e29;--go7-sidebar-text:#b8c3cf;--go7-line:#2a3543
-}
-html[data-theme="dark"] body,html[data-theme="dark"] .main{background:#101722;color:#edf2f7}
-html[data-theme="dark"] .sidebar,html[data-theme="dark"] .topbar,html[data-theme="dark"] .card,html[data-theme="dark"] #dashboard .welcome,html[data-theme="dark"] .table-toolbar,html[data-theme="dark"] .pagination,html[data-theme="dark"] .drawer,html[data-theme="dark"] .drawer-foot,html[data-theme="dark"] .form-group,html[data-theme="dark"] .login-card,html[data-theme="dark"] .go7-modal{background:#18212d;border-color:#2a3543}
-html[data-theme="dark"] .brand,html[data-theme="dark"] .section-head,html[data-theme="dark"] .drawer-head{border-color:#2a3543}
-html[data-theme="dark"] .brand-name,html[data-theme="dark"] .page-title,html[data-theme="dark"] .welcome h1,html[data-theme="dark"] .section-head h2,html[data-theme="dark"] .stat-value,html[data-theme="dark"] .setting-card h3,html[data-theme="dark"] .detail-row strong,html[data-theme="dark"] .login-card h1,html[data-theme="dark"] .go7-modal h3{color:#edf2f7}
-html[data-theme="dark"] .welcome p,html[data-theme="dark"] .stat-label,html[data-theme="dark"] .stat-note,html[data-theme="dark"] .setting-card>p,html[data-theme="dark"] .activity-row p,html[data-theme="dark"] .activity-time,html[data-theme="dark"] .detail-row{color:#8f9baa}
-html[data-theme="dark"] .nav button:hover,html[data-theme="dark"] .quick button:hover{background:#202b38}
+/* DARK */
+html[data-theme="dark"]{--bg:#101722;--card:#18212d;--ink:#edf2f7;--text:#d7dee8;--muted:#8f9baa;--line:#2a3543;--soft:#202a36}
+html[data-theme="dark"] body{background:var(--bg);color:var(--ink)}
+html[data-theme="dark"] .sidebar,html[data-theme="dark"] .topbar,html[data-theme="dark"] .card,html[data-theme="dark"] .welcome,html[data-theme="dark"] .table-toolbar,html[data-theme="dark"] .drawer,html[data-theme="dark"] .drawer-head,html[data-theme="dark"] .drawer-foot,html[data-theme="dark"] .form-group,html[data-theme="dark"] .setting-card,html[data-theme="dark"] .go7-modal{background:#18212d;border-color:#2a3543}
+html[data-theme="dark"] .brand,html[data-theme="dark"] .section-head{border-color:#2a3543}
+html[data-theme="dark"] .brand,html[data-theme="dark"] .page-title,html[data-theme="dark"] .welcome h1,html[data-theme="dark"] .section-head h2,html[data-theme="dark"] .stat-value,html[data-theme="dark"] .setting-card h3,html[data-theme="dark"] .detail-row strong{color:#edf2f7}
+html[data-theme="dark"] .welcome p,html[data-theme="dark"] .stat-label,html[data-theme="dark"] .stat-note,html[data-theme="dark"] .setting-card>p,html[data-theme="dark"] .activity-row p,html[data-theme="dark"] .activity-time{color:#8f9baa}
+html[data-theme="dark"] .nav button:hover,html[data-theme="dark"] .quick button:hover{background:#202b38;color:#edf2f7}
 html[data-theme="dark"] .nav button.active{background:#232e48}
-html[data-theme="dark"] .search input,html[data-theme="dark"] .select,html[data-theme="dark"] .form-control,html[data-theme="dark"] .small-btn,html[data-theme="dark"] .icon-btn,html[data-theme="dark"] .theme-toggle,html[data-theme="dark"] .overlay-close{background:#18212d;border-color:#334151;color:#d8e0e8}
+html[data-theme="dark"] .search input,html[data-theme="dark"] .select,html[data-theme="dark"] .form-control,html[data-theme="dark"] .small-btn,html[data-theme="dark"] .icon-btn,html[data-theme="dark"] .theme-toggle{background:#18212d;border-color:#334151;color:#edf2f7}
 html[data-theme="dark"] .table-wrap th{background:#202a36;color:#8f9baa}
 html[data-theme="dark"] .table-wrap td{border-color:#26313e;color:#b8c3cf}
 html[data-theme="dark"] .table-wrap tbody tr:hover{background:#202b38}
-html[data-theme="dark"] .login-screen{background:#101722}
-html[data-theme="dark"] .login-brand{background:#151e29;border-color:#2a3543}
-html[data-theme="dark"] .login-card>p,html[data-theme="dark"] .login-help{color:#8f9baa}
+html[data-theme="dark"] .drawer-body{background:#101722}.login-screen{background:#101722}
+html[data-theme="dark"] .go7-login-shell{border-color:#2a3543;background:#18212d}.go7-login-form-panel{background:#18212d}.go7-login-heading h1,html[data-theme="dark"] .go7-field label{color:#edf2f7}.go7-input-wrap .form-control{background:#18212d;border-color:#334151;color:#edf2f7}.go7-login-footer{border-color:#2a3543}
 
-/* Responsive */
-@media(max-width:1100px){
- .sidebar{width:230px}.main{margin-left:230px;width:calc(100% - 230px)}.content{padding:20px}
- .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* RESPONSIVE */
+@media(max-width:1180px){
+  .sidebar{width:232px}.main{margin-left:232px}.content{padding:22px 20px 38px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.analytics-grid{grid-template-columns:1fr}
 }
-@media(max-width:800px){
- .sidebar{width:min(280px,86vw);transform:translateX(-100%);transition:transform .2s ease;box-shadow:8px 0 28px rgba(0,0,0,.12)}
- .sidebar.open{transform:translateX(0)}
- .main{margin-left:0;width:100%}.mobile-menu{display:grid}
- .topbar{padding:0 14px}.content{padding:18px 14px 30px}
- .grid-2{grid-template-columns:1fr}.settings-grid{grid-template-columns:1fr}
- body.sidebar-open:after{content:"";position:fixed;inset:0;z-index:90;background:rgba(15,23,42,.35)}
-}
-@media(max-width:560px){
- .stats{grid-template-columns:1fr}.welcome{align-items:flex-start;flex-direction:column}
- #dashboard .welcome{padding:16px}.welcome h1{font-size:19px}
- #dashboard .welcome>.primary{width:100%;justify-content:center}
- .search input{width:min(100%,100vw - 70px)}.toolbar-left{width:100%}.select{width:100%}
- .inquiry-view-body{grid-template-columns:1fr}.form-group.full{grid-column:auto}
- .drawer-foot .primary{flex:1}.login-screen{padding:9px}
- .login-card{width:min(430px,100%)}.login-brand{height:96px}.login-brand .go7-logo-img{width:70px;height:70px}
- .login-card h1{font-size:20px;padding:20px 20px 0}.login-card>p{margin:6px 20px 17px}.login-card form{padding:0 20px 14px}.login-error{margin-left:20px;margin-right:20px}
-}
-</style>
-
-<style id="go7-login-final-fix-v2">
-/* GO7 LOGIN FINAL — real .go7-login-* markup */
-.login-screen{
-  position:fixed!important;
-  inset:0!important;
-  width:100vw!important;
-  height:100dvh!important;
-  min-height:100dvh!important;
-  margin:0!important;
-  padding:24px!important;
-  display:grid!important;
-  place-items:center!important;
-  overflow:auto!important;
-  background:#f5f7fb!important;
-}
-.go7-login-shell{
-  width:min(940px,100%)!important;
-  height:min(590px,calc(100dvh - 48px))!important;
-  min-height:500px!important;
-  margin:0 auto!important;
-  display:grid!important;
-  grid-template-columns:38% 62%!important;
-  overflow:hidden!important;
-  border:1px solid #dfe3ea!important;
-  border-radius:12px!important;
-  background:#fff!important;
-  box-shadow:0 18px 55px rgba(16,24,40,.10)!important;
-}
-.go7-login-visual{
-  position:relative!important;
-  width:auto!important;
-  min-width:0!important;
-  min-height:0!important;
-  overflow:hidden!important;
-  display:flex!important;
-  flex-direction:column!important;
-  padding:34px!important;
-  background:
-    radial-gradient(circle at 88% 8%, rgba(92,112,255,.34), transparent 34%),
-    radial-gradient(circle at 8% 92%, rgba(43,208,255,.16), transparent 34%),
-    linear-gradient(145deg,#0b1226 0%,#111f46 48%,#273eaa 100%)!important;
-}
-.go7-login-brandmark{
-  position:relative!important;
-  z-index:2!important;
-  width:max-content!important;
-  display:flex!important;
-  align-items:center!important;
-}
-.go7-login-brandmark .go7-logo-img{
-  display:block!important;
-  width:78px!important;
-  height:78px!important;
-  max-width:78px!important;
-  max-height:78px!important;
-  object-fit:contain!important;
-  padding:0!important;
-  border:0!important;
-  border-radius:0!important;
-  background:transparent!important;
-}
-.go7-login-form-panel{
-  width:auto!important;
-  min-width:0!important;
-  min-height:0!important;
-  display:flex!important;
-  flex-direction:column!important;
-  justify-content:center!important;
-  padding:54px 64px!important;
-  background:#fff!important;
-}
-.go7-login-heading,
-.go7-login-form-panel #loginForm,
-.login-error,
-.go7-login-footer{
-  width:100%!important;
-  max-width:470px!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
-.go7-login-heading{
-  margin-top:0!important;
-  margin-bottom:25px!important;
-}
-.go7-login-heading h1{
-  margin:0!important;
-  font-size:31px!important;
-  line-height:1.08!important;
-}
-.go7-login-heading p{
-  margin:9px 0 0!important;
-  font-size:12px!important;
-}
-.go7-login-form-panel #loginForm{
-  padding:0!important;
-  margin-top:0!important;
-}
-.go7-field{
-  width:100%!important;
-  margin-bottom:17px!important;
-}
-.go7-field label{
-  display:block!important;
-  margin:0 0 6px!important;
-  font-size:11px!important;
-  font-weight:600!important;
-}
-.go7-input-wrap{
-  position:relative!important;
-  width:100%!important;
-}
-.go7-input-wrap>svg{
-  position:absolute!important;
-  z-index:2!important;
-  left:12px!important;
-  top:50%!important;
-  width:17px!important;
-  height:17px!important;
-  transform:translateY(-50%)!important;
-  color:#98a2b3!important;
-  pointer-events:none!important;
-}
-.go7-input-wrap .form-control{
-  display:block!important;
-  width:100%!important;
-  height:44px!important;
-  min-height:44px!important;
-  margin:0!important;
-  padding:0 12px 0 40px!important;
-  border:1px solid #d9dee7!important;
-  border-radius:6px!important;
-  background:#fff!important;
-  color:#344054!important;
-  box-shadow:none!important;
-}
-.go7-input-wrap .form-control:focus{
-  border-color:#8d9ae6!important;
-  box-shadow:0 0 0 3px rgba(56,80,213,.09)!important;
-}
-#otpWrap{
-  display:none;
-  width:100%!important;
-  margin:0 0 17px!important;
-}
-#otpWrap .go7-input-wrap{
-  width:100%!important;
-}
-#otpWrap .form-control{
-  width:100%!important;
-}
-#loginSubmit.login-submit{
-  width:100%!important;
-  height:44px!important;
-  min-height:44px!important;
-  margin:3px 0 0!important;
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:9px!important;
-  border:1px solid #3850d5!important;
-  border-radius:6px!important;
-  background:#3850d5!important;
-  color:#fff!important;
-  font-size:12px!important;
-  font-weight:600!important;
-}
-#loginSubmit.login-submit:hover{
-  background:#3046c5!important;
-  border-color:#3046c5!important;
-}
-#loginSubmit.login-submit svg{
-  width:16px!important;
-  height:16px!important;
-}
-#loginSubmit.login-submit:after{
-  content:none!important;
-  display:none!important;
-}
-
-/* Proper error alert border — only when JS adds .show */
-.login-error{
-  display:none!important;
-  min-height:0!important;
-  margin-top:0!important;
-  margin-bottom:14px!important;
-  padding:9px 11px!important;
-  border:1px solid #f2b8b8!important;
-  border-radius:6px!important;
-  background:#fff7f7!important;
-  color:#b42318!important;
-  font-size:10px!important;
-  line-height:1.4!important;
-}
-.login-error.show{
-  display:block!important;
-}
-
-.go7-login-footer{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:11px!important;
-  margin-top:23px!important;
-  padding-top:16px!important;
-  border-top:1px solid #eef0f3!important;
-  color:#98a2b3!important;
-  font-size:9px!important;
-}
-.go7-footer-item{
-  display:inline-flex!important;
-  align-items:center!important;
-  gap:5px!important;
-  white-space:nowrap!important;
-}
-
-/* Mobile */
-@media(max-width:680px){
-  .login-screen{
-    padding:0!important;
-    place-items:stretch!important;
-  }
-  .go7-login-shell{
-    width:100%!important;
-    height:auto!important;
-    min-height:100dvh!important;
-    display:block!important;
-    overflow:visible!important;
-    border:0!important;
-    border-radius:0!important;
-    box-shadow:none!important;
-  }
-  .go7-login-visual{
-    display:none!important;
-  }
-  .go7-login-form-panel{
-    width:100%!important;
-    min-height:100dvh!important;
-    padding:30px 20px 24px!important;
-    justify-content:flex-start!important;
-  }
-  .go7-login-mobile-brand{
-    display:grid!important;
-    place-items:center!important;
-    margin:0 auto 30px!important;
-  }
-  .go7-login-mobile-brand .go7-logo-img{
-    width:68px!important;
-    height:68px!important;
-    max-width:68px!important;
-    max-height:68px!important;
-    object-fit:contain!important;
-    padding:8px!important;
-    border:1px solid #e1e5eb!important;
-    border-radius:50%!important;
-    background:#fff!important;
-  }
-  .go7-login-heading h1{
-    font-size:27px!important;
-  }
-}
-@media(max-width:390px){
-  .go7-login-form-panel{
-    padding:24px 16px 20px!important;
-  }
-  .go7-login-heading h1{
-    font-size:25px!important;
-  }
-  .go7-login-footer{
-    flex-direction:column!important;
-    gap:7px!important;
-  }
-  .go7-login-footer i{
-    display:none!important;
-  }
-}
-
-/* Dark */
-html[data-theme="dark"] .login-screen{background:#101722!important}
-html[data-theme="dark"] .go7-login-shell{border-color:#2a3543!important}
-html[data-theme="dark"] .go7-login-form-panel{background:#18212d!important}
-html[data-theme="dark"] .go7-login-heading h1,
-html[data-theme="dark"] .go7-field label{color:#edf2f7!important}
-html[data-theme="dark"] .go7-login-heading p{color:#8f9baa!important}
-html[data-theme="dark"] .go7-input-wrap .form-control{background:#18212d!important;border-color:#334151!important;color:#edf2f7!important}
-html[data-theme="dark"] .login-error{background:#2b1719!important;border-color:#6f3033!important;color:#ffb4ab!important}
-html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
-</style>
-
-<style id="go7-live-visual-v1">
-.go7-login-visual{
-  position:relative!important;
-  isolation:isolate!important;
-}
-.go7-login-visual::before{
-  content:""!important;
-  position:absolute!important;
-  inset:0!important;
-  pointer-events:none!important;
-  opacity:.28!important;
-  background-image:
-    linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px)!important;
-  background-size:32px 32px!important;
-  mask-image:linear-gradient(to bottom,black,transparent 88%)!important;
-}
-.go7-live-visual{
-  position:absolute!important;
-  left:34px!important;
-  right:34px!important;
-  top:50%!important;
-  transform:translateY(-58%)!important;
-  z-index:1!important;
-  pointer-events:none!important;
-}
-.go7-live-head{
-  display:flex!important;
-  align-items:center!important;
-  gap:7px!important;
-  margin-bottom:8px!important;
-  color:rgba(255,255,255,.72)!important;
-  font-size:8px!important;
-  font-weight:700!important;
-  letter-spacing:.16em!important;
-}
-.go7-live-dot{
-  width:7px!important;
-  height:7px!important;
-  flex:0 0 7px!important;
-  border-radius:50%!important;
-  background:#38e69a!important;
-  box-shadow:0 0 0 4px rgba(56,230,154,.10),0 0 15px rgba(56,230,154,.7)!important;
-  animation:go7LiveBlink 1.8s ease-in-out infinite!important;
-}
-.go7-live-line{
-  height:1px!important;
-  flex:1!important;
-  margin-left:4px!important;
-  background:linear-gradient(90deg,rgba(255,255,255,.2),transparent)!important;
-}
-.go7-live-svg{
-  display:block!important;
-  width:100%!important;
-  height:auto!important;
-  overflow:visible!important;
-}
-.go7-live-grid-line{
-  stroke:rgba(255,255,255,.09)!important;
-  stroke-width:1!important;
-}
-.go7-live-area{
-  fill:url(#go7LiveStroke)!important;
-  opacity:.08!important;
-}
-.go7-live-path{
-  stroke:url(#go7LiveStroke)!important;
-  stroke-width:2.6!important;
-  stroke-linecap:round!important;
-  stroke-linejoin:round!important;
-  filter:url(#go7LiveGlow)!important;
-  stroke-dasharray:1!important;
-  stroke-dashoffset:1!important;
-  animation:go7LiveDraw 4.5s ease-in-out infinite alternate!important;
-}
-.go7-live-node{
-  fill:#fff!important;
-  stroke:#91a2ff!important;
-  stroke-width:2!important;
-  filter:url(#go7LiveGlow)!important;
-}
-.go7-live-pulse,
-.go7-live-pulse-delay{
-  fill:none!important;
-  stroke:#75d7ff!important;
-  stroke-width:1.5!important;
-  opacity:.7!important;
-  transform-box:fill-box!important;
-  transform-origin:center!important;
-  animation:go7LivePulse 2.2s ease-out infinite!important;
-}
-.go7-live-pulse-delay{
-  animation-delay:1.1s!important;
-}
-.go7-live-stats{
-  display:flex!important;
-  gap:18px!important;
-  margin-top:5px!important;
-}
-.go7-live-stats span{
-  display:flex!important;
-  flex-direction:column!important;
-  gap:2px!important;
-}
-.go7-live-stats b{
-  color:#fff!important;
-  font-size:8px!important;
-  letter-spacing:.09em!important;
-}
-.go7-live-stats small{
-  color:rgba(255,255,255,.48)!important;
-  font-size:7px!important;
-}
-@keyframes go7LiveDraw{
-  0%{stroke-dashoffset:1}
-  45%,100%{stroke-dashoffset:0}
-}
-@keyframes go7LivePulse{
-  0%{transform:scale(.7);opacity:.7}
-  70%,100%{transform:scale(5);opacity:0}
-}
-@keyframes go7LiveBlink{
-  0%,100%{opacity:1}
-  50%{opacity:.35}
+@media(max-width:900px){
+  .sidebar{width:278px;transform:translateX(-105%);transition:transform .22s ease;box-shadow:18px 0 50px rgba(15,23,42,.22)}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.mobile-menu{display:grid}.topbar{height:62px;padding:0 15px}.content{padding:18px 15px 34px}.welcome{padding:17px}.welcome h1{font-size:19px}
+  .table-toolbar{align-items:stretch}.toolbar-left{width:100%}.search,.search input,.select{width:100%}.table-wrap table{min-width:760px}.drawer{width:min(620px,100vw)}
 }
 @media(max-width:680px){
-  .go7-live-visual{
-    display:none!important;
-  }
+  .stats{grid-template-columns:1fr 1fr}.welcome{align-items:flex-start;flex-direction:column}.welcome>.primary{width:100%}.settings-grid{grid-template-columns:1fr}.inquiry-view-body{grid-template-columns:1fr}.form-group.full{grid-column:auto}
+  .table-wrap{overflow:visible}.table-wrap table{min-width:0;display:block}.table-wrap thead{display:none}.table-wrap tbody,.table-wrap tbody tr{display:block;width:100%}.table-wrap tbody tr{padding:13px;border-bottom:1px solid #eef0f3}.table-wrap tbody td{display:block;padding:3px 0;border:0}.table-wrap tbody td:nth-child(1){font-weight:650}.table-wrap tbody td:nth-child(5){margin-top:5px}.actions{justify-content:flex-start;margin-top:5px}.pagination{gap:8px}
+  .login-screen{padding:0;place-items:stretch}.go7-login-shell{width:100%;min-height:100dvh;height:auto;display:block;border:0;border-radius:0;box-shadow:none}.go7-login-visual{display:none}.go7-login-form-panel{min-height:100dvh;padding:34px 20px 24px;justify-content:flex-start}.go7-login-mobile-brand{display:grid;place-items:center;margin:0 auto 28px}.go7-login-mobile-brand .go7-logo-img{width:68px;height:68px;padding:8px;border:1px solid #e1e5eb;border-radius:50%;background:#fff}.go7-login-heading h1{font-size:27px}
 }
-@media(prefers-reduced-motion:reduce){
-  .go7-live-path,.go7-live-pulse,.go7-live-pulse-delay,.go7-live-dot{
-    animation:none!important;
-  }
+@media(max-width:430px){
+  .stats{grid-template-columns:1fr}.content{padding:15px 12px 28px}.welcome{border-radius:9px}.quick{grid-template-columns:1fr}.go7-login-form-panel{padding:26px 16px 20px}.go7-login-footer{flex-wrap:wrap;gap:7px}.go7-login-footer i{display:none}
 }
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 </style>
+
 </head>
 <body class="auth-loading">
 <div class="login-screen" id="loginScreen">
@@ -675,53 +132,6 @@ html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
       <div class="go7-login-brandmark">
         <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="">
       </div>
-
-      <div class="go7-live-visual" aria-hidden="true">
-        <div class="go7-live-head">
-          <span class="go7-live-dot"></span>
-          <span>LIVE SYSTEM</span>
-          <span class="go7-live-line"></span>
-        </div>
-
-        <svg class="go7-live-svg" viewBox="0 0 520 250" fill="none" role="presentation">
-          <defs>
-            <linearGradient id="go7LiveStroke" x1="50" y1="200" x2="470" y2="40" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#7b8cff"/>
-              <stop offset=".55" stop-color="#8fd3ff"/>
-              <stop offset="1" stop-color="#ffffff"/>
-            </linearGradient>
-            <filter id="go7LiveGlow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="5" result="blur"/>
-              <feMerge>
-                <feMergeNode in="blur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-
-          <path class="go7-live-grid-line" d="M20 210H500M20 160H500M20 110H500M20 60H500"/>
-          <path class="go7-live-grid-line" d="M80 30V220M170 30V220M260 30V220M350 30V220M440 30V220"/>
-
-          <path class="go7-live-area"
-                d="M20 190 C65 185 80 150 115 165 S165 195 205 125 S265 80 300 130 S350 185 385 105 S430 65 500 88 V220 H20Z"/>
-
-          <path class="go7-live-path"
-                d="M20 190 C65 185 80 150 115 165 S165 195 205 125 S265 80 300 130 S350 185 385 105 S430 65 500 88"
-                pathLength="1"/>
-
-          <circle class="go7-live-pulse" cx="385" cy="105" r="5"/>
-          <circle class="go7-live-pulse-delay" cx="385" cy="105" r="5"/>
-          <circle class="go7-live-node" cx="205" cy="125" r="4"/>
-          <circle class="go7-live-node" cx="500" cy="88" r="4"/>
-        </svg>
-
-        <div class="go7-live-stats">
-          <span><b>ONLINE</b><small>Admin API</small></span>
-          <span><b>SECURE</b><small>Session protected</small></span>
-          <span><b>24/7</b><small>Monitoring</small></span>
-        </div>
-      </div>
-
       <div class="go7-login-visual-copy">
         <span>GO7 ADMIN</span>
         <strong>Control center for your<br>domain operations.</strong>
@@ -734,7 +144,11 @@ html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
     </section>
 
     <section class="go7-login-form-panel">
-<div class="go7-login-heading">
+      <div class="go7-login-mobile-brand">
+        <img class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png" alt="GO7.IN">
+      </div>
+
+      <div class="go7-login-heading">
         <span class="go7-login-eyebrow">Administrator access</span>
         <h1>Welcome back.</h1>
         <p>Sign in to continue to your GO7.IN control center.</p>
@@ -779,7 +193,9 @@ html[data-theme="dark"] .go7-login-footer{border-color:#2a3543!important}
                 <rect x="4" y="4" width="16" height="16" rx="3"></rect>
                 <path d="M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01M8 16h8"></path>
               </svg>
-              <input class="form-control" id="loginOtp" name="otp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" autocomplete="one-time-code"
+              <input class="form-control" id="loginOtp" name="otp" type="text"
+                     inputmode="numeric" autocomplete="one-time-code"
+                     maxlength="6" pattern="[0-9]{6}"
                      placeholder="Enter 6-digit code">
             </div>
           </div>
@@ -1029,15 +445,12 @@ function showLogin(message=""){
   const otpWrap = document.getElementById("otpWrap");
   const otpInput = document.getElementById("loginOtp");
 
-  if(box){
-    box.textContent = message;
-    box.classList.toggle("show", !!message);
-  }
+  box.textContent = message;
+  box.classList.toggle("show", !!message);
 
   if(otpWrap){
     otpWrap.style.display = "none";
   }
-
   if(otpInput){
     otpInput.value = "";
     otpInput.required = false;
@@ -1056,34 +469,25 @@ function hideLogin(){
 async function apiFetch(path, options={}){
   const opts = {...options, credentials:"include", cache:"no-store"};
   opts.headers = {"Accept":"application/json", ...(options.headers || {})};
-
   const res = await fetch(`${API_BASE}${path}`, opts);
   let data = {};
   try { data = await res.json(); } catch(e) {}
-
   if(res.status === 401){
-    const error = new Error(data.error || "Unauthorized");
-    error.status = 401;
-    error.data = data;
-    throw error;
+    authenticated = false;
+    showLogin("Your admin session has expired or is not available. Please sign in again.");
+    throw new Error("Unauthorized");
   }
-
   if(!res.ok || data.success === false){
-    const error = new Error(data.error || `Request failed (${res.status})`);
-    error.status = res.status;
-    error.data = data;
-    throw error;
+    throw new Error(data.error || `Request failed (${res.status})`);
   }
-
   return data;
 }
 
 async function checkSession(){
+  // Keep the dashboard hidden until the existing session is checked.
   document.body.classList.add("auth-loading");
-
   try{
     const data = await apiFetch("/api/session", {method:"GET"});
-
     if(data.authenticated){
       authenticated = true;
       hideLogin();
@@ -1091,82 +495,41 @@ async function checkSession(){
       return true;
     }
   }catch(error){
-    if(error.status !== 401) console.error("Session check:", error);
+    if(error.message !== "Unauthorized") console.error("Session check:",error);
   }
-
   showLogin("");
   return false;
 }
 
 async function login(username,password){
   const submit = document.getElementById("loginSubmit");
-  const label = submit?.querySelector(".go7-submit-label");
   const errorBox = document.getElementById("loginError");
   const otpWrap = document.getElementById("otpWrap");
   const otpInput = document.getElementById("loginOtp");
 
-  if(!submit || !errorBox || !otpWrap || !otpInput) return;
-
-  const otpVisible = otpWrap.style.display !== "none";
-  const otp = otpVisible
-    ? String(otpInput.value || "").replace(/\D/g,"").slice(0,6)
-    : "";
-
-  if(otpVisible && otp.length !== 6){
-    errorBox.textContent = "Enter your 6-digit authenticator code.";
-    errorBox.classList.add("show");
-    otpInput.focus();
-    return;
-  }
-
   submit.disabled = true;
-  if(label) label.textContent = otpVisible ? "Verifying…" : "Signing in…";
+  submit.textContent = "Signing in…";
   errorBox.classList.remove("show");
 
   try{
-    /*
-      Login is handled directly instead of through apiFetch().
-      A 401 from /api/login is an authentication result, not a
-      session-expired event. This keeps the OTP step available.
-    */
-    const res = await fetch(`${API_BASE}/api/login`, {
+    const otp = otpWrap && otpWrap.style.display !== "none"
+      ? String(otpInput.value || "").replace(/\D/g,"").slice(0,6)
+      : "";
+
+    const data = await apiFetch("/api/login", {
       method:"POST",
-      credentials:"include",
-      cache:"no-store",
-      headers:{
-        "Accept":"application/json",
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify({
-        username,
-        password,
-        ...(otpVisible ? {otp} : {})
-      })
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({username,password,otp})
     });
 
-    let data = {};
-    try { data = await res.json(); } catch(e) {}
-
-    if(!res.ok){
-      throw new Error(
-        data.error ||
-        (res.status === 401
-          ? "Invalid username, password, or 2FA code."
-          : `Login failed (${res.status})`)
-      );
-    }
-
+    // First step: password accepted, OTP required.
     if(data.two_factor_required){
       otpWrap.style.display = "block";
       otpInput.required = true;
-      otpInput.value = "";
-
-      if(label) label.textContent = "Verify & Sign in";
-
+      submit.textContent = "Verify & Sign in";
+      otpInput.focus();
       errorBox.textContent = "Enter your 6-digit authenticator code.";
       errorBox.classList.add("show");
-
-      requestAnimationFrame(()=>otpInput.focus());
       return;
     }
 
@@ -1177,34 +540,35 @@ async function login(username,password){
     authenticated = true;
     hideLogin();
     apiPage = 1;
-
     await loadInquiries();
     toast("Login successful");
 
   }catch(error){
-    console.error("Login:", error);
-
-    errorBox.textContent = error.message || "Unable to login";
+    console.error("Login:",error);
+    errorBox.textContent =
+      error.message === "Unauthorized"
+        ? "Invalid username, password, or 2FA code."
+        : (error.message || "Unable to login");
     errorBox.classList.add("show");
 
-    // Keep the OTP step visible after an incorrect/failed OTP.
-    if(otpVisible){
-      otpWrap.style.display = "block";
-      otpInput.required = true;
-      requestAnimationFrame(()=>{
-        otpInput.focus();
-        otpInput.select();
-      });
+    // Keep OTP visible after a failed OTP attempt.
+    if(otpWrap && otpWrap.style.display !== "none"){
+      otpInput.focus();
+      otpInput.select();
     }
 
   }finally{
     submit.disabled = false;
 
-    const stillOtpVisible = otpWrap.style.display !== "none";
-    if(label) label.textContent = stillOtpVisible ? "Verify & Sign in" : "Sign in";
+    const otpVisible =
+      otpWrap && otpWrap.style.display !== "none";
+
+    submit.textContent =
+      otpVisible
+        ? "Verify & Sign in"
+        : "Sign in";
   }
 }
-
 async function logout(){
   const confirmed = await showConfirm("Log out?", "Your secure admin session will be ended.", "Log out", "logout");
   if(!confirmed) return;
@@ -1767,5 +1131,679 @@ checkSession();
   }
 })();
 </script>
+<script>
+const API_BASE = "https://admin-api.go7.in";
+let inquiries = [];
+let currentId = null;
+let apiPage = 1;
+let apiTotal = 0;
+const apiLimit = 50;
+let authenticated = false;
+
+function setAuthState(isAuthenticated){
+  authenticated = isAuthenticated;
+  document.body.classList.toggle("auth-loading", !isAuthenticated);
+  document.getElementById("loginScreen").style.display = isAuthenticated ? "none" : "grid";
+}
+
+function showLogin(message=""){
+  const box = document.getElementById("loginError");
+  const otpWrap = document.getElementById("otpWrap");
+  const otpInput = document.getElementById("loginOtp");
+
+  box.textContent = message;
+  box.classList.toggle("show", !!message);
+
+  if(otpWrap){
+    otpWrap.style.display = "none";
+  }
+  if(otpInput){
+    otpInput.value = "";
+    otpInput.required = false;
+  }
+
+  document.getElementById("loginScreen").style.display = "grid";
+  document.body.classList.remove("auth-loading");
+  setTimeout(()=>document.getElementById("loginUsername")?.focus(),50);
+}
+
+function hideLogin(){
+  document.getElementById("loginScreen").style.display = "none";
+  document.body.classList.remove("auth-loading");
+}
+
+async function apiFetch(path, options={}){
+  const opts = {...options, credentials:"include", cache:"no-store"};
+  opts.headers = {"Accept":"application/json", ...(options.headers || {})};
+  const res = await fetch(`${API_BASE}${path}`, opts);
+  let data = {};
+  try { data = await res.json(); } catch(e) {}
+  if(res.status === 401){
+    authenticated = false;
+    showLogin("Your admin session has expired or is not available. Please sign in again.");
+    throw new Error("Unauthorized");
+  }
+  if(!res.ok || data.success === false){
+    throw new Error(data.error || `Request failed (${res.status})`);
+  }
+  return data;
+}
+
+async function checkSession(){
+  // Keep the dashboard hidden until the existing session is checked.
+  document.body.classList.add("auth-loading");
+  try{
+    const data = await apiFetch("/api/session", {method:"GET"});
+    if(data.authenticated){
+      authenticated = true;
+      hideLogin();
+      await loadInquiries();
+      return true;
+    }
+  }catch(error){
+    if(error.message !== "Unauthorized") console.error("Session check:",error);
+  }
+  showLogin("");
+  return false;
+}
+
+async function login(username,password){
+  const submit = document.getElementById("loginSubmit");
+  const errorBox = document.getElementById("loginError");
+  const otpWrap = document.getElementById("otpWrap");
+  const otpInput = document.getElementById("loginOtp");
+
+  submit.disabled = true;
+  submit.textContent = "Signing in…";
+  errorBox.classList.remove("show");
+
+  try{
+    const otp = otpWrap && otpWrap.style.display !== "none"
+      ? String(otpInput.value || "").replace(/\D/g,"").slice(0,6)
+      : "";
+
+    const data = await apiFetch("/api/login", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({username,password,otp})
+    });
+
+    // First step: password accepted, OTP required.
+    if(data.two_factor_required){
+      otpWrap.style.display = "block";
+      otpInput.required = true;
+      submit.textContent = "Verify & Sign in";
+      otpInput.focus();
+      errorBox.textContent = "Enter your 6-digit authenticator code.";
+      errorBox.classList.add("show");
+      return;
+    }
+
+    if(!data.success){
+      throw new Error(data.error || "Unable to login");
+    }
+
+    authenticated = true;
+    hideLogin();
+    apiPage = 1;
+    await loadInquiries();
+    toast("Login successful");
+
+  }catch(error){
+    console.error("Login:",error);
+    errorBox.textContent =
+      error.message === "Unauthorized"
+        ? "Invalid username, password, or 2FA code."
+        : (error.message || "Unable to login");
+    errorBox.classList.add("show");
+
+    // Keep OTP visible after a failed OTP attempt.
+    if(otpWrap && otpWrap.style.display !== "none"){
+      otpInput.focus();
+      otpInput.select();
+    }
+
+  }finally{
+    submit.disabled = false;
+
+    const otpVisible =
+      otpWrap && otpWrap.style.display !== "none";
+
+    submit.textContent =
+      otpVisible
+        ? "Verify & Sign in"
+        : "Sign in";
+  }
+}
+async function logout(){
+  const confirmed = await showConfirm("Log out?", "Your secure admin session will be ended.", "Log out", "logout");
+  if(!confirmed) return;
+  try{
+    await apiFetch("/api/logout", {method:"POST"});
+  }catch(error){
+    console.warn("Logout:",error);
+  }
+  authenticated = false;
+  inquiries = [];
+  apiTotal = 0;
+  renderTable();
+  renderRecent();
+  updateStats();
+  showLogin("You have been logged out.");
+  window.setTimeout(function(){
+    showLogin("");
+  }, 4500);
+  toast("Logged out");
+}
+
+async function loadInquiries(){
+  if(!authenticated) return;
+  try{
+    const data = await apiFetch(`/api/inquiries?page=${apiPage}&limit=${apiLimit}`, {method:"GET"});
+    inquiries = (data.inquiries || []).map(normalizeInquiry);
+    apiTotal = Number(data.total || 0);
+    renderTable();
+    renderRecent();
+    updateStats();
+    updateApiInfo();
+    updatePageNumber();
+  }catch(error){
+    if(error.message !== "Unauthorized"){
+      console.error("GO7 Admin API error:", error);
+      toast(error.message || "Unable to load inquiries");
+    }
+  }finally{
+  }
+}
+
+async function refreshDashboard(){
+  if(!authenticated){
+    await checkSession();
+    return;
+  }
+
+  const btn = document.getElementById("refreshBtn");
+  if(btn.dataset.refreshing === "1") return;
+
+  btn.dataset.refreshing = "1";
+  btn.disabled = true;
+  btn.classList.add("refreshing");
+
+  try{
+    await loadInquiries();
+    btn.classList.remove("is-error");
+    btn.classList.add("is-success");
+    toast("Dashboard refreshed successfully");
+    setTimeout(()=>btn.classList.remove("is-success"),1200);
+  }catch(error){
+    btn.classList.remove("is-success");
+    btn.classList.add("is-error");
+    setTimeout(()=>btn.classList.remove("is-error"),1400);
+    throw error;
+  }finally{
+    btn.classList.remove("refreshing");
+    btn.disabled = false;
+    btn.dataset.refreshing = "0";
+  }
+}
+
+function normalizeInquiry(x){
+  return {
+    id:x.inquiry_id || x.id || "",
+    name:x.name || "",
+    email:x.email || "",
+    subject:x.subject || "",
+    message:x.message || "",
+    date:formatDate(x.created_at),
+    ip:x.ip || "",
+    country:x.country || "",
+    city:x.city || "",
+    region:x.region || "",
+    device:x.device || "",
+    browser:x.browser || "",
+    timezone:x.timezone || "",
+    status:x.status || "New",
+    admin_note:x.admin_note || ""
+  };
+}
+
+function formatDate(value){
+  if(!value) return "—";
+  const d = new Date(value);
+  if(Number.isNaN(d.getTime())) return String(value);
+  return d.toLocaleString("en-IN", {day:"2-digit",month:"short",year:"numeric",hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Asia/Kolkata"});
+}
+
+function updateApiInfo(){
+  document.querySelectorAll("#apiConnectionStatus").forEach(el=>{
+    el.textContent = `API connected • ${apiTotal} total inquiries`;
+    el.style.color = "#16a34a";
+  });
+}
+
+function escapeHtml(value){
+  return String(value ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+}
+function escapeAttr(value){ return escapeHtml(value); }
+function statusClass(s){
+  return s==="New" ? "new" : (s==="In Progress" || s==="Read") ? "read" : s==="Replied" ? "replied" : "closed";
+}
+function statusLabel(s){
+  return (s==="In Progress" || s==="Read") ? "Read" : s;
+}
+function statusMatches(actual, filter){
+  if(filter==="all") return true;
+  if(filter==="Read") return actual==="Read" || actual==="In Progress";
+  return actual===filter;
+}
+
+function renderTable(){
+  const search=document.getElementById("searchInput");
+  const status=document.getElementById("statusFilter");
+  const q=(search?.value || "").toLowerCase();
+  const filter=status?.value || "all";
+  const rows=inquiries.filter(x=>(statusMatches(x.status,filter))&&(`${x.name} ${x.email} ${x.subject} ${x.message} ${x.id}`.toLowerCase().includes(q)));
+  document.getElementById("resultCount").textContent=`${rows.length} shown • ${apiTotal} total`;
+  document.getElementById("inquiryTable").innerHTML=rows.map(x=>`
+  <tr>
+    <td><strong>${escapeHtml(x.name)}</strong><br><span style="font-size:11px;color:#94a3b8">${escapeHtml(x.email)}</span></td>
+    <td style="max-width:220px"><strong>${escapeHtml(x.subject)}</strong></td>
+    <td><strong>${escapeHtml(x.id)}</strong></td>
+    <td style="white-space:nowrap">${escapeHtml(x.date)}</td>
+    <td><span class="status ${statusClass(x.status)}">${escapeHtml(statusLabel(x.status))}</span></td>
+    <td><div class="actions"><button class="small-btn view-inquiry" data-inquiry-id="${escapeAttr(x.id)}">View</button><button class="small-btn delete-inquiry" data-inquiry-id="${escapeAttr(x.id)}">Delete</button></div></td>
+  </tr>`).join("") || `<tr><td colspan="6"><div class="empty">No inquiries found.</div></td></tr>`;
+}
+
+function renderRecent(){
+  const list=document.getElementById("recentList");
+  if(!inquiries.length){list.innerHTML='<div class="empty" style="padding:35px 10px">No inquiries found.</div>';return;}
+  list.innerHTML=inquiries.slice(0,5).map(x=>`<div class="activity-row"><span class="activity-dot"></span><div><strong>${escapeHtml(x.name)} · ${escapeHtml(x.subject)}</strong><p>${escapeHtml(x.message.slice(0,72))}${x.message.length>72?'…':''}</p></div><span class="activity-time">${escapeHtml(x.date.split(",")[0])}</span></div>`).join("");
+}
+
+function updateStats(){
+  const total=apiTotal;
+  const n=inquiries.filter(x=>x.status==="New").length;
+  const p=inquiries.filter(x=>x.status==="In Progress").length;
+  const r=inquiries.filter(x=>x.status==="Replied").length;
+  document.getElementById("totalStat").textContent=total;
+  document.getElementById("newStat").textContent=n;
+  document.getElementById("progressStat").textContent=p;
+  document.getElementById("repliedStat").textContent=r;
+  const aNew=document.getElementById("analyticsNew");
+  const aResp=document.getElementById("analyticsResponse");
+  if(aNew)aNew.textContent=n;
+  if(aResp)aResp.textContent=total?Math.round(r/Math.max(inquiries.length,1)*100)+"%*":"—";
+}
+function updatePageNumber(){const el=document.getElementById("pageNumber");if(el)el.textContent=apiPage;}
+async function prevPage(){if(apiPage<=1)return;apiPage--;await loadInquiries();}
+async function nextPage(){if(apiPage*apiLimit>=apiTotal)return;apiPage++;await loadInquiries();}
+
+function showPage(page){
+  document.body.classList.remove("inquiry-page-open");
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(page).classList.add("active");
+  document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+  const names={dashboard:"Dashboard",inquiries:"Inquiries",analytics:"Analytics",settings:"Settings"};
+  document.getElementById("pageTitle").textContent=names[page];
+  document.getElementById("sidebar").classList.remove("open");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function openInquiry(id){
+  const x=inquiries.find(i=>String(i.id)===String(id));
+  if(!x)return;
+  currentId=x.id;
+  document.getElementById("drawerTitle").textContent=x.name||"Inquiry";
+
+function detailIcon(label){
+  const icons = {
+    "Name": `<path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/>`,
+    "Email": `<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>`,
+    "Subject": `<path d="M4 5h16v12H7l-3 3V5Z"/><path d="M8 9h8M8 12h5"/>`,
+    "Inquiry ID": `<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/>`,
+    "Date & Time": `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`,
+    "IP Address": `<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>`,
+    "Country": `<path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>`,
+    "City": `<path d="M4 21V9l6-4v16M10 21h10V12l-10-3M7 12h1M7 16h1M13 15h1M17 15h1M13 18h1M17 18h1"/>`,
+    "Region": `<path d="M4 6h6l2 3h8v9H4z"/><path d="M4 6V4h6l2 3"/>`,
+    "Device": `<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M10 18h4"/>`,
+    "Browser": `<circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M12 3c2.2 2.5 3.2 5.5 3.2 9S14.2 18.5 12 21M3.5 15h17"/>`,
+    "Timezone": `<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>`,
+    "Environment": `<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/>`,
+    "API": `<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/><circle cx="12" cy="12" r="3"/>`,
+    "Database": `<ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v7c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 12v7c0 1.7 3.1 3 7 3s7-1.3 7-3v-7"/>`,
+  };
+  const path = icons[label] || `<circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/>`;
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${path}</svg>`;
+}
+
+  document.getElementById("drawerSubtitle").textContent=`Inquiry #${x.id} · ${x.date}`;
+  document.getElementById("drawerBody").innerHTML=`
+    <div class="form-group"><label>Status</label><select class="form-control" id="drawerStatus" data-id="${escapeAttr(x.id)}">
+      <option ${x.status==="New"?"selected":""}>New</option><option value="In Progress" ${(x.status==="In Progress"||x.status==="Read")?"selected":""}>Read</option><option ${x.status==="Replied"?"selected":""}>Replied</option><option ${x.status==="Closed"?"selected":""}>Closed</option>
+    </select></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Name")}Name</span><strong>${escapeHtml(x.name)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Email")}Email</span><strong>${escapeHtml(x.email)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Subject")}Subject</span><strong>${escapeHtml(x.subject)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Inquiry ID")}Inquiry ID</span><strong>${escapeHtml(x.id)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Date & Time")}Date & Time</span><span>${escapeHtml(x.date)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("IP Address")}IP Address</span><strong>${escapeHtml(x.ip)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Country")}Country</span><span>${escapeHtml(x.country)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("City")}City</span><span>${escapeHtml(x.city)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Region")}Region</span><span>${escapeHtml(x.region)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Device")}Device</span><span>${escapeHtml(x.device)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Browser")}Browser</span><span>${escapeHtml(x.browser)}</span></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Timezone")}Timezone</span><span>${escapeHtml(x.timezone)}</span></div>
+    <div class="form-group" style="margin-top:20px"><label>Message</label><div class="message-box">${escapeHtml(x.message)}</div></div>
+    <div class="form-group"><label>Internal note</label><textarea class="form-control" id="drawerNote" placeholder="Add a private note...">${escapeHtml(x.admin_note)}</textarea><div style="font-size:11px;color:#94a3b8;margin-top:6px">Private admin note. Stored securely in Cloudflare D1.</div></div>
+    <div class="reply-box">
+      <div class="form-group">
+        <label>Reply to customer</label>
+        <input class="form-control" id="replySubject" type="text" value="${escapeAttr(x.subject ? `Re: ${x.subject}` : "Regarding your GO7.IN inquiry")}" placeholder="Email subject">
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" id="replyMessage" placeholder="Write your reply to the customer..."></textarea>
+        <div class="reply-hint">Reply will be sent from info@go7.in. After a successful send, status becomes Replied.</div>
+      </div>
+      <div class="reply-actions">
+        <button class="primary" id="sendReplyBtn" onclick="sendCustomerReply()">Send reply</button>
+      </div>
+    </div>`;
+  document.body.classList.add("inquiry-page-open");
+  document.getElementById("pageTitle").textContent = "Customer Inquiry";
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById("inquiryView").classList.add("active");
+  document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.remove("active"));
+  document.getElementById("sidebar").classList.remove("open");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+async function saveInquiryChanges(){
+  if(!authenticated || !currentId){
+    showLogin();
+    return;
+  }
+
+  const x = inquiries.find(i => String(i.id) === String(currentId));
+  if(!x) return;
+
+  const statusEl = document.getElementById("drawerStatus");
+  const noteEl = document.getElementById("drawerNote");
+  const saveBtn = document.getElementById("saveInquiryBtn");
+
+  const status = statusEl ? statusEl.value : x.status;
+  const admin_note = noteEl ? noteEl.value : (x.admin_note || "");
+
+  if(saveBtn){
+    saveBtn.disabled = true;
+    saveBtn.textContent = "Saving…";
+  }
+
+  try{
+    const data = await apiFetch(
+      `/api/inquiries/${encodeURIComponent(String(currentId))}`,
+      {
+        method:"PATCH",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({status,admin_note})
+      }
+    );
+
+    x.status = data.inquiry?.status ?? status;
+    x.admin_note = data.inquiry?.admin_note ?? admin_note;
+
+    renderTable();
+    renderRecent();
+    updateStats();
+    closeDrawer();
+    toast("Inquiry updated successfully");
+  }catch(error){
+    if(error.message !== "Unauthorized"){
+      console.error("Save inquiry:",error);
+      toast(error.message || "Unable to save inquiry");
+    }
+  }finally{
+    if(saveBtn){
+      saveBtn.disabled = false;
+      saveBtn.textContent = "Save changes";
+    }
+  }
+}
+
+async function changeStatus(){
+  await saveInquiryChanges();
+}
+
+async function markCurrentReplied(){
+  const statusEl = document.getElementById("drawerStatus");
+  if(statusEl) statusEl.value = "Replied";
+  await saveInquiryChanges();
+}
+
+async function sendCustomerReply(){
+  if(!authenticated || !currentId){
+    showLogin();
+    return;
+  }
+
+  const subjectEl = document.getElementById("replySubject");
+  const messageEl = document.getElementById("replyMessage");
+  const sendBtn = document.getElementById("sendReplyBtn");
+
+  const subject = subjectEl ? subjectEl.value.trim() : "";
+  const message = messageEl ? messageEl.value.trim() : "";
+
+  if(!message){
+    toast("Write a reply first");
+    messageEl?.focus();
+    return;
+  }
+
+  if(sendBtn){
+    sendBtn.disabled = true;
+    sendBtn.textContent = "Sending…";
+  }
+
+  try{
+    const data = await apiFetch(
+      `/api/inquiries/${encodeURIComponent(String(currentId))}/reply`,
+      {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({subject, message})
+      }
+    );
+
+    const x = inquiries.find(i => String(i.id) === String(currentId));
+    if(x) x.status = data.inquiry?.status || "Replied";
+
+    renderTable();
+    renderRecent();
+    updateStats();
+
+    if(messageEl) messageEl.value = "";
+
+    toast("Reply sent successfully");
+  }catch(error){
+    if(error.message !== "Unauthorized"){
+      console.error("Send reply:", error);
+      toast(error.message || "Unable to send reply");
+    }
+  }finally{
+    if(sendBtn){
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Send reply";
+    }
+  }
+}
+
+async function deleteCurrentInquiry(){
+  if(!authenticated || !currentId){
+    showLogin();
+    return;
+  }
+
+  const x = inquiries.find(i => String(i.id) === String(currentId));
+  const customer = x?.name ? ` for ${x.name}` : "";
+
+  const confirmed = await showConfirm(
+    "Delete inquiry?",
+    `Delete this inquiry${customer} permanently? This action cannot be undone.`,
+    "Delete permanently",
+    "danger"
+  );
+  if(!confirmed) return;
+
+  const deleteBtn = document.getElementById("deleteInquiryBtn");
+
+  if(deleteBtn){
+    deleteBtn.disabled = true;
+    deleteBtn.textContent = "Deleting…";
+  }
+
+  try{
+    await apiFetch(
+      `/api/inquiries/${encodeURIComponent(String(currentId))}`,
+      {method:"DELETE"}
+    );
+
+    inquiries = inquiries.filter(
+      i => String(i.id) !== String(currentId)
+    );
+
+    apiTotal = Math.max(0, apiTotal - 1);
+
+    currentId = null;
+    renderTable();
+    renderRecent();
+    updateStats();
+    closeDrawer();
+
+    toast("Inquiry deleted permanently");
+  }catch(error){
+    if(error.message !== "Unauthorized"){
+      console.error("Delete inquiry:", error);
+      toast(error.message || "Unable to delete inquiry");
+    }
+  }finally{
+    if(deleteBtn){
+      deleteBtn.disabled = false;
+      deleteBtn.textContent = "Delete permanently";
+    }
+  }
+}
+
+function closeDrawer(){
+  document.body.classList.remove("inquiry-page-open");
+  document.getElementById("overlay")?.classList.remove("show");
+  document.getElementById("drawer")?.classList.remove("show");
+  if(document.getElementById("inquiries")){
+    showPage("inquiries");
+  }
+}
+function toast(msg){
+  const t=document.getElementById("toast");
+  if(!t) return;
+  t.textContent=msg;
+  t.classList.remove("show");
+  void t.offsetWidth;
+  t.classList.add("show");
+  clearTimeout(window._toast);
+  window._toast=setTimeout(()=>{
+    t.classList.remove("show");
+  },2400);
+}
+
+function exportCSV(){
+  if(!authenticated){showLogin();return;}
+  const header=["Inquiry ID","Name","Email","Subject","Date & Time","IP Address","Country","City","Region","Device","Browser","Timezone","Message","Status","Admin Note"];
+  const lines=[header,...inquiries.map(x=>[x.id,x.name,x.email,x.subject,x.date,x.ip,x.country,x.city,x.region,x.device,x.browser,x.timezone,x.message,x.status,x.admin_note])].map(r=>r.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");
+  const blob=new Blob([lines],{type:"text/csv;charset=utf-8;"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="go7-inquiries.csv";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("CSV exported");
+}
+
+document.getElementById("loginForm").addEventListener("submit", e => {
+  e.preventDefault();
+  login(
+    document.getElementById("loginUsername").value.trim(),
+    document.getElementById("loginPassword").value
+  );
+});
+document.querySelectorAll(".nav button[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.getElementById("inquiryTable").addEventListener("click",event=>{
+  const viewBtn = event.target.closest(".view-inquiry");
+  if(viewBtn){
+    openInquiry(viewBtn.dataset.inquiryId);
+    return;
+  }
+
+  const deleteBtn = event.target.closest(".delete-inquiry");
+  if(deleteBtn){
+    const id = deleteBtn.dataset.inquiryId;
+    currentId = id;
+    deleteCurrentInquiry();
+  }
+});
+document.getElementById("drawerBody").addEventListener("change",event=>{ /* changes are saved with Save changes */ });
+document.getElementById("searchInput").addEventListener("input",renderTable);
+document.getElementById("statusFilter").addEventListener("change",renderTable);
+
+document.getElementById("mobileMenu").addEventListener("click",()=>document.getElementById("sidebar").classList.toggle("open"));
+document.getElementById("refreshBtn").addEventListener("click",refreshDashboard);
+
+function showConfirm(title,message,confirmText="Confirm",variant="info"){
+  return new Promise(resolve=>{
+    const back=document.getElementById("go7ModalBackdrop");
+    const titleEl=document.getElementById("go7ModalTitle");
+    const msgEl=document.getElementById("go7ModalMessage");
+    const yes=document.getElementById("go7ModalConfirm");
+    const no=document.getElementById("go7ModalCancel");
+    back.dataset.variant = variant;
+    titleEl.textContent=title;
+    msgEl.textContent=message;
+    yes.textContent=confirmText;
+    yes.className = variant==="danger" ? "danger-btn" : "primary";
+    back.classList.add("show");
+    back.setAttribute("aria-hidden","false");
+    const finish=v=>{
+      back.classList.remove("show");
+      back.setAttribute("aria-hidden","true");
+      back.removeAttribute("data-variant");
+      yes.onclick=no.onclick=null;
+      resolve(v);
+    };
+    yes.onclick=()=>finish(true);
+    no.onclick=()=>finish(false);
+  });
+}
+function showNotifications(){
+  const btn=document.getElementById("notificationBtn");
+  const count=inquiries.filter(x=>x.status==="New").length;
+  if(btn){
+    btn.classList.toggle("has-new",count>0);
+    btn.classList.add("is-read");
+    setTimeout(()=>btn.classList.remove("is-read"),900);
+  }
+  toast(count ? `${count} new ${count===1?"inquiry":"inquiries"} need your attention` : "No new notifications");
+}
+document.getElementById("notificationBtn").addEventListener("click",showNotifications);
+
+document.getElementById("logoutBtn").addEventListener("click",logout);
+document.getElementById("go7ModalBackdrop")?.addEventListener("click",e=>{
+  if(e.target.id==="go7ModalBackdrop") document.getElementById("go7ModalCancel")?.click();
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(document.getElementById("go7ModalBackdrop")?.classList.contains("show")) document.getElementById("go7ModalCancel")?.click();
+    else closeDrawer();
+  }
+});
+
+renderTable();
+renderRecent();
+updateStats();
+checkSession();
+</script>
+
 </body>
 </html>
