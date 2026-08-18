@@ -1631,7 +1631,7 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
   .content{padding:16px 12px 30px}
   .welcome{padding:16px}
   .search input,.select{height:44px}
-  .go7-login-form-panel{padding:28px 26px 20px}
+  .go7-login-form-panel{padding:28px 16px 20px}
   .go7-login-heading h1{font-size:27px}
   .go7-login-footer{justify-content:flex-start}
 }
