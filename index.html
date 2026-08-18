@@ -1857,9 +1857,9 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 <div class="inquiry-view-shell">
 <div class="inquiry-view-body" id="drawerBody"></div>
 <div class="inquiry-view-footer">
-<button class="danger-btn" id="deleteInquiryBtn" onclick="deleteCurrentInquiry()">Delete permanently</button>
+<button class="danger-btn" id="deleteInquiryBtn" onclick="deleteCurrentInquiry()">Delete</button>
 <button class="small-btn" onclick="closeDrawer()">Cancel</button>
-<button class="primary" id="saveInquiryBtn" onclick="saveInquiryChanges()">Save changes</button>
+<button class="primary" id="saveInquiryBtn" onclick="saveInquiryChanges()">Save</button>
 </div>
 </div>
 </section>
@@ -1920,7 +1920,7 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 </div>
 </section>
 <section class="page" id="settings">
-<div class="welcome"><div><h1>Settings</h1><p>Manage your GO7 admin preferences.</p></div><button class="primary" onclick="toast('Settings saved')">Save changes</button></div>
+<div class="welcome"><div><h1>Settings</h1><p>Manage your GO7 admin preferences.</p></div><button class="primary" onclick="toast('Settings saved')">Save</button></div>
 <div class="settings-grid">
 <div class="card setting-card">
 <h3>Notifications</h3><p>Control how the admin dashboard handles new inquiry alerts.</p>
@@ -2405,7 +2405,7 @@ function detailIcon(label){
         <div class="reply-hint">Reply will be sent from info@go7.in. After a successful send, status becomes Replied.</div>
       </div>
       <div class="reply-actions">
-        <button class="primary" id="sendReplyBtn" onclick="sendCustomerReply()">Send reply</button>
+        <button class="primary" id="sendReplyBtn" onclick="sendCustomerReply()">Reply</button>
       </div>
     </div>`;
   document.body.classList.add("inquiry-page-open");
@@ -2463,7 +2463,7 @@ async function saveInquiryChanges(){
   }finally{
     if(saveBtn){
       saveBtn.disabled = false;
-      saveBtn.textContent = "Save changes";
+      saveBtn.textContent = "Save";
     }
   }
 }
@@ -2524,13 +2524,13 @@ async function sendCustomerReply(){
     toast("Reply sent successfully");
   }catch(error){
     if(error.message !== "Unauthorized"){
-      console.error("Send reply:", error);
+      console.error("Reply:", error);
       toast(error.message || "Unable to send reply");
     }
   }finally{
     if(sendBtn){
       sendBtn.disabled = false;
-      sendBtn.textContent = "Send reply";
+      sendBtn.textContent = "Reply";
     }
   }
 }
@@ -2547,7 +2547,7 @@ async function deleteCurrentInquiry(){
   const confirmed = await showConfirm(
     "Delete inquiry?",
     `Delete this inquiry${customer} permanently? This action cannot be undone.`,
-    "Delete permanently",
+    "Delete",
     "danger"
   );
   if(!confirmed) return;
@@ -2586,7 +2586,7 @@ async function deleteCurrentInquiry(){
   }finally{
     if(deleteBtn){
       deleteBtn.disabled = false;
-      deleteBtn.textContent = "Delete permanently";
+      deleteBtn.textContent = "Delete";
     }
   }
 }
@@ -2642,7 +2642,7 @@ document.getElementById("inquiryTable").addEventListener("click",event=>{
     deleteCurrentInquiry();
   }
 });
-document.getElementById("drawerBody").addEventListener("change",event=>{ /* changes are saved with Save changes */ });
+document.getElementById("drawerBody").addEventListener("change",event=>{ /* changes are saved with Save */ });
 document.getElementById("searchInput").addEventListener("input",renderTable);
 document.getElementById("statusFilter").addEventListener("change",renderTable);
 
