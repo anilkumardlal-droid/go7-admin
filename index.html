@@ -1036,10 +1036,10 @@ body.auth-loading .login-screen{
   gap:7px;
   flex-wrap:wrap;
   margin-top:12px;
-  padding:13px 15px;
-  border:1px solid var(--line);
-  border-radius:4px;
-  background:#fff;
+  padding:13px 0 0;
+  border:0;
+  border-radius:0;
+  background:transparent;
 }
 
 
@@ -1913,7 +1913,6 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 <div class="inquiry-view-body" id="drawerBody"></div>
 <div class="inquiry-view-footer">
 <button class="danger-btn" id="deleteInquiryBtn" onclick="deleteCurrentInquiry()">Delete</button>
-<button class="small-btn" onclick="closeDrawer()">Cancel</button>
 <button class="primary" id="saveInquiryBtn" onclick="saveInquiryChanges()">Save</button>
 </div>
 </div>
