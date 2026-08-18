@@ -309,7 +309,6 @@ body.auth-loading .login-screen{
 .go7-footer-icon{width:16px;height:16px}
 .go7-login-footer i{width:1px;height:14px;background:#dfe4e9}
 
-
 .go7-login-brandmark .desktop-login-logo{
   width:170px;
   height:58px;
@@ -809,14 +808,15 @@ body.auth-loading .login-screen{
 .status.closed{color:#64748b;background:#f0f3f6}
 .actions{display:flex;justify-content:flex-end;gap:6px}
 .small-btn{
-  min-height:36px;
-  padding:7px 11px;
-  border:1px solid var(--line-strong);
-  border-radius:4px;
-  background:#fff;
-  color:#475467;
-  font-size:13px;
-  font-weight:800;
+  min-height:38px;
+  padding:9px 16px;
+  border-radius:6px;
+  line-height:1.25;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  white-space:nowrap;
 }
 .small-btn:hover{border-color:#b9c5d0;color:var(--primary)}
 .danger-btn{
@@ -1033,7 +1033,7 @@ body.auth-loading .login-screen{
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  gap:7px;
+  gap:10px;
   flex-wrap:wrap;
   margin-top:12px;
   padding:13px 0 0;
@@ -1041,7 +1041,6 @@ body.auth-loading .login-screen{
   border-radius:0;
   background:transparent;
 }
-
 
 @media(max-width:680px){
   .go7-login-mobile-brand .mobile-login-logo{
@@ -1136,7 +1135,6 @@ body.auth-loading .login-screen{
 .go7-modal h3{margin:0;color:var(--heading);font-size:17px}
 .go7-modal p{margin:8px 0 16px;color:#667085;font-size:14px}
 .go7-modal-actions{display:flex;justify-content:flex-end;gap:7px}
-
 
 /* v2 refinements */
 #refreshBtn svg{
@@ -1442,7 +1440,6 @@ html[data-theme="dark"] .analytics-footnote{
   .trend-bar-track{width:70%}
 }
 
-
 /* Login visual background — light mode */
 .go7-login-grid{
   background:
@@ -1450,7 +1447,6 @@ html[data-theme="dark"] .analytics-footnote{
     radial-gradient(circle at 82% 78%,rgba(31,115,190,.16),transparent 34%),
     linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,0));
 }
-
 
 /* Login visual background — dark mode */
 html[data-theme="dark"] .go7-login-grid{
@@ -1534,7 +1530,6 @@ html[data-theme="dark"] .inquiry-view-body>.form-group label,
 html[data-theme="dark"] .inquiry-view-body>.reply-box label,
 html[data-theme="dark"] .detail-label{color:#9ba9b7}
 html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#edf2f6}
-
 
 .go7-sidebar-logo{
   display:block;
@@ -1685,6 +1680,18 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 }
 .reply-box{
   border-color:#cfe0ef;
+}
+
+@media(max-width:680px){
+  .inquiry-view-footer{
+    justify-content:stretch;
+    gap:8px;
+  }
+  .inquiry-view-footer .small-btn,
+  .inquiry-view-footer .primary-btn{
+    flex:1 1 auto;
+    min-width:0;
+  }
 }
 
 </style>
@@ -2432,9 +2439,7 @@ function detailIcon(label){
 
   document.getElementById("drawerSubtitle").textContent=`Inquiry #${x.id} · ${x.date}`;
   document.getElementById("drawerBody").innerHTML=`
-    <div class="form-group"><label>Status</label><select class="form-control" id="drawerStatus" data-id="${escapeAttr(x.id)}">
-      <option ${x.status==="New"?"selected":""}>New</option><option value="In Progress" ${(x.status==="In Progress"||x.status==="Read")?"selected":""}>Read</option><option ${x.status==="Replied"?"selected":""}>Replied</option><option ${x.status==="Closed"?"selected":""}>Closed</option>
-    </select></div>
+    
     <div class="detail-row"><span class="detail-label">${detailIcon("Name")}Name</span><strong>${escapeHtml(x.name)}</strong></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Email")}Email</span><strong>${escapeHtml(x.email)}</strong></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Subject")}Subject</span><strong>${escapeHtml(x.subject)}</strong></div>
