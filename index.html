@@ -820,13 +820,9 @@ body.auth-loading .login-screen{
 }
 .small-btn:hover{border-color:#b9c5d0;color:var(--primary)}
 .danger-btn{
-  min-height:38px;
-  padding:8px 12px;
   border:1px solid #e6b7b7;
-  border-radius:4px;
   background:var(--danger-soft);
   color:var(--danger);
-  font-size:13px;
   font-weight:800;
 }
 .danger-btn:hover{background:#ffe7e7}
@@ -1191,7 +1187,7 @@ body.auth-loading .login-screen{
   background:#ffe9a3;
 }
 
-/* Customer Inquiry: compact detail boxes + full-width status */
+/* Customer Inquiry: compact detail boxes + consistent action buttons */
 .inquiry-view-body>.form-group:first-child{
   grid-column:1/-1;
 }
@@ -1206,6 +1202,16 @@ body.auth-loading .login-screen{
 .inquiry-view-body>.detail-row>span:last-child:not(.detail-label){
   max-width:68%;
 }
+
+.primary,
+.danger-btn{
+  min-height:40px;
+  padding:8px 14px;
+  font-size:14px;
+  line-height:1.25;
+  border-radius:4px;
+}
+
 @media(max-width:680px){
   .inquiry-view-body>.detail-row{
     min-height:60px;
