@@ -107,11 +107,12 @@ body.auth-loading .login-screen{
 .go7-login-grid{
   position:absolute;
   inset:0;
-  opacity:.14;
-  background-image:
-    linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);
-  background-size:34px 34px;
+  opacity:1;
+  background:
+    radial-gradient(circle at 18% 18%,rgba(120,190,235,.14),transparent 30%),
+    radial-gradient(circle at 82% 78%,rgba(31,115,190,.16),transparent 34%),
+    linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,0));
+  pointer-events:none;
 }
 .go7-login-orbit{
   position:absolute;
@@ -329,7 +330,7 @@ body.auth-loading .login-screen{
   display:flex;
   flex-direction:column;
   overflow:auto;
-  background:var(--sidebar);
+  background:linear-gradient(180deg,#2f4963 0%,#243447 100%);
   border-right:1px solid #1c2a39;
 }
 .brand{
@@ -1441,7 +1442,28 @@ html[data-theme="dark"] .analytics-footnote{
   .trend-bar-track{width:70%}
 }
 
+
+/* Login visual background — light mode */
+.go7-login-grid{
+  background:
+    radial-gradient(circle at 18% 18%,rgba(120,190,235,.14),transparent 30%),
+    radial-gradient(circle at 82% 78%,rgba(31,115,190,.16),transparent 34%),
+    linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,0));
+}
+
+
+/* Login visual background — dark mode */
+html[data-theme="dark"] .go7-login-grid{
+  background:
+    radial-gradient(circle at 16% 20%,rgba(80,155,220,.12),transparent 30%),
+    radial-gradient(circle at 84% 78%,rgba(35,105,180,.18),transparent 34%),
+    linear-gradient(135deg,rgba(0,0,0,.05),rgba(255,255,255,.018));
+}
+
 /* DARK */
+html[data-theme="dark"] .sidebar{
+  background:linear-gradient(180deg,#1b2a3a 0%,#111c28 100%);
+}
 html[data-theme="dark"]{
   --page:#111923;
   --surface:#19232e;
