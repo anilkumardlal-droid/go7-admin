@@ -308,6 +308,17 @@ body.auth-loading .login-screen{
 .go7-footer-icon{width:16px;height:16px}
 .go7-login-footer i{width:1px;height:14px;background:#dfe4e9}
 
+
+.go7-login-brandmark .desktop-login-logo{
+  width:170px;
+  height:58px;
+  padding:0;
+  border-radius:0;
+  background:transparent;
+  object-fit:contain;
+  object-position:left center;
+}
+
 /* SHELL */
 .sidebar{
   position:fixed;
@@ -1030,6 +1041,19 @@ body.auth-loading .login-screen{
   background:#fff;
 }
 
+
+@media(max-width:680px){
+  .go7-login-mobile-brand .mobile-login-logo{
+    width:64px;
+    height:64px;
+    padding:8px;
+    border:1px solid #dfe4e9;
+    border-radius:50%;
+    background:#fff;
+    object-fit:contain;
+  }
+}
+
 /* SETTINGS / ANALYTICS */
 .settings-grid{
   display:grid;
@@ -1483,6 +1507,36 @@ html[data-theme="dark"] .inquiry-view-body>.reply-box label,
 html[data-theme="dark"] .detail-label{color:#9ba9b7}
 html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#edf2f6}
 
+
+.go7-sidebar-logo{
+  display:block;
+  width:100%;
+  line-height:0;
+}
+.go7-sidebar-logo .go7-logo-img{
+  display:block;
+  width:100%;
+  max-width:150px;
+  height:40px;
+  object-fit:contain;
+  object-position:left center;
+  padding:0;
+  border-radius:0;
+  background:transparent;
+}
+@media(max-width:680px){
+  .go7-sidebar-logo .go7-logo-img{
+    width:40px;
+    height:40px;
+    max-width:40px;
+    padding:5px;
+    border-radius:4px;
+    background:#fff;
+    object-fit:contain;
+    object-position:center;
+  }
+}
+
 /* RESPONSIVE */
 @media(max-width:1180px){
   .sidebar{width:225px}
@@ -1588,7 +1642,7 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 <div class="go7-login-orbit orbit-two"></div>
 <div class="go7-login-grid"></div>
 <div class="go7-login-brandmark">
-<img alt="" class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png"/>
+<img alt="GO7.IN" class="go7-logo-img desktop-login-logo" src="https://www.go7.in/images/logo-go7domain.png"/>
 </div>
 <div class="go7-login-visual-copy">
 <span>GO7 ADMIN</span>
@@ -1602,7 +1656,7 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 </section>
 <section class="go7-login-form-panel">
 <div class="go7-login-mobile-brand">
-<img alt="GO7.IN" class="go7-logo-img" src="https://www.go7.in/images/logo-go7domain.png"/>
+<img alt="GO7.IN" class="go7-logo-img mobile-login-logo" src="https://www.go7.in/images/favicon.png"/>
 </div>
 <div class="go7-login-heading">
 <span class="go7-login-eyebrow">Administrator access</span>
@@ -1679,7 +1733,10 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 <div class="app">
 <aside class="sidebar" id="sidebar">
 <div class="brand">
-<img alt="GO7.IN" class="go7-logo-img" loading="eager" src="https://www.go7.in/images/favicon.png"/>
+<picture class="go7-sidebar-logo">
+  <source media="(max-width:680px)" srcset="https://www.go7.in/images/favicon.png"/>
+  <img alt="GO7.IN" class="go7-logo-img" loading="eager" src="https://www.go7.in/images/logo-go7domain.png"/>
+</picture>
 </div>
 <div class="nav-title">Workspace</div>
 <nav class="nav">
