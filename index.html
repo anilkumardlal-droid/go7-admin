@@ -1112,6 +1112,311 @@ body.auth-loading .login-screen{
 .go7-modal p{margin:8px 0 16px;color:#667085;font-size:14px}
 .go7-modal-actions{display:flex;justify-content:flex-end;gap:7px}
 
+
+/* v2 refinements */
+#refreshBtn svg{
+  transform-origin:50% 50%;
+}
+#refreshBtn.refreshing{
+  border-color:#9cc7e6;
+  background:#eef7fd;
+}
+#refreshBtn.refreshing svg{
+  animation:go7-refresh-spin .72s linear infinite;
+}
+@keyframes go7-refresh-spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+.sidebar-bottom #logoutBtn{
+  color:var(--sidebar-text)!important;
+}
+.sidebar-bottom #logoutBtn span{
+  color:var(--sidebar-text)!important;
+}
+.sidebar-bottom #logoutBtn:hover span{
+  color:#fff!important;
+}
+.warning-btn{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:8px 14px;
+  border:1px solid #e4b64b;
+  border-radius:4px;
+  background:#fff4cf;
+  color:#8a5a00;
+  font-size:14px;
+  font-weight:800;
+}
+.warning-btn:hover{
+  background:#ffe9a3;
+  border-color:#d9a632;
+}
+#go7ModalBackdrop[data-variant="logout"] .go7-modal{
+  border-top:3px solid #e4b64b;
+}
+#go7ModalBackdrop[data-variant="logout"] #go7ModalConfirm{
+  border-color:#e4b64b;
+  background:#fff4cf;
+  color:#8a5a00;
+}
+#go7ModalBackdrop[data-variant="logout"] #go7ModalConfirm:hover{
+  background:#ffe9a3;
+}
+
+/* Customer Inquiry: compact detail boxes + full-width status */
+.inquiry-view-body>.form-group:first-child{
+  grid-column:1/-1;
+}
+.inquiry-view-body>.form-group:first-child .form-control{
+  height:44px;
+}
+.inquiry-view-body>.detail-row{
+  min-height:64px;
+  padding:11px 14px;
+}
+.inquiry-view-body>.detail-row>strong,
+.inquiry-view-body>.detail-row>span:last-child:not(.detail-label){
+  max-width:68%;
+}
+@media(max-width:680px){
+  .inquiry-view-body>.detail-row{
+    min-height:60px;
+    padding:10px 12px;
+  }
+}
+
+/* Analytics */
+.analytics-summary{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-bottom:14px;
+}
+.analytics-stat{
+  min-height:126px;
+  padding:17px 18px;
+  border:1px solid var(--line);
+  border-top:3px solid var(--primary);
+  border-radius:4px;
+  background:#fff;
+}
+.analytics-stat:nth-child(2){border-top-color:var(--success)}
+.analytics-stat:nth-child(3){border-top-color:var(--warning)}
+.analytics-stat:nth-child(4){border-top-color:var(--info)}
+.analytics-stat-label{
+  color:#788696;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.analytics-stat-value{
+  margin-top:10px;
+  color:var(--heading);
+  font-size:28px;
+  line-height:1;
+  font-weight:800;
+}
+.analytics-stat-note{
+  margin-top:7px;
+  color:#8996a4;
+  font-size:13px;
+}
+.analytics-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(300px,.75fr);
+  gap:14px;
+}
+.analytics-card{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:#fff;
+}
+.analytics-card-head{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 18px;
+  border-bottom:1px solid var(--line);
+}
+.analytics-card-head h2{
+  margin:0;
+  color:var(--heading);
+  font-size:16px;
+  font-weight:800;
+}
+.analytics-card-head span{
+  color:#8a96a4;
+  font-size:12px;
+}
+.trend-chart{
+  position:relative;
+  min-height:330px;
+  display:flex;
+  flex-direction:column;
+  padding:20px 20px 16px;
+}
+.trend-grid{
+  position:absolute;
+  inset:20px 20px 54px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  pointer-events:none;
+}
+.trend-grid-line{
+  border-top:1px dashed #e5e9ee;
+}
+.trend-bars{
+  position:relative;
+  z-index:1;
+  flex:1;
+  min-height:240px;
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  align-items:end;
+  gap:12px;
+  padding:0 3px 0;
+}
+.trend-bar-item{
+  min-width:0;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+}
+.trend-value{
+  min-height:20px;
+  margin-bottom:7px;
+  color:#657384;
+  font-size:12px;
+  font-weight:800;
+}
+.trend-bar-track{
+  width:min(46px,72%);
+  height:calc(100% - 30px);
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+.trend-bar{
+  width:100%;
+  min-height:4px;
+  height:var(--bar-height);
+  border:1px solid #a9c9e2;
+  border-radius:3px 3px 0 0;
+  background:linear-gradient(180deg,#3f91cb 0%,#2876ae 100%);
+}
+.trend-day{
+  margin-top:9px;
+  color:#7d8a99;
+  font-size:12px;
+  font-weight:700;
+}
+.trend-empty{
+  position:absolute;
+  inset:80px 20px auto;
+  text-align:center;
+  color:#8a96a4;
+  font-size:14px;
+}
+.analytics-status-list{
+  padding:7px 18px 12px;
+}
+.analytics-status-row{
+  padding:14px 0;
+  border-bottom:1px solid #edf0f3;
+}
+.analytics-status-row:last-child{border-bottom:0}
+.analytics-status-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+.analytics-status-name{
+  color:#475467;
+  font-size:14px;
+  font-weight:700;
+}
+.analytics-status-count{
+  color:#344054;
+  font-size:14px;
+  font-weight:800;
+}
+.analytics-progress{
+  height:6px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#edf1f4;
+}
+.analytics-progress span{
+  display:block;
+  height:100%;
+  width:var(--progress);
+  border-radius:999px;
+  background:#3f91cb;
+}
+.analytics-status-row:nth-child(2) .analytics-progress span{background:#d49a37}
+.analytics-status-row:nth-child(3) .analytics-progress span{background:#28a274}
+.analytics-status-row:nth-child(4) .analytics-progress span{background:#687bd8}
+.analytics-footnote{
+  margin:3px 18px 18px;
+  padding:11px 12px;
+  border:1px solid #e3e8ee;
+  border-radius:4px;
+  background:#f8fafb;
+  color:#7d8a99;
+  font-size:12px;
+  line-height:1.5;
+}
+html[data-theme="dark"] .analytics-stat,
+html[data-theme="dark"] .analytics-card{
+  background:#19232e;
+  border-color:#2c3947;
+}
+html[data-theme="dark"] .analytics-stat-value,
+html[data-theme="dark"] .analytics-status-count{
+  color:#f1f5f8;
+}
+html[data-theme="dark"] .analytics-status-name,
+html[data-theme="dark"] .analytics-stat-note,
+html[data-theme="dark"] .analytics-card-head span,
+html[data-theme="dark"] .trend-value,
+html[data-theme="dark"] .trend-day{
+  color:#9ba9b7;
+}
+html[data-theme="dark"] .trend-grid-line,
+html[data-theme="dark"] .analytics-status-row{
+  border-color:#2c3947;
+}
+html[data-theme="dark"] .analytics-progress,
+html[data-theme="dark"] .analytics-footnote{
+  background:#202b37;
+  border-color:#3b4a59;
+}
+@media(max-width:1180px){
+  .analytics-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .analytics-layout{grid-template-columns:1fr}
+}
+@media(max-width:430px){
+  .analytics-summary{grid-template-columns:1fr}
+  .trend-bars{gap:6px}
+  .trend-chart{padding-left:12px;padding-right:12px}
+  .trend-grid{left:12px;right:12px}
+  .trend-bar-track{width:70%}
+}
+
 /* DARK */
 html[data-theme="dark"]{
   --page:#111923;
@@ -1502,18 +1807,59 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 </div>
 </section>
 <section class="page" id="analytics">
-<div class="welcome"><div><h1>Analytics</h1><p>Frontend preview of your inquiry performance.</p></div></div>
-<div class="stats">
-<div class="card stat"><div class="stat-top"><span class="stat-label">This month</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M6 17 17 6M9 6h8v8"></path></svg></span></div><div class="stat-value" id="analyticsNew">0</div><div class="stat-note">New inquiries</div></div>
-<div class="card stat"><div class="stat-top"><span class="stat-label">Response rate</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7 17 17 7"></path><circle cx="7" cy="7" r="2"></circle><circle cx="17" cy="17" r="2"></circle></svg></span></div><div class="stat-value" id="analyticsResponse">—</div><div class="stat-note">Replied / total</div></div>
-<div class="card stat"><div class="stat-top"><span class="stat-label">Avg. response</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7v5l3 2"></path></svg></span></div><div class="stat-value">4.2h</div><div class="stat-note">Frontend sample</div></div>
-<div class="card stat"><div class="stat-top"><span class="stat-label">Conversion</span><span class="stat-icon"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m6 12 4 4 8-9"></path></svg></span></div><div class="stat-value">18%</div><div class="stat-note">Inquiry to deal</div></div>
+<div class="welcome">
+  <div><h1>Analytics</h1><p>Monitor inquiry volume, response performance and current status distribution.</p></div>
 </div>
-<div class="card section-card">
-<div class="section-head"><h2>Inquiry trend</h2><span style="font-size:12px;color:#94a3b8">Last 7 days</span></div>
-<div style="height:260px;display:flex;align-items:flex-end;gap:18px;padding:15px 10px 5px;border-top:1px solid #f1f2f5">
-<div class="bar" style="height:38%"><span>Mon</span></div><div class="bar" style="height:58%"><span>Tue</span></div><div class="bar" style="height:45%"><span>Wed</span></div><div class="bar" style="height:78%"><span>Thu</span></div><div class="bar" style="height:66%"><span>Fri</span></div><div class="bar" style="height:92%"><span>Sat</span></div><div class="bar" style="height:70%"><span>Sun</span></div>
+
+<div class="analytics-summary">
+  <div class="analytics-stat">
+    <div class="analytics-stat-label">Total inquiries</div>
+    <div class="analytics-stat-value" id="analyticsTotal">0</div>
+    <div class="analytics-stat-note">All inquiries in API</div>
+  </div>
+  <div class="analytics-stat">
+    <div class="analytics-stat-label">New inquiries</div>
+    <div class="analytics-stat-value" id="analyticsNew">0</div>
+    <div class="analytics-stat-note">Currently shown in loaded data</div>
+  </div>
+  <div class="analytics-stat">
+    <div class="analytics-stat-label">Response rate</div>
+    <div class="analytics-stat-value" id="analyticsResponse">—</div>
+    <div class="analytics-stat-note">Replied / loaded inquiries</div>
+  </div>
+  <div class="analytics-stat">
+    <div class="analytics-stat-label">Active page</div>
+    <div class="analytics-stat-value" id="analyticsPage">1</div>
+    <div class="analytics-stat-note">Current API page</div>
+  </div>
 </div>
+
+<div class="analytics-layout">
+  <div class="analytics-card">
+    <div class="analytics-card-head">
+      <h2>Inquiry trend</h2>
+      <span>Last 7 days</span>
+    </div>
+    <div class="trend-chart" id="inquiryTrendChart">
+      <div class="trend-grid" aria-hidden="true">
+        <span class="trend-grid-line"></span>
+        <span class="trend-grid-line"></span>
+        <span class="trend-grid-line"></span>
+        <span class="trend-grid-line"></span>
+        <span class="trend-grid-line"></span>
+      </div>
+      <div class="trend-bars" id="inquiryTrendBars"></div>
+    </div>
+  </div>
+
+  <div class="analytics-card">
+    <div class="analytics-card-head">
+      <h2>Status overview</h2>
+      <span id="analyticsStatusTotal">0 loaded</span>
+    </div>
+    <div class="analytics-status-list" id="analyticsStatusBreakdown"></div>
+    <div class="analytics-footnote">Trend data is calculated from the inquiries currently loaded from the Admin API.</div>
+  </div>
 </div>
 </section>
 <section class="page" id="settings">
@@ -1776,6 +2122,7 @@ function normalizeInquiry(x){
     subject:x.subject || "",
     message:x.message || "",
     date:formatDate(x.created_at),
+    createdAt:x.created_at || x.createdAt || "",
     ip:x.ip || "",
     country:x.country || "",
     city:x.city || "",
@@ -1842,6 +2189,82 @@ function renderRecent(){
   list.innerHTML=inquiries.slice(0,5).map(x=>`<div class="activity-row"><span class="activity-dot"></span><div><strong>${escapeHtml(x.name)} · ${escapeHtml(x.subject)}</strong><p>${escapeHtml(x.message.slice(0,72))}${x.message.length>72?'…':''}</p></div><span class="activity-time">${escapeHtml(x.date.split(",")[0])}</span></div>`).join("");
 }
 
+
+function renderAnalytics(){
+  const totalEl=document.getElementById("analyticsTotal");
+  const newEl=document.getElementById("analyticsNew");
+  const responseEl=document.getElementById("analyticsResponse");
+  const pageEl=document.getElementById("analyticsPage");
+  const totalStatusEl=document.getElementById("analyticsStatusTotal");
+  const barsEl=document.getElementById("inquiryTrendBars");
+  const breakdownEl=document.getElementById("analyticsStatusBreakdown");
+
+  if(!barsEl || !breakdownEl) return;
+
+  if(totalEl) totalEl.textContent=apiTotal;
+  if(newEl) newEl.textContent=inquiries.filter(x=>x.status==="New").length;
+  if(responseEl){
+    responseEl.textContent=inquiries.length
+      ? Math.round(inquiries.filter(x=>x.status==="Replied").length/inquiries.length*100)+"%"
+      : "—";
+  }
+  if(pageEl) pageEl.textContent=apiPage;
+
+  const now=new Date();
+  const days=[];
+  for(let i=6;i>=0;i--){
+    const d=new Date(now);
+    d.setHours(0,0,0,0);
+    d.setDate(d.getDate()-i);
+    days.push(d);
+  }
+
+  const counts=days.map(day=>{
+    const next=new Date(day);
+    next.setDate(next.getDate()+1);
+    return inquiries.filter(x=>{
+      const raw=x.createdAt || x.date;
+      const d=new Date(raw);
+      return !Number.isNaN(d.getTime()) && d>=day && d<next;
+    }).length;
+  });
+  const maxCount=Math.max(...counts,1);
+
+  barsEl.innerHTML=days.map((day,i)=>{
+    const label=day.toLocaleDateString("en-IN",{weekday:"short"});
+    const value=counts[i];
+    const height=value ? Math.max(7,(value/maxCount)*100) : 2;
+    return `<div class="trend-bar-item">
+      <span class="trend-value">${value}</span>
+      <div class="trend-bar-track">
+        <span class="trend-bar" style="--bar-height:${height}%"></span>
+      </div>
+      <span class="trend-day">${label}</span>
+    </div>`;
+  }).join("");
+
+  const statuses=[
+    ["New","new"],
+    ["Read","read"],
+    ["Replied","replied"],
+    ["Closed","closed"]
+  ];
+  const loaded=inquiries.length;
+  if(totalStatusEl) totalStatusEl.textContent=`${loaded} loaded`;
+
+  breakdownEl.innerHTML=statuses.map(([label,key])=>{
+    const count=inquiries.filter(x=>statusMatches(x.status,label)).length;
+    const percent=loaded ? Math.round(count/loaded*100) : 0;
+    return `<div class="analytics-status-row">
+      <div class="analytics-status-top">
+        <span class="analytics-status-name">${label}</span>
+        <span class="analytics-status-count">${count}</span>
+      </div>
+      <div class="analytics-progress"><span style="--progress:${percent}%"></span></div>
+    </div>`;
+  }).join("");
+}
+
 function updateStats(){
   const total=apiTotal;
   const n=inquiries.filter(x=>x.status==="New").length;
@@ -1851,10 +2274,7 @@ function updateStats(){
   document.getElementById("newStat").textContent=n;
   document.getElementById("progressStat").textContent=p;
   document.getElementById("repliedStat").textContent=r;
-  const aNew=document.getElementById("analyticsNew");
-  const aResp=document.getElementById("analyticsResponse");
-  if(aNew)aNew.textContent=n;
-  if(aResp)aResp.textContent=total?Math.round(r/Math.max(inquiries.length,1)*100)+"%*":"—";
+  renderAnalytics();
 }
 function updatePageNumber(){const el=document.getElementById("pageNumber");if(el)el.textContent=apiPage;}
 async function prevPage(){if(apiPage<=1)return;apiPage--;await loadInquiries();}
@@ -2183,7 +2603,7 @@ function showConfirm(title,message,confirmText="Confirm",variant="info"){
     titleEl.textContent=title;
     msgEl.textContent=message;
     yes.textContent=confirmText;
-    yes.className = variant==="danger" ? "danger-btn" : "primary";
+    yes.className = variant==="danger" ? "danger-btn" : variant==="logout" ? "warning-btn" : "primary";
     back.classList.add("show");
     back.setAttribute("aria-hidden","false");
     const finish=v=>{
