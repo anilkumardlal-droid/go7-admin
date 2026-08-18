@@ -1019,7 +1019,7 @@ body.auth-loading .login-screen{
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  gap:10px;
+  gap:30px;
   flex-wrap:wrap;
   margin-top:12px;
   padding:13px 0 0;
@@ -1680,7 +1680,7 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 @media(max-width:680px){
   .inquiry-view-footer{
     justify-content:stretch;
-    gap:8px;
+    gap:20px;
   }
   .inquiry-view-footer .small-btn,
   .inquiry-view-footer .primary-btn{
