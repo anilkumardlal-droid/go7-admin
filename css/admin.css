@@ -78,7 +78,7 @@ body.auth-loading .login-screen{
   width:min(860px,100%);
   min-height:560px;
   display:grid;
-  grid-template-columns:34% 66%;
+  grid-template-columns:40% 60%;
   overflow:hidden;
   border-radius: 8px;
   border-radius:6px;
