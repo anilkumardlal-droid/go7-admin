@@ -71,7 +71,7 @@ body.auth-loading .login-screen{
   display:none;
   place-items:center;
   padding:28px;
-  background:#f2f4f7;
+  background:#fcfcfc;
   overflow:auto;
 }
 .go7-login-shell{
@@ -92,7 +92,7 @@ body.auth-loading .login-screen{
   min-width:0;
   overflow:hidden;
   padding:38px 34px;
-  background:linear-gradient(155deg,#1d2e43 0%,#253f5d 58%,#1e6da9 100%);
+  background: linear-gradient(90deg, #e0f2fe 0%, #ffffff 50%, #e0f2fe 100%) !important;
 }
 .go7-login-grid{
   position:absolute;
@@ -129,7 +129,7 @@ body.auth-loading .login-screen{
 .go7-login-visual-copy span{
   display:block;
   margin-bottom:10px;
-  color:#9fc9ea;
+  color:#3850d5;
   font-size:12px;
   font-weight:800;
   letter-spacing:.12em;
@@ -144,7 +144,7 @@ body.auth-loading .login-screen{
 }
 .go7-login-visual-copy p{
   margin:14px 0 0;
-  color:#c4d0dc;
+  color:#818e9b;
   font-size:14px;
 }
 .go7-login-secure{
@@ -154,7 +154,7 @@ body.auth-loading .login-screen{
   align-items:center;
   gap:9px;
   margin-top:32px;
-  color:#c4d0dc;
+  color:#39c98a;
   font-size:12px;
 }
 .go7-secure-dot{
@@ -169,7 +169,7 @@ body.auth-loading .login-screen{
   flex-direction:column;
   justify-content:center;
   padding:64px 76px;
-  background:#fcfcfc;
+  background:#ffffff;
 }
 .go7-login-mobile-brand{display:none}
 .go7-login-heading,
@@ -300,8 +300,8 @@ body.auth-loading .login-screen{
 .go7-login-footer i{width:1px;height:14px;background:#dfe4e9}
 
 .go7-login-brandmark .desktop-login-logo{
-  width:170px;
-  height:58px;
+  width:120px;
+  height:38px;
   padding:0;
   border-radius:0;
   background:transparent;
