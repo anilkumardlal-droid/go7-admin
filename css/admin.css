@@ -169,7 +169,7 @@ body.auth-loading .login-screen{
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:50px 40px;
+  padding:40px 32px;
   background:#ffffff;
 }
 .go7-login-mobile-brand{display:none}
