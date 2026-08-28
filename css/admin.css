@@ -1677,3 +1677,11 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
     min-width:0;
   }
 }
+
+.go7-login-visual {
+  display: none;
+}
+
+.go7-login-shell {
+  grid-template-columns: 1fr;
+}
