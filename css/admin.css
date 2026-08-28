@@ -80,6 +80,7 @@ body.auth-loading .login-screen{
   display:grid;
   grid-template-columns:40% 60%;
   overflow:hidden;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
   border-radius:6px;
   background:#fff;
