@@ -75,8 +75,8 @@ body.auth-loading .login-screen{
   overflow:auto;
 }
 .go7-login-shell{
-  width:min(1040px,100%);
-  min-height:600px;
+  width:min(860px,100%);
+  min-height:560px;
   display:grid;
   grid-template-columns:34% 66%;
   overflow:hidden;
