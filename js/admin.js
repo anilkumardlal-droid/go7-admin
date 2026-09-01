@@ -237,9 +237,28 @@ function normalizeInquiry(x){
 
 function formatDate(value){
   if(!value) return "—";
-  const d = new Date(value);
+
+  let raw = String(value).trim();
+
+  // Cloudflare D1 CURRENT_TIMESTAMP is UTC
+  // Convert SQL timestamp to an explicit UTC ISO timestamp.
+  if(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(raw)){
+    raw = raw.replace(" ", "T") + "Z";
+  }
+
+  const d = new Date(raw);
+
   if(Number.isNaN(d.getTime())) return String(value);
-  return d.toLocaleString("en-IN", {day:"2-digit",month:"short",year:"numeric",hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Asia/Kolkata"});
+
+  return d.toLocaleString("en-IN", {
+    day:"2-digit",
+    month:"short",
+    year:"numeric",
+    hour:"numeric",
+    minute:"2-digit",
+    hour12:true,
+    timeZone:"Asia/Kolkata"
+  });
 }
 
 function updateApiInfo(){
