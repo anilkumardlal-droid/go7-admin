@@ -250,15 +250,17 @@ function formatDate(value){
 
   if(Number.isNaN(d.getTime())) return String(value);
 
-  return d.toLocaleString("en-IN", {
-    day:"2-digit",
-    month:"short",
-    year:"numeric",
-    hour:"numeric",
-    minute:"2-digit",
-    hour12:true,
-    timeZone:"Asia/Kolkata"
-  });
+return d.toLocaleString("en-US", {
+  weekday:"long",
+  day:"numeric",
+  month:"long",
+  year:"numeric",
+  hour:"numeric",
+  minute:"2-digit",
+  second:"2-digit",
+  hour12:true,
+  timeZone:"Asia/Kolkata"
+}).replace(" at ", " at ");
 }
 
 function updateApiInfo(){
