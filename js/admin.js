@@ -771,7 +771,7 @@ checkSession();
   const toggle=document.getElementById("themeToggle");
   const icon=document.getElementById("themeToggleIcon");
 
-  function setTheme(theme){
+   function setTheme(theme){
     const dark=theme==="dark";
     root.setAttribute("data-theme", dark ? "dark" : "light");
     localStorage.setItem(key, theme);
