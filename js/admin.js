@@ -250,7 +250,7 @@ function formatDate(value){
 
   if(Number.isNaN(d.getTime())) return String(value);
 
-return d.toLocaleString("en-US", {
+return d.toLocaleString("en-GB", {
   weekday:"long",
   day:"numeric",
   month:"long",
