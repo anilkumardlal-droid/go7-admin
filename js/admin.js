@@ -230,7 +230,8 @@ function normalizeInquiry(x){
     browser:x.browser || "",
     timezone:x.timezone || "",
     status:x.status || "New",
-    admin_note:x.admin_note || ""
+    admin_note:x.admin_note || "",
+    source_domain:x.source_domain || "go7.in"
   };
 }
 
@@ -425,6 +426,7 @@ function detailIcon(label){
     <div class="detail-row"><span class="detail-label">${detailIcon("Email")}Email</span><strong>${escapeHtml(x.email)}</strong></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Subject")}Subject</span><strong>${escapeHtml(x.subject)}</strong></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Inquiry ID")}Inquiry ID</span><strong>${escapeHtml(x.id)}</strong></div>
+    <div class="detail-row"><span class="detail-label">${detailIcon("Environment")}Source Domain</span><strong>${escapeHtml(x.source_domain)}</strong></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Date & Time")}Date & Time</span><span>${escapeHtml(x.date)}</span></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("IP Address")}IP Address</span><strong>${escapeHtml(x.ip)}</strong></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Country")}Country</span><span>${escapeHtml(x.country)}</span></div>
@@ -654,8 +656,8 @@ function toast(msg){
 
 function exportCSV(){
   if(!authenticated){showLogin();return;}
-  const header=["Inquiry ID","Name","Email","Subject","Date & Time","IP Address","Country","City","Region","Device","Browser","Timezone","Message","Status","Admin Note"];
-  const lines=[header,...inquiries.map(x=>[x.id,x.name,x.email,x.subject,x.date,x.ip,x.country,x.city,x.region,x.device,x.browser,x.timezone,x.message,x.status,x.admin_note])].map(r=>r.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");
+  const header=["Inquiry ID","Name","Email","Subject","Source Domain","Date & Time","IP Address","Country","City","Region","Device","Browser","Timezone","Message","Status","Admin Note"];
+  const lines=[header,...inquiries.map(x=>[x.id,x.name,x.email,x.subject,x.source_domain,x.date,x.ip,x.country,x.city,x.region,x.device,x.browser,x.timezone,x.message,x.status,x.admin_note])].map(r=>r.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\n");
   const blob=new Blob([lines],{type:"text/csv;charset=utf-8;"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="go7-inquiries.csv";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("CSV exported");
 }
