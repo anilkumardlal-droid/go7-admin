@@ -1685,3 +1685,312 @@ html[data-theme="dark"] .toast{background:#19232e;border-color:#3b4a59;color:#ed
 .go7-login-shell {
   grid-template-columns: 1fr;
 }
+
+/* =========================================================
+   IP BLOCKING
+   ========================================================= */
+
+.ip-blocking-card{
+  grid-column:1/-1;
+}
+
+.ip-blocking-form{
+  display:grid;
+  grid-template-columns:minmax(220px,1fr) minmax(220px,1fr) auto;
+  gap:10px;
+  align-items:end;
+  margin-top:16px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:var(--surface-2);
+}
+
+.ip-blocking-field{
+  min-width:0;
+}
+
+.ip-blocking-field label{
+  display:block;
+  margin-bottom:6px;
+  color:#788696;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.ip-blocking-field input{
+  width:100%;
+  height:42px;
+  padding:0 11px;
+  border:1px solid var(--line-strong);
+  border-radius:4px;
+  background:#fff;
+  color:#344054;
+  outline:0;
+  font-size:14px;
+}
+
+.ip-blocking-field input::placeholder{
+  color:#9aa6b4;
+}
+
+.ip-blocking-field input:focus{
+  border-color:#4b8bc2;
+  outline:2px solid rgba(31,115,190,.09);
+}
+
+.ip-block-btn{
+  min-height:42px;
+  padding:9px 16px;
+  border:1px solid var(--danger);
+  border-radius:4px;
+  background:var(--danger);
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+.ip-block-btn:hover{
+  border-color:#b83b3b;
+  background:#b83b3b;
+}
+
+.ip-blocking-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:16px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+}
+
+.ip-blocking-meta strong{
+  color:var(--heading);
+  font-size:14px;
+  font-weight:800;
+}
+
+.ip-blocking-count{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:28px;
+  height:26px;
+  padding:0 8px;
+  border-radius:999px;
+  background:var(--danger-soft);
+  color:var(--danger);
+  font-size:12px;
+  font-weight:800;
+}
+
+.blocked-ip-list{
+  display:flex;
+  flex-direction:column;
+}
+
+.blocked-ip-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:13px 0;
+  border-bottom:1px solid #edf0f3;
+}
+
+.blocked-ip-item:last-child{
+  border-bottom:0;
+}
+
+.blocked-ip-info{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.blocked-ip-info strong{
+  color:#344054;
+  font-size:14px;
+  font-weight:800;
+  overflow-wrap:anywhere;
+}
+
+.blocked-ip-info span{
+  color:#667085;
+  font-size:13px;
+  overflow-wrap:anywhere;
+}
+
+.blocked-ip-info small{
+  color:#8996a4;
+  font-size:12px;
+}
+
+.blocked-ip-unblock{
+  flex:none;
+  min-height:36px;
+  padding:7px 12px;
+  border:1px solid var(--line-strong);
+  border-radius:4px;
+  background:#fff;
+  color:#475467;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.blocked-ip-unblock:hover{
+  border-color:#9db4c8;
+  background:#f7f9fb;
+  color:var(--primary);
+}
+
+.blocked-ip-empty{
+  padding:18px 0 4px;
+  color:#8996a4;
+  font-size:13px;
+  text-align:center;
+}
+
+/* Inquiry IP action */
+
+.ip-detail-value{
+  max-width:68%;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:9px;
+  min-width:0;
+}
+
+.ip-detail-value strong{
+  min-width:0;
+  max-width:none!important;
+  overflow-wrap:anywhere;
+  text-align:right;
+}
+
+.ip-action-btn{
+  flex:none;
+  min-height:32px;
+  padding:5px 10px;
+  border:1px solid var(--line-strong);
+  border-radius:4px;
+  background:#fff;
+  color:#475467;
+  font-size:12px;
+  font-weight:800;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+.ip-action-btn.block{
+  border-color:#e6b7b7;
+  background:var(--danger-soft);
+  color:var(--danger);
+}
+
+.ip-action-btn.block:hover{
+  border-color:var(--danger);
+  background:#ffe4e4;
+}
+
+.ip-action-btn.unblock{
+  border-color:#ccebdc;
+  background:var(--success-soft);
+  color:var(--success);
+}
+
+.ip-action-btn.unblock:hover{
+  border-color:var(--success);
+  background:#dff4ea;
+}
+
+/* Dark mode */
+
+html[data-theme="dark"] .ip-blocking-form{
+  background:#202b37;
+  border-color:#2c3947;
+}
+
+html[data-theme="dark"] .ip-blocking-field input,
+html[data-theme="dark"] .blocked-ip-unblock,
+html[data-theme="dark"] .ip-action-btn{
+  background:#19232e;
+  border-color:#3b4a59;
+  color:#edf2f6;
+}
+
+html[data-theme="dark"] .ip-blocking-field input::placeholder{
+  color:#7f8c9a;
+}
+
+html[data-theme="dark"] .blocked-ip-item{
+  border-color:#2c3947;
+}
+
+html[data-theme="dark"] .blocked-ip-info strong{
+  color:#f1f5f8;
+}
+
+html[data-theme="dark"] .blocked-ip-info span,
+html[data-theme="dark"] .blocked-ip-info small,
+html[data-theme="dark"] .blocked-ip-empty{
+  color:#9ba9b7;
+}
+
+html[data-theme="dark"] .ip-action-btn.block{
+  border-color:#694047;
+  background:#302027;
+  color:#ef8585;
+}
+
+html[data-theme="dark"] .ip-action-btn.unblock{
+  border-color:#315746;
+  background:#1e3028;
+  color:#62c99b;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+  .ip-blocking-form{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .ip-block-btn{
+    width:100%;
+  }
+}
+
+@media(max-width:680px){
+  .ip-blocking-form{
+    grid-template-columns:1fr;
+  }
+
+  .blocked-ip-item{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .blocked-ip-unblock{
+    width:100%;
+  }
+
+  .ip-detail-value{
+    max-width:58%;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+
+  .ip-action-btn{
+    min-height:30px;
+    padding:5px 8px;
+  }
+}
