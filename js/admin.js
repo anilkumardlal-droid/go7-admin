@@ -960,6 +960,14 @@ document.getElementById("drawerBody").addEventListener("change",event=>{ /* chan
 document.getElementById("searchInput").addEventListener("input",renderTable);
 document.getElementById("statusFilter").addEventListener("change",renderTable);
 
+document.getElementById("blockedIpList").addEventListener("click",event=>{
+  const btn = event.target.closest(".blocked-ip-unblock");
+
+  if(!btn) return;
+
+  unblockIp(btn.dataset.blockedIpId);
+});
+
 document.getElementById("mobileMenu").addEventListener("click",()=>document.getElementById("sidebar").classList.toggle("open"));
 document.getElementById("refreshBtn").addEventListener("click",refreshDashboard);
 
