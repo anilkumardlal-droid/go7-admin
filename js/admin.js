@@ -1,6 +1,7 @@
 const API_BASE = "https://admin-api.go7.in";
 let inquiries = [];
 let currentId = null;
+let blockedIps = [];
 let apiPage = 1;
 let apiTotal = 0;
 const apiLimit = 50;
@@ -64,7 +65,8 @@ async function checkSession(){
       authenticated = true;
       hideLogin();
       await loadInquiries();
-      return true;
+await loadBlockedIps();
+return true;
     }
   }catch(error){
     if(error.message !== "Unauthorized") console.error("Session check:",error);
@@ -113,6 +115,7 @@ async function login(username,password){
     hideLogin();
     apiPage = 1;
     await loadInquiries();
+    await loadBlockedIps();
     toast("Login successful");
 
   }catch(error){
@@ -261,6 +264,253 @@ return d.toLocaleString("en-GB", {
   hour12:true,
   timeZone:"Asia/Kolkata"
 }).replace(" at ", " at ");
+}
+
+// =========================================================
+// BLOCKED IP MANAGEMENT
+// =========================================================
+
+async function loadBlockedIps(){
+  if(!authenticated) return;
+
+  try{
+    const data = await apiFetch("/api/blocked-ips", {
+      method: "GET"
+    });
+
+    blockedIps = Array.isArray(data.blocked_ips)
+      ? data.blocked_ips
+      : [];
+
+    renderBlockedIps();
+    updateInquiryIpAction();
+
+  }catch(error){
+    if(error.message !== "Unauthorized"){
+      console.error("Load blocked IPs:", error);
+    }
+  }
+}
+
+function isIpBlocked(ip){
+  if(!ip) return false;
+
+  return blockedIps.some(
+    item => String(item.ip) === String(ip)
+  );
+}
+
+function renderBlockedIps(){
+
+  const list = document.getElementById("blockedIpList");
+  const count = document.getElementById("blockedIpCount");
+
+  if(count){
+    count.textContent = blockedIps.length;
+  }
+
+  if(!list) return;
+
+  if(!blockedIps.length){
+    list.innerHTML = `
+      <div class="blocked-ip-empty">
+        No blocked IP addresses.
+      </div>
+    `;
+    return;
+  }
+
+  list.innerHTML = blockedIps.map(item => `
+    <div class="blocked-ip-item">
+
+      <div class="blocked-ip-info">
+        <strong>${escapeHtml(item.ip)}</strong>
+
+        ${
+          item.reason
+            ? `<span>${escapeHtml(item.reason)}</span>`
+            : `<span>No reason provided</span>`
+        }
+
+        <small>
+          Blocked:
+          ${escapeHtml(formatDate(item.blocked_at))}
+        </small>
+      </div>
+
+      <button
+        type="button"
+        class="blocked-ip-unblock"
+        data-blocked-ip-id="${escapeAttr(item.id)}"
+      >
+        Unblock
+      </button>
+
+    </div>
+  `).join("");
+}
+
+async function blockIp(ip, reason = ""){
+
+  ip = String(ip || "").trim();
+
+  if(!ip){
+    toast("IP address is missing");
+    return;
+  }
+
+  if(isIpBlocked(ip)){
+    toast("This IP is already blocked");
+    return;
+  }
+
+  const confirmed = await showConfirm(
+    "Block IP address?",
+    `New inquiries from ${ip} will be rejected.`,
+    "Block IP",
+    "danger"
+  );
+
+  if(!confirmed) return;
+
+  try{
+
+    await apiFetch("/api/blocked-ips", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        ip,
+        reason
+      })
+    });
+
+    await loadBlockedIps();
+
+    toast("IP blocked successfully");
+
+  }catch(error){
+
+    if(error.message !== "Unauthorized"){
+      console.error("Block IP:", error);
+      toast(error.message || "Unable to block IP");
+    }
+
+  }
+}
+
+async function unblockIp(id){
+
+  const item = blockedIps.find(
+    x => String(x.id) === String(id)
+  );
+
+  if(!item) return;
+
+  const confirmed = await showConfirm(
+    "Unblock IP address?",
+    `New inquiries from ${item.ip} will be allowed again.`,
+    "Unblock",
+    "info"
+  );
+
+  if(!confirmed) return;
+
+  try{
+
+    await apiFetch(
+      `/api/blocked-ips/${encodeURIComponent(String(id))}`,
+      {
+        method: "DELETE"
+      }
+    );
+
+    await loadBlockedIps();
+
+    toast("IP unblocked successfully");
+
+  }catch(error){
+
+    if(error.message !== "Unauthorized"){
+      console.error("Unblock IP:", error);
+      toast(error.message || "Unable to unblock IP");
+    }
+
+  }
+}
+
+async function blockIpFromSettings(){
+
+  const input = document.getElementById("blockedIpInput");
+  const reasonInput = document.getElementById("blockedIpReason");
+
+  if(!input) return;
+
+  const ip = input.value.trim();
+  const reason = reasonInput
+    ? reasonInput.value.trim()
+    : "";
+
+  if(!ip){
+    toast("Enter an IP address");
+    input.focus();
+    return;
+  }
+
+  await blockIp(ip, reason);
+
+  input.value = "";
+
+  if(reasonInput){
+    reasonInput.value = "";
+  }
+}
+
+function updateInquiryIpAction(){
+
+  const container =
+    document.getElementById("inquiryIpAction");
+
+  if(!container) return;
+
+  const x = inquiries.find(
+    i => String(i.id) === String(currentId)
+  );
+
+  if(!x || !x.ip){
+    container.innerHTML = "";
+    return;
+  }
+
+  if(isIpBlocked(x.ip)){
+
+    const blocked = blockedIps.find(
+      item => String(item.ip) === String(x.ip)
+    );
+
+    container.innerHTML = `
+      <button
+        type="button"
+        class="ip-action-btn unblock"
+        onclick="unblockIp('${escapeAttr(blocked?.id || "")}')"
+      >
+        Unblock IP
+      </button>
+    `;
+
+  }else{
+
+    container.innerHTML = `
+      <button
+        type="button"
+        class="ip-action-btn block"
+        onclick="blockIp('${escapeAttr(x.ip)}','Blocked from inquiry')"
+      >
+        Block IP
+      </button>
+    `;
+  }
 }
 
 function updateApiInfo(){
@@ -449,7 +699,7 @@ function detailIcon(label){
     <div class="detail-row"><span class="detail-label">${detailIcon("Inquiry ID")}Inquiry ID</span><strong>${escapeHtml(x.id)}</strong></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Environment")}Source Domain</span><strong>${escapeHtml(x.source_domain)}</strong></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Date & Time")}Date & Time</span><span>${escapeHtml(x.date)}</span></div>
-    <div class="detail-row"><span class="detail-label">${detailIcon("IP Address")}IP Address</span><strong>${escapeHtml(x.ip)}</strong></div>
+    <div class="detail-row"> <span class="detail-label">${detailIcon("IP Address")}IP Address</span> <div class="ip-detail-value"> <strong>${escapeHtml(x.ip)}</strong> <span id="inquiryIpAction"></span> </div> </div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Country")}Country</span><span>${escapeHtml(x.country)}</span></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("City")}City</span><span>${escapeHtml(x.city)}</span></div>
     <div class="detail-row"><span class="detail-label">${detailIcon("Region")}Region</span><span>${escapeHtml(x.region)}</span></div>
@@ -478,6 +728,7 @@ function detailIcon(label){
   document.querySelectorAll(".nav button[data-page]").forEach(b=>b.classList.remove("active"));
   document.getElementById("sidebar").classList.remove("open");
   window.scrollTo({top:0,behavior:"smooth"});
+  updateInquiryIpAction();
 }
 async function saveInquiryChanges(){
   if(!authenticated || !currentId){
