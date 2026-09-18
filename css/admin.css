@@ -320,8 +320,8 @@ body.auth-loading .login-screen{
   display:flex;
   flex-direction:column;
   overflow:auto;
-  background:linear-gradient(180deg,#263b50 0%,#1f3042 58%,#1b2a3a 100%);
-  border-right:1px solid #1c2a39;
+background:#1f1f22;
+  border-right:1px solid rgba(255,255,255,.14);
 }
 .brand{
   height:68px;
