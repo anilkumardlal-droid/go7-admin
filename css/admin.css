@@ -564,7 +564,7 @@ background:#1f1f22;
 .btn-link:hover{border-color:transparent;background:transparent;color:var(--primary-dark);text-decoration:underline}
 .btn svg{width:18px;height:18px;flex:none}
 
-.primary{min-height:40px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 14px;border:1px solid var(--primary);border-radius:4px;background:var(--primary);color:#fff;font-size:14px;font-weight:500;line-height:1.25;text-decoration:none;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
+.primary{min-height:30px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:8px 14px;border:1px solid var(--primary);border-radius:4px;background:var(--primary);color:#fff;font-size:14px;font-weight:500;line-height:1.25;text-decoration:none;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
 .primary:hover{background:var(--primary-dark);border-color:var(--primary-dark)}
 .card{
   border:1px solid var(--line);
