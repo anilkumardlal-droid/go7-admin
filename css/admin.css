@@ -1402,7 +1402,7 @@ html[data-theme="dark"] .analytics-stat-note,
 html[data-theme="dark"] .analytics-card-head span,
 html[data-theme="dark"] .trend-value,
 html[data-theme="dark"] .trend-day{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 html[data-theme="dark"] .trend-grid-line,
 html[data-theme="dark"] .analytics-status-row{
@@ -1458,7 +1458,7 @@ html[data-theme="dark"]{
   --surface-2:#2b2b30;
   --text:#d7d7dc;
   --heading:#f2f2f5;
-  --muted:#9b9ba3;
+  --muted:#c7c7d1 !important;;
   --line:rgba(255,255,255,.14);
   --line-strong:rgba(255,255,255,.20);
 }
@@ -1492,7 +1492,7 @@ html[data-theme="dark"] .activity-time,
 html[data-theme="dark"] .stat-note,
 html[data-theme="dark"] .setting-card>p,
 html[data-theme="dark"] #drawerSubtitle{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 html[data-theme="dark"] .search input,
 html[data-theme="dark"] .select,
@@ -1943,7 +1943,7 @@ html[data-theme="dark"] .blocked-ip-info strong{
 html[data-theme="dark"] .blocked-ip-info span,
 html[data-theme="dark"] .blocked-ip-info small,
 html[data-theme="dark"] .blocked-ip-empty{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .ip-action-btn.block{
@@ -2008,7 +2008,7 @@ html[data-theme="dark"]{
   --surface-2:#2b2b30;
   --text:#d7d7dc;
   --heading:#f2f2f5;
-  --muted:#9b9ba3;
+  --muted:#c7c7d1 !important;;
   --line:rgba(255,255,255,.14);
   --line-strong:rgba(255,255,255,.20);
   --sidebar-text:#d2d2d8;
@@ -2031,7 +2031,7 @@ html[data-theme="dark"] .nav button{
 }
 
 html[data-theme="dark"] .nav button svg{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .nav button:hover{
@@ -2067,7 +2067,7 @@ html[data-theme="dark"] .admin-mini strong{
 }
 
 html[data-theme="dark"] .admin-mini small{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .sidebar-bottom #logoutBtn span{
@@ -2164,7 +2164,7 @@ html[data-theme="dark"] .setting-card>p,
 html[data-theme="dark"] #drawerSubtitle,
 html[data-theme="dark"] .analytics-stat-note,
 html[data-theme="dark"] .analytics-card-head span{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 /* Quick actions */
@@ -2181,7 +2181,7 @@ html[data-theme="dark"] .quick button:hover{
 }
 
 html[data-theme="dark"] .quick small{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 /* Forms and controls */
@@ -2211,7 +2211,7 @@ html[data-theme="dark"] .back-inquiries-btn:hover{
 html[data-theme="dark"] .inquiry-view-body>.form-group label,
 html[data-theme="dark"] .inquiry-view-body>.reply-box label,
 html[data-theme="dark"] .detail-label{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .message-box{
@@ -2247,7 +2247,7 @@ html[data-theme="dark"] .table-wrap tbody tr:hover{
 }
 
 html[data-theme="dark"] .pagination{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .pager button{
@@ -2289,7 +2289,7 @@ html[data-theme="dark"] .analytics-progress{
 html[data-theme="dark"] .analytics-footnote{
   background:#2b2b30;
   border-color:rgba(255,255,255,.14);
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 /* IP blocking */
@@ -2321,7 +2321,7 @@ html[data-theme="dark"] .blocked-ip-info strong{
 html[data-theme="dark"] .blocked-ip-info span,
 html[data-theme="dark"] .blocked-ip-info small,
 html[data-theme="dark"] .blocked-ip-empty{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .ip-action-btn.block{
@@ -2348,7 +2348,7 @@ html[data-theme="dark"] .go7-modal h3{
 }
 
 html[data-theme="dark"] .go7-modal p{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 /* Login screen */
@@ -2376,7 +2376,7 @@ html[data-theme="dark"] .go7-login-heading h1{
 
 html[data-theme="dark"] .go7-login-visual-copy p,
 html[data-theme="dark"] .go7-login-heading p{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .go7-field label{
@@ -2384,11 +2384,11 @@ html[data-theme="dark"] .go7-field label{
 }
 
 html[data-theme="dark"] .go7-label-row span{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .go7-input-wrap>svg{
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .go7-input-wrap .form-control{
@@ -2403,7 +2403,7 @@ html[data-theme="dark"] .go7-input-wrap .form-control::placeholder{
 
 html[data-theme="dark"] .go7-login-footer{
   border-top-color:rgba(255,255,255,.14);
-  color:#9b9ba3;
+  color:#c7c7d1 !important;;
 }
 
 html[data-theme="dark"] .go7-login-footer i{
