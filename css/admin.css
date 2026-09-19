@@ -1395,7 +1395,7 @@ border-color:rgba(255,255,255,.14);
 }
 html[data-theme="dark"] .analytics-stat-value,
 html[data-theme="dark"] .analytics-status-count{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 html[data-theme="dark"] .analytics-status-name,
 html[data-theme="dark"] .analytics-stat-note,
@@ -1484,7 +1484,7 @@ html[data-theme="dark"] .setting-card h3,
 html[data-theme="dark"] .table-wrap td strong,
 html[data-theme="dark"] .detail-row strong,
 html[data-theme="dark"] .inquiry-page-heading h1{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 html[data-theme="dark"] .welcome p,
 html[data-theme="dark"] .activity-row p,
@@ -1505,7 +1505,7 @@ html[data-theme="dark"] .inquiry-view-body>.form-group .form-control,
 html[data-theme="dark"] .inquiry-view-body>.reply-box .form-control{
   background:#252529;
   border-color:rgba(255,255,255,.20);
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 html[data-theme="dark"] .table-wrap th{background:#2b2b30; color:#b5b5bd;}
 html[data-theme="dark"] .table-wrap td{border-color:rgba(255,255,255,.14); color:#d0d0d6;}
@@ -1515,7 +1515,7 @@ html[data-theme="dark"] .reply-box{background:#29292e; border-color:rgba(255,255
 html[data-theme="dark"] .inquiry-view-body>.form-group label,
 html[data-theme="dark"] .inquiry-view-body>.reply-box label,
 html[data-theme="dark"] .detail-label{color:#9ba9b7}
-html[data-theme="dark"] .toast{background:#252529; border-color:rgba(255,255,255,.20); color:#f2f2f5;}
+html[data-theme="dark"] .toast{background:#252529; border-color:rgba(255,255,255,.20); #c7c7d1 !important;}
 
 .go7-sidebar-logo{
   display:block;
@@ -1925,7 +1925,7 @@ html[data-theme="dark"] .blocked-ip-unblock,
 html[data-theme="dark"] .ip-action-btn{
   background:#252529;
 border-color:rgba(255,255,255,.20);
-color:#f2f2f5;
+#c7c7d1 !important;
 }
 
 html[data-theme="dark"] .ip-blocking-field input::placeholder{
@@ -1937,7 +1937,7 @@ html[data-theme="dark"] .blocked-ip-item{
 }
 
 html[data-theme="dark"] .blocked-ip-info strong{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .blocked-ip-info span,
@@ -2063,7 +2063,7 @@ html[data-theme="dark"] .admin-mini{
 }
 
 html[data-theme="dark"] .admin-mini strong{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .admin-mini small{
@@ -2094,7 +2094,7 @@ html[data-theme="dark"] .topbar{
 }
 
 html[data-theme="dark"] .page-title{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .mobile-menu,
@@ -2110,7 +2110,7 @@ html[data-theme="dark"] .theme-toggle:hover,
 html[data-theme="dark"] .mobile-menu:hover{
   background:#2b2b30;
   border-color:rgba(255,255,255,.28);
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] #refreshBtn{
@@ -2153,7 +2153,7 @@ html[data-theme="dark"] .stat-value,
 html[data-theme="dark"] .setting-card h3,
 html[data-theme="dark"] .inquiry-page-heading h1,
 html[data-theme="dark"] .table-wrap td strong{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .welcome p,
@@ -2193,7 +2193,7 @@ html[data-theme="dark"] .inquiry-view-body>.form-group .form-control,
 html[data-theme="dark"] .inquiry-view-body>.reply-box .form-control{
   background:#252529;
   border-color:rgba(255,255,255,.20);
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .search input::placeholder,
@@ -2274,7 +2274,7 @@ html[data-theme="dark"] .analytics-status-name{
 
 html[data-theme="dark"] .analytics-status-count,
 html[data-theme="dark"] .analytics-stat-value{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .trend-grid-line,
@@ -2303,7 +2303,7 @@ html[data-theme="dark"] .blocked-ip-unblock,
 html[data-theme="dark"] .ip-action-btn{
   background:#252529;
   border-color:rgba(255,255,255,.20);
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .ip-blocking-field input::placeholder{
@@ -2315,7 +2315,7 @@ html[data-theme="dark"] .blocked-ip-item{
 }
 
 html[data-theme="dark"] .blocked-ip-info strong{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .blocked-ip-info span,
@@ -2340,11 +2340,11 @@ html[data-theme="dark"] .ip-action-btn.unblock{
 html[data-theme="dark"] .toast{
   background:#252529;
   border-color:rgba(255,255,255,.20);
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .go7-modal h3{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .go7-modal p{
@@ -2371,7 +2371,7 @@ html[data-theme="dark"] .go7-login-form-panel{
 
 html[data-theme="dark"] .go7-login-visual-copy strong,
 html[data-theme="dark"] .go7-login-heading h1{
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .go7-login-visual-copy p,
@@ -2394,7 +2394,7 @@ html[data-theme="dark"] .go7-input-wrap>svg{
 html[data-theme="dark"] .go7-input-wrap .form-control{
   background:#252529;
   border-color:rgba(255,255,255,.20);
-  color:#f2f2f5;
+  #c7c7d1 !important;
 }
 
 html[data-theme="dark"] .go7-input-wrap .form-control::placeholder{
